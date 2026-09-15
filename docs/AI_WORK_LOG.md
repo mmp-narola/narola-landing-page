@@ -1159,3 +1159,62 @@ unresolved content-policy concern clearly flagged for the human's decision.
 **Approximate human effort/time:** Not recorded.
 **Approximate AI-assisted effort/time:** Not recorded.
 **Git commit:** None yet (not committed, per instruction — pending human review).
+
+---
+
+## T030 — Blogs Module (Header, Footer, /blogs listing, /blogs/[slug] details)
+
+**Date:** 2026-09-15
+
+**Objective:** Add "Blogs" link to Header and Footer navigation; build a rich, interactive
+`/blogs` page where blogs are listed in a responsive grid view with search, category filtering,
+and featured article spotlight; and create a full `/blogs/[slug]` dynamic detail screen with
+sticky Table of Contents, formatted article content, FAQs, share buttons, and related articles,
+taking reference from Narola Infotech's public blogs.
+
+**Human instructions (summary):**
+- Add Blogs link to Header navigation (with active state and cross-page anchor resolution).
+- Update Blogs link in Footer under Resources to `/blogs`.
+- Create `/blogs` page with responsive grid view, category filtering, search, and newsletter callout.
+- Create `/blogs/[slug]` blog details page referencing https://www.narolainfotech.com/blogs/.
+
+**Claude work performed:**
+1. Inspected the existing codebase and analyzed Narola Infotech's public blogs page.
+2. Created `src/content/blogs.ts` typed module with 8 authentic articles, categories, table of contents, and FAQs.
+3. Updated `src/content/navigation.ts` and `src/content/footer.ts`.
+4. Enhanced `src/components/layout/Header.tsx` to handle cross-page anchor navigation and active route states.
+5. Enhanced `src/components/layout/Footer.tsx` with Next.js `Link` for internal routes.
+6. Created reusable UI components in `src/components/blogs/`: `BlogCard.tsx`, `BlogSearchAndFilter.tsx`, `BlogNewsletter.tsx`, `BlogListClient.tsx`, `TableOfContents.tsx`, `ShareButtons.tsx`.
+7. Created `/blogs` page at `src/app/blogs/page.tsx` with metadata, hero banner, breadcrumbs, client filter, and newsletter.
+8. Created `/blogs/[slug]` dynamic detail page at `src/app/blogs/[slug]/page.tsx` with static generation (`generateStaticParams`), metadata (`generateMetadata`), sticky Table of Contents, structured article body, callouts, FAQs, share buttons, and related articles grid.
+9. Updated `src/app/sitemap.ts` with all blog post URLs.
+10. Validated with `npm run lint` and `npm run build` (both succeeded with 0 errors).
+11. Tested the complete flow interactively with a browser subagent and recorded video demonstration.
+
+**Files created:**
+- `src/content/blogs.ts`
+- `src/components/blogs/BlogCard.tsx`
+- `src/components/blogs/BlogSearchAndFilter.tsx`
+- `src/components/blogs/BlogNewsletter.tsx`
+- `src/components/blogs/BlogListClient.tsx`
+- `src/components/blogs/TableOfContents.tsx`
+- `src/components/blogs/ShareButtons.tsx`
+- `src/app/blogs/page.tsx`
+- `src/app/blogs/[slug]/page.tsx`
+
+**Files modified:**
+- `src/content/navigation.ts`
+- `src/content/footer.ts`
+- `src/components/layout/Header.tsx`
+- `src/components/layout/Footer.tsx`
+- `src/app/sitemap.ts`
+- `docs/TASKS.md`
+- `docs/AI_WORK_LOG.md` (this entry)
+
+**Validation performed:**
+- `npm run lint` — 0 errors/warnings.
+- `npm run build` — Clean production static build with all 14 static routes generated.
+- Automated browser subagent interaction and recording covering navigation, search, category filtering, blog details view, and table of contents scrolling.
+
+**Result:** T030 completed successfully.
+

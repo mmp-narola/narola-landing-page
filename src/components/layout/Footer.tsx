@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { footerContent } from "@/content/footer";
@@ -221,12 +222,21 @@ export function Footer() {
             <ul className="mt-4 space-y-2">
               {footerContent.resources.map((item) => (
                 <li key={item.label}>
-                  <a
-                    href={item.href}
-                    className="block text-sm text-slate transition-colors hover:text-interactive-blue"
-                  >
-                    {item.label}
-                  </a>
+                  {item.href.startsWith("/") ? (
+                    <Link
+                      href={item.href}
+                      className="block text-sm text-slate transition-colors hover:text-interactive-blue"
+                    >
+                      {item.label}
+                    </Link>
+                  ) : (
+                    <a
+                      href={item.href}
+                      className="block text-sm text-slate transition-colors hover:text-interactive-blue"
+                    >
+                      {item.label}
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>

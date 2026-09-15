@@ -172,6 +172,12 @@ noticed but not addressed (out of scope for a styling task).
 **Description:** Compose all sections into the final `app/page.tsx` in the correct order.
 **Notes:** All sections composed sequentially in `src/app/page.tsx`: Header -> Hero -> CoreServices -> OtherServices -> Technologies -> Industries -> CeoMessage -> Footer. Verified with full production build and ESLint passes.
 
+### T030 — Blogs Module (Header link, Footer link, /blogs grid, and /blogs/[slug] detail screen)
+
+**Status:** Completed
+**Description:** Add Blogs link to Header and Footer; build interactive `/blogs` grid listing with real-time search, category filters, featured spotlight card, newsletter subscription, and dynamic `/blogs/[slug]` detail screens with Table of Contents, formatted article content, FAQs, share buttons, and related articles.
+**Notes:** Sourced authentic topics from Narola Infotech's public blog. Verified full responsive behavior and interactive flow using browser subagent with zero errors. Full Next.js SSG build and ESLint passes cleanly.
+
 ---
 
 ## Quality

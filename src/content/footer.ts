@@ -74,7 +74,7 @@ export const footerContent = {
   resources: [
     { label: "Our Story", href: "#" },
     { label: "Case Studies", href: "#" },
-    { label: "Blogs", href: "#" },
+    { label: "Blogs", href: "/blogs" },
     { label: "Agile Methodologies", href: "#" },
     { label: "Engagement Models", href: "#" },
   ],
