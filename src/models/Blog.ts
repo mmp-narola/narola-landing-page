@@ -3,7 +3,7 @@ import mongoose, { Schema, Document, Model } from "mongoose";
 export interface IBlogAuthor {
   name: string;
   role: string;
-  avatarUrl: string;
+  avatarUrl?: string;
 }
 
 export interface ITableOfContentItem {
@@ -36,8 +36,8 @@ export interface IBlogDocument extends Document {
   category: "ecommerce" | "technology" | "it-services" | "ai-ml" | "cloud-devops" | "mobile-app";
   categoryLabel: string;
   author: IBlogAuthor;
-  publishedDate: string;
-  lastUpdated: string;
+  publishedDate?: string;
+  lastUpdated?: string;
   readTime: string;
   readTimeMinutes: number;
   featured: boolean;
@@ -49,6 +49,7 @@ export interface IBlogDocument extends Document {
   faqs?: IBlogFaq[];
   conclusion?: string[];
   relatedSlugs: string[];
+  layout?: string;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -57,7 +58,7 @@ const BlogAuthorSchema = new Schema<IBlogAuthor>(
   {
     name: { type: String, required: true },
     role: { type: String, required: true },
-    avatarUrl: { type: String, required: true },
+    avatarUrl: { type: String, default: "/images/favicon.png" },
   },
   { _id: false }
 );
@@ -146,11 +147,25 @@ const BlogSchema = new Schema<IBlogDocument>(
     },
     publishedDate: {
       type: String,
-      required: true,
+      default: () =>
+        new Date().toLocaleDateString("en-US", {
+          month: "long",
+          day: "numeric",
+          year: "numeric",
+        }),
     },
     lastUpdated: {
       type: String,
-      required: true,
+      default: function (this: IBlogDocument) {
+        return (
+          this.publishedDate ||
+          new Date().toLocaleDateString("en-US", {
+            month: "long",
+            day: "numeric",
+            year: "numeric",
+          })
+        );
+      },
     },
     readTime: {
       type: String,
@@ -179,6 +194,10 @@ const BlogSchema = new Schema<IBlogDocument>(
     faqs: [BlogFaqSchema],
     conclusion: [{ type: String }],
     relatedSlugs: [{ type: String }],
+    layout: {
+      type: String,
+      default: "blog-layout-1",
+    },
   },
   {
     timestamps: true,

@@ -1,7 +1,7 @@
 export interface BlogAuthor {
   name: string;
   role: string;
-  avatarUrl: string;
+  avatarUrl?: string;
 }
 
 export interface TableOfContentItem {
@@ -40,8 +40,8 @@ export interface BlogPost {
     | "mobile-app";
   categoryLabel: string;
   author: BlogAuthor;
-  publishedDate: string;
-  lastUpdated: string;
+  publishedDate?: string;
+  lastUpdated?: string;
   readTime: string;
   readTimeMinutes: number;
   featured?: boolean;
@@ -53,6 +53,7 @@ export interface BlogPost {
   faqs?: BlogFaq[];
   conclusion?: string[];
   relatedSlugs: string[];
+  layout?: "blog-layout-1" | "blog-layout-2" | string;
 }
 
 export interface BlogCategoryInfo {

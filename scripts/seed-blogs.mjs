@@ -730,10 +730,26 @@ const BlogSchema = new mongoose.Schema(
     author: {
       name: String,
       role: String,
-      avatarUrl: String,
+      avatarUrl: { type: String, default: "/images/favicon.png" },
     },
-    publishedDate: String,
-    lastUpdated: String,
+    publishedDate: {
+      type: String,
+      default: () =>
+        new Date().toLocaleDateString("en-US", {
+          month: "long",
+          day: "numeric",
+          year: "numeric",
+        }),
+    },
+    lastUpdated: {
+      type: String,
+      default: () =>
+        new Date().toLocaleDateString("en-US", {
+          month: "long",
+          day: "numeric",
+          year: "numeric",
+        }),
+    },
     readTime: String,
     readTimeMinutes: Number,
     featured: Boolean,
@@ -745,6 +761,10 @@ const BlogSchema = new mongoose.Schema(
     faqs: Array,
     conclusion: [String],
     relatedSlugs: [String],
+    layout: {
+      type: String,
+      default: "blog-layout-1",
+    },
   },
   { timestamps: true, collection: "blogs" }
 );

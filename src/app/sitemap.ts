@@ -14,7 +14,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const blogUrls = uniquePosts.map((post) => ({
     url: `${siteConfig.url}/blogs/${post.slug}`,
-    lastModified: new Date(post.lastUpdated || post.publishedDate),
+    lastModified: new Date(
+      post.lastUpdated || post.publishedDate || Date.now()
+    ),
   }));
 
   return [
