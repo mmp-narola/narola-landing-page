@@ -14,25 +14,55 @@ export function BlogCard({ post, featured = false }: BlogCardProps) {
     >
       {/* Visual Header / Cover */}
       <div
-        className={`relative overflow-hidden bg-gradient-to-br ${post.gradient} ${featured
-          ? "h-64 lg:col-span-5 lg:h-full min-h-[260px]"
-          : "h-48 w-full"
-          }`}
+        className={`relative overflow-hidden bg-gradient-to-br ${post.gradient || "from-blue-600 to-indigo-800"} ${
+          featured
+            ? "h-64 lg:col-span-5 lg:h-full min-h-[260px]"
+            : "h-48 w-full"
+        }`}
       >
-        {/* Subtle background decorative shapes */}
-        <div className="absolute inset-0 opacity-20 mix-blend-overlay">
-          <svg className="h-full w-full" viewBox="0 0 400 240" fill="none">
-            <defs>
-              <pattern id={`pattern-${post.slug}`} width="30" height="30" patternUnits="userSpaceOnUse">
-                <path d="M 30 0 L 0 0 0 30" fill="none" stroke="white" strokeWidth="0.8" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill={`url(#pattern-${post.slug})`} />
-          </svg>
-        </div>
+        {post.coverImage ? (
+          <>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={post.coverImage}
+              alt={post.title}
+              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+            {/* Dark overlay gradient for readable pills */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-black/30" />
+          </>
+        ) : (
+          <>
+            {/* Subtle background decorative shapes */}
+            <div className="absolute inset-0 opacity-20 mix-blend-overlay">
+              <svg className="h-full w-full" viewBox="0 0 400 240" fill="none">
+                <defs>
+                  <pattern
+                    id={`pattern-${post.slug}`}
+                    width="30"
+                    height="30"
+                    patternUnits="userSpaceOnUse"
+                  >
+                    <path
+                      d="M 30 0 L 0 0 0 30"
+                      fill="none"
+                      stroke="white"
+                      strokeWidth="0.8"
+                    />
+                  </pattern>
+                </defs>
+                <rect
+                  width="100%"
+                  height="100%"
+                  fill={`url(#pattern-${post.slug})`}
+                />
+              </svg>
+            </div>
 
-        {/* Ambient Glow */}
-        <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-white/20 blur-2xl transition-transform duration-500 group-hover:scale-125" />
+            {/* Ambient Glow */}
+            <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-white/20 blur-2xl transition-transform duration-500 group-hover:scale-125" />
+          </>
+        )}
 
         {/* Category Pill Over Visual */}
         <div className="absolute left-4 top-4 z-10 flex flex-wrap items-center gap-2">

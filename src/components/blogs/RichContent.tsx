@@ -94,19 +94,14 @@ export function SectionImage({
   if (!image || !image.url) return null;
 
   return (
-    <figure className={`my-6 overflow-hidden rounded-2xl border border-slate/15 bg-surface-muted shadow-sm transition-all ${className}`}>
+    <figure className={`my-6 overflow-hidden transition-all ${className}`}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={image.url}
         alt={image.alt || "Section Image"}
         loading="lazy"
-        className="w-full object-cover max-h-[480px] rounded-t-2xl"
+        className="w-full h-auto block"
       />
-      {image.caption && (
-        <figcaption className="border-t border-slate/10 bg-white px-4 py-2.5 text-center text-xs font-medium text-slate italic">
-          <RichText text={image.caption} />
-        </figcaption>
-      )}
     </figure>
   );
 }
