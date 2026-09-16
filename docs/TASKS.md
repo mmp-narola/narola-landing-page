@@ -178,6 +178,13 @@ noticed but not addressed (out of scope for a styling task).
 **Description:** Add Blogs link to Header and Footer; build interactive `/blogs` grid listing with real-time search, category filters, featured spotlight card, newsletter subscription, and dynamic `/blogs/[slug]` detail screens with Table of Contents, formatted article content, FAQs, share buttons, and related articles.
 **Notes:** Sourced authentic topics from Narola Infotech's public blog. Verified full responsive behavior and interactive flow using browser subagent with zero errors. Full Next.js SSG build and ESLint passes cleanly.
 
+### T031 — Case Studies Module (Header navigation, MongoDB collection, /case-studies listing, /case-studies/[slug] detail, and AI creation rules)
+
+**Status:** Completed
+**Description:** Add Case Studies link to Header navigation (removing Services/Industries anchors); create `case_studies` MongoDB collection and Mongoose model; seed 3 case studies (`shipping-adaptor`, `safiri-salama`, `e-star`); build interactive `/case-studies` filtering list and comprehensive `/case-studies/[slug]` tabbed detail view; create AI rules (`.agents/rules/case-study-creation-rules.md`) and simplified prompt template (`CASE_STUDY_TEMPLATE.md`).
+**Notes:** Verified dynamic ISR page generation, dynamic params, and static fallback.
+
+
 ---
 
 ## Quality

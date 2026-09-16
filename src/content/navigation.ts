@@ -7,8 +7,7 @@ export interface NavItem {
 // site's multi-level mega-menu, which doesn't suit a single-page site. Each href must match
 // the `id` the corresponding section sets when it is built (T009/T011/T012).
 export const navItems: NavItem[] = [
-  { label: "Services", href: "#services" },
   { label: "Technologies", href: "#technologies" },
-  { label: "Industries", href: "#industries" },
+  { label: "Case Studies", href: "/case-studies" },
   { label: "Blogs", href: "/blogs" },
 ];

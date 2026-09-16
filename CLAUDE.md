@@ -61,6 +61,15 @@ When adding a blog to MongoDB or the codebase:
 - **Auto-Apply Defaults**: Category labels, gradient presets, author ("Narola Think Tank"), current date, layout ("blog-layout-1").
 - **Insert directly to MongoDB** `blogs` collection with upsert on `slug`. See `BLOG_TEMPLATE.md` for details.
 
+## Case Study Creation & Formatting Rules
+
+When adding, editing, or deleting a case study in MongoDB or the codebase:
+- **Zero Boilerplate from User**: The user provides project details (title, client, industry, country, overview, tabbed points, metrics, tech stack).
+- **Auto-Generate `slug`**: Lowercase title, remove punctuation, convert spaces to kebab-case.
+- **Auto-Structure `tabbedContent`**: Convert freeform or bulleted requirements into `businessNeeds`, `challenges`, `solution`, and `objectives`.
+- **Auto-Assign Gradients**: Set visual gradient themes based on industry category presets.
+- **Insert / Upsert directly to MongoDB** `case_studies` collection with upsert on `slug`. See `CASE_STUDY_TEMPLATE.md` and `.agents/rules/case-study-creation-rules.md` for details.
+
 ## Design Rules
 
 - Maintain Narola Infotech's existing brand identity (colors, typography, tone).

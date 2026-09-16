@@ -29,6 +29,9 @@ export function Header() {
   };
 
   const isItemActive = (href: string) => {
+    if (href === "/case-studies") {
+      return pathname.startsWith("/case-studies");
+    }
     if (href === "/blogs") {
       return pathname.startsWith("/blogs");
     }
