@@ -19,6 +19,9 @@ export const metadata: Metadata = {
   },
 };
 
+// Revalidate blog listings every 60 seconds from MongoDB
+export const revalidate = 60;
+
 export default async function BlogsPage() {
   const posts = await getBlogs();
   return (

@@ -3,7 +3,8 @@ import { siteConfig } from "@/content/siteConfig";
 import { blogPosts } from "@/content/blogs";
 import { getBlogs } from "@/lib/blogs";
 
-export const dynamic = "force-static";
+// Revalidate sitemap periodically (every 1 hour)
+export const revalidate = 3600;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const dbPosts = await getBlogs();

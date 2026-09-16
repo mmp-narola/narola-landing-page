@@ -12,14 +12,17 @@ interface BlogPostPageProps {
   }>;
 }
 
-// In static export mode (output: "export"), only allow pre-generated static params
-export const dynamicParams = false;
+// Allow dynamic on-demand rendering for blog slugs added to MongoDB after build
+export const dynamicParams = true;
+
+// Revalidate blog detail pages every 60 seconds
+export const revalidate = 60;
 
 export async function generateStaticParams() {
   const dbPosts = await getBlogs();
   const allPosts = [...dbPosts, ...blogPosts];
 
-  // Deduplicate slugs so all MongoDB and static fallback slugs are generated
+  // Deduplicate slugs
   const uniqueSlugs = Array.from(
     new Set(allPosts.map((post) => post.slug).filter(Boolean))
   );

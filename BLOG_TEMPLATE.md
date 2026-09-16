@@ -143,7 +143,7 @@ Published Date: November 13, 2024
 Last Updated: November 13, 2024
 Read Time: "15 min read"
 Read Time Minutes: 15
-Featured: true
+Featured: false
 Cover Image URL: (none)
 Gradient: from-blue-600 to-indigo-800
 
