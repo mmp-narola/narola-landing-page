@@ -12,11 +12,26 @@ export interface ITableOfContentItem {
   subItems?: { id: string; title: string }[];
 }
 
+export interface IBlogImage {
+  url: string;
+  alt?: string;
+  caption?: string;
+  position?: "top" | "middle" | "bottom";
+}
+
+export interface IBlogTable {
+  caption?: string;
+  headers: string[];
+  rows: string[][];
+}
+
 export interface IBlogSection {
   id: string;
   heading: string;
   content: string[];
   bulletPoints?: string[];
+  images?: IBlogImage[];
+  table?: IBlogTable;
   callout?: {
     type: "tip" | "insight" | "note";
     title?: string;
@@ -80,12 +95,37 @@ const TableOfContentItemSchema = new Schema<ITableOfContentItem>(
   { _id: false }
 );
 
+const BlogImageSchema = new Schema<IBlogImage>(
+  {
+    url: { type: String, required: true },
+    alt: { type: String, default: "" },
+    caption: { type: String },
+    position: {
+      type: String,
+      enum: ["top", "middle", "bottom"],
+      default: "middle",
+    },
+  },
+  { _id: false }
+);
+
+const BlogTableSchema = new Schema<IBlogTable>(
+  {
+    caption: { type: String },
+    headers: [{ type: String, required: true }],
+    rows: [[{ type: String }]],
+  },
+  { _id: false }
+);
+
 const BlogSectionSchema = new Schema<IBlogSection>(
   {
     id: { type: String, required: true },
     heading: { type: String, required: true },
     content: [{ type: String, required: true }],
     bulletPoints: [{ type: String }],
+    images: [BlogImageSchema],
+    table: BlogTableSchema,
     callout: {
       type: {
         type: String,

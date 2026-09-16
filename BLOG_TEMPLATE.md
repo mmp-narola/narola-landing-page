@@ -114,6 +114,39 @@ When processing a blog request, the AI automatically executes these rules:
 
 ---
 
+## 🎨 Rich Media Features (Images, Tables & Links)
+
+You can now easily include rich elements directly inside sections:
+
+### 1. Clickable Links & Bold Text (Markdown)
+Inside any paragraph (`content`), bullet points, FAQs, or conclusion, you can use standard Markdown:
+- **Links**: `[Visit Spring](https://spring.io/)` ➔ Renders as styled blue interactive link.
+- **Bold**: `**Key Feature:**` ➔ Renders as bold text.
+- **Code**: `` `npm run build` `` ➔ Renders as inline code badge.
+
+### 2. Multiple Images per Section (Top, Middle, Bottom)
+Add an `images` array to any section:
+```markdown
+Images:
+- url: "https://www.narolainfotech.com/wp-content/uploads/2024/09/spring-architecture.jpg"
+  alt: "Spring Architecture Diagram"
+  caption: "Figure 1: Spring Framework Modular Architecture"
+  position: "top" # options: "top", "middle", "bottom"
+```
+
+### 3. Comparison / Data Tables
+Add a `table` to any section:
+```markdown
+Table:
+  caption: "Java Frameworks Comparison"
+  headers: ["Framework", "Best For", "Learning Curve"]
+  rows:
+    - ["Spring Boot", "Microservices & Enterprise", "Moderate"]
+    - ["Hibernate", "ORM & Database Mapping", "Easy"]
+```
+
+---
+
 ## 🗄️ Full MongoDB Schema Reference
 
 For reference, the complete object stored in MongoDB:
@@ -146,8 +179,19 @@ export interface IBlogDocument {
   sections: {
     id: string;
     heading: string;
-    content: string[];
+    content: string[]; // Supports [links](url), **bold**, `code`
     bulletPoints?: string[];
+    images?: {
+      url: string;
+      alt?: string;
+      caption?: string;
+      position?: "top" | "middle" | "bottom";
+    }[];
+    table?: {
+      caption?: string;
+      headers: string[];
+      rows: string[][];
+    };
     callout?: {
       type: "tip" | "insight" | "note";
       title?: string;

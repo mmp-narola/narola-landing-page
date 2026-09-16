@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/Button";
 import { BlogCard } from "@/components/blogs/BlogCard";
 import { TableOfContents } from "@/components/blogs/TableOfContents";
 import { ShareButtons } from "@/components/blogs/ShareButtons";
+import { RichText, SectionImage, SectionTable } from "@/components/blogs/RichContent";
 import { BlogPost } from "@/content/blogs";
 
 export interface BlogLayoutProps {
@@ -162,7 +163,9 @@ export function BlogLayout1({ post, relatedPosts }: BlogLayoutProps) {
               {post.introduction && post.introduction.length > 0 && (
                 <div className="space-y-4 text-base leading-relaxed text-slate md:text-lg">
                   {post.introduction.map((para, idx) => (
-                    <p key={idx}>{para}</p>
+                    <p key={idx}>
+                      <RichText text={para} />
+                    </p>
                   ))}
                 </div>
               )}
@@ -170,53 +173,96 @@ export function BlogLayout1({ post, relatedPosts }: BlogLayoutProps) {
               {/* Article Content Sections */}
               {post.sections && post.sections.length > 0 && (
                 <div className="mt-10 space-y-12 border-t border-slate/10 pt-8">
-                  {post.sections.map((section) => (
-                    <section key={section.id} id={section.id} className="scroll-mt-28">
-                      <h2 className="text-xl font-bold tracking-tight text-ink md:text-2xl">
-                        {section.heading}
-                      </h2>
+                  {post.sections.map((section) => {
+                    const topImages = (section.images || []).filter(
+                      (img) => img.position === "top"
+                    );
+                    const middleImages = (section.images || []).filter(
+                      (img) => !img.position || img.position === "middle"
+                    );
+                    const bottomImages = (section.images || []).filter(
+                      (img) => img.position === "bottom"
+                    );
 
-                      <div className="mt-4 space-y-4 text-base leading-relaxed text-slate">
-                        {section.content.map((p, pIdx) => (
-                          <p key={pIdx}>{p}</p>
+                    return (
+                      <section
+                        key={section.id}
+                        id={section.id}
+                        className="scroll-mt-28"
+                      >
+                        <h2 className="text-xl font-bold tracking-tight text-ink md:text-2xl">
+                          {section.heading}
+                        </h2>
+
+                        {/* Top Section Images */}
+                        {topImages.map((img, idx) => (
+                          <SectionImage key={`top-${idx}`} image={img} />
                         ))}
-                      </div>
 
-                      {/* Bullet points if available */}
-                      {section.bulletPoints && section.bulletPoints.length > 0 && (
-                        <ul className="mt-4 space-y-2.5 rounded-2xl bg-surface-muted p-5 text-sm text-ink md:text-base">
-                          {section.bulletPoints.map((bullet, bIdx) => (
-                            <li key={bIdx} className="flex items-start gap-2.5">
-                              <svg
-                                className="mt-1 h-4 w-4 shrink-0 text-interactive-blue"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                strokeWidth="2.5"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                              >
-                                <polyline points="20 6 9 17 4 12" />
-                              </svg>
-                              <span>{bullet}</span>
-                            </li>
+                        {/* Paragraph Content */}
+                        <div className="mt-4 space-y-4 text-base leading-relaxed text-slate">
+                          {section.content.map((p, pIdx) => (
+                            <p key={pIdx}>
+                              <RichText text={p} />
+                            </p>
                           ))}
-                        </ul>
-                      )}
-
-                      {/* Callout box if available */}
-                      {section.callout && (
-                        <div className="mt-6 rounded-2xl border-l-4 border-interactive-blue bg-interactive-blue/5 p-5 text-sm leading-relaxed text-ink md:text-base">
-                          {section.callout.title && (
-                            <h4 className="mb-1 font-bold text-interactive-blue">
-                              {section.callout.title}
-                            </h4>
-                          )}
-                          <p className="text-slate">{section.callout.text}</p>
                         </div>
-                      )}
-                    </section>
-                  ))}
+
+                        {/* Middle Section Images */}
+                        {middleImages.map((img, idx) => (
+                          <SectionImage key={`mid-${idx}`} image={img} />
+                        ))}
+
+                        {/* Bullet points if available */}
+                        {section.bulletPoints && section.bulletPoints.length > 0 && (
+                          <ul className="mt-4 space-y-2.5 rounded-2xl bg-surface-muted p-5 text-sm text-ink md:text-base">
+                            {section.bulletPoints.map((bullet, bIdx) => (
+                              <li key={bIdx} className="flex items-start gap-2.5">
+                                <svg
+                                  className="mt-1 h-4 w-4 shrink-0 text-interactive-blue"
+                                  viewBox="0 0 24 24"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  strokeWidth="2.5"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                >
+                                  <polyline points="20 6 9 17 4 12" />
+                                </svg>
+                                <span>
+                                  <RichText text={bullet} />
+                                </span>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+
+                        {/* Section Table if available */}
+                        {section.table && (
+                          <SectionTable table={section.table} />
+                        )}
+
+                        {/* Callout box if available */}
+                        {section.callout && (
+                          <div className="mt-6 rounded-2xl border-l-4 border-interactive-blue bg-interactive-blue/5 p-5 text-sm leading-relaxed text-ink md:text-base">
+                            {section.callout.title && (
+                              <h4 className="mb-1 font-bold text-interactive-blue">
+                                {section.callout.title}
+                              </h4>
+                            )}
+                            <p className="text-slate">
+                              <RichText text={section.callout.text} />
+                            </p>
+                          </div>
+                        )}
+
+                        {/* Bottom Section Images */}
+                        {bottomImages.map((img, idx) => (
+                          <SectionImage key={`bot-${idx}`} image={img} />
+                        ))}
+                      </section>
+                    );
+                  })}
                 </div>
               )}
 
@@ -233,10 +279,10 @@ export function BlogLayout1({ post, relatedPosts }: BlogLayoutProps) {
                         className="rounded-2xl border border-slate/10 bg-surface-muted p-5"
                       >
                         <h4 className="text-base font-bold text-ink">
-                          {faq.question}
+                          <RichText text={faq.question} />
                         </h4>
                         <p className="mt-2 text-sm leading-relaxed text-slate">
-                          {faq.answer}
+                          <RichText text={faq.answer} />
                         </p>
                       </div>
                     ))}
@@ -252,7 +298,9 @@ export function BlogLayout1({ post, relatedPosts }: BlogLayoutProps) {
                   </h3>
                   <div className="mt-3 space-y-3 text-sm leading-relaxed text-slate md:text-base">
                     {post.conclusion.map((cPara, cIdx) => (
-                      <p key={cIdx}>{cPara}</p>
+                      <p key={cIdx}>
+                        <RichText text={cPara} />
+                      </p>
                     ))}
                   </div>
                 </div>

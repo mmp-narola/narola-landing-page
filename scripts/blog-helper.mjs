@@ -95,6 +95,8 @@ export function formatBlogData(rawInput) {
       heading,
       content: Array.isArray(sec.content) ? sec.content : [sec.content || ""],
       bulletPoints: sec.bulletPoints || [],
+      ...(sec.images && sec.images.length > 0 ? { images: sec.images } : {}),
+      ...(sec.table ? { table: sec.table } : {}),
       ...(sec.callout ? { callout: sec.callout } : {}),
     };
   });

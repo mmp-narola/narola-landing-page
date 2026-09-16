@@ -10,11 +10,26 @@ export interface TableOfContentItem {
   subItems?: { id: string; title: string }[];
 }
 
+export interface BlogImage {
+  url: string;
+  alt?: string;
+  caption?: string;
+  position?: "top" | "middle" | "bottom";
+}
+
+export interface BlogTable {
+  caption?: string;
+  headers: string[];
+  rows: string[][];
+}
+
 export interface BlogSection {
   id: string;
   heading: string;
   content: string[];
   bulletPoints?: string[];
+  images?: BlogImage[];
+  table?: BlogTable;
   callout?: {
     type: "tip" | "insight" | "note";
     title?: string;
