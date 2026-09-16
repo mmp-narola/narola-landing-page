@@ -50,6 +50,17 @@ See [CHANGELOG.md](docs/CHANGELOG.md) for exact installed versions at each miles
   business information. Only use content that is confirmed from the public production site
   or explicitly supplied by the user.
 
+## Blog Creation & Formatting Rules
+
+When adding a blog to MongoDB or the codebase:
+- **Zero Boilerplate from User**: The user never needs to supply `slug`, `section.id`, `tableOfContents`, `readTime`, `gradient`, or default metadata.
+- **Auto-Generate `slug`**: Lowercase title, remove leading numbers, convert spaces/special characters to kebab-case.
+- **Auto-Generate `section.id`**: Lowercase heading, strip numbering prefixes, convert to kebab-case.
+- **Auto-Generate `tableOfContents`**: Extract directly from `sections` with matching IDs and headings.
+- **Auto-Calculate `readTime`**: Count total words across all sections/FAQs/intro and divide by 200 wpm.
+- **Auto-Apply Defaults**: Category labels, gradient presets, author ("Narola Think Tank"), current date, layout ("blog-layout-1").
+- **Insert directly to MongoDB** `blogs` collection with upsert on `slug`. See `BLOG_TEMPLATE.md` for details.
+
 ## Design Rules
 
 - Maintain Narola Infotech's existing brand identity (colors, typography, tone).
