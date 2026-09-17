@@ -1218,3 +1218,64 @@ taking reference from Narola Infotech's public blogs.
 
 **Result:** T030 completed successfully.
 
+---
+
+## T031 — Custom Software Development page: hero cleanup
+
+**Date:** 2026-09-17
+
+**Objective:** On `/custom-software-development-company`, remove the "Consult Our Solution
+Architects" card from the hero, move the "Trusted by global enterprises and emerging
+startups" client-logo row into its own clearly-separated section with a lighter
+background, and keep everything else on the page unchanged.
+
+**Human instructions (summary):**
+- Remove the entire "Consult Our Solution Architects" section.
+- Move "Trusted by global enterprises and emerging startups" into a separate section,
+  clearly separated from the main Custom Software Development Company section.
+- Change the page/section background color to a lighter shade while keeping the existing
+  visual direction and design consistency.
+- Do not change unrelated sections, content, functionality, or components.
+- Ensure the layout remains responsive across desktop, tablet, and mobile.
+- Follow existing project conventions and reusable components.
+- Verify the affected page for layout issues after the change.
+
+**Claude work performed:**
+1. Located the "Consult Our Solution Architects" card and the "Trusted by..." client-logo
+   row, both inside `src/components/services/CustomSoftwareHero.tsx`'s hero section.
+2. Removed the right-column consultation card entirely and collapsed the hero's
+   two-column (`lg:grid-cols-12`) layout to a single left-aligned content column, since the
+   right column no longer has content.
+3. Extracted the client-logo row into a new `CustomSoftwareTrustedBy` component, following
+   the same reusable-component pattern as the page's other sections
+   (`CustomSoftwareOverview`, `CustomSoftwareTechStack`, etc.).
+4. Checked the existing section-background convention on this page: sections alternate
+   between the default background and `bg-surface-muted` (`#f6f7fa`, defined in
+   `globals.css`) for visual separation. Applied `bg-surface-muted` to the new section so
+   it reads as a clearly separated, lighter block directly beneath the dark hero — matching
+   the existing visual direction rather than introducing a new color.
+5. Wired `CustomSoftwareTrustedBy` into `page.tsx` immediately after `CustomSoftwareHero`
+   and before the sticky subnav.
+6. Ran `npm run lint` and `npm run build` — both passed cleanly.
+7. Started the dev server and used a headless-browser screenshot check at 1440px (desktop),
+   768px (tablet), and 375px (mobile) to confirm: the removed card is gone, the hero reflows
+   correctly as a single column, and the new trusted-by section is visibly separated with
+   the lighter background and wraps its logos responsively at all three widths.
+
+**Files modified:**
+- `src/components/services/CustomSoftwareHero.tsx`
+- `src/app/custom-software-development-company/page.tsx`
+- `docs/TASKS.md`
+- `docs/CHANGELOG.md`
+- `docs/AI_WORK_LOG.md` (this entry)
+
+**Files created:**
+- `src/components/services/CustomSoftwareTrustedBy.tsx`
+
+**Validation performed:**
+- `npm run lint` — 0 errors/warnings.
+- `npm run build` — succeeded, all routes prerendered.
+- Manual in-browser verification (screenshots) at desktop/tablet/mobile widths.
+
+**Result:** T031 completed successfully.
+
