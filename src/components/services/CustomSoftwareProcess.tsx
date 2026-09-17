@@ -22,7 +22,7 @@ export function CustomSoftwareProcess() {
 
         {/* Process Stages Timeline */}
         <div className="mt-16 space-y-6">
-          {process.stages.map((stage, idx) => (
+          {process.stages.map((stage) => (
             <div
               key={stage.step}
               className="relative flex flex-col gap-6 rounded-3xl border border-slate/10 bg-white p-6 shadow-sm transition-all duration-300 hover:border-interactive-blue/30 hover:shadow-lg md:flex-row md:items-center md:p-8"
