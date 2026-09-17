@@ -4,6 +4,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Container } from "@/components/ui/Container";
 import { CustomSoftwareHero } from "@/components/services/CustomSoftwareHero";
+import { CustomSoftwareTrustedBy } from "@/components/services/CustomSoftwareTrustedBy";
 import { CustomSoftwareSubnav } from "@/components/services/CustomSoftwareSubnav";
 import { CustomSoftwareOverview } from "@/components/services/CustomSoftwareOverview";
 import { CustomSoftwareTechStack } from "@/components/services/CustomSoftwareTechStack";
@@ -79,6 +80,9 @@ export default async function CustomSoftwareDevelopmentPage() {
       <main className="min-h-screen">
         {/* 1. Hero Section */}
         <CustomSoftwareHero />
+
+        {/* Trusted By: separated from the hero, lighter background for visual contrast */}
+        <CustomSoftwareTrustedBy />
 
         {/* 2. Sticky Subnav */}
         <CustomSoftwareSubnav />

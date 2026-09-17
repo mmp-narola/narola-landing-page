@@ -260,3 +260,12 @@ with no errors/warnings ahead of deployment.
 
 **Status:** Not Started
 **Description:** Post-deploy smoke test of the live landing page on the production subdomain.
+
+### T031 — Custom Software Development page: hero cleanup
+
+**Status:** Completed
+**Description:** Removed the "Consult Our Solution Architects" card from the Custom
+Software Development Company hero, moved the "Trusted by global enterprises and emerging
+startups" client-logo strip into its own separated section with a lighter
+(`surface-muted`) background, and simplified the hero to a single-column layout. See
+[CHANGELOG.md](CHANGELOG.md) and [AI_WORK_LOG.md](AI_WORK_LOG.md) for full detail.

@@ -11,6 +11,27 @@ below as implying otherwise.
 
 ## [Unreleased]
 
+### 2026-09-17 — T031: Custom Software Development page hero cleanup
+#### Changed
+- `src/components/services/CustomSoftwareHero.tsx`: removed the "Consult Our Solution
+  Architects" card and the client-logo trust row from the hero; simplified the hero's
+  two-column grid to a single left-aligned content column.
+
+#### Added
+- `src/components/services/CustomSoftwareTrustedBy.tsx`: new section rendering the
+  "Trusted by global enterprises and emerging startups" client-logo row, now visually
+  separated from the hero with a `bg-surface-muted` (lighter) background, following the
+  existing alternating-section-background convention used elsewhere on the page.
+- `src/app/custom-software-development-company/page.tsx`: renders the new
+  `CustomSoftwareTrustedBy` section directly below the hero.
+
+#### Validated
+- `npm run lint` — passed with no errors or warnings.
+- `npm run build` — succeeded, all routes prerendered.
+- Verified in-browser (desktop 1440px, tablet 768px, mobile 375px) via screenshots — hero
+  renders correctly without the removed card, and the new trusted-by section is clearly
+  separated with a lighter background and wraps responsively at all three widths.
+
 ### 2026-09-07 — T029: Modernize UI theme (same color palette)
 #### Changed
 - `src/components/ui/Button.tsx`: primary variant is now a gradient (Interactive Blue →
