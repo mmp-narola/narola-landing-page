@@ -16,18 +16,20 @@ export function Header() {
   const [isServicesHovered, setIsServicesHovered] = useState(false);
   const pathname = usePathname();
 
+  // Close mobile drawer on route change (adjust state during render, not in an effect)
+  const [renderedPathname, setRenderedPathname] = useState(pathname);
+  if (pathname !== renderedPathname) {
+    setRenderedPathname(pathname);
+    setIsMenuOpen(false);
+    setIsServicesHovered(false);
+  }
+
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 4);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  // Close mobile drawer on route change
-  useEffect(() => {
-    setIsMenuOpen(false);
-    setIsServicesHovered(false);
-  }, [pathname]);
 
   const getResolvedHref = (href: string) => {
     if (href.startsWith("#")) {

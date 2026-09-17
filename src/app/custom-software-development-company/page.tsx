@@ -16,6 +16,7 @@ import { CustomSoftwareCta } from "@/components/services/CustomSoftwareCta";
 import { CaseStudyCard } from "@/components/case-studies/CaseStudyCard";
 import { getCaseStudies } from "@/lib/caseStudies";
 import { customSoftwareContent } from "@/content/customSoftwareDevelopment";
+import { siteConfig } from "@/content/siteConfig";
 
 export const revalidate = 60;
 
@@ -46,8 +47,8 @@ export default async function CustomSoftwareDevelopmentPage() {
     "@graph": [
       {
         "@type": "WebPage",
-        "@id": "https://claude.narolainfotech.com/custom-software-development-company",
-        url: "https://claude.narolainfotech.com/custom-software-development-company",
+        "@id": `${siteConfig.url}/custom-software-development-company`,
+        url: `${siteConfig.url}/custom-software-development-company`,
         name: "Custom Software Development Company USA | Hire Developers",
         description:
           "Leading custom software development company in USA specializing in tailored software solutions, web applications, and agile engineering.",
