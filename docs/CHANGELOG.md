@@ -11,6 +11,22 @@ below as implying otherwise.
 
 ## [Unreleased]
 
+### 2026-09-18 — T032: Custom Software Development page Core Technologies redesign
+#### Changed
+- `src/components/services/CustomSoftwareTechStack.tsx`: replaced the interactive
+  tabbed layout (one category shown at a time, selected via buttons) with a static
+  responsive grid (`grid-cols-1 sm:grid-cols-2 lg:grid-cols-3`) showing all five
+  technology categories as individual cards simultaneously. Skill chips now use the same
+  gradient-hover style as the homepage Technologies section for visual consistency.
+  Component no longer needs client-side state, so `"use client"` and `useState` were
+  removed — it is now a Server Component.
+
+#### Validated
+- `npm run lint` — passed with no errors or warnings.
+- `npm run build` — succeeded, all routes prerendered.
+- Verified in-browser (desktop 1440px, tablet 768px, mobile 375px) via screenshots — all
+  five category cards render correctly and reflow responsively at each breakpoint.
+
 ### 2026-09-17 — T031: Custom Software Development page hero cleanup
 #### Changed
 - `src/components/services/CustomSoftwareHero.tsx`: removed the "Consult Our Solution
