@@ -269,3 +269,11 @@ Software Development Company hero, moved the "Trusted by global enterprises and 
 startups" client-logo strip into its own separated section with a lighter
 (`surface-muted`) background, and simplified the hero to a single-column layout. See
 [CHANGELOG.md](CHANGELOG.md) and [AI_WORK_LOG.md](AI_WORK_LOG.md) for full detail.
+
+### T032 — Custom Software Development page: Core Technologies redesign
+
+**Status:** Completed
+**Description:** Replaced the tabbed, single-category tech stack view in the "Core
+Technologies" section with a static grid of category cards showing all technology
+categories at once. See [CHANGELOG.md](CHANGELOG.md) and [AI_WORK_LOG.md](AI_WORK_LOG.md)
+for full detail.
