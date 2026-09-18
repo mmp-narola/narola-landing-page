@@ -45,14 +45,18 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${post.title} | Narola Infotech`,
+    title: post.title,
     description: post.excerpt,
     openGraph: {
       title: post.title,
       description: post.excerpt,
+      url: `/blogs/${slug}`,
       type: "article",
       publishedTime: post.publishedDate,
       authors: [post.author.name],
+    },
+    alternates: {
+      canonical: `/blogs/${slug}`,
     },
   };
 }

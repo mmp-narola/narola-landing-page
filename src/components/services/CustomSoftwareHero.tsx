@@ -7,7 +7,7 @@ export function CustomSoftwareHero() {
   const { hero } = customSoftwareContent;
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-slate-900 via-slate-850 to-slate-900 py-16 text-white md:py-24">
+    <section className="relative overflow-hidden bg-gradient-to-b from-slate-600 via-slate-850 to-slate-400 py-16 text-white md:py-24">
       {/* Background Decorative Accents */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute -right-40 -top-40 h-[500px] w-[500px] rounded-full bg-interactive-blue/15 blur-[120px]" />
@@ -35,8 +35,8 @@ export function CustomSoftwareHero() {
 
         <div className="max-w-3xl">
           {/* Eyebrow Badge */}
-          <div className="inline-flex items-center gap-2 rounded-full border border-sky-400/20 bg-sky-500/10 px-3.5 py-1.5 text-xs font-semibold text-sky-400 backdrop-blur-sm">
-            <span className="h-1.5 w-1.5 rounded-full bg-sky-400 animate-pulse" />
+          <div className="inline-flex items-center gap-2 rounded-full border border-sky-400/20 bg-sky-500/10 px-3.5 py-1.5 text-xs text-sky-300 backdrop-blur-sm">
+            <span className="h-1.5 w-1.5 rounded-full bg-sky-300 animate-pulse" />
             {hero.badge}
           </div>
 
@@ -68,8 +68,8 @@ export function CustomSoftwareHero() {
                 <span className="text-2xl font-extrabold text-white sm:text-3xl">
                   {metric.value}
                 </span>
-                <span className="text-xs font-semibold text-sky-400">{metric.label}</span>
-                <span className="mt-0.5 text-[11px] text-slate-400">{metric.sublabel}</span>
+                <span className="text-xs font-semibold text-sky-900">{metric.label}</span>
+                <span className="mt-0.5 text-[11px] text-white">{metric.sublabel}</span>
               </div>
             ))}
           </div>

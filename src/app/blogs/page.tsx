@@ -8,14 +8,18 @@ import { BlogNewsletter } from "@/components/blogs/BlogNewsletter";
 import { getBlogs } from "@/lib/blogs";
 
 export const metadata: Metadata = {
-  title: "Blogs & Tech Insights | Narola Infotech",
+  title: "Blogs & Tech Insights",
   description:
     "Explore the latest trends, technology guides, engineering best practices, and enterprise insights from Narola Infotech's expert software engineering team.",
   openGraph: {
     title: "Blogs & Tech Insights | Narola Infotech",
     description:
       "Explore the latest trends, technology guides, engineering best practices, and enterprise insights from Narola Infotech's expert software engineering team.",
+    url: "/blogs",
     type: "website",
+  },
+  alternates: {
+    canonical: "/blogs",
   },
 };
 

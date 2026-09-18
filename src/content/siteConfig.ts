@@ -1,6 +1,21 @@
+const getSiteUrl = (): string => {
+  const envUrl =
+    process.env.NEXT_PUBLIC_SITE_URL ||
+    (process.env.VERCEL_PROJECT_PRODUCTION_URL
+      ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+      : process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : "https://claude-narolainfotech.vercel.app");
+
+  if (envUrl.startsWith("http://") || envUrl.startsWith("https://")) {
+    return envUrl.replace(/\/$/, "");
+  }
+  return `https://${envUrl}`.replace(/\/$/, "");
+};
+
 /**
- * Site-wide configuration. `url` is a placeholder until the production subdomain is
- * decided (see TASKS.md T023/T024) — override it via NEXT_PUBLIC_SITE_URL when known.
+ * Site-wide configuration. `url` is resolved from NEXT_PUBLIC_SITE_URL or Vercel
+ * environment variables, falling back to the deployment URL.
  */
 export const siteConfig = {
   name: "Narola Infotech",
@@ -14,13 +29,12 @@ export const siteConfig = {
     "Narola Infotech provides custom software development, product engineering, and staff " +
     "augmentation for businesses across ecommerce, fintech, healthcare, and more.",
   tagline: "Digitalizing Businesses Globally for Startups, SMEs & Enterprises Since 2005",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://example.com",
+  url: getSiteUrl(),
   primaryCta: {
     label: "Consult Narola",
     // Points at the footer (office/location info) since this project has no dedicated
-    // contact page or form yet. The actual destination (mailto, an embedded form, or an
-    // external link) is an open decision — see AI_WORK_LOG.md's T005 entry. Whichever
-    // section this ultimately targets must expose a matching `id`.
+    // contact page or form yet.
     href: "#footer",
   },
 } as const;
+

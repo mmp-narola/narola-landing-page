@@ -48,13 +48,17 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${caseStudy.title} Case Study | Narola Infotech`,
+    title: `${caseStudy.title} Case Study`,
     description: caseStudy.summary,
     openGraph: {
       title: `${caseStudy.title} Case Study | Narola Infotech`,
       description: caseStudy.summary,
+      url: `/case-studies/${slug}`,
       images: caseStudy.thumbnailUrl ? [caseStudy.thumbnailUrl] : [],
       type: "article",
+    },
+    alternates: {
+      canonical: `/case-studies/${slug}`,
     },
   };
 }

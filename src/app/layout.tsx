@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
+import { siteConfig } from "@/content/siteConfig";
+
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
@@ -9,8 +11,20 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Agile Software Development company USA | Top 1% developers ",
-  description: "Narola Infotech landing page (in development).",
+  metadataBase: new URL(siteConfig.url),
+  title: {
+    default: "Agile Software Development company USA | Top 1% developers",
+    template: "%s | Narola Infotech",
+  },
+  description: siteConfig.description,
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    siteName: siteConfig.name,
+    type: "website",
+    locale: "en_US",
+  },
   icons: {
     icon: "/images/favicon.png",
     shortcut: "/images/favicon.png",

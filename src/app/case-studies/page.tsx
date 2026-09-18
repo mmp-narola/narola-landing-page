@@ -7,14 +7,18 @@ import { CaseStudyListClient } from "@/components/case-studies/CaseStudyListClie
 import { getCaseStudies } from "@/lib/caseStudies";
 
 export const metadata: Metadata = {
-  title: "Case Studies & Client Success Stories | Narola Infotech",
+  title: "Case Studies & Client Success Stories",
   description:
     "Explore how Narola Infotech delivers transformative digital engineering, cloud, AI, and custom software solutions across global industries.",
   openGraph: {
     title: "Case Studies & Client Success Stories | Narola Infotech",
     description:
       "Explore how Narola Infotech delivers transformative digital engineering, cloud, AI, and custom software solutions across global industries.",
+    url: "/case-studies",
     type: "website",
+  },
+  alternates: {
+    canonical: "/case-studies",
   },
 };
 
