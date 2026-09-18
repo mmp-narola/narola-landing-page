@@ -1279,3 +1279,50 @@ background, and keep everything else on the page unchanged.
 
 **Result:** T031 completed successfully.
 
+---
+
+## T032 — Custom Software Development page: Core Technologies redesign
+
+**Date:** 2026-09-18
+
+**Objective:** Change the appearance of the "Core Technologies" section on
+`/custom-software-development-company` (`CustomSoftwareTechStack.tsx`).
+
+**Human instructions (summary):**
+- Change the appearance of the Core Technologies section.
+- Clarified via follow-up questions: target the Custom Software Development page's tech
+  stack section (eyebrow badge literally reads "Core Technologies"), and redesign its
+  layout rather than only adjusting colors or minor styling.
+
+**Claude work performed:**
+1. Identified the section: `CustomSoftwareTechStack.tsx`, rendered on
+   `/custom-software-development-company`, id `tech-stack`. Confirmed with the user which
+   section was meant (this one vs. the homepage's Technologies section) and what kind of
+   appearance change was wanted, since the request was otherwise ambiguous.
+2. The previous implementation was a client-side tabbed interface: category buttons above
+   a single card showing only the selected category's skills, requiring `"use client"` and
+   `useState`.
+3. Redesigned it as a static responsive grid of cards (`grid-cols-1 sm:grid-cols-2
+   lg:grid-cols-3`), one card per technology category, all shown at once — improving
+   scannability and removing an extra click needed to see other categories.
+4. Reused the skill-chip visual treatment (gradient hover, ring border) already
+   established in the homepage's `Technologies.tsx` section for cross-page consistency.
+5. Since no interactive state remained, removed `"use client"` and `useState`, making the
+   component a Server Component per the project's RSC-by-default convention.
+6. Ran `npm run lint` and `npm run build` — both passed cleanly.
+7. Verified in-browser via headless-browser screenshots at 1440px (desktop), 768px
+   (tablet), and 375px (mobile): all five category cards render and reflow correctly.
+
+**Files modified:**
+- `src/components/services/CustomSoftwareTechStack.tsx`
+- `docs/TASKS.md`
+- `docs/CHANGELOG.md`
+- `docs/AI_WORK_LOG.md` (this entry)
+
+**Validation performed:**
+- `npm run lint` — 0 errors/warnings.
+- `npm run build` — succeeded, all routes prerendered.
+- Manual in-browser verification (screenshots) at desktop/tablet/mobile widths.
+
+**Result:** T032 completed successfully.
+
