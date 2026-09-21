@@ -30,10 +30,12 @@ export function ThemeToggle({ className = "" }: { className?: string }) {
 
   if (!mounted) {
     return (
-      <div className={`inline-flex items-center gap-1 rounded-full border border-white/10 bg-[#1d1d1f] p-1 text-xs text-muted-gray ${className}`}>
-        <span className="flex items-center gap-1.5 px-3 py-1.5 font-medium">
+      <div className={`inline-flex items-center gap-1 rounded-full border border-white/10 bg-[#1d1d1f] p-1 text-muted-gray ${className}`}>
+        <span className="flex h-7 w-7 items-center justify-center rounded-full text-muted-gray">
           <MoonIcon className="h-3.5 w-3.5" />
-          <span>Dark</span>
+        </span>
+        <span className="flex h-7 w-7 items-center justify-center rounded-full text-muted-gray/50">
+          <SunIcon className="h-3.5 w-3.5" />
         </span>
       </div>
     );
@@ -44,8 +46,8 @@ export function ThemeToggle({ className = "" }: { className?: string }) {
   return (
     <div
       role="group"
-      aria-label="Theme mode switcher"
-      className={`relative inline-flex items-center rounded-full p-1 transition-all duration-300 ${
+      aria-label="Theme switcher"
+      className={`relative inline-flex items-center gap-1 rounded-full p-1 transition-all duration-300 ${
         isLight
           ? "border border-black/10 bg-black/5 shadow-xs"
           : "border border-white/10 bg-[#1d1d1f] shadow-inner"
@@ -56,14 +58,15 @@ export function ThemeToggle({ className = "" }: { className?: string }) {
         type="button"
         onClick={() => setTheme("light")}
         aria-pressed={isLight}
-        className={`flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-xs font-semibold transition-all duration-200 ${
+        aria-label="Switch to light mode"
+        title="Light Mode"
+        className={`flex h-7 w-7 items-center justify-center rounded-full transition-all duration-200 ${
           isLight
-            ? "bg-white text-black shadow-sm"
-            : "text-[#86868b] hover:text-white"
+            ? "bg-white text-[#e9852a] shadow-xs"
+            : "text-[#86868b] hover:text-white hover:bg-white/10"
         }`}
       >
-        <SunIcon className={`h-3.5 w-3.5 ${isLight ? "text-[#e9852a]" : ""}`} />
-        <span>Light</span>
+        <SunIcon className="h-3.5 w-3.5" />
       </button>
 
       {/* Dark Option */}
@@ -71,14 +74,15 @@ export function ThemeToggle({ className = "" }: { className?: string }) {
         type="button"
         onClick={() => setTheme("dark")}
         aria-pressed={!isLight}
-        className={`flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-xs font-semibold transition-all duration-200 ${
+        aria-label="Switch to dark mode"
+        title="Dark Mode"
+        className={`flex h-7 w-7 items-center justify-center rounded-full transition-all duration-200 ${
           !isLight
-            ? "bg-black text-white shadow-sm"
-            : "text-[#515154] hover:text-black"
+            ? "bg-black text-bright-blue shadow-xs"
+            : "text-[#6e6e73] hover:text-black hover:bg-black/10"
         }`}
       >
-        <MoonIcon className={`h-3.5 w-3.5 ${!isLight ? "text-bright-blue" : ""}`} />
-        <span>Dark</span>
+        <MoonIcon className="h-3.5 w-3.5" />
       </button>
     </div>
   );

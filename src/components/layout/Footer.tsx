@@ -124,6 +124,24 @@ function InstagramIcon({ className = "w-4 h-4" }: { className?: string }) {
   );
 }
 
+function ThemeIndicatorIcon({ className = "w-4 h-4" }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <circle cx="12" cy="12" r="9" />
+      <path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor" />
+    </svg>
+  );
+}
+
 export function Footer() {
   return (
     <footer id="footer" className="w-full border-t border-slate/10 bg-surface-muted py-14 md:py-16">
@@ -311,8 +329,14 @@ export function Footer() {
           <p className="text-xs text-slate">
             © {new Date().getFullYear()} Narola Infotech. All rights reserved.
           </p>
-          <div className="flex items-center gap-3">
-            <span className="text-xs font-medium text-slate">Appearance:</span>
+          <div className="flex items-center gap-2">
+            <span
+              className="flex h-7 w-7 items-center justify-center rounded-full text-slate"
+              title="Theme switcher"
+              aria-hidden="true"
+            >
+              <ThemeIndicatorIcon className="h-4 w-4" />
+            </span>
             <ThemeToggle />
           </div>
         </div>
