@@ -61,10 +61,15 @@ export function OurWorkSection() {
         </Reveal>
 
         {/* Grouped Client Badges */}
-        <Reveal key={activeTab} delay={80} variant="left">
-          <div className="mt-8 flex flex-col gap-6">
-            {currentGroups.map((group) => (
-              <div key={group.groupName} className="border-t border-white/10 pt-6 first:border-0 first:pt-0">
+        <div key={activeTab} className="mt-8 flex flex-col gap-6">
+          {currentGroups.map((group, groupIdx) => (
+            <Reveal
+              key={`${activeTab}-${group.groupName}`}
+              delay={groupIdx * 90}
+              variant="left"
+              className={groupIdx === 0 ? "" : "border-t border-white/10 pt-6"}
+            >
+              <div>
                 <span className="text-xs font-bold uppercase tracking-wider text-[#86868b]">
                   {group.groupName}
                 </span>
@@ -90,9 +95,9 @@ export function OurWorkSection() {
                   ))}
                 </div>
               </div>
-            ))}
-          </div>
-        </Reveal>
+            </Reveal>
+          ))}
+        </div>
 
         {/* Featured Case Studies — dark rounded panel with a stat-tile grid,
            floating on the black page background (Apple "worth it" pattern) */}
@@ -115,7 +120,7 @@ export function OurWorkSection() {
               <div className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-3">
                 {ourWorkContent.featuredCaseStudies.map((study, i) => (
                   <Reveal key={study.id} delay={i * 100} className="h-full">
-                    <div className="flex h-full flex-col justify-between rounded-2xl border border-white/10 bg-[#151515] p-6">
+                    <div className="flex h-full flex-col justify-between rounded-2xl border border-white/10 bg-[#151515] p-6 hover:scale-102 duration-300">
                       <div>
                         <div className="flex items-center gap-2">
                           <span className="rounded-md bg-[#0084ff]/15 px-2.5 py-1 text-xs font-medium text-bright-blue">

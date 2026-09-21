@@ -36,18 +36,32 @@ export function Reveal({ children, className = "", variant = "up", delay = 0 }: 
     const node = ref.current;
     if (!node) return;
 
+    let rafId1: number;
+    let rafId2: number;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setVisible(true);
+          // Double rAF ensures the browser paints the initial unrevealed state
+          // before adding the reveal-visible class, guaranteeing the CSS transition runs
+          // even when the component is remounted while already in viewport.
+          rafId1 = requestAnimationFrame(() => {
+            rafId2 = requestAnimationFrame(() => {
+              setVisible(true);
+            });
+          });
           observer.disconnect();
         }
       },
-      { threshold: 0.15, rootMargin: "0px 0px -10% 0px" }
+      { threshold: 0.1, rootMargin: "0px 0px -5% 0px" }
     );
 
     observer.observe(node);
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      if (rafId1) cancelAnimationFrame(rafId1);
+      if (rafId2) cancelAnimationFrame(rafId2);
+    };
   }, []);
 
   const variantClass = variantClassMap[variant] || "reveal-up";
