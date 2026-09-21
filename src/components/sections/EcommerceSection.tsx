@@ -86,55 +86,77 @@ export function EcommerceSection() {
         {/* Bento Grid */}
         <div className="mt-16 grid grid-cols-1 gap-6 lg:grid-cols-12 md:mt-20">
           {/* Left Column (3 cards) */}
-          <Reveal delay={200} className="flex flex-col gap-5 lg:col-span-6">
-            {ecommerceContent.cards.map((card) => {
-              const IconComp = ECOMMERCE_ICONS[card.icon] ?? RobotIcon;
+          <div className="flex flex-col gap-5 lg:col-span-6">
+            {/* Card 1: AI Commerce - arrives from Top */}
+            <Reveal variant="top" delay={200}>
+              <FeatureCard
+                icon={<RobotIcon className="h-5 w-5" />}
+                title={ecommerceContent.cards[0].title}
+              >
+                <p className="mt-2.5 text-sm text-subtle-gray leading-relaxed">
+                  {ecommerceContent.cards[0].description}
+                </p>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {ecommerceContent.cards[0].tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-soft-blue"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </FeatureCard>
+            </Reveal>
 
-              return (
-                <FeatureCard
-                  key={card.id}
-                  icon={<IconComp className="h-5 w-5" />}
-                  title={card.title}
-                >
-                  <p className="mt-2.5 text-sm text-subtle-gray leading-relaxed">
-                    {card.description}
-                  </p>
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    {card.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-soft-blue"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </FeatureCard>
-              );
-            })}
+            {/* Card 2: Commerce Solutions - arrives from Left */}
+            <Reveal variant="left" delay={300}>
+              <FeatureCard
+                icon={<GridIcon className="h-5 w-5" />}
+                title={ecommerceContent.cards[1].title}
+              >
+                <p className="mt-2.5 text-sm text-subtle-gray leading-relaxed">
+                  {ecommerceContent.cards[1].description}
+                </p>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {ecommerceContent.cards[1].tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-soft-blue"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </FeatureCard>
+            </Reveal>
 
-            <FeatureCard
-              icon={<StoreIcon className="h-5 w-5" />}
-              title={ecommerceContent.industryVerticals.title}
-            >
-              <div className="mt-4 grid grid-cols-2 gap-2.5">
-                {ecommerceContent.industryVerticals.verticals.map((v) => (
-                  <div
-                    key={v.name}
-                    className="flex items-center gap-2 rounded-xl border border-white/10 bg-[#141418] px-3.5 py-2.5 text-xs font-semibold text-light-gray"
-                  >
-                    <span>{VERTICAL_ICONS[v.icon] || "•"}</span>
-                    <span>{v.name}</span>
-                  </div>
-                ))}
-              </div>
-            </FeatureCard>
-          </Reveal>
+            {/* Card 3: Industry Verticals - arrives from Bottom */}
+            <Reveal variant="bottom" delay={400}>
+              <FeatureCard
+                icon={<StoreIcon className="h-5 w-5" />}
+                title={ecommerceContent.industryVerticals.title}
+              >
+                <div className="mt-4 grid grid-cols-2 gap-2.5">
+                  {ecommerceContent.industryVerticals.verticals.map((v) => (
+                    <div
+                      key={v.name}
+                      className="flex items-center gap-2 rounded-xl border border-white/10 bg-[#141418] px-3.5 py-2.5 text-xs font-semibold text-light-gray"
+                    >
+                      <span>{VERTICAL_ICONS[v.icon] || "•"}</span>
+                      <span>{v.name}</span>
+                    </div>
+                  ))}
+                </div>
+              </FeatureCard>
+            </Reveal>
+          </div>
 
-          {/* Right Column */}
+          {/* Right Column - Card 4: Platforms & Case Studies - arrives from Right */}
           <Reveal
-            delay={300}
-            className="flex flex-col justify-between rounded-3xl border border-white/10 bg-[#1c1c21] p-8 backdrop-blur-sm lg:col-span-6 md:p-9"
+            variant="right"
+            delay={500}
+            className="flex flex-col justify-between rounded-3xl border border-white/10 bg-[#1c1c21] p-8 backdrop-blur-sm lg:col-span-6 md:p-9 hover:scale-102 duration-500"
           >
             <div>
               <span className="text-xs font-bold uppercase tracking-wider text-muted-gray">

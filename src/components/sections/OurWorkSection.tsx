@@ -61,7 +61,7 @@ export function OurWorkSection() {
         </Reveal>
 
         {/* Grouped Client Badges */}
-        <Reveal delay={150}>
+        <Reveal key={activeTab} delay={80} variant="left">
           <div className="mt-8 flex flex-col gap-6">
             {currentGroups.map((group) => (
               <div key={group.groupName} className="border-t border-white/10 pt-6 first:border-0 first:pt-0">

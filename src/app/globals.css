@@ -344,21 +344,52 @@ html.light .pointer-events-none.absolute {
 @layer utilities {
   .reveal {
     opacity: 0;
-    transform: translateY(28px);
     transition:
-      opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
-      transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+      opacity 0.95s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.95s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: opacity, transform;
   }
 
+  .reveal-up {
+    transform: translateY(32px);
+  }
+
+  .reveal-down,
+  .reveal-top {
+    transform: translateY(-44px);
+  }
+
+  .reveal-left {
+    transform: translateX(-56px);
+  }
+
+  .reveal-right {
+    transform: translateX(56px);
+  }
+
+  .reveal-bottom {
+    transform: translateY(56px);
+  }
+
+  .reveal-scale {
+    transform: scale(0.94);
+  }
+
   .reveal-visible {
-    opacity: 1;
-    transform: translateY(0);
+    opacity: 1 !important;
+    transform: translate(0, 0) scale(1) !important;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .reveal {
+  .reveal,
+  .reveal-up,
+  .reveal-down,
+  .reveal-top,
+  .reveal-left,
+  .reveal-right,
+  .reveal-bottom,
+  .reveal-scale {
     opacity: 1 !important;
     transform: none !important;
   }

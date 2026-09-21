@@ -63,7 +63,7 @@ export function ProductEngineeringSection() {
             const IconComp = ENGINEERING_ICONS[card.icon] ?? MonitorIcon;
 
             return (
-              <Reveal key={card.id} delay={index * 100} className="border-t border-white/15 pt-6">
+              <Reveal key={card.id} delay={index * 300} className="border-t border-white/15 pt-6" variant="up">
                 <div className="flex items-center gap-2.5 text-bright-blue">
                   <IconComp className="h-5 w-5" />
                   <h3 className="text-lg font-semibold text-light-gray">
@@ -89,7 +89,7 @@ export function ProductEngineeringSection() {
         </div>
 
         {/* Engineering process + case studies — charcoal panel for depth against the section */}
-        <Reveal delay={300} className="mt-16 rounded-3xl border border-white/10 bg-[#1c1c21] p-8 md:mt-20 md:p-10">
+        <Reveal delay={300} className="mt-16 rounded-3xl border border-white/10 bg-[#1c1c21] p-8 md:mt-20 md:p-10" variant="scale">
           <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
             <div>
               <span className="text-xs font-bold uppercase tracking-wider text-muted-gray">

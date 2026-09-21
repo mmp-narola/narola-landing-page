@@ -5,11 +5,21 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 interface RevealProps {
   children: ReactNode;
   className?: string;
-  /** Visual treatment: fade+rise (default) or fade+scale */
-  variant?: "up" | "scale";
+  /** Visual treatment: fade+rise (default), scale, or directional entry */
+  variant?: "up" | "down" | "top" | "bottom" | "left" | "right" | "scale";
   /** Extra delay in ms, for staggering siblings. */
   delay?: number;
 }
+
+const variantClassMap: Record<string, string> = {
+  up: "reveal-up",
+  down: "reveal-down",
+  top: "reveal-top",
+  bottom: "reveal-bottom",
+  left: "reveal-left",
+  right: "reveal-right",
+  scale: "reveal-scale",
+};
 
 /**
  * Lightweight scroll-reveal wrapper. Uses IntersectionObserver (no animation
@@ -40,11 +50,13 @@ export function Reveal({ children, className = "", variant = "up", delay = 0 }: 
     return () => observer.disconnect();
   }, []);
 
+  const variantClass = variantClassMap[variant] || "reveal-up";
+
   return (
     <div
       ref={ref}
       style={delay ? { transitionDelay: visible ? `${delay}ms` : "0ms" } : undefined}
-      className={`reveal ${visible ? "reveal-visible" : ""} ${className}`}
+      className={`reveal ${variantClass} ${visible ? "reveal-visible" : ""} ${className}`}
     >
       {children}
     </div>
