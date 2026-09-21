@@ -1,4 +1,5 @@
 import { Container } from "@/components/ui/Container";
+import { Reveal } from "@/components/ui/Reveal";
 import { coreServices } from "@/content/services";
 import { transformationIntro } from "@/content/transformationIntro";
 
@@ -43,80 +44,71 @@ const SERVICE_ICONS: Record<string, React.FC<{ className?: string }>> = {
 
 export function CoreServices() {
   return (
-    <section id="services" className="relative w-full bg-surface-muted py-20 md:py-28">
-      {/* Subtle background ambient blur */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute top-0 left-1/2 h-96 w-[800px] -translate-x-1/2 bg-radial from-brand-blue/5 to-transparent blur-3xl"
-      />
-
+    <section id="services" className="relative w-full bg-white py-20 md:py-32">
       <Container className="relative">
-        {/* Transformation Intro Header Block */}
-        <div className="mx-auto max-w-3xl text-center">
-          <div className="inline-flex items-center gap-2 rounded-full border border-interactive-blue/20 bg-white px-3.5 py-1 shadow-2xs">
-            <span className="h-1.5 w-1.5 rounded-full bg-interactive-blue" />
-            <span className="text-xs font-bold uppercase tracking-wider text-interactive-blue">
-              Our Core Services
-            </span>
+        {/* Section Header */}
+        <Reveal>
+          <div className="mx-auto max-w-3xl text-center">
+            <div className="inline-flex items-center gap-2 rounded-full border border-interactive-blue/20 bg-surface-muted px-3.5 py-1">
+              <span className="h-1.5 w-1.5 rounded-full bg-interactive-blue" />
+              <span className="text-xs font-bold uppercase tracking-wider text-interactive-blue">
+                Our Core Services
+              </span>
+            </div>
+
+            <h2 className="mt-5 text-h2 font-bold tracking-tight text-balance text-ink md:text-h2-lg">
+              {transformationIntro.heading}
+            </h2>
+
+            <p className="mt-5 text-lg leading-relaxed text-slate">
+              {transformationIntro.body}
+            </p>
           </div>
+        </Reveal>
 
-          <h2 className="mt-4 text-h2 font-extrabold tracking-tight text-ink md:text-h2-lg">
-            {transformationIntro.heading}
-          </h2>
-
-          <p className="mt-4 text-body text-slate leading-relaxed">
-            {transformationIntro.body}
-          </p>
-        </div>
-
-        {/* 4 Core Services Grid */}
-        <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 md:mt-18">
-          {coreServices.map((category) => {
+        {/* Editorial service list — large rows instead of a card grid */}
+        <div className="mt-16 divide-y divide-slate/10 border-t border-slate/10 md:mt-24">
+          {coreServices.map((category, idx) => {
             const IconComponent = SERVICE_ICONS[category.id] ?? CustomSoftwareIcon;
 
             return (
-              <div
-                key={category.id}
-                className="group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-slate/10 bg-white p-7 shadow-md shadow-slate/5 transition-all duration-300 hover:-translate-y-1.5 hover:border-interactive-blue/30 hover:shadow-2xl hover:shadow-slate/10"
-              >
-                {/* Subtle top card gradient border highlight on hover */}
-                <div
-                  aria-hidden="true"
-                  className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-interactive-blue to-brand-blue opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                />
-
-                <div>
-                  {/* Category Icon Badge */}
-                  <div className="flex h-13 w-13 items-center justify-center rounded-2xl bg-gradient-to-br from-interactive-blue/15 to-interactive-blue/5 text-interactive-blue shadow-xs transition-all duration-300 group-hover:scale-110 group-hover:bg-interactive-blue group-hover:text-white">
-                    <IconComponent className="h-6 w-6" />
+              <Reveal key={category.id} delay={idx * 80}>
+                <div className="group grid grid-cols-1 gap-6 py-10 md:grid-cols-12 md:items-center md:gap-8 md:py-14">
+                  {/* Index + Icon */}
+                  <div className="flex items-center gap-4 md:col-span-3">
+                    <span className="text-sm font-bold text-slate/40 tabular-nums">
+                      {String(idx + 1).padStart(2, "0")}
+                    </span>
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-interactive-blue/10 text-interactive-blue transition-all duration-300 group-hover:bg-interactive-blue group-hover:text-white">
+                      <IconComponent className="h-5.5 w-5.5" />
+                    </div>
                   </div>
 
                   {/* Title & Description */}
-                  <h3 className="mt-6 text-h3 font-bold text-ink transition-colors group-hover:text-interactive-blue">
-                    {category.title}
-                  </h3>
-                  <p className="mt-3 text-small leading-relaxed text-slate">
-                    {category.description}
-                  </p>
-                </div>
+                  <div className="md:col-span-5">
+                    <h3 className="text-2xl font-bold tracking-tight text-ink transition-colors group-hover:text-interactive-blue md:text-[26px]">
+                      {category.title}
+                    </h3>
+                    <p className="mt-2.5 text-sm leading-relaxed text-slate md:text-base">
+                      {category.description}
+                    </p>
+                  </div>
 
-                {/* Sub-services Tags */}
-                <div className="mt-7 border-t border-slate/10 pt-4">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-slate/70">
-                    Capabilities
-                  </span>
-                  <div className="mt-2.5 flex flex-wrap gap-1.5">
-                    {category.items.map((item) => (
-                      <span
-                        key={item.label}
-                        className="rounded-lg bg-surface-muted px-2.5 py-1 text-[11px] font-semibold text-slate transition-colors hover:bg-interactive-blue hover:text-white"
-                      >
-                        {item.label}
-                      </span>
-                    ))}
+                  {/* Capability Tags */}
+                  <div className="md:col-span-4">
+                    <div className="flex flex-wrap gap-2 md:justify-end">
+                      {category.items.map((item) => (
+                        <span
+                          key={item.label}
+                          className="rounded-lg bg-surface-muted px-2.5 py-1 text-[11px] font-semibold text-slate"
+                        >
+                          {item.label}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Reveal>
             );
           })}
         </div>

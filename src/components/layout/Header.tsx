@@ -59,9 +59,9 @@ export function Header() {
 
   return (
     <header
-      className={`sticky top-0 z-50 h-16 transition-all duration-200 md:h-[72px] ${isScrolled
-        ? "bg-white/95 shadow-sm backdrop-blur-md"
-        : "bg-white"
+      className={`sticky top-0 z-50 h-16 transition-all duration-300 md:h-20 ${isScrolled
+        ? "border-b border-slate/10 bg-white/80 backdrop-blur-xl"
+        : "border-b border-transparent bg-white"
         }`}
     >
       <Container className="flex h-full items-center justify-between">

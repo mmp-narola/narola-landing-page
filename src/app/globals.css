@@ -16,18 +16,30 @@
      line-height are aliased here, since Tailwind has no built-in name for this
      project's specific scale. H1/H2 have a separate "-lg" token for the md:+ desktop
      size per VISUAL_DIRECTION.md; H3/H4/body/small/button sizes are constant across
-     breakpoints and so need only one token each. */
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+     breakpoints and so need only one token each.
 
-  --text-h1: 2rem; /* 32px, mobile */
-  --text-h1--line-height: 1.2;
-  --text-h1-lg: 2.75rem; /* 44px, md:+ */
-  --text-h1-lg--line-height: 1.15;
+     Font stack: leads with each OS's native system font (San Francisco on Apple
+     platforms via -apple-system/BlinkMacSystemFont, Segoe UI on Windows, Roboto on
+     Android/ChromeOS) for an Apple-style typographic feel with zero extra font
+     requests, falling back to the self-hosted Inter (brand font, always available)
+     everywhere else. */
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, var(--font-inter),
+    ui-sans-serif, system-ui, sans-serif;
 
-  --text-h2: 1.5rem; /* 24px, mobile */
-  --text-h2--line-height: 1.25;
-  --text-h2-lg: 1.875rem; /* 30px, md:+ */
-  --text-h2-lg--line-height: 1.25;
+  --text-h1: 2.25rem; /* 36px, mobile */
+  --text-h1--line-height: 1.1;
+  --text-h1-lg: 4.5rem; /* 72px, md:+ — large display scale per Apple-inspired direction */
+  --text-h1-lg--line-height: 1.05;
+
+  --text-h2: 1.75rem; /* 28px, mobile */
+  --text-h2--line-height: 1.15;
+  --text-h2-lg: 3rem; /* 48px, md:+ */
+  --text-h2-lg--line-height: 1.1;
+
+  --text-display: 3rem; /* 48px, mobile — large standalone display text (e.g. CEO quote) */
+  --text-display--line-height: 1.1;
+  --text-display-lg: 5rem; /* 80px, md:+ */
+  --text-display-lg--line-height: 1.05;
 
   --text-h3: 1.25rem; /* 20px, all breakpoints */
   --text-h3--line-height: 1.35;
@@ -87,5 +99,36 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+}
+
+/* Scroll-reveal primitives used by <Reveal> (src/components/ui/Reveal.tsx). Plain CSS
+   transitions driven by a class toggle from an IntersectionObserver — no animation
+   library. The prefers-reduced-motion rule above already forces every transition here
+   to ~instant, so reduced-motion users see content appear without motion. */
+@layer utilities {
+  .reveal {
+    opacity: 0;
+    transform: translateY(1.5rem);
+    transition:
+      opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+    will-change: opacity, transform;
+  }
+
+  .reveal-scale {
+    opacity: 0;
+    transform: scale(0.94);
+    transition:
+      opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+    will-change: opacity, transform;
+  }
+
+  .reveal-visible {
+    opacity: 1;
+    transform: none;
   }
 }
