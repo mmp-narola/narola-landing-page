@@ -11,6 +11,50 @@ below as implying otherwise.
 
 ## [Unreleased]
 
+### 2026-09-21 — T033: Homepage Apple-inspired visual redesign
+#### Changed
+- `src/app/globals.css`: `--font-sans` now leads with each OS's native system font
+  (`-apple-system`/`BlinkMacSystemFont` for Apple platforms, `Segoe UI` for Windows,
+  `Roboto` for Android/ChromeOS) before falling back to the self-hosted Inter — an
+  Apple-style typographic feel with no extra font requests. `--text-h1`/`--text-h1-lg` and
+  `--text-h2`/`--text-h2-lg` scaled up significantly (H1 desktop 44px → 72px) for a large
+  display typography system; added `--text-display`/`--text-display-lg` tokens. Added
+  `.reveal`/`.reveal-scale`/`.reveal-visible` utility classes (plain CSS transitions) for
+  scroll-reveal motion, already covered by the existing `prefers-reduced-motion` rule.
+- `src/components/layout/Header.tsx`: lighter sticky-scroll treatment (border instead of
+  shadow, stronger backdrop blur) — no change to its navigation logic/behavior.
+- `src/components/sections/Hero.tsx`: redesigned as a centered, large-type, single-column
+  hero (was a two-column split with a glassmorphic side card); hero image now presented as
+  a large full-width visual below the headline. All copy unchanged.
+- `src/components/sections/CoreServices.tsx`: replaced the 4-card grid with an editorial
+  list of large rows (index, icon, title, description, capability tags), separated by
+  hairline dividers. All service content unchanged.
+- `src/components/sections/OtherServices.tsx`: replaced the card grid with a minimal
+  2-column list, large type, no card chrome. All service content unchanged.
+- `src/components/sections/Technologies.tsx`: replaced the card grid with large-type
+  category groups (title + flowing text wordmarks), matching the "minimal logo treatment"
+  direction. All technology names unchanged.
+- `src/components/sections/Industries.tsx`: replaced the bordered-card grid with a
+  minimal hairline-divided tile grid, icon de-emphasized (`alt=""`, label carries the
+  accessible name) in favor of large typography. All industry names unchanged.
+- `src/components/sections/CeoMessage.tsx`: now a dark cinematic section (same
+  dark-gradient pattern already used by `CustomSoftwareHero`/`CustomSoftwareCta`) with the
+  quote presented as large pull-quote typography. All message/author content unchanged.
+
+#### Added
+- `src/components/ui/Reveal.tsx`: lightweight scroll-reveal wrapper using the native
+  `IntersectionObserver` API (no animation library added) to fade/rise or fade/scale
+  content into view once it enters the viewport. Content stays in the DOM/accessibility
+  tree at all times — only `opacity`/`transform` are affected — and gracefully degrades to
+  immediately visible if `IntersectionObserver` is unavailable.
+
+#### Validated
+- `npm run lint` — passed with no errors or warnings.
+- `npm run build` — succeeded, all routes prerendered.
+- Verified in-browser (desktop 1440px, mobile 375px) via full-page and per-section
+  screenshots with reveal animations triggered — all sections render correctly, reflow
+  responsively, and no content was altered from the pre-redesign homepage.
+
 ### 2026-09-18 — T032: Custom Software Development page Core Technologies redesign
 #### Changed
 - `src/components/services/CustomSoftwareTechStack.tsx`: replaced the interactive

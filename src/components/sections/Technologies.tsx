@@ -1,63 +1,51 @@
 import { Container } from "@/components/ui/Container";
+import { Reveal } from "@/components/ui/Reveal";
 import { technologyCategories } from "@/content/technologies";
 
 export function Technologies() {
   return (
-    <section id="technologies" className="relative w-full bg-surface-muted py-20 md:py-28">
-      {/* Background ambient lighting */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(#4c5a67_1px,transparent_1px)] [background-size:32px_32px] opacity-15"
-      />
+    <section id="technologies" className="relative w-full bg-white py-20 md:py-32">
+      <Container>
+        <Reveal>
+          <div className="mx-auto max-w-3xl text-center">
+            <div className="inline-flex items-center gap-2 rounded-full border border-interactive-blue/20 bg-surface-muted px-3.5 py-1">
+              <span className="h-1.5 w-1.5 rounded-full bg-interactive-blue" />
+              <span className="text-xs font-bold uppercase tracking-wider text-interactive-blue">
+                Tech Stack & Expertise
+              </span>
+            </div>
 
-      <Container className="relative">
-        <div className="mx-auto max-w-3xl text-center">
-          <div className="inline-flex items-center gap-2 rounded-full border border-interactive-blue/20 bg-white px-3.5 py-1 shadow-2xs">
-            <span className="h-1.5 w-1.5 rounded-full bg-interactive-blue" />
-            <span className="text-xs font-bold uppercase tracking-wider text-interactive-blue">
-              Tech Stack & Expertise
-            </span>
+            <h2 className="mt-5 text-h2 font-bold tracking-tight text-ink md:text-h2-lg">
+              Technologies & Platforms We Work With
+            </h2>
+
+            <p className="mt-5 text-lg leading-relaxed text-slate">
+              Modern frameworks, robust backend architectures, and battle-tested mobile
+              platforms tailored for enterprise scalability and high performance.
+            </p>
           </div>
+        </Reveal>
 
-          <h2 className="mt-4 text-h2 font-extrabold tracking-tight text-ink md:text-h2-lg">
-            Technologies & Platforms We Work With
-          </h2>
-
-          <p className="mt-4 text-body text-slate">
-            Modern frameworks, robust backend architectures, and battle-tested mobile platforms
-            tailored for enterprise scalability and high performance.
-          </p>
-        </div>
-
-        {/* Categories Grid */}
-        <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 md:mt-18">
-          {technologyCategories.map((category) => (
-            <div
-              key={category.id}
-              className="group flex flex-col justify-between rounded-3xl border border-slate/10 bg-white p-6 shadow-md shadow-slate/5 transition-all duration-300 hover:-translate-y-1.5 hover:border-interactive-blue/30 hover:shadow-2xl hover:shadow-slate/10"
-            >
-              <div>
-                <div className="flex items-center justify-between border-b border-slate/10 pb-4">
-                  <h3 className="text-h3 font-bold text-ink transition-colors group-hover:text-interactive-blue">
-                    {category.title}
-                  </h3>
-                  <span className="rounded-full bg-interactive-blue/10 px-2.5 py-0.5 text-xs font-bold text-interactive-blue">
-                    {category.items.length} Techs
-                  </span>
-                </div>
-
-                <div className="mt-5 flex flex-wrap gap-2">
+        {/* Large-type technology groups — minimal wordmark treatment, no card chrome */}
+        <div className="mt-16 divide-y divide-slate/10 border-t border-slate/10 md:mt-24">
+          {technologyCategories.map((category, idx) => (
+            <Reveal key={category.id} delay={idx * 80}>
+              <div className="grid grid-cols-1 gap-4 py-8 md:grid-cols-12 md:items-baseline md:gap-8 md:py-10">
+                <h3 className="text-xl font-bold tracking-tight text-ink md:col-span-3 md:text-2xl">
+                  {category.title}
+                </h3>
+                <div className="flex flex-wrap gap-x-6 gap-y-3 md:col-span-9">
                   {category.items.map((tech) => (
                     <span
                       key={tech}
-                      className="inline-flex items-center rounded-xl bg-surface-muted px-3.5 py-2 text-xs font-semibold text-ink ring-1 ring-slate/10 transition-all duration-200 hover:-translate-y-0.5 hover:bg-gradient-to-r hover:from-interactive-blue hover:to-[#005fb8] hover:text-white hover:shadow-sm hover:ring-interactive-blue"
+                      className="text-lg font-medium text-slate transition-colors duration-200 hover:text-interactive-blue md:text-xl"
                     >
                       {tech}
                     </span>
                   ))}
                 </div>
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
       </Container>
