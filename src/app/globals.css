@@ -11,6 +11,37 @@
   --color-accent-orange: #e9852a;
   --color-surface-muted: #f6f7fa;
 
+  /* Apple-inspired grey text hierarchy (added for the cinematic homepage
+     redesign). Primary copy keeps --color-ink; these add graduated steps
+     down to a muted grey, plus white-on-dark equivalents for full-bleed
+     dark sections. Additive only — nothing above was changed. */
+  --color-ink-secondary: #6e6e73;
+  --color-ink-muted: #86868b;
+  --color-surface-dark: #000000;
+  --color-surface-dark-raised: #0c0c0e;
+  --color-on-dark-primary: #f5f5f7;
+  --color-on-dark-secondary: #a1a1a6;
+  --color-on-dark-muted: #6e6e73;
+
+  /* Apple-style black + charcoal palette (replaces black/white section
+     alternation). --color-surface-dark stays pure black for the page
+     background; these add graduated charcoal steps for "floating panel"
+     surfaces (cards, sub-sections) so depth comes from tone, not from
+     jumping to white. --color-accent-tint is the small colored-label tint
+     used for eyebrow text on dark backgrounds, drawn from the existing
+     brand blue so it stays on-brand. Additive only — nothing above changed. */
+  --color-surface-charcoal: #1d1d1f;
+  --color-surface-charcoal-alt: #151515;
+  --color-surface-charcoal-raised: #232326;
+  --color-accent-tint: #5ab0ff;
+
+  /* Large cinematic display sizes for hero/section headlines, layered on
+     top of the existing h1/h2 tokens rather than replacing them. */
+  --text-display: 2.75rem; /* 44px, mobile */
+  --text-display--line-height: 1.05;
+  --text-display-lg: 5.5rem; /* 88px, lg:+ */
+  --text-display-lg--line-height: 1.02;
+
   /* Typography — see VISUAL_DIRECTION.md §3. Font weights intentionally use Tailwind's
      existing font-* utilities (font-normal/semibold/bold) directly; only size +
      line-height are aliased here, since Tailwind has no built-in name for this
@@ -87,5 +118,31 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+}
+
+/* Scroll-reveal primitive used by <Reveal> (src/components/ui/Reveal.tsx).
+   Calm, subtle motion in the spirit of apple.com product pages: a soft
+   fade combined with a small upward drift, eased with a gentle
+   deceleration curve. Disabled outright under reduced motion so content
+   is simply visible with no animation. */
+@layer utilities {
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+  }
+
+  .reveal-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
   }
 }

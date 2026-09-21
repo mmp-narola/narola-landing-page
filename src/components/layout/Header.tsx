@@ -8,7 +8,6 @@ import { Button } from "@/components/ui/Button";
 import { navItems } from "@/content/navigation";
 import { siteConfig } from "@/content/siteConfig";
 
-// Client Component: handles mobile menu, desktop dropdowns, sticky scroll state, and active route detection.
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isServicesMobileOpen, setIsServicesMobileOpen] = useState(true);
@@ -16,7 +15,6 @@ export function Header() {
   const [isServicesHovered, setIsServicesHovered] = useState(false);
   const pathname = usePathname();
 
-  // Close mobile drawer on route change (adjust state during render, not in an effect)
   const [renderedPathname, setRenderedPathname] = useState(pathname);
   if (pathname !== renderedPathname) {
     setRenderedPathname(pathname);
@@ -25,7 +23,7 @@ export function Header() {
   }
 
   useEffect(() => {
-    const onScroll = () => setIsScrolled(window.scrollY > 4);
+    const onScroll = () => setIsScrolled(window.scrollY > 10);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -59,28 +57,26 @@ export function Header() {
 
   return (
     <header
-      className={`sticky top-0 z-50 h-16 transition-all duration-200 md:h-[72px] ${isScrolled
-        ? "bg-white/95 shadow-sm backdrop-blur-md"
-        : "bg-white"
-        }`}
+      className={`sticky top-0 z-50 h-16 transition-all duration-500 ease-out md:h-20 ${
+        isScrolled
+          ? "bg-black/80 border-b border-white/10 shadow-[0_1px_24px_rgba(0,0,0,0.3)] backdrop-blur-2xl"
+          : "bg-black/40 border-b border-transparent backdrop-blur-lg"
+      }`}
     >
       <Container className="flex h-full items-center justify-between">
-        <Link href="/" className="shrink-0">
-          {/* Plain <img>, not next/image: SVGs are blocked by Next's image optimizer
-              unless next.config.ts opts in, and a vector logo gains nothing from raster
-              optimization anyway. */}
+        <Link href="/" className="shrink-0 transition-opacity hover:opacity-90">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={siteConfig.logo.src}
             alt={siteConfig.logo.alt}
             width={siteConfig.logo.width}
             height={siteConfig.logo.height}
-            className="h-8 w-auto md:h-9"
+            className="h-7 w-auto md:h-8"
           />
         </Link>
 
         {/* Desktop Navigation */}
-        <nav aria-label="Primary" className="hidden md:flex md:items-center md:gap-7">
+        <nav aria-label="Primary" className="hidden md:flex md:items-center md:gap-9">
           {navItems.map((item) => {
             const resolvedHref = getResolvedHref(item.href);
             const active = isItemActive(item.href, item.children);
@@ -95,15 +91,15 @@ export function Header() {
                 >
                   <Link
                     href={resolvedHref}
-                    className={`group inline-flex items-center gap-1.5 text-button font-medium transition-colors after:absolute after:bottom-2 after:left-0 after:h-0.5 after:rounded-full after:bg-interactive-blue after:transition-all after:duration-200 hover:text-interactive-blue ${active
-                      ? "text-interactive-blue after:w-full font-semibold"
-                      : "text-ink after:w-0 hover:after:w-full"
-                      }`}
+                    className={`group inline-flex items-center gap-1.5 text-sm font-medium transition-colors ${
+                      active ? "text-[#f5f5f7] font-semibold" : "text-[#a1a1a6] hover:text-[#5ab0ff]"
+                    }`}
                   >
                     <span>{item.label}</span>
                     <svg
-                      className={`h-4 w-4 text-slate transition-transform duration-200 ${isServicesHovered ? "rotate-180 text-interactive-blue" : ""
-                        }`}
+                      className={`h-3.5 w-3.5 text-[#86868b] transition-transform duration-200 ${
+                        isServicesHovered ? "rotate-180 text-[#5ab0ff]" : ""
+                      }`}
                       viewBox="0 0 20 20"
                       fill="currentColor"
                       aria-hidden="true"
@@ -118,10 +114,11 @@ export function Header() {
 
                   {/* Dropdown Menu */}
                   <div
-                    className={`absolute left-0 top-full -mt-1 w-80 rounded-2xl border border-slate/10 bg-white p-2 shadow-xl shadow-slate/10 transition-all duration-200 ${isServicesHovered
-                      ? "visible translate-y-0 opacity-100"
-                      : "invisible -translate-y-2 opacity-0 pointer-events-none"
-                      }`}
+                    className={`absolute left-0 top-full -mt-1 w-80 rounded-2xl border border-white/10 bg-[#1d1d1f]/95 p-2 shadow-2xl backdrop-blur-2xl transition-all duration-200 ${
+                      isServicesHovered
+                        ? "visible translate-y-0 opacity-100"
+                        : "invisible -translate-y-2 opacity-0 pointer-events-none"
+                    }`}
                   >
                     <div className="py-1">
                       {item.children.map((subItem) => {
@@ -134,40 +131,41 @@ export function Header() {
                           <Link
                             key={subItem.label}
                             href={subItem.href}
-                            className={`group flex items-start gap-2.5 rounded-xl px-3 py-2.5 transition-colors ${isSubActive
-                              ? "bg-interactive-blue/5 text-interactive-blue"
-                              : "text-ink hover:bg-surface-muted hover:text-interactive-blue"
-                              }`}
+                            className={`group flex items-start gap-2.5 rounded-xl px-3 py-2.5 transition-colors ${
+                              isSubActive
+                                ? "bg-[#0084ff]/15 text-[#5ab0ff]"
+                                : "text-[#d1d1d6] hover:bg-white/5 hover:text-[#5ab0ff]"
+                            }`}
                             onClick={() => setIsServicesHovered(false)}
                           >
                             <svg
-                              className={`mt-1 h-3.5 w-3.5 shrink-0 transition-transform group-hover:translate-x-0.5 ${isSubActive
-                                ? "text-interactive-blue"
-                                : "text-slate/60 group-hover:text-interactive-blue"
-                                }`}
+                              className={`mt-1 h-3.5 w-3.5 shrink-0 transition-transform group-hover:translate-x-0.5 ${
+                                isSubActive
+                                  ? "text-[#5ab0ff]"
+                                  : "text-[#86868b] group-hover:text-[#5ab0ff]"
+                              }`}
                               viewBox="0 0 20 20"
                               fill="currentColor"
                             >
                               <path
                                 fillRule="evenodd"
-                                d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"
+                                d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.08-.02z"
                                 clipRule="evenodd"
                               />
                             </svg>
                             <div className="flex flex-col">
                               <span
-                                className={`text-sm leading-tight font-medium ${isSubActive
-                                  ? "font-semibold text-interactive-blue"
-                                  : "text-ink group-hover:text-interactive-blue"
-                                  }`}
+                                className={`text-sm leading-tight font-medium ${
+                                  isSubActive ? "font-semibold text-[#5ab0ff]" : "text-[#f5f5f7] group-hover:text-[#5ab0ff]"
+                                }`}
                               >
                                 {subItem.label}
                               </span>
-                              {/* {subItem.description && (
-                                <span className="mt-0.5 text-[11px] leading-snug text-slate">
+                              {subItem.description && (
+                                <span className="mt-0.5 text-[11px] leading-snug text-[#a1a1a6]">
                                   {subItem.description}
                                 </span>
-                              )} */}
+                              )}
                             </div>
                           </Link>
                         );
@@ -182,10 +180,9 @@ export function Header() {
               <Link
                 key={item.href}
                 href={resolvedHref}
-                className={`relative text-button font-medium transition-colors after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:rounded-full after:bg-interactive-blue after:transition-all after:duration-200 hover:text-interactive-blue ${active
-                  ? "text-interactive-blue after:w-full font-semibold"
-                  : "text-ink after:w-0 hover:after:w-full"
-                  }`}
+                className={`text-sm font-medium transition-colors ${
+                  active ? "text-[#f5f5f7] font-semibold" : "text-[#a1a1a6] hover:text-[#5ab0ff]"
+                }`}
               >
                 {item.label}
               </Link>
@@ -193,14 +190,20 @@ export function Header() {
           })}
         </nav>
 
+        {/* CTA Button */}
         <div className="hidden md:block">
-          <Button href={siteConfig.primaryCta.href}>{siteConfig.primaryCta.label}</Button>
+          <Button
+            href={siteConfig.primaryCta.href}
+            className="rounded-full bg-[#f5f5f7] px-6 py-2.5 text-xs font-semibold tracking-wide text-black transition-all hover:bg-white shadow-xs active:scale-95"
+          >
+            {siteConfig.primaryCta.label}
+          </Button>
         </div>
 
         {/* Mobile Hamburger Button */}
         <button
           type="button"
-          className="inline-flex h-11 w-11 items-center justify-center rounded-xl text-ink transition-colors hover:bg-surface-muted md:hidden"
+          className="inline-flex h-10 w-10 items-center justify-center rounded-xl text-[#f5f5f7] transition-colors hover:bg-white/10 md:hidden"
           aria-expanded={isMenuOpen}
           aria-controls="mobile-menu"
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
@@ -209,11 +212,11 @@ export function Header() {
           {isMenuOpen ? (
             <svg
               viewBox="0 0 24 24"
-              width="24"
-              height="24"
+              width="22"
+              height="22"
               fill="none"
               stroke="currentColor"
-              strokeWidth="1.75"
+              strokeWidth="2"
               aria-hidden="true"
             >
               <path d="M6 6l12 12M18 6L6 18" strokeLinecap="round" />
@@ -221,11 +224,11 @@ export function Header() {
           ) : (
             <svg
               viewBox="0 0 24 24"
-              width="24"
-              height="24"
+              width="22"
+              height="22"
               fill="none"
               stroke="currentColor"
-              strokeWidth="1.75"
+              strokeWidth="2"
               aria-hidden="true"
             >
               <path d="M4 7h16M4 12h16M4 17h16" strokeLinecap="round" />
@@ -238,9 +241,9 @@ export function Header() {
       {isMenuOpen && (
         <div
           id="mobile-menu"
-          className="max-h-[85vh] overflow-y-auto border-t border-surface-muted bg-white shadow-lg md:hidden"
+          className="max-h-[85vh] overflow-y-auto border-t border-white/10 bg-black/98 shadow-2xl backdrop-blur-2xl md:hidden"
         >
-          <Container className="flex flex-col gap-1 py-4">
+          <Container className="flex flex-col gap-1 py-5">
             {navItems.map((item) => {
               const resolvedHref = getResolvedHref(item.href);
               const active = isItemActive(item.href, item.children);
@@ -250,14 +253,16 @@ export function Header() {
                   <div key={item.label} className="flex flex-col">
                     <button
                       type="button"
-                      className={`flex w-full items-center justify-between rounded-xl px-3 py-3 text-button font-medium transition-colors hover:bg-surface-muted hover:text-interactive-blue ${active ? "bg-surface-muted text-interactive-blue font-semibold" : "text-ink"
-                        }`}
+                      className={`flex w-full items-center justify-between rounded-xl px-3 py-3 text-sm font-medium transition-colors hover:bg-white/5 ${
+                        active ? "bg-[#0084ff]/15 text-[#5ab0ff] font-semibold" : "text-[#f5f5f7]"
+                      }`}
                       onClick={() => setIsServicesMobileOpen(!isServicesMobileOpen)}
                     >
                       <span>{item.label}</span>
                       <svg
-                        className={`h-4 w-4 text-slate transition-transform duration-200 ${isServicesMobileOpen ? "rotate-180" : ""
-                          }`}
+                        className={`h-4 w-4 text-[#86868b] transition-transform duration-200 ${
+                          isServicesMobileOpen ? "rotate-180 text-[#5ab0ff]" : ""
+                        }`}
                         viewBox="0 0 20 20"
                         fill="currentColor"
                       >
@@ -270,18 +275,19 @@ export function Header() {
                     </button>
 
                     {isServicesMobileOpen && (
-                      <div className="ml-3 mt-1 flex flex-col gap-1 border-l-2 border-interactive-blue/20 pl-2">
+                      <div className="ml-3 mt-1 flex flex-col gap-1 border-l border-white/10 pl-3">
                         {item.children.map((subItem) => (
                           <Link
                             key={subItem.label}
                             href={subItem.href}
-                            className={`flex items-center gap-2 rounded-lg px-2.5 py-2 text-sm transition-colors hover:bg-surface-muted hover:text-interactive-blue ${pathname === subItem.href
-                              ? "font-semibold text-interactive-blue"
-                              : "text-slate"
-                              }`}
+                            className={`flex items-center gap-2 rounded-lg px-2.5 py-2 text-xs transition-colors hover:bg-white/5 ${
+                              pathname === subItem.href
+                                ? "font-semibold text-[#5ab0ff] bg-[#0084ff]/15"
+                                : "text-[#a1a1a6] hover:text-[#5ab0ff]"
+                            }`}
                             onClick={() => setIsMenuOpen(false)}
                           >
-                            <span className="text-interactive-blue text-xs">›</span>
+                            <span className="text-[#5ab0ff]">›</span>
                             <span>{subItem.label}</span>
                           </Link>
                         ))}
@@ -295,18 +301,19 @@ export function Header() {
                 <Link
                   key={item.href}
                   href={resolvedHref}
-                  className={`rounded-xl px-3 py-3 text-button font-medium transition-colors hover:bg-surface-muted hover:text-interactive-blue ${active ? "bg-surface-muted text-interactive-blue font-semibold" : "text-ink"
-                    }`}
+                  className={`rounded-xl px-3 py-3 text-sm font-medium transition-colors hover:bg-white/5 ${
+                    active ? "bg-[#0084ff]/15 text-[#5ab0ff] font-semibold" : "text-[#f5f5f7]"
+                  }`}
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.label}
                 </Link>
               );
             })}
-            <div className="mt-3">
+            <div className="mt-4">
               <Button
                 href={siteConfig.primaryCta.href}
-                className="w-full"
+                className="w-full rounded-full bg-[#0055ff] py-3 text-xs font-bold text-white hover:bg-[#0044cc]"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {siteConfig.primaryCta.label}
@@ -318,4 +325,3 @@ export function Header() {
     </header>
   );
 }
-

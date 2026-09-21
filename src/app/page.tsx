@@ -1,34 +1,30 @@
 import { Header } from "@/components/layout/Header";
-import { Hero } from "@/components/sections/Hero";
-import { CoreServices } from "@/components/sections/CoreServices";
-import { OtherServices } from "@/components/sections/OtherServices";
-import { Technologies } from "@/components/sections/Technologies";
-import { Industries } from "@/components/sections/Industries";
-import { CeoMessage } from "@/components/sections/CeoMessage";
+import { HeroSection } from "@/components/sections/HeroSection";
+import { EcommerceSection } from "@/components/sections/EcommerceSection";
+import { AiAutomationSection } from "@/components/sections/AiAutomationSection";
+import { ProductEngineeringSection } from "@/components/sections/ProductEngineeringSection";
+import { OurWorkSection } from "@/components/sections/OurWorkSection";
 import { Footer } from "@/components/layout/Footer";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col bg-black text-[#f5f5f7] selection:bg-[#0084ff] selection:text-white">
       <Header />
       <main className="flex-1">
-        {/* T008: Hero Section */}
-        <Hero />
+        {/* Hero Section with interactive AI Advisor & Stats & Trusted Clients */}
+        <HeroSection />
 
-        {/* T009: Core Services Section (Transformation Intro + 4 Core Categories) */}
-        <CoreServices />
+        {/* eCommerce Bento Grid Section */}
+        <EcommerceSection />
 
-        {/* T010: Other Services Section (6 Complementary Capabilities) */}
-        <OtherServices />
+        {/* AI & Automation Bento Grid Section */}
+        <AiAutomationSection />
 
-        {/* T011: Technologies & Platforms Section */}
-        <Technologies />
+        {/* Product Engineering Bento Grid Section */}
+        <ProductEngineeringSection />
 
-        {/* T012: Industries Section */}
-        <Industries />
-
-        {/* CEO Message Section */}
-        <CeoMessage />
+        {/* Our Work / Portfolio Showcase Section */}
+        <OurWorkSection />
       </main>
 
       {/* Site Footer */}
