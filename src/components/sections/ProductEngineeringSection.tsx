@@ -99,7 +99,7 @@ export function ProductEngineeringSection() {
                 {productEngineeringContent.rightProcess.steps.map((step) => (
                   <div
                     key={step.title}
-                    className="rounded-2xl border border-white/10 bg-[#141418] p-5"
+                    className="rounded-2xl border border-white/10 bg-[#141418] p-5 hover:scale-102 duration-500"
                   >
                     <div className="flex items-center gap-2">
                       <span className="h-2 w-2 rounded-full bg-bright-blue shrink-0" />

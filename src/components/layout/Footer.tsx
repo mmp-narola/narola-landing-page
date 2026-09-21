@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { footerContent } from "@/content/footer";
+import { ThemeToggle } from "@/components/theme/ThemeToggle";
 
 function ClutchIcon({ className = "w-7 h-7" }: { className?: string }) {
   return (
@@ -302,6 +303,17 @@ export function Footer() {
                 </a>
               ))}
             </div>
+          </div>
+        </div>
+
+        {/* Bottom bar: Copyright & Theme Switcher */}
+        <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-slate/10 pt-8 sm:flex-row">
+          <p className="text-xs text-slate">
+            © {new Date().getFullYear()} Narola Infotech. All rights reserved.
+          </p>
+          <div className="flex items-center gap-3">
+            <span className="text-xs font-medium text-slate">Appearance:</span>
+            <ThemeToggle />
           </div>
         </div>
       </Container>

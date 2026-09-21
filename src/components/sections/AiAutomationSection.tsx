@@ -97,17 +97,24 @@ export function AiAutomationSection() {
               </span>
               <div className="mt-5 flex flex-col items-stretch gap-2">
                 {aiAutomationContent.leftFlow.steps.map((step, index) => (
-                  <div key={step.number} className="flex flex-col items-center">
-                    <div className="group flex w-full items-center gap-3 rounded-2xl border border-[#0084ff]/20 bg-[#151515] p-4 transition-all duration-200 hover:border-[#0084ff]/50 hover:translate-y-0.5">
-                      <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#0084ff]/20 text-xs font-bold text-white transition-colors duration-200 group-hover:bg-[#0084ff]/50">
-                        {step.number}
-                      </span>
-                      <span className="text-sm text-light-gray">
-                        {step.title}
-                      </span>
+                  <div key={step.title || step.number} className="flex flex-col items-center">
+                    <div className="w-full rounded-2xl border border-white/10 bg-[#141418] p-5 transition-all duration-500 hover:scale-102">
+                      <div className="flex items-center gap-2">
+                        <span className="text-lg font-semibold text-bright-blue shrink-0">
+                          {step.number}
+                        </span>
+                        <h4 className="text-md font-semibold text-light-gray">
+                          {step.title}
+                        </h4>
+                      </div>
+                      {step.description && (
+                        <p className="mt-1.5 text-xs text-subtle-gray leading-relaxed pl-4">
+                          {step.description}
+                        </p>
+                      )}
                     </div>
                     {index < aiAutomationContent.leftFlow.steps.length - 1 && (
-                      <span className="py-1.5 text-xs text-[#6e6e73]">↓</span>
+                      <span className="pt-1.5 text-base text-electric-blue">↓</span>
                     )}
                   </div>
                 ))}

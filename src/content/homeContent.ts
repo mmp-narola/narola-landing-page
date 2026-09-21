@@ -49,7 +49,8 @@ export const heroContent = {
   subtitle:
     "Tell us what you’re building — our AI assistant will point you to the right solution and team in seconds.",
   askEyebrow: "ASK US ANYTHING",
-  inputPlaceholder: "e.g. I need a Shopify store with AI product recommendatio",
+  inputPlaceholder:
+    "e.g. I need a Shopify store with AI product recommendation",
   quickPrompts: [
     {
       id: "shopify-store",
@@ -233,10 +234,30 @@ export const aiAutomationContent = {
   leftFlow: {
     header: "HOW WE DELIVER AN AI SOLUTION",
     steps: [
-      { number: 1, title: "Discovery & workflow mapping" },
-      { number: 2, title: "Model selection & data preparation" },
-      { number: 3, title: "Integration with existing systems" },
-      { number: 4, title: "Testing, deployment & monitoring" },
+      {
+        number: 1,
+        title: "Discovery & workflow mapping",
+        description:
+          "Analyze business processes, identify high-impact automation opportunities, and scope data needs.",
+      },
+      {
+        number: 2,
+        title: "Model selection & data preparation",
+        description:
+          "Benchmark foundation models, build fine-tuning pipelines, and curate proprietary domain data.",
+      },
+      {
+        number: 3,
+        title: "Integration with existing systems",
+        description:
+          "Connect models into production CRMs, ERPs, APIs, and databases with reliable guardrails.",
+      },
+      {
+        number: 4,
+        title: "Testing, deployment & monitoring",
+        description:
+          "Continuous accuracy verification, latency optimization, and automated fallback monitoring.",
+      },
     ],
     caseStudiesTitle: "CASE STUDIES",
     caseStudies: [
