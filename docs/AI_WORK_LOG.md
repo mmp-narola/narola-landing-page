@@ -1326,3 +1326,126 @@ background, and keep everything else on the page unchanged.
 
 **Result:** T032 completed successfully.
 
+---
+
+## T033 — Homepage: Apple-inspired visual redesign
+
+**Date:** 2026-09-21
+
+**Objective:** Redesign the homepage's visual presentation (not its content) in a
+premium, minimal, Apple-product-page-inspired direction — large display typography,
+generous whitespace, editorial section layouts, and subtle scroll storytelling — using
+five Apple iPhone product-page screenshots as visual/structural reference only.
+
+**Human instructions (summary):**
+- Transform the homepage into a highly polished, premium, Apple-style experience:
+  cinematic, minimal, typography-focused, with smooth scroll-based transitions.
+- Preserve all existing content verbatim — headings, descriptions, services,
+  technologies, industries, business information, CTAs, factual claims. No invented
+  copy, statistics, claims, or content. Change only layout/typography/spacing/motion.
+- Use a system-style, Apple-like font stack, reliable across Windows/macOS/iOS/
+  Android/major browsers — inspect the project first to pick the right approach.
+- Use subtle text-color hierarchy (not pure black), premium background transitions.
+- Redesign the hero, services sections, technologies, industries, header, and general
+  scroll storytelling; avoid a generic card-grid corporate look in favor of editorial/
+  large-typography presentation where it fits the existing content.
+- No new animation library, no heavy JS — prefer CSS transforms/opacity, respect
+  `prefers-reduced-motion`, avoid layout shift, keep the page performant.
+- Do not copy Apple's actual content, images, logos, or branding.
+- Staging: user chose to do the full redesign in one pass rather than a staged
+  hero-first checkpoint (asked via AskUserQuestion given the size of the change).
+
+**Claude work performed:**
+1. Inspected the existing homepage end-to-end before changing anything: `page.tsx`,
+   `globals.css` (Tailwind v4 `@theme` tokens), `VISUAL_DIRECTION.md` (the project's own
+   design-system doc), every homepage section component (`Header`, `Hero`,
+   `CoreServices`, `OtherServices`, `Technologies`, `Industries`, `CeoMessage`,
+   `Footer`), `Button`/`Container` primitives, `package.json` (confirmed no animation
+   library is installed — none was added), and every content data file (`hero.ts`,
+   `services.ts`, `technologies.ts`, `industries.ts`, `transformationIntro.ts`,
+   `ceoMessage.ts`) to know exactly what content had to be preserved verbatim.
+2. Noted `VISUAL_DIRECTION.md` already documents Inter as the brand font and "no
+   animation library" as a performance principle — resolved the tension with the
+   human's Apple-style-typography/scroll-storytelling ask by (a) layering a native
+   OS system-font stack *ahead of* Inter rather than replacing it, and (b) building
+   motion with the native `IntersectionObserver` API + CSS transitions instead of a
+   dependency, so both the existing direction and the new ask are satisfied together.
+3. `globals.css`: reordered `--font-sans` to `-apple-system, BlinkMacSystemFont,
+   "Segoe UI", Roboto, var(--font-inter), ...` (each OS-native font only resolves on
+   its own platform; everywhere else falls through to self-hosted Inter, so there's
+   no added font request). Scaled up the H1/H2 display tokens (H1 desktop 44px→72px)
+   and added `--text-display`/`--text-display-lg` for large standalone text. Added
+   `.reveal`/`.reveal-scale`/`.reveal-visible` utility classes — plain CSS
+   `opacity`/`transform` transitions, already covered by the pre-existing
+   `prefers-reduced-motion` rule in the same file.
+4. Built `src/components/ui/Reveal.tsx`: a small client component using
+   `IntersectionObserver` to toggle a "visible" class once an element scrolls into
+   view. Content stays in the DOM/accessibility tree the whole time (only
+   opacity/transform change), and it falls back to immediately-visible if
+   `IntersectionObserver` isn't available. Used throughout the redesigned sections for
+   staggered reveal-on-scroll.
+5. Redesigned `Hero.tsx`: centered single-column layout (replacing the two-column
+   split with a glassmorphic side card) with large display typography, then the hero
+   image as a large full-width visual below the headline — closer to an Apple
+   product-launch hero. All copy (`hero.ts`) unchanged.
+6. Redesigned `CoreServices.tsx`: replaced the 4-card grid with an editorial list of
+   large rows (index number, icon, title, description, capability tags) separated by
+   hairline dividers, each with staggered scroll-reveal. All service content
+   (`services.ts`, `transformationIntro.ts`) unchanged.
+7. Redesigned `OtherServices.tsx`: replaced the card grid with a minimal two-column
+   list, larger type, no card chrome. Content unchanged.
+8. Redesigned `Technologies.tsx`: replaced the card grid with large-type category
+   groups (category name + flowing text wordmarks) per the "minimal logo treatment"
+   guidance (this project's technology section has always rendered text wordmarks, not
+   logo images, per `technologies.ts`'s own documented decision). Content unchanged.
+9. Redesigned `Industries.tsx`: replaced the bordered-card grid with a minimal
+   hairline-divided tile grid; each icon now uses `alt=""` since the visible label
+   already carries the accessible name (avoids duplicate screen-reader announcements),
+   consistent with `VISUAL_DIRECTION.md §11`. All 12 industry names unchanged.
+10. Redesigned `CeoMessage.tsx` as a dark cinematic section, reusing the same
+    dark-gradient pattern already established elsewhere in this codebase
+    (`CustomSoftwareHero`/`CustomSoftwareCta`), with the quote as large pull-quote
+    typography. Kept the "Message From CEO" heading, full quote text, author name,
+    title, and photo — nothing dropped.
+11. Gave `Header.tsx` a lighter sticky-scroll treatment (hairline border + stronger
+    backdrop blur instead of a shadow) without touching its navigation/dropdown/mobile
+    logic.
+12. Left `Footer.tsx` untouched — already utilitarian/minimal and inherits the new
+    font stack and color tokens automatically; restructuring it wasn't needed for the
+    Apple-style direction and risked touching unrelated content.
+13. Ran `npm run lint` — hit one `react-hooks/set-state-in-effect` error in the new
+    `Reveal` component (a `setVisible(true)` call inside a `useEffect` for the
+    no-`IntersectionObserver` fallback path); fixed by computing that fallback in the
+    `useState` initializer instead. Re-ran lint clean.
+14. Ran `npm run build` — succeeded, all routes prerendered.
+15. Verified in-browser: started the dev server, used a headless-browser script that
+    scrolls the full page (to trigger every reveal animation) before capturing
+    full-page and per-section screenshots at desktop (1440px) and mobile (375px).
+    Confirmed: hero/services/technologies/industries/CEO/footer all render correctly,
+    reveal animations fire, text wraps and reflows properly on mobile, and no content
+    was altered from the pre-redesign homepage.
+
+**Files modified:**
+- `src/app/globals.css`
+- `src/components/layout/Header.tsx`
+- `src/components/sections/Hero.tsx`
+- `src/components/sections/CoreServices.tsx`
+- `src/components/sections/OtherServices.tsx`
+- `src/components/sections/Technologies.tsx`
+- `src/components/sections/Industries.tsx`
+- `src/components/sections/CeoMessage.tsx`
+- `docs/TASKS.md`
+- `docs/CHANGELOG.md`
+- `docs/AI_WORK_LOG.md` (this entry)
+
+**Files created:**
+- `src/components/ui/Reveal.tsx`
+
+**Validation performed:**
+- `npm run lint` — 0 errors/warnings.
+- `npm run build` — succeeded, all routes prerendered.
+- Manual in-browser verification (full-page and per-section screenshots, with scroll
+  animations triggered) at desktop (1440px) and mobile (375px) widths.
+
+**Result:** T033 completed successfully.
+
