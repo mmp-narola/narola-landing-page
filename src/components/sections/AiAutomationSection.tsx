@@ -38,20 +38,20 @@ export function AiAutomationSection() {
   return (
     <section
       id={aiAutomationContent.sectionId}
-      className="relative w-full overflow-hidden bg-black py-24 text-[#f5f5f7] md:py-32"
+      className="relative w-full overflow-hidden bg-black py-24 text-light-gray md:py-32"
     >
       <AmbientGlow position="top" height={420} color="rgba(0,132,255,0.14)" />
       <Container className="relative">
         {/* Centered feature block — eyebrow + headline + supporting copy */}
         <Reveal>
           <div className="mx-auto max-w-3xl text-center">
-            <span className="text-xs font-bold uppercase tracking-[0.14em] text-[#5ab0ff]">
+            <span className="text-xs font-bold uppercase tracking-[0.14em] text-bright-blue">
               {aiAutomationContent.leftFlow.header}
             </span>
-            <h2 className="mt-4 text-display font-semibold tracking-tight text-[#f5f5f7] md:text-6xl text-balance">
+            <h2 className="mt-4 text-display font-semibold tracking-tight text-light-gray md:text-6xl text-balance">
               {aiAutomationContent.title}
             </h2>
-            <p className="mx-auto mt-5 max-w-2xl text-base text-[#a1a1a6] md:text-xl leading-relaxed">
+            <p className="mx-auto mt-5 max-w-2xl text-base text-muted-gray md:text-xl leading-relaxed">
               {aiAutomationContent.subtitle}
             </p>
           </div>
@@ -64,20 +64,20 @@ export function AiAutomationSection() {
 
             return (
               <Reveal key={card.id} delay={index * 100} className="border-t border-white/15 pt-6">
-                <div className="flex items-center gap-2.5 text-[#5ab0ff]">
+                <div className="flex items-center gap-2.5 text-bright-blue">
                   <IconComp className="h-5 w-5" />
-                  <h3 className="text-lg font-semibold text-[#f5f5f7]">
+                  <h3 className="text-2xl text-light-gray">
                     {card.title}
                   </h3>
                 </div>
-                <p className="mt-2.5 text-sm text-[#a1a1a6] leading-relaxed">
+                <p className="mt-2.5 text-sm text-subtle-gray leading-relaxed">
                   {card.description}
                 </p>
                 <div className="mt-4 flex flex-wrap gap-2">
                   {card.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="rounded-full bg-white/[0.06] px-3 py-1 text-xs font-medium text-[#8ec2ff]"
+                      className="rounded-full bg-white/[0.10] px-3 py-1 text-xs text-soft-blue"
                     >
                       {tag}
                     </span>
@@ -92,17 +92,17 @@ export function AiAutomationSection() {
         <Reveal delay={300} className="mt-16 rounded-3xl border border-white/10 bg-[#1d1d1f] p-8 md:mt-20 md:p-10">
           <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
             <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-[#a1a1a6]">
+              <span className="text-xs font-medium uppercase tracking-wider text-muted-gray">
                 {aiAutomationContent.leftFlow.header}
               </span>
               <div className="mt-5 flex flex-col items-stretch gap-2">
                 {aiAutomationContent.leftFlow.steps.map((step, index) => (
                   <div key={step.number} className="flex flex-col items-center">
-                    <div className="flex w-full items-center gap-3 rounded-2xl border border-[#0084ff]/20 bg-[#151515] p-4">
-                      <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#0084ff] text-xs font-bold text-white">
+                    <div className="group flex w-full items-center gap-3 rounded-2xl border border-[#0084ff]/20 bg-[#151515] p-4 transition-all duration-200 hover:border-[#0084ff]/50 hover:translate-y-0.5">
+                      <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#0084ff]/20 text-xs font-bold text-white transition-colors duration-200 group-hover:bg-[#0084ff]/50">
                         {step.number}
                       </span>
-                      <span className="text-sm font-semibold text-[#f5f5f7]">
+                      <span className="text-sm text-light-gray">
                         {step.title}
                       </span>
                     </div>
@@ -115,7 +115,7 @@ export function AiAutomationSection() {
             </div>
 
             <div className="border-t border-white/10 pt-8 md:border-t-0 md:border-l md:pt-0 md:pl-10">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#a1a1a6]">
+              <span className="text-xs font-medium uppercase tracking-wider text-muted-gray">
                 {aiAutomationContent.leftFlow.caseStudiesTitle}
               </span>
               <div className="mt-4 flex flex-col gap-2.5">
@@ -123,7 +123,7 @@ export function AiAutomationSection() {
                   <Link
                     key={cs.title}
                     href={cs.href}
-                    className="group flex items-center gap-2 text-sm font-semibold text-[#2997ff]"
+                    className="group flex items-center gap-2 text-sm font-semibold text-electric-blue"
                   >
                     <span className="inline-block transition-transform group-hover:translate-x-1 no-underline">→</span>
                     <span className="group-hover:underline">{cs.title}</span>

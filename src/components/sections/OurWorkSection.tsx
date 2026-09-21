@@ -23,16 +23,16 @@ export function OurWorkSection() {
     ourWorkContent.groupedClientsByTab?.[activeTab] ?? ourWorkContent.groupedClients;
 
   return (
-    <section id={ourWorkContent.sectionId} className="relative w-full overflow-hidden bg-black py-24 text-[#f5f5f7] md:py-32">
+    <section id={ourWorkContent.sectionId} className="relative w-full overflow-hidden bg-black py-24 text-light-gray md:py-32">
       <AmbientGlow position="top" height={420} color="rgba(0,132,255,0.14)" />
       <Container className="relative">
         {/* Section Header */}
         <Reveal>
           <div className="mx-auto max-w-3xl text-center">
-            <h2 className="text-display font-semibold tracking-tight text-[#f5f5f7] md:text-6xl text-balance">
+            <h2 className="text-display font-semibold tracking-tight text-light-gray md:text-6xl text-balance">
               {ourWorkContent.title}
             </h2>
-            <p className="mt-5 text-base text-[#a1a1a6] md:text-xl leading-relaxed">
+            <p className="mt-5 text-base text-muted-gray md:text-xl leading-relaxed">
               {ourWorkContent.subtitle}
             </p>
           </div>
@@ -49,8 +49,8 @@ export function OurWorkSection() {
                   type="button"
                   onClick={() => setActiveTab(tab.id as "ecommerce" | "ai" | "engineering")}
                   className={`rounded-full px-6 py-2.5 text-sm font-semibold transition-all duration-200 ${isActive
-                    ? "bg-[#f5f5f7] text-black shadow-sm"
-                    : "border border-white/10 bg-[#1d1d1f] text-[#f5f5f7] hover:bg-[#232326]"
+                    ? "bg-light-gray text-black shadow-sm"
+                    : "border border-white/10 bg-[#1d1d1f] text-light-gray hover:bg-[#232326]"
                     }`}
                 >
                   {tab.label}
@@ -74,14 +74,14 @@ export function OurWorkSection() {
                       key={client.name}
                       className="flex items-center gap-3 rounded-2xl border border-white/10 bg-[#1d1d1f] px-4 py-3"
                     >
-                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[#0084ff]/15 text-xs font-bold text-[#5ab0ff]">
+                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[#0084ff]/15 text-xs font-semibold text-bright-blue">
                         {client.initials}
                       </span>
                       <div>
-                        <span className="block text-sm font-semibold text-[#f5f5f7] leading-tight">
+                        <span className="block text-sm text-light-gray leading-tight">
                           {client.name}
                         </span>
-                        <span className="mt-0.5 flex items-center gap-1 text-xs text-[#86868b]">
+                        <span className="mt-0.5 flex items-center gap-1 text-xs text-subtle-gray">
                           <LocationPinIcon className="h-3 w-3 text-[#6e6e73]" />
                           <span>{client.country}</span>
                         </span>
@@ -100,12 +100,12 @@ export function OurWorkSection() {
           <Reveal>
             <div className="rounded-[32px] border border-white/10 bg-[#1d1d1f] p-6 sm:p-8 md:p-12">
               <div className="flex flex-wrap items-center justify-between gap-4">
-                <h3 className="text-2xl font-semibold tracking-tight text-[#f5f5f7] md:text-3xl">
+                <h3 className="text-2xl font-semibold tracking-tight text-light-gray md:text-3xl">
                   Featured case studies
                 </h3>
                 <Link
                   href={ourWorkContent.footerBanner.href}
-                  className="group flex items-center gap-1.5 text-sm font-semibold text-[#2997ff]"
+                  className="group flex items-center gap-1.5 text-sm font-semibold text-electric-blue"
                 >
                   <span className="group-hover:underline">{ourWorkContent.footerBanner.linkText}</span>
                   {/* <span className="inline-block transition-transform group-hover:translate-x-1 no-underline">→</span> */}
@@ -118,7 +118,7 @@ export function OurWorkSection() {
                     <div className="flex h-full flex-col justify-between rounded-2xl border border-white/10 bg-[#151515] p-6">
                       <div>
                         <div className="flex items-center gap-2">
-                          <span className="rounded-md bg-[#0084ff]/15 px-2.5 py-1 text-xs font-medium text-[#5ab0ff]">
+                          <span className="rounded-md bg-[#0084ff]/15 px-2.5 py-1 text-xs font-medium text-bright-blue">
                             {study.industry}
                           </span>
                           <span className="flex items-center gap-1 text-xs text-[#86868b]">
@@ -127,10 +127,10 @@ export function OurWorkSection() {
                           </span>
                         </div>
 
-                        <h4 className="mt-5 text-xl font-semibold text-[#f5f5f7]">
+                        <h4 className="mt-5 text-xl font-semibold text-light-gray">
                           {study.title}
                         </h4>
-                        <p className="mt-3 text-sm text-[#a1a1a6] leading-relaxed">
+                        <p className="mt-3 text-sm text-muted-gray leading-relaxed">
                           {study.description}
                         </p>
                       </div>
@@ -139,10 +139,10 @@ export function OurWorkSection() {
                         <div className="grid grid-cols-2 gap-4">
                           {study.metrics.map((metric) => (
                             <div key={metric.label}>
-                              <span className="block text-3xl font-semibold tracking-tight text-[#f5f5f7]">
+                              <span className="block text-2xl font-semibold tracking-tight text-light-gray">
                                 {metric.value}
                               </span>
-                              <span className="mt-1 block text-xs font-medium text-[#86868b]">
+                              <span className="mt-1 block text-xs text-subtle-gray">
                                 {metric.label}
                               </span>
                             </div>
@@ -159,11 +159,11 @@ export function OurWorkSection() {
 
         {/* Bottom Footer Banner */}
         <Reveal delay={100}>
-          <div className="mt-16 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-8 text-sm text-[#a1a1a6] sm:flex-row">
+          <div className="mt-16 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-8 text-sm text-muted-gray sm:flex-row">
             <span>{ourWorkContent.footerBanner.leftText}</span>
             <Link
               href={ourWorkContent.footerBanner.href}
-              className="group flex items-center gap-1.5 font-semibold text-[#2997ff]"
+              className="group flex items-center gap-1.5 font-semibold text-electric-blue"
             >
               <span className="group-hover:underline">{ourWorkContent.footerBanner.linkText}</span>
               {/* <span className="inline-block transition-transform group-hover:translate-x-1 no-underline">→</span> */}

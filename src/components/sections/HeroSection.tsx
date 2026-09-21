@@ -50,16 +50,16 @@ export function HeroSection() {
   };
 
   return (
-    <section className="relative overflow-hidden bg-black pt-20 pb-20 sm:pt-28 sm:pb-28 lg:pt-36 lg:pb-32 text-[#f5f5f7]">
+    <section className="relative overflow-hidden bg-black pt-20 pb-20 sm:pt-28 sm:pb-28 lg:pt-36 lg:pb-32 text-light-gray">
       <AmbientGlow position="top" height={560} color="rgba(0,85,255,0.18)" className="-top-40" />
 
       <Container className="relative">
         <div className="mx-auto max-w-5xl text-center">
           {/* Main Headline — large cinematic display type */}
           <Reveal>
-            <h1 className="text-display font-semibold tracking-tight text-[#f5f5f7] md:text-display-lg text-balance">
+            <h1 className="text-display font-semibold tracking-tight text-light-gray md:text-display-lg text-balance">
               {heroContent.headlinePrefix}
-              <span className="bg-gradient-to-r from-[#2997ff] to-[#a855f7] bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-electric-blue to-[#a855f7] bg-clip-text text-transparent">
                 {heroContent.headlineHighlight}
               </span>
               {heroContent.headlineSuffix}
@@ -68,7 +68,7 @@ export function HeroSection() {
 
           {/* Subtitle */}
           <Reveal delay={200}>
-            <p className="mx-auto mt-6 max-w-2xl text-lg text-[#a1a1a6] sm:text-xl font-normal leading-relaxed">
+            <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-gray sm:text-xl font-normal leading-relaxed">
               {heroContent.subtitle}
             </p>
           </Reveal>
@@ -76,7 +76,7 @@ export function HeroSection() {
           {/* Interactive "ASK US ANYTHING" Card */}
           <Reveal delay={400}>
             <div className="mx-auto mt-14 max-w-3xl rounded-[28px] border border-white/10 bg-[#1d1d1f] p-6 text-left shadow-[0_20px_60px_-15px_rgba(0,0,0,0.5)] md:p-9">
-              <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-[#5ab0ff]">
+              <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-bright-blue">
                 <ChatIcon className="h-4 w-4" />
                 <span>{heroContent.askEyebrow}</span>
               </div>
@@ -88,13 +88,13 @@ export function HeroSection() {
                     value={inputValue}
                     onChange={(e) => setInputValue(e.target.value)}
                     placeholder={heroContent.inputPlaceholder}
-                    className="w-full rounded-2xl border border-white/10 bg-[#151515] px-5 py-4 text-sm md:text-base text-[#f5f5f7] placeholder:text-[#6e6e73] transition-all focus:border-[#0084ff] focus:outline-none focus:ring-4 focus:ring-[#0084ff]/15"
+                    className="w-full rounded-2xl border border-white/10 bg-[#151515] px-5 py-4 text-sm md:text-base text-light-gray placeholder:text-[#6e6e73] transition-all focus:border-[#0084ff] focus:outline-none focus:ring-4 focus:ring-[#0084ff]/15"
                   />
                 </div>
                 <button
                   type="submit"
                   disabled={isThinking}
-                  className="inline-flex shrink-0 items-center justify-center gap-1.5 rounded-2xl bg-[#f5f5f7] px-6 py-4 text-sm font-semibold text-black shadow-sm transition-all hover:bg-white active:scale-95 disabled:opacity-70"
+                  className="inline-flex shrink-0 items-center justify-center gap-1.5 rounded-2xl bg-light-gray px-6 py-4 text-sm font-semibold text-black shadow-sm transition-all hover:bg-white active:scale-95 disabled:opacity-70"
                 >
                   {isThinking ? <span>Matching...</span> : <span>→ Ask</span>}
                 </button>
@@ -111,7 +111,7 @@ export function HeroSection() {
                       onClick={() => handleSelectPrompt(prompt)}
                       className={`rounded-full px-4 py-2 text-xs font-medium transition-all duration-200 ${isSelected
                         ? "bg-[#0084ff] text-white font-semibold shadow-sm"
-                        : "bg-white/[0.06] text-[#f5f5f7] hover:bg-[#0084ff]/15 hover:text-[#5ab0ff]"
+                        : "bg-white/[0.06] text-light-gray hover:bg-[#0084ff]/15 hover:text-bright-blue"
                         }`}
                     >
                       {prompt.label}
@@ -124,33 +124,33 @@ export function HeroSection() {
               {activePrompt && (
                 <div className="mt-6 rounded-2xl border border-[#0084ff]/20 bg-[#151515] p-5 text-left animate-in fade-in duration-200">
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold uppercase tracking-wider text-[#5ab0ff]">
+                    <span className="text-xs font-bold uppercase tracking-wider text-bright-blue">
                       AI Recommendation
                     </span>
                     <button
                       type="button"
                       onClick={() => setActivePrompt(null)}
-                      className="text-xs text-[#a1a1a6] hover:text-white"
+                      className="text-xs text-muted-gray hover:text-white"
                     >
                       Close ✕
                     </button>
                   </div>
-                  <h4 className="mt-2 text-base font-bold text-[#f5f5f7]">
+                  <h4 className="mt-2 text-base font-bold text-light-gray">
                     {activePrompt.response.title}
                   </h4>
-                  <p className="mt-1 text-xs md:text-sm text-[#a1a1a6] leading-relaxed">
+                  <p className="mt-1 text-xs md:text-sm text-muted-gray leading-relaxed">
                     {activePrompt.response.summary}
                   </p>
                   <div className="mt-3 flex flex-wrap items-center gap-2 border-t border-[#0084ff]/15 pt-3 text-xs">
-                    <span className="font-semibold text-[#f5f5f7]">Recommended Stack:</span>
+                    <span className="font-semibold text-light-gray">Recommended Stack:</span>
                     {activePrompt.response.recommendedStack.map((tech) => (
-                      <span key={tech} className="rounded bg-white/[0.08] px-2 py-0.5 font-medium text-[#5ab0ff] shadow-2xs">
+                      <span key={tech} className="rounded bg-white/[0.08] px-2 py-0.5 font-medium text-bright-blue shadow-2xs">
                         {tech}
                       </span>
                     ))}
                     <a
                       href="#footer"
-                      className="ml-auto inline-flex items-center gap-1 font-bold text-[#5ab0ff] hover:underline"
+                      className="ml-auto inline-flex items-center gap-1 font-bold text-bright-blue hover:underline"
                     >
                       Consult our architects →
                     </a>
@@ -165,10 +165,10 @@ export function HeroSection() {
             <div className="mx-auto mt-20 grid max-w-4xl grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-4">
               {heroContent.stats.map((stat) => (
                 <div key={stat.label} className="flex flex-col items-center border-l border-white/10 first:border-l-0 sm:first:border-l">
-                  <span className="block text-4xl font-semibold tracking-tight text-[#f5f5f7] sm:text-5xl">
+                  <span className="block text-4xl font-semibold tracking-tight text-light-gray sm:text-5xl">
                     {stat.value}
                   </span>
-                  <span className="mt-1.5 block text-xs font-medium uppercase tracking-wide text-[#a1a1a6] sm:text-sm">
+                  <span className="mt-1.5 block text-xs font-medium uppercase tracking-wide text-muted-gray sm:text-sm">
                     {stat.label}
                   </span>
                 </div>
@@ -186,7 +186,7 @@ export function HeroSection() {
                 {heroContent.trustedClients.map((client) => (
                   <span
                     key={client}
-                    className="rounded-full border border-white/10 bg-[#151515] px-5 py-2.5 text-xs text-[#f5f5f7]"
+                    className="rounded-full border border-white/10 bg-[#151515] px-5 py-2.5 text-xs text-light-gray"
                   >
                     {client}
                   </span>

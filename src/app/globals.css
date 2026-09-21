@@ -11,10 +11,21 @@
   --color-accent-orange: #e9852a;
   --color-surface-muted: #f6f7fa;
 
-  /* Apple-inspired grey text hierarchy (added for the cinematic homepage
-     redesign). Primary copy keeps --color-ink; these add graduated steps
-     down to a muted grey, plus white-on-dark equivalents for full-bleed
-     dark sections. Additive only — nothing above was changed. */
+  /* Palette Theme Colors:
+     #f5f5f7: light-gray (primary light text / surface highlight)
+     #7c7c84: subtle-gray (subtle descriptions / tertiary text)
+     #2997ff: electric-blue (Apple electric blue / interactive accent)
+     #8ec2ff: soft-blue (soft sky blue / badge text)
+     #5ab0ff: bright-blue (bright cyan-azure / icon and eyebrow tint)
+     #a1a1a6: muted-gray (secondary muted text / label gray) */
+  --color-light-gray: #f5f5f7;
+  --color-subtle-gray: #7c7c84;
+  --color-electric-blue: #2997ff;
+  --color-soft-blue: #8ec2ff;
+  --color-bright-blue: #5ab0ff;
+  --color-muted-gray: #a1a1a6;
+
+  /* Aliases for backwards compatibility and semantic hierarchy */
   --color-ink-secondary: #6e6e73;
   --color-ink-muted: #86868b;
   --color-surface-dark: #000000;
@@ -23,13 +34,6 @@
   --color-on-dark-secondary: #a1a1a6;
   --color-on-dark-muted: #6e6e73;
 
-  /* Apple-style black + charcoal palette (replaces black/white section
-     alternation). --color-surface-dark stays pure black for the page
-     background; these add graduated charcoal steps for "floating panel"
-     surfaces (cards, sub-sections) so depth comes from tone, not from
-     jumping to white. --color-accent-tint is the small colored-label tint
-     used for eyebrow text on dark backgrounds, drawn from the existing
-     brand blue so it stays on-brand. Additive only — nothing above changed. */
   --color-surface-charcoal: #1d1d1f;
   --color-surface-charcoal-alt: #151515;
   --color-surface-charcoal-raised: #232326;

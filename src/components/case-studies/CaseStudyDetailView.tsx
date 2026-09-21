@@ -443,7 +443,7 @@ export function CaseStudyDetailView({
             <div className="mt-12 text-center">
               <Link
                 href="/case-studies"
-                className="inline-flex items-center gap-2 text-sm font-bold text-[#2997ff] hover:underline"
+                className="inline-flex items-center gap-2 text-sm font-bold text-electric-blue hover:underline"
               >
                 View All Case Studies
                 <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">

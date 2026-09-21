@@ -90,12 +90,12 @@ export function Header() {
                 >
                   <Link
                     href={resolvedHref}
-                    className={`group inline-flex items-center gap-1.5 text-sm font-medium transition-colors ${active ? "text-[#f5f5f7] font-semibold" : "text-[#a1a1a6] hover:text-[#5ab0ff]"
+                    className={`group inline-flex items-center gap-1.5 text-sm font-medium transition-colors ${active ? "text-light-gray font-semibold" : "text-muted-gray hover:text-bright-blue"
                       }`}
                   >
                     <span>{item.label}</span>
                     <svg
-                      className={`h-3.5 w-3.5 text-[#86868b] transition-transform duration-200 ${isServicesHovered ? "rotate-180 text-[#5ab0ff]" : ""
+                      className={`h-3.5 w-3.5 text-[#86868b] transition-transform duration-200 ${isServicesHovered ? "rotate-180 text-bright-blue" : ""
                         }`}
                       viewBox="0 0 20 20"
                       fill="currentColor"
@@ -128,15 +128,15 @@ export function Header() {
                             key={subItem.label}
                             href={subItem.href}
                             className={`group flex items-start gap-2.5 rounded-xl px-3 py-2.5 transition-colors ${isSubActive
-                                ? "bg-[#0084ff]/15 text-[#5ab0ff]"
-                                : "text-[#d1d1d6] hover:bg-white/5 hover:text-[#5ab0ff]"
+                                ? "bg-[#0084ff]/15 text-bright-blue"
+                                : "text-[#d1d1d6] hover:bg-white/5 hover:text-bright-blue"
                               }`}
                             onClick={() => setIsServicesHovered(false)}
                           >
                             <svg
                               className={`mt-1 h-3.5 w-3.5 shrink-0 transition-transform group-hover:translate-x-0.5 ${isSubActive
-                                  ? "text-[#5ab0ff]"
-                                  : "text-[#86868b] group-hover:text-[#5ab0ff]"
+                                  ? "text-bright-blue"
+                                  : "text-[#86868b] group-hover:text-bright-blue"
                                 }`}
                               viewBox="0 0 20 20"
                               fill="currentColor"
@@ -149,13 +149,13 @@ export function Header() {
                             </svg>
                             <div className="flex flex-col">
                               <span
-                                className={`text-sm leading-tight font-medium ${isSubActive ? "font-semibold text-[#5ab0ff]" : "text-[#f5f5f7] group-hover:text-[#5ab0ff]"
+                                className={`text-sm leading-tight font-medium ${isSubActive ? "font-semibold text-bright-blue" : "text-light-gray group-hover:text-bright-blue"
                                   }`}
                               >
                                 {subItem.label}
                               </span>
                               {subItem.description && (
-                                <span className="mt-0.5 text-[11px] leading-snug text-[#a1a1a6]">
+                                <span className="mt-0.5 text-[11px] leading-snug text-muted-gray">
                                   {subItem.description}
                                 </span>
                               )}
@@ -173,7 +173,7 @@ export function Header() {
               <Link
                 key={item.href}
                 href={resolvedHref}
-                className={`text-sm font-medium transition-colors ${active ? "text-[#f5f5f7] font-semibold" : "text-[#a1a1a6] hover:text-[#5ab0ff]"
+                className={`text-sm font-medium transition-colors ${active ? "text-light-gray font-semibold" : "text-muted-gray hover:text-bright-blue"
                   }`}
               >
                 {item.label}
@@ -186,7 +186,7 @@ export function Header() {
         <div className="hidden md:block">
           <Button
             href={siteConfig.primaryCta.href}
-            className="rounded-full bg-[#f5f5f7] px-6 py-2.5 text-xs font-semibold tracking-wide text-black transition-all hover:bg-white shadow-xs active:scale-95"
+            className="rounded-full bg-light-gray px-6 py-2.5 text-xs font-semibold tracking-wide text-black transition-all hover:bg-white shadow-xs active:scale-95"
           >
             {siteConfig.primaryCta.label}
           </Button>
@@ -195,7 +195,7 @@ export function Header() {
         {/* Mobile Hamburger Button */}
         <button
           type="button"
-          className="inline-flex h-10 w-10 items-center justify-center rounded-xl text-[#f5f5f7] transition-colors hover:bg-white/10 md:hidden"
+          className="inline-flex h-10 w-10 items-center justify-center rounded-xl text-light-gray transition-colors hover:bg-white/10 md:hidden"
           aria-expanded={isMenuOpen}
           aria-controls="mobile-menu"
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
@@ -245,13 +245,13 @@ export function Header() {
                   <div key={item.label} className="flex flex-col">
                     <button
                       type="button"
-                      className={`flex w-full items-center justify-between rounded-xl px-3 py-3 text-sm font-medium transition-colors hover:bg-white/5 ${active ? "bg-[#0084ff]/15 text-[#5ab0ff] font-semibold" : "text-[#f5f5f7]"
+                      className={`flex w-full items-center justify-between rounded-xl px-3 py-3 text-sm font-medium transition-colors hover:bg-white/5 ${active ? "bg-[#0084ff]/15 text-bright-blue font-semibold" : "text-light-gray"
                         }`}
                       onClick={() => setIsServicesMobileOpen(!isServicesMobileOpen)}
                     >
                       <span>{item.label}</span>
                       <svg
-                        className={`h-4 w-4 text-[#86868b] transition-transform duration-200 ${isServicesMobileOpen ? "rotate-180 text-[#5ab0ff]" : ""
+                        className={`h-4 w-4 text-[#86868b] transition-transform duration-200 ${isServicesMobileOpen ? "rotate-180 text-bright-blue" : ""
                           }`}
                         viewBox="0 0 20 20"
                         fill="currentColor"
@@ -271,12 +271,12 @@ export function Header() {
                             key={subItem.label}
                             href={subItem.href}
                             className={`flex items-center gap-2 rounded-lg px-2.5 py-2 text-xs transition-colors hover:bg-white/5 ${pathname === subItem.href
-                                ? "font-semibold text-[#5ab0ff] bg-[#0084ff]/15"
-                                : "text-[#a1a1a6] hover:text-[#5ab0ff]"
+                                ? "font-semibold text-bright-blue bg-[#0084ff]/15"
+                                : "text-muted-gray hover:text-bright-blue"
                               }`}
                             onClick={() => setIsMenuOpen(false)}
                           >
-                            <span className="text-[#5ab0ff]">›</span>
+                            <span className="text-bright-blue">›</span>
                             <span>{subItem.label}</span>
                           </Link>
                         ))}
@@ -290,7 +290,7 @@ export function Header() {
                 <Link
                   key={item.href}
                   href={resolvedHref}
-                  className={`rounded-xl px-3 py-3 text-sm font-medium transition-colors hover:bg-white/5 ${active ? "bg-[#0084ff]/15 text-[#5ab0ff] font-semibold" : "text-[#f5f5f7]"
+                  className={`rounded-xl px-3 py-3 text-sm font-medium transition-colors hover:bg-white/5 ${active ? "bg-[#0084ff]/15 text-bright-blue font-semibold" : "text-light-gray"
                     }`}
                   onClick={() => setIsMenuOpen(false)}
                 >

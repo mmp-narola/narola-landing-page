@@ -28,6 +28,12 @@ function StoreIcon({ className = "w-5 h-5" }: { className?: string }) {
   );
 }
 
+const ECOMMERCE_ICONS: Record<string, React.FC<{ className?: string }>> = {
+  robot: RobotIcon,
+  grid: GridIcon,
+  store: StoreIcon,
+};
+
 const VERTICAL_ICONS: Record<string, string> = {
   diamond: "💎",
   shirt: "👕",
@@ -37,21 +43,41 @@ const VERTICAL_ICONS: Record<string, string> = {
   building: "🏢",
 };
 
+interface FeatureCardProps {
+  icon: React.ReactNode;
+  title: string;
+  children: React.ReactNode;
+}
+
+function FeatureCard({ icon, title, children }: FeatureCardProps) {
+  return (
+    <div className="rounded-3xl border border-white/10 bg-[#1c1c21] p-7 backdrop-blur-sm">
+      <div className="flex items-center gap-2.5 text-bright-blue">
+        {icon}
+        <h3 className="text-lg font-semibold text-light-gray">
+          {title}
+        </h3>
+      </div>
+      {children}
+    </div>
+  );
+}
+
 export function EcommerceSection() {
   return (
     <section
       id={ecommerceContent.sectionId}
-      className="relative w-full overflow-hidden bg-[#121215] border-y border-white/[0.08] py-24 text-[#f5f5f7] md:py-32"
+      className="relative w-full overflow-hidden bg-[#121215] border-y border-white/[0.08] py-24 text-light-gray md:py-32"
     >
       <AmbientGlow position="top" height={420} color="rgba(0,132,255,0.16)" />
       <Container className="relative">
         {/* Section Header */}
         <Reveal>
           <div className="mx-auto max-w-3xl text-center">
-            <h2 className="text-display font-semibold tracking-tight text-[#f5f5f7] md:text-6xl text-balance">
+            <h2 className="text-display font-semibold tracking-tight text-light-gray md:text-6xl text-balance">
               {ecommerceContent.title}
             </h2>
-            <p className="mt-5 text-base text-[#a1a1a6] md:text-xl leading-relaxed">
+            <p className="mt-5 text-base text-muted-gray md:text-xl leading-relaxed">
               {ecommerceContent.subtitle}
             </p>
           </div>
@@ -61,69 +87,48 @@ export function EcommerceSection() {
         <div className="mt-16 grid grid-cols-1 gap-6 lg:grid-cols-12 md:mt-20">
           {/* Left Column (3 cards) */}
           <Reveal delay={200} className="flex flex-col gap-5 lg:col-span-6">
-            <div className="rounded-3xl border border-white/10 bg-[#1c1c21] p-7 backdrop-blur-sm">
-              <div className="flex items-center gap-2.5 text-[#5ab0ff]">
-                <RobotIcon className="h-5 w-5" />
-                <h3 className="text-lg font-semibold text-[#f5f5f7]">
-                  {ecommerceContent.cards[0].title}
-                </h3>
-              </div>
-              <p className="mt-2.5 text-sm text-[#a1a1a6] leading-relaxed">
-                {ecommerceContent.cards[0].description}
-              </p>
-              <div className="mt-4 flex flex-wrap gap-2">
-                {ecommerceContent.cards[0].tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-[#8ec2ff]"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </div>
+            {ecommerceContent.cards.map((card) => {
+              const IconComp = ECOMMERCE_ICONS[card.icon] ?? RobotIcon;
 
-            <div className="rounded-3xl border border-white/10 bg-[#1c1c21] p-7 backdrop-blur-sm">
-              <div className="flex items-center gap-2.5 text-[#5ab0ff]">
-                <GridIcon className="h-5 w-5" />
-                <h3 className="text-lg font-semibold text-[#f5f5f7]">
-                  {ecommerceContent.cards[1].title}
-                </h3>
-              </div>
-              <p className="mt-2.5 text-sm text-[#a1a1a6] leading-relaxed">
-                {ecommerceContent.cards[1].description}
-              </p>
-              <div className="mt-4 flex flex-wrap gap-2">
-                {ecommerceContent.cards[1].tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-[#8ec2ff]"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </div>
+              return (
+                <FeatureCard
+                  key={card.id}
+                  icon={<IconComp className="h-5 w-5" />}
+                  title={card.title}
+                >
+                  <p className="mt-2.5 text-sm text-subtle-gray leading-relaxed">
+                    {card.description}
+                  </p>
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {card.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-soft-blue"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </FeatureCard>
+              );
+            })}
 
-            <div className="rounded-3xl border border-white/10 bg-[#1c1c21] p-7 backdrop-blur-sm">
-              <div className="flex items-center gap-2.5 text-[#5ab0ff]">
-                <StoreIcon className="h-5 w-5" />
-                <h3 className="text-lg font-semibold text-[#f5f5f7]">
-                  {ecommerceContent.industryVerticals.title}
-                </h3>
-              </div>
+            <FeatureCard
+              icon={<StoreIcon className="h-5 w-5" />}
+              title={ecommerceContent.industryVerticals.title}
+            >
               <div className="mt-4 grid grid-cols-2 gap-2.5">
                 {ecommerceContent.industryVerticals.verticals.map((v) => (
                   <div
                     key={v.name}
-                    className="flex items-center gap-2 rounded-xl border border-white/10 bg-[#141418] px-3.5 py-2.5 text-xs font-semibold text-[#f5f5f7]"
+                    className="flex items-center gap-2 rounded-xl border border-white/10 bg-[#141418] px-3.5 py-2.5 text-xs font-semibold text-light-gray"
                   >
                     <span>{VERTICAL_ICONS[v.icon] || "•"}</span>
                     <span>{v.name}</span>
                   </div>
                 ))}
               </div>
-            </div>
+            </FeatureCard>
           </Reveal>
 
           {/* Right Column */}
@@ -132,7 +137,7 @@ export function EcommerceSection() {
             className="flex flex-col justify-between rounded-3xl border border-white/10 bg-[#1c1c21] p-8 backdrop-blur-sm lg:col-span-6 md:p-9"
           >
             <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-[#a1a1a6]">
+              <span className="text-xs font-bold uppercase tracking-wider text-muted-gray">
                 {ecommerceContent.rightSidebar.platformsTitle}
               </span>
 
@@ -142,10 +147,10 @@ export function EcommerceSection() {
                     key={platform.name}
                     className="flex items-center justify-between rounded-xl border border-white/10 bg-[#141418] p-4"
                   >
-                    <span className="text-sm font-semibold text-[#f5f5f7]">
+                    <span className="text-sm font-semibold text-light-gray">
                       {platform.name}
                     </span>
-                    <span className="rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-[#8ec2ff]">
+                    <span className="rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-soft-blue">
                       {platform.badge}
                     </span>
                   </div>
@@ -154,7 +159,7 @@ export function EcommerceSection() {
             </div>
 
             <div className="mt-8 border-t border-white/10 pt-6">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#a1a1a6]">
+              <span className="text-xs font-bold uppercase tracking-wider text-muted-gray">
                 {ecommerceContent.rightSidebar.caseStudiesTitle}
               </span>
               <div className="mt-4 flex flex-col gap-2.5">
@@ -162,7 +167,7 @@ export function EcommerceSection() {
                   <Link
                     key={cs.title}
                     href={cs.href}
-                    className="group flex items-center gap-2 text-sm font-semibold text-[#2997ff]"
+                    className="group flex items-center gap-2 text-sm font-semibold text-electric-blue"
                   >
                     <span className="inline-block transition-transform group-hover:translate-x-1 no-underline">→</span>
                     <span className="group-hover:underline">{cs.title}</span>

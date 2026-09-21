@@ -8,7 +8,7 @@ import { Footer } from "@/components/layout/Footer";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen flex-col bg-black text-[#f5f5f7] selection:bg-[#0084ff] selection:text-white">
+    <div className="flex min-h-screen flex-col bg-black text-light-gray selection:bg-[#0084ff] selection:text-white">
       <Header />
       <main className="flex-1">
         {/* Hero Section with interactive AI Advisor & Stats & Trusted Clients */}
