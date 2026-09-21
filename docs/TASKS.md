@@ -277,3 +277,14 @@ startups" client-logo strip into its own separated section with a lighter
 Technologies" section with a static grid of category cards showing all technology
 categories at once. See [CHANGELOG.md](CHANGELOG.md) and [AI_WORK_LOG.md](AI_WORK_LOG.md)
 for full detail.
+
+### T033 — Homepage: Apple-inspired visual redesign
+
+**Status:** Completed
+**Description:** Redesigned the homepage's presentation (Header, Hero, Core Services,
+Other Services, Technologies, Industries, CEO Message) in a premium, minimal,
+Apple-product-page-inspired visual direction — large display typography, generous
+whitespace, editorial section layouts, and subtle scroll-reveal motion — while keeping
+every existing heading, description, service, technology, industry, and business claim
+unchanged. See [CHANGELOG.md](CHANGELOG.md) and [AI_WORK_LOG.md](AI_WORK_LOG.md) for full
+detail.
