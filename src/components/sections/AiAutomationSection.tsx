@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
+import { AmbientGlow } from "@/components/ui/AmbientGlow";
 import { aiAutomationContent } from "@/content/homeContent";
 
 function RobotIcon({ className = "w-5 h-5" }: { className?: string }) {
@@ -39,10 +40,7 @@ export function AiAutomationSection() {
       id={aiAutomationContent.sectionId}
       className="relative w-full overflow-hidden bg-black py-24 text-[#f5f5f7] md:py-32"
     >
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 h-[420px] bg-[radial-gradient(ellipse_at_top,_rgba(0,132,255,0.14),_transparent_65%)]"
-      />
+      <AmbientGlow position="top" height={420} color="rgba(0,132,255,0.14)" />
       <Container className="relative">
         {/* Centered feature block — eyebrow + headline + supporting copy */}
         <Reveal>
@@ -125,10 +123,10 @@ export function AiAutomationSection() {
                   <Link
                     key={cs.title}
                     href={cs.href}
-                    className="group flex items-center gap-2 text-sm font-semibold text-[#5ab0ff] hover:text-[#8ec2ff]"
+                    className="group flex items-center gap-2 text-sm font-semibold text-[#2997ff]"
                   >
-                    <span className="transition-transform group-hover:translate-x-1">→</span>
-                    <span>{cs.title}</span>
+                    <span className="inline-block transition-transform group-hover:translate-x-1 no-underline">→</span>
+                    <span className="group-hover:underline">{cs.title}</span>
                   </Link>
                 ))}
               </div>

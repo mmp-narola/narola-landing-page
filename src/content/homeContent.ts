@@ -54,54 +54,84 @@ export const heroContent = {
     {
       id: "shopify-store",
       label: "I need a Shopify store",
-      query: "I need a high-converting Shopify store with custom integrations and AI recommendations",
+      query:
+        "I need a high-converting Shopify store with custom integrations and AI recommendations",
       response: {
         title: "Shopify Store & AI Commerce Engineering",
         summary:
           "Full-stack Shopify Plus & custom storefront architecture with AI-powered search, recommendation engines, and high-speed checkout funnels.",
-        recommendedStack: ["Shopify Plus", "Hydrogen", "Next.js", "GraphQL", "Tailwind CSS"],
+        recommendedStack: [
+          "Shopify Plus",
+          "Hydrogen",
+          "Next.js",
+          "GraphQL",
+          "Tailwind CSS",
+        ],
         timeline: "4 - 8 Weeks",
-        teamStructure: "1 Tech Lead, 2 Frontend Devs, 1 Shopify Specialist, 1 QA",
+        teamStructure:
+          "1 Tech Lead, 2 Frontend Devs, 1 Shopify Specialist, 1 QA",
         serviceLink: "#ecommerce",
       },
     },
     {
       id: "ai-chatbot",
       label: "Build me an AI chatbot",
-      query: "Build an autonomous AI chatbot for 24/7 customer support and internal knowledge retrieval",
+      query:
+        "Build an autonomous AI chatbot for 24/7 customer support and internal knowledge retrieval",
       response: {
         title: "Custom AI Agent & Conversational Assistant",
         summary:
           "Domain-tuned conversational agent integrated with your knowledge base, CRM, and ticketing platforms with guardrails and high accuracy.",
-        recommendedStack: ["LangChain", "OpenAI / Claude API", "LlamaIndex", "FastAPI", "Pinecone"],
+        recommendedStack: [
+          "LangChain",
+          "OpenAI / Claude API",
+          "LlamaIndex",
+          "FastAPI",
+          "Pinecone",
+        ],
         timeline: "3 - 6 Weeks",
-        teamStructure: "1 AI Engineer, 1 Backend Dev, 1 Prompt Specialist, 1 QA",
+        teamStructure:
+          "1 AI Engineer, 1 Backend Dev, 1 Prompt Specialist, 1 QA",
         serviceLink: "#ai-automation",
       },
     },
     {
       id: "saas-idea",
       label: "I have a SaaS product idea",
-      query: "I have a SaaS product idea and need MVP development through production scale",
+      query:
+        "I have a SaaS product idea and need MVP development through production scale",
       response: {
         title: "End-to-End SaaS Product Development",
         summary:
           "Full-cycle product engineering from discovery & scoping, MVP build, multi-tenant architecture, automated billing, to cloud scaling.",
-        recommendedStack: ["Next.js", "TypeScript", "Node.js", "PostgreSQL", "AWS / GCP"],
+        recommendedStack: [
+          "Next.js",
+          "TypeScript",
+          "Node.js",
+          "PostgreSQL",
+          "AWS / GCP",
+        ],
         timeline: "6 - 12 Weeks",
-        teamStructure: "1 Solutions Architect, 2 Full-Stack Devs, 1 Product Designer, 1 QA",
+        teamStructure:
+          "1 Solutions Architect, 2 Full-Stack Devs, 1 Product Designer, 1 QA",
         serviceLink: "#product-engineering",
       },
     },
     {
       id: "automate-workflows",
       label: "Automate my workflows",
-      query: "Automate internal business workflows, document processing, and CRM sync",
+      query:
+        "Automate internal business workflows, document processing, and CRM sync",
       response: {
         title: "Intelligent Workflow Automation & IDP",
         summary:
           "End-to-end automation connecting CRMs, ERPs, billing, and document ingestion (IDP) to eliminate manual data entry & errors.",
-        recommendedStack: ["n8n / Make", "Python RPA", "Document AI", "REST Webhooks"],
+        recommendedStack: [
+          "n8n / Make",
+          "Python RPA",
+          "Document AI",
+          "REST Webhooks",
+        ],
         timeline: "2 - 5 Weeks",
         teamStructure: "1 Automation Architect, 1 Integration Engineer, 1 QA",
         serviceLink: "#ai-automation",
@@ -115,9 +145,15 @@ export const heroContent = {
         title: "Native & Cross-Platform Mobile App Engineering",
         summary:
           "App store quality mobile applications built for real users with smooth UI/UX, offline support, and cloud API integration.",
-        recommendedStack: ["React Native", "Flutter", "iOS / Swift", "Android / Kotlin"],
+        recommendedStack: [
+          "React Native",
+          "Flutter",
+          "iOS / Swift",
+          "Android / Kotlin",
+        ],
         timeline: "6 - 10 Weeks",
-        teamStructure: "1 Mobile Tech Lead, 2 Mobile Devs, 1 UI/UX Designer, 1 QA",
+        teamStructure:
+          "1 Mobile Tech Lead, 2 Mobile Devs, 1 UI/UX Designer, 1 QA",
         serviceLink: "#product-engineering",
       },
     },
@@ -129,7 +165,14 @@ export const heroContent = {
     { value: "20 yrs", label: "In business" },
   ] as StatItem[],
   trustedBannerTitle: "TRUSTED BY 1,500+ CLIENTS INCLUDING",
-  trustedClients: ["CGI", "L&T", "Infosys", "Biocon", "TVS Next", "+ 1,495 more"],
+  trustedClients: [
+    "CGI",
+    "L&T",
+    "Infosys",
+    "Biocon",
+    "TVS Next",
+    "+ 1,495 more",
+  ],
 };
 
 export const ecommerceContent = {
@@ -297,7 +340,8 @@ export const productEngineeringContent = {
 export const ourWorkContent = {
   sectionId: "work",
   title: "Our work",
-  subtitle: "1,500+ clients globally — who we've worked with, and what we achieved for them.",
+  subtitle:
+    "1,500+ clients globally — who we've worked with, and what we achieved for them.",
   filterTabs: [
     { id: "ecommerce", label: "eCommerce" },
     { id: "ai", label: "AI & Automation" },
@@ -451,7 +495,7 @@ export const ourWorkContent = {
   ] as FeaturedCaseStudyItem[],
   footerBanner: {
     leftText: "Showing a sample of 1,500+ clients across 50+ countries.",
-    linkText: "View all case studies →",
+    linkText: "View all case studies",
     href: "/case-studies",
   },
 };

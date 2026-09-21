@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
+import { AmbientGlow } from "@/components/ui/AmbientGlow";
 import { ecommerceContent } from "@/content/homeContent";
 
 function RobotIcon({ className = "w-5 h-5" }: { className?: string }) {
@@ -40,12 +41,9 @@ export function EcommerceSection() {
   return (
     <section
       id={ecommerceContent.sectionId}
-      className="relative w-full overflow-hidden bg-black py-24 text-[#f5f5f7] md:py-32"
+      className="relative w-full overflow-hidden bg-[#121215] border-y border-white/[0.08] py-24 text-[#f5f5f7] md:py-32"
     >
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 h-[420px] bg-[radial-gradient(ellipse_at_top,_rgba(0,132,255,0.16),_transparent_65%)]"
-      />
+      <AmbientGlow position="top" height={420} color="rgba(0,132,255,0.16)" />
       <Container className="relative">
         {/* Section Header */}
         <Reveal>
@@ -62,8 +60,8 @@ export function EcommerceSection() {
         {/* Bento Grid */}
         <div className="mt-16 grid grid-cols-1 gap-6 lg:grid-cols-12 md:mt-20">
           {/* Left Column (3 cards) */}
-          <Reveal delay={100} className="flex flex-col gap-5 lg:col-span-6">
-            <div className="rounded-3xl border border-white/10 bg-[#1d1d1f] p-7 backdrop-blur-sm">
+          <Reveal delay={200} className="flex flex-col gap-5 lg:col-span-6">
+            <div className="rounded-3xl border border-white/10 bg-[#1c1c21] p-7 backdrop-blur-sm">
               <div className="flex items-center gap-2.5 text-[#5ab0ff]">
                 <RobotIcon className="h-5 w-5" />
                 <h3 className="text-lg font-semibold text-[#f5f5f7]">
@@ -85,7 +83,7 @@ export function EcommerceSection() {
               </div>
             </div>
 
-            <div className="rounded-3xl border border-white/10 bg-[#1d1d1f] p-7 backdrop-blur-sm">
+            <div className="rounded-3xl border border-white/10 bg-[#1c1c21] p-7 backdrop-blur-sm">
               <div className="flex items-center gap-2.5 text-[#5ab0ff]">
                 <GridIcon className="h-5 w-5" />
                 <h3 className="text-lg font-semibold text-[#f5f5f7]">
@@ -107,7 +105,7 @@ export function EcommerceSection() {
               </div>
             </div>
 
-            <div className="rounded-3xl border border-white/10 bg-[#1d1d1f] p-7 backdrop-blur-sm">
+            <div className="rounded-3xl border border-white/10 bg-[#1c1c21] p-7 backdrop-blur-sm">
               <div className="flex items-center gap-2.5 text-[#5ab0ff]">
                 <StoreIcon className="h-5 w-5" />
                 <h3 className="text-lg font-semibold text-[#f5f5f7]">
@@ -118,7 +116,7 @@ export function EcommerceSection() {
                 {ecommerceContent.industryVerticals.verticals.map((v) => (
                   <div
                     key={v.name}
-                    className="flex items-center gap-2 rounded-xl border border-white/10 bg-[#1d1d1f] px-3.5 py-2.5 text-xs font-semibold text-[#f5f5f7]"
+                    className="flex items-center gap-2 rounded-xl border border-white/10 bg-[#141418] px-3.5 py-2.5 text-xs font-semibold text-[#f5f5f7]"
                   >
                     <span>{VERTICAL_ICONS[v.icon] || "•"}</span>
                     <span>{v.name}</span>
@@ -130,8 +128,8 @@ export function EcommerceSection() {
 
           {/* Right Column */}
           <Reveal
-            delay={200}
-            className="flex flex-col justify-between rounded-3xl border border-white/10 bg-[#1d1d1f] p-8 backdrop-blur-sm lg:col-span-6 md:p-9"
+            delay={300}
+            className="flex flex-col justify-between rounded-3xl border border-white/10 bg-[#1c1c21] p-8 backdrop-blur-sm lg:col-span-6 md:p-9"
           >
             <div>
               <span className="text-xs font-bold uppercase tracking-wider text-[#a1a1a6]">
@@ -142,7 +140,7 @@ export function EcommerceSection() {
                 {ecommerceContent.rightSidebar.platforms.map((platform) => (
                   <div
                     key={platform.name}
-                    className="flex items-center justify-between rounded-xl border border-white/10 bg-[#151515] p-4"
+                    className="flex items-center justify-between rounded-xl border border-white/10 bg-[#141418] p-4"
                   >
                     <span className="text-sm font-semibold text-[#f5f5f7]">
                       {platform.name}
@@ -164,10 +162,10 @@ export function EcommerceSection() {
                   <Link
                     key={cs.title}
                     href={cs.href}
-                    className="group flex items-center gap-2 text-sm font-semibold text-[#5ab0ff] hover:text-[#8ec2ff]"
+                    className="group flex items-center gap-2 text-sm font-semibold text-[#2997ff]"
                   >
-                    <span className="transition-transform group-hover:translate-x-1">→</span>
-                    <span>{cs.title}</span>
+                    <span className="inline-block transition-transform group-hover:translate-x-1 no-underline">→</span>
+                    <span className="group-hover:underline">{cs.title}</span>
                   </Link>
                 ))}
               </div>

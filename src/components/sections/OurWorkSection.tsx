@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
+import { AmbientGlow } from "@/components/ui/AmbientGlow";
 import { ourWorkContent, type GroupedClientCategory } from "@/content/homeContent";
 
 function LocationPinIcon({ className = "w-3 h-3" }: { className?: string }) {
@@ -22,8 +23,9 @@ export function OurWorkSection() {
     ourWorkContent.groupedClientsByTab?.[activeTab] ?? ourWorkContent.groupedClients;
 
   return (
-    <section id={ourWorkContent.sectionId} className="relative w-full bg-black py-24 text-[#f5f5f7] md:py-32">
-      <Container>
+    <section id={ourWorkContent.sectionId} className="relative w-full overflow-hidden bg-black py-24 text-[#f5f5f7] md:py-32">
+      <AmbientGlow position="top" height={420} color="rgba(0,132,255,0.14)" />
+      <Container className="relative">
         {/* Section Header */}
         <Reveal>
           <div className="mx-auto max-w-3xl text-center">
@@ -46,11 +48,10 @@ export function OurWorkSection() {
                   key={tab.id}
                   type="button"
                   onClick={() => setActiveTab(tab.id as "ecommerce" | "ai" | "engineering")}
-                  className={`rounded-full px-6 py-2.5 text-sm font-semibold transition-all duration-200 ${
-                    isActive
-                      ? "bg-[#f5f5f7] text-black shadow-sm"
-                      : "border border-white/10 bg-[#1d1d1f] text-[#f5f5f7] hover:bg-[#232326]"
-                  }`}
+                  className={`rounded-full px-6 py-2.5 text-sm font-semibold transition-all duration-200 ${isActive
+                    ? "bg-[#f5f5f7] text-black shadow-sm"
+                    : "border border-white/10 bg-[#1d1d1f] text-[#f5f5f7] hover:bg-[#232326]"
+                    }`}
                 >
                   {tab.label}
                 </button>
@@ -61,13 +62,13 @@ export function OurWorkSection() {
 
         {/* Grouped Client Badges */}
         <Reveal delay={150}>
-          <div className="mt-14 flex flex-col gap-10">
+          <div className="mt-8 flex flex-col gap-6">
             {currentGroups.map((group) => (
-              <div key={group.groupName} className="border-t border-white/10 pt-7 first:border-0 first:pt-0">
+              <div key={group.groupName} className="border-t border-white/10 pt-6 first:border-0 first:pt-0">
                 <span className="text-xs font-bold uppercase tracking-wider text-[#86868b]">
                   {group.groupName}
                 </span>
-                <div className="mt-5 flex flex-wrap gap-3.5">
+                <div className="mt-4 flex flex-wrap gap-3.5">
                   {group.clients.map((client) => (
                     <div
                       key={client.name}
@@ -95,7 +96,7 @@ export function OurWorkSection() {
 
         {/* Featured Case Studies — dark rounded panel with a stat-tile grid,
            floating on the black page background (Apple "worth it" pattern) */}
-        <div className="mt-24">
+        <div className="mt-16">
           <Reveal>
             <div className="rounded-[32px] border border-white/10 bg-[#1d1d1f] p-6 sm:p-8 md:p-12">
               <div className="flex flex-wrap items-center justify-between gap-4">
@@ -104,9 +105,10 @@ export function OurWorkSection() {
                 </h3>
                 <Link
                   href={ourWorkContent.footerBanner.href}
-                  className="flex items-center gap-1 text-sm font-semibold text-[#5ab0ff] hover:text-[#8ec2ff]"
+                  className="group flex items-center gap-1.5 text-sm font-semibold text-[#2997ff]"
                 >
-                  <span>{ourWorkContent.footerBanner.linkText}</span>
+                  <span className="group-hover:underline">{ourWorkContent.footerBanner.linkText}</span>
+                  {/* <span className="inline-block transition-transform group-hover:translate-x-1 no-underline">→</span> */}
                 </Link>
               </div>
 
@@ -161,9 +163,10 @@ export function OurWorkSection() {
             <span>{ourWorkContent.footerBanner.leftText}</span>
             <Link
               href={ourWorkContent.footerBanner.href}
-              className="flex items-center gap-1 font-semibold text-[#5ab0ff] hover:underline"
+              className="group flex items-center gap-1.5 font-semibold text-[#2997ff]"
             >
-              <span>{ourWorkContent.footerBanner.linkText}</span>
+              <span className="group-hover:underline">{ourWorkContent.footerBanner.linkText}</span>
+              {/* <span className="inline-block transition-transform group-hover:translate-x-1 no-underline">→</span> */}
             </Link>
           </div>
         </Reveal>

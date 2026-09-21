@@ -5,6 +5,8 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 interface RevealProps {
   children: ReactNode;
   className?: string;
+  /** Visual treatment: fade+rise (default) or fade+scale */
+  variant?: "up" | "scale";
   /** Extra delay in ms, for staggering siblings. */
   delay?: number;
 }
@@ -16,7 +18,7 @@ interface RevealProps {
  * plain CSS transitions, and is disabled entirely under
  * prefers-reduced-motion via the global rule in globals.css.
  */
-export function Reveal({ children, className = "", delay = 0 }: RevealProps) {
+export function Reveal({ children, className = "", variant = "up", delay = 0 }: RevealProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
 

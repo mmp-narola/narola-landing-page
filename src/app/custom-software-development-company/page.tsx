@@ -123,7 +123,7 @@ export default async function CustomSoftwareDevelopmentPage() {
                 </div>
                 <Link
                   href="/case-studies"
-                  className="inline-flex items-center gap-1 text-sm font-bold text-interactive-blue hover:underline"
+                  className="inline-flex items-center gap-1 text-sm text-[#2997ff] hover:underline"
                 >
                   <span>View All Case Studies</span>
                   <span>→</span>

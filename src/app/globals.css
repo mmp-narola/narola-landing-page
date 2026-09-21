@@ -49,13 +49,13 @@
      size per VISUAL_DIRECTION.md; H3/H4/body/small/button sizes are constant across
      breakpoints and so need only one token each.
 
-     Font stack: leads with each OS's native system font (San Francisco on Apple
-     platforms via -apple-system/BlinkMacSystemFont, Segoe UI on Windows, Roboto on
-     Android/ChromeOS) for an Apple-style typographic feel with zero extra font
-     requests, falling back to the self-hosted Inter (brand font, always available)
-     everywhere else. */
+     Font stack: leads with the self-hosted Inter (brand font, loaded via
+     next/font/google in layout.tsx) so the site renders consistently everywhere;
+     each OS's native system font (San Francisco on Apple platforms, Segoe UI on
+     Windows, Roboto on Android/ChromeOS) is kept only as a fallback in case Inter
+     ever fails to load. */
   --font-sans:
-    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, var(--font-inter),
+    var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     ui-sans-serif, system-ui, sans-serif;
 
   --text-h1: 2.25rem; /* 36px, mobile */

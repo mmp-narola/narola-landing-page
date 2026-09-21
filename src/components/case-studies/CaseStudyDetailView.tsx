@@ -244,11 +244,10 @@ export function CaseStudyDetailView({
                     <button
                       key={idx}
                       onClick={() => setActiveImageIndex(idx)}
-                      className={`h-16 w-24 overflow-hidden rounded-xl border-2 transition-all ${
-                        activeImageIndex === idx
+                      className={`h-16 w-24 overflow-hidden rounded-xl border-2 transition-all ${activeImageIndex === idx
                           ? "border-interactive-blue scale-105 shadow-sm"
                           : "border-slate/20 opacity-60 hover:opacity-100"
-                      }`}
+                        }`}
                     >
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
@@ -284,11 +283,10 @@ export function CaseStudyDetailView({
                 <button
                   key={tab.key}
                   onClick={() => setActiveTab(tab.key)}
-                  className={`rounded-xl px-4 py-2.5 text-xs font-bold transition-all md:text-sm ${
-                    activeTab === tab.key
+                  className={`rounded-xl px-4 py-2.5 text-xs font-bold transition-all md:text-sm ${activeTab === tab.key
                       ? "bg-white text-interactive-blue shadow-sm"
                       : "text-slate hover:text-ink"
-                  }`}
+                    }`}
                 >
                   {tab.label}
                 </button>
@@ -445,7 +443,7 @@ export function CaseStudyDetailView({
             <div className="mt-12 text-center">
               <Link
                 href="/case-studies"
-                className="inline-flex items-center gap-2 text-sm font-bold text-interactive-blue hover:underline"
+                className="inline-flex items-center gap-2 text-sm font-bold text-[#2997ff] hover:underline"
               >
                 View All Case Studies
                 <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">

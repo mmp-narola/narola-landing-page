@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
+import { AmbientGlow } from "@/components/ui/AmbientGlow";
 import { productEngineeringContent } from "@/content/homeContent";
 
 function MonitorIcon({ className = "w-5 h-5" }: { className?: string }) {
@@ -37,12 +38,9 @@ export function ProductEngineeringSection() {
   return (
     <section
       id={productEngineeringContent.sectionId}
-      className="relative w-full overflow-hidden bg-black py-24 text-[#f5f5f7] md:py-32"
+      className="relative w-full overflow-hidden bg-[#121215] border-y border-white/[0.08] py-24 text-[#f5f5f7] md:py-32"
     >
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-[420px] bg-[radial-gradient(ellipse_at_bottom,_rgba(0,132,255,0.14),_transparent_65%)]"
-      />
+      <AmbientGlow position="top" height={420} color="rgba(0,132,255,0.14)" />
       <Container className="relative">
         {/* Centered feature block — eyebrow + headline + supporting copy */}
         <Reveal>
@@ -90,8 +88,8 @@ export function ProductEngineeringSection() {
           })}
         </div>
 
-        {/* Engineering process + case studies — charcoal panel for depth against the black page */}
-        <Reveal delay={300} className="mt-16 rounded-3xl border border-white/10 bg-[#1d1d1f] p-8 md:mt-20 md:p-10">
+        {/* Engineering process + case studies — charcoal panel for depth against the section */}
+        <Reveal delay={300} className="mt-16 rounded-3xl border border-white/10 bg-[#1c1c21] p-8 md:mt-20 md:p-10">
           <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
             <div>
               <span className="text-xs font-bold uppercase tracking-wider text-[#a1a1a6]">
@@ -101,7 +99,7 @@ export function ProductEngineeringSection() {
                 {productEngineeringContent.rightProcess.steps.map((step) => (
                   <div
                     key={step.title}
-                    className="rounded-2xl border border-white/10 bg-[#151515] p-5"
+                    className="rounded-2xl border border-white/10 bg-[#141418] p-5"
                   >
                     <div className="flex items-center gap-2">
                       <span className="h-2 w-2 rounded-full bg-[#5ab0ff] shrink-0" />
@@ -126,10 +124,10 @@ export function ProductEngineeringSection() {
                   <Link
                     key={cs.title}
                     href={cs.href}
-                    className="group flex items-center gap-2 text-sm font-semibold text-[#5ab0ff] hover:text-[#8ec2ff]"
+                    className="group flex items-center gap-2 text-sm font-semibold text-[#2997ff]"
                   >
-                    <span className="transition-transform group-hover:translate-x-1">→</span>
-                    <span>{cs.title}</span>
+                    <span className="inline-block transition-transform group-hover:translate-x-1 no-underline">→</span>
+                    <span className="group-hover:underline">{cs.title}</span>
                   </Link>
                 ))}
               </div>

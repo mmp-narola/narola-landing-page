@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
+import { AmbientGlow } from "@/components/ui/AmbientGlow";
 import { heroContent, type QuickPrompt } from "@/content/homeContent";
 
 function ChatIcon({ className = "w-4 h-4" }: { className?: string }) {
@@ -50,11 +51,7 @@ export function HeroSection() {
 
   return (
     <section className="relative overflow-hidden bg-black pt-20 pb-20 sm:pt-28 sm:pb-28 lg:pt-36 lg:pb-32 text-[#f5f5f7]">
-      {/* Soft radial glow — purely decorative, cinematic backdrop like an Apple product hero */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 -top-40 h-[560px] bg-[radial-gradient(ellipse_at_top,_rgba(0,85,255,0.18),_transparent_65%)]"
-      />
+      <AmbientGlow position="top" height={560} color="rgba(0,85,255,0.18)" className="-top-40" />
 
       <Container className="relative">
         <div className="mx-auto max-w-5xl text-center">
@@ -62,7 +59,7 @@ export function HeroSection() {
           <Reveal>
             <h1 className="text-display font-semibold tracking-tight text-[#f5f5f7] md:text-display-lg text-balance">
               {heroContent.headlinePrefix}
-              <span className="bg-gradient-to-r from-[#0084ff] to-[#00c2ff] bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#2997ff] to-[#a855f7] bg-clip-text text-transparent">
                 {heroContent.headlineHighlight}
               </span>
               {heroContent.headlineSuffix}
@@ -70,14 +67,14 @@ export function HeroSection() {
           </Reveal>
 
           {/* Subtitle */}
-          <Reveal delay={100}>
+          <Reveal delay={200}>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-[#a1a1a6] sm:text-xl font-normal leading-relaxed">
               {heroContent.subtitle}
             </p>
           </Reveal>
 
           {/* Interactive "ASK US ANYTHING" Card */}
-          <Reveal delay={200}>
+          <Reveal delay={400}>
             <div className="mx-auto mt-14 max-w-3xl rounded-[28px] border border-white/10 bg-[#1d1d1f] p-6 text-left shadow-[0_20px_60px_-15px_rgba(0,0,0,0.5)] md:p-9">
               <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-[#5ab0ff]">
                 <ChatIcon className="h-4 w-4" />
@@ -112,11 +109,10 @@ export function HeroSection() {
                       key={prompt.id}
                       type="button"
                       onClick={() => handleSelectPrompt(prompt)}
-                      className={`rounded-full px-4 py-2 text-xs font-medium transition-all duration-200 ${
-                        isSelected
-                          ? "bg-[#0084ff] text-white font-semibold shadow-sm"
-                          : "bg-white/[0.06] text-[#f5f5f7] hover:bg-[#0084ff]/15 hover:text-[#5ab0ff]"
-                      }`}
+                      className={`rounded-full px-4 py-2 text-xs font-medium transition-all duration-200 ${isSelected
+                        ? "bg-[#0084ff] text-white font-semibold shadow-sm"
+                        : "bg-white/[0.06] text-[#f5f5f7] hover:bg-[#0084ff]/15 hover:text-[#5ab0ff]"
+                        }`}
                     >
                       {prompt.label}
                     </button>
@@ -183,14 +179,14 @@ export function HeroSection() {
           {/* Trusted Clients Ribbon */}
           <Reveal delay={350}>
             <div className="mx-auto mt-14 max-w-4xl">
-              <span className="block text-[11px] font-bold uppercase tracking-wider text-[#86868b]">
+              <span className="block text-[11px] font-semibold uppercase tracking-wider text-[#86868b]">
                 {heroContent.trustedBannerTitle}
               </span>
               <div className="mt-4 flex flex-wrap items-center justify-center gap-3">
                 {heroContent.trustedClients.map((client) => (
                   <span
                     key={client}
-                    className="rounded-full border border-white/10 bg-[#151515] px-5 py-2.5 text-xs font-semibold text-[#f5f5f7]"
+                    className="rounded-full border border-white/10 bg-[#151515] px-5 py-2.5 text-xs text-[#f5f5f7]"
                   >
                     {client}
                   </span>
