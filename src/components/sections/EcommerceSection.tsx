@@ -51,7 +51,7 @@ interface FeatureCardProps {
 
 function FeatureCard({ icon, title, children }: FeatureCardProps) {
   return (
-    <div className="rounded-3xl border border-white/10 bg-[#1c1c21] p-7 backdrop-blur-sm hover:scale-102 duration-500">
+    <div className="rounded-3xl border border-white/10 bg-[#1c1c21] p-7 backdrop-blur-sm transition-all duration-500 hover:scale-102">
       <div className="flex items-center gap-2.5 text-bright-blue">
         {icon}
         <h3 className="text-lg font-semibold text-light-gray">
@@ -156,45 +156,47 @@ export function EcommerceSection() {
           <Reveal
             variant="right"
             delay={500}
-            className="flex flex-col justify-between rounded-3xl border border-white/10 bg-[#1c1c21] p-8 backdrop-blur-sm lg:col-span-6 md:p-9 hover:scale-102 duration-500"
+            className="flex lg:col-span-6"
           >
-            <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-muted-gray">
-                {ecommerceContent.rightSidebar.platformsTitle}
-              </span>
+            <div className="flex w-full flex-col justify-between rounded-3xl border border-white/10 bg-[#1c1c21] p-8 backdrop-blur-sm md:p-9 transition-all duration-500 hover:scale-102">
+              <div>
+                <span className="text-xs font-bold uppercase tracking-wider text-muted-gray">
+                  {ecommerceContent.rightSidebar.platformsTitle}
+                </span>
 
-              <div className="mt-5 flex flex-col gap-3">
-                {ecommerceContent.rightSidebar.platforms.map((platform) => (
-                  <div
-                    key={platform.name}
-                    className="flex items-center justify-between rounded-xl border border-white/10 bg-[#141418] p-4"
-                  >
-                    <span className="text-sm font-semibold text-light-gray">
-                      {platform.name}
-                    </span>
-                    <span className="rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-soft-blue">
-                      {platform.badge}
-                    </span>
-                  </div>
-                ))}
+                <div className="mt-5 flex flex-col gap-3">
+                  {ecommerceContent.rightSidebar.platforms.map((platform) => (
+                    <div
+                      key={platform.name}
+                      className="flex items-center justify-between rounded-xl border border-white/10 bg-[#141418] p-4"
+                    >
+                      <span className="text-sm font-semibold text-light-gray">
+                        {platform.name}
+                      </span>
+                      <span className="rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-soft-blue">
+                        {platform.badge}
+                      </span>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
 
-            <div className="mt-8 border-t border-white/10 pt-6">
-              <span className="text-xs font-bold uppercase tracking-wider text-muted-gray">
-                {ecommerceContent.rightSidebar.caseStudiesTitle}
-              </span>
-              <div className="mt-4 flex flex-col gap-2.5">
-                {ecommerceContent.rightSidebar.caseStudies.map((cs) => (
-                  <Link
-                    key={cs.title}
-                    href={cs.href}
-                    className="group flex items-center gap-2 text-sm font-semibold text-electric-blue"
-                  >
-                    <span className="inline-block transition-transform group-hover:translate-x-1 no-underline">→</span>
-                    <span className="group-hover:underline">{cs.title}</span>
-                  </Link>
-                ))}
+              <div className="mt-8 border-t border-white/10 pt-6">
+                <span className="text-xs font-bold uppercase tracking-wider text-muted-gray">
+                  {ecommerceContent.rightSidebar.caseStudiesTitle}
+                </span>
+                <div className="mt-4 flex flex-col gap-2.5">
+                  {ecommerceContent.rightSidebar.caseStudies.map((cs) => (
+                    <Link
+                      key={cs.title}
+                      href={cs.href}
+                      className="group flex items-center gap-2 text-sm font-semibold text-electric-blue"
+                    >
+                      <span className="inline-block transition-transform group-hover:translate-x-1 no-underline">→</span>
+                      <span className="group-hover:underline">{cs.title}</span>
+                    </Link>
+                  ))}
+                </div>
               </div>
             </div>
           </Reveal>

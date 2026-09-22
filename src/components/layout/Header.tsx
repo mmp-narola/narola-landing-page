@@ -58,8 +58,8 @@ export function Header() {
   return (
     <header
       className={`sticky top-0 z-50 h-16 transition-all duration-500 ease-out md:h-20 ${isScrolled
-          ? "bg-black/80 border-b border-white/10 shadow-[0_1px_24px_rgba(0,0,0,0.3)] backdrop-blur-2xl"
-          : "bg-black/40 border-b border-transparent backdrop-blur-lg"
+        ? "bg-black/80 border-b border-white/10 shadow-[0_1px_24px_rgba(0,0,0,0.3)] backdrop-blur-2xl"
+        : "bg-black/80 border-b border-transparent backdrop-blur-lg"
         }`}
     >
       <Container className="flex h-full items-center justify-between">
@@ -112,8 +112,8 @@ export function Header() {
                   {/* Dropdown Menu */}
                   <div
                     className={`absolute left-0 top-full -mt-1 w-80 rounded-2xl border border-white/10 bg-[#1d1d1f]/95 p-2 shadow-2xl backdrop-blur-2xl transition-all duration-200 ${isServicesHovered
-                        ? "visible translate-y-0 opacity-100"
-                        : "invisible -translate-y-2 opacity-0 pointer-events-none"
+                      ? "visible translate-y-0 opacity-100"
+                      : "invisible -translate-y-2 opacity-0 pointer-events-none"
                       }`}
                   >
                     <div className="py-1">
@@ -128,15 +128,15 @@ export function Header() {
                             key={subItem.label}
                             href={subItem.href}
                             className={`group flex items-start gap-2.5 rounded-xl px-3 py-2.5 transition-colors ${isSubActive
-                                ? "bg-[#0084ff]/15 text-bright-blue"
-                                : "text-[#d1d1d6] hover:bg-white/5 hover:text-bright-blue"
+                              ? "bg-[#0084ff]/15 text-bright-blue"
+                              : "text-[#d1d1d6] hover:bg-white/5 hover:text-bright-blue"
                               }`}
                             onClick={() => setIsServicesHovered(false)}
                           >
                             <svg
                               className={`mt-1 h-3.5 w-3.5 shrink-0 transition-transform group-hover:translate-x-0.5 ${isSubActive
-                                  ? "text-bright-blue"
-                                  : "text-[#86868b] group-hover:text-bright-blue"
+                                ? "text-bright-blue"
+                                : "text-[#86868b] group-hover:text-bright-blue"
                                 }`}
                               viewBox="0 0 20 20"
                               fill="currentColor"
@@ -271,8 +271,8 @@ export function Header() {
                             key={subItem.label}
                             href={subItem.href}
                             className={`flex items-center gap-2 rounded-lg px-2.5 py-2 text-xs transition-colors hover:bg-white/5 ${pathname === subItem.href
-                                ? "font-semibold text-bright-blue bg-[#0084ff]/15"
-                                : "text-muted-gray hover:text-bright-blue"
+                              ? "font-semibold text-bright-blue bg-[#0084ff]/15"
+                              : "text-muted-gray hover:text-bright-blue"
                               }`}
                             onClick={() => setIsMenuOpen(false)}
                           >
