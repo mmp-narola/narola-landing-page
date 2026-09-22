@@ -15,8 +15,8 @@ export function OurWorkSection() {
     ourWorkContent.groupedClientsByTab?.[activeTab] ?? ourWorkContent.groupedClients;
 
   return (
-    <section id={ourWorkContent.sectionId} className="relative w-full overflow-hidden bg-black py-24 text-light-gray md:py-32">
-      <AmbientGlow position="top" height={420} color="rgba(0,132,255,0.14)" />
+    <section id={ourWorkContent.sectionId} className="relative w-full overflow-hidden bg-light-gray py-24 text-light-gray md:py-32">
+      {/* <AmbientGlow position="top" height={420} color="rgba(0,132,255,0.14)" /> */}
       <Container className="relative">
         {/* Section Header */}
         <Reveal>

@@ -16,9 +16,9 @@ export function AiAutomationSection() {
   return (
     <section
       id={aiAutomationContent.sectionId}
-      className="relative w-full overflow-hidden bg-black py-24 text-light-gray md:py-32"
+      className="relative w-full overflow-hidden py-24 bg-light-gray text-light-gray md:py-32"
     >
-      <AmbientGlow position="top" height={420} color="rgba(0,132,255,0.14)" />
+      {/* <AmbientGlow position="top" height={420} color="rgba(0,132,255,0.14)" /> */}
       <Container className="relative">
         {/* Centered feature block — eyebrow + headline + supporting copy */}
         <Reveal>

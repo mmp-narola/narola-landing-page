@@ -43,8 +43,8 @@ export function HeroSection() {
   };
 
   return (
-    <section className="relative overflow-hidden bg-black pt-20 pb-20 sm:pt-28 sm:pb-28 lg:pt-36 lg:pb-32 text-light-gray">
-      <AmbientGlow position="top" height={560} color="rgba(0,85,255,0.18)" className="-top-40" />
+    <section className="relative overflow-hidden bg-light-gray pt-20 pb-20 sm:pt-28 sm:pb-28 lg:pt-36 lg:pb-32 text-light-gray">
+      {/* <AmbientGlow position="top" height={560} color="rgba(0,85,255,0.18)" className="-top-40" /> */}
 
       <Container className="relative">
         <div className="mx-auto max-w-5xl text-center">

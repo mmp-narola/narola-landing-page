@@ -74,14 +74,14 @@ export default function Home() {
   const faqSchema = getHomeFaqSchema();
 
   return (
-    <div className="flex min-h-screen flex-col bg-black text-light-gray selection:bg-[#0084ff] selection:text-white">
+    <div className="flex min-h-screen flex-col bg-white text-light-gray selection:bg-[#0084ff] selection:text-white">
       {/* Structured Data for SEO & AEO (Google, ChatGPT, Claude, Perplexity) */}
       <JsonLd data={organizationSchema} />
       <JsonLd data={servicesSchema} />
       <JsonLd data={faqSchema} />
 
       <Header />
-      <main className="flex-1">
+      <main className="flex-1 flex flex-col bg-white space-y-2 md:space-y-4">
         {/* Hero Section with interactive AI Advisor & Stats & Trusted Clients */}
         <HeroSection />
 

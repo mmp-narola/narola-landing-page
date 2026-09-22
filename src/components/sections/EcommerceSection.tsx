@@ -50,9 +50,9 @@ export function EcommerceSection() {
   return (
     <section
       id={ecommerceContent.sectionId}
-      className="relative w-full overflow-hidden bg-[#121215] border-y border-white/[0.08] py-24 text-light-gray md:py-32"
+      className="relative w-full overflow-hidden bg-light-gray py-24 text-light-gray md:py-32"
     >
-      <AmbientGlow position="top" height={420} color="rgba(0,132,255,0.16)" />
+      {/* <AmbientGlow position="top" height={420} color="rgba(0,132,255,0.16)" /> */}
       <Container className="relative">
         {/* Section Header */}
         <Reveal>
