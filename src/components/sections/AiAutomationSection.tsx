@@ -77,7 +77,7 @@ export function AiAutomationSection() {
                 {aiAutomationContent.leftFlow.steps.map((step, index) => (
                   <div key={step.title || step.number} className="flex flex-col items-center">
                     <div className="w-full rounded-2xl border border-white/10 bg-[#141418] p-5 transition-all duration-500 hover:scale-102">
-                      <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-1">
                         <span className="text-lg font-semibold text-bright-blue shrink-0">
                           {step.number}.
                         </span>
