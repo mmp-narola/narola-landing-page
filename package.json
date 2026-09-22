@@ -11,6 +11,7 @@
     "seed:blogs": "node scripts/seed-blogs.mjs"
   },
   "dependencies": {
+    "lucide-react": "^1.47.0",
     "mongoose": "^9.10.1",
     "next": "16.3.4",
     "react": "19.2.8",

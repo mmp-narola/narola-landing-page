@@ -4,23 +4,7 @@ import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { hero } from "@/content/hero";
 import { siteConfig } from "@/content/siteConfig";
-
-function ArrowRightIcon({ className = "w-4 h-4" }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      viewBox="0 0 20 20"
-      fill="currentColor"
-      aria-hidden="true"
-    >
-      <path
-        fillRule="evenodd"
-        d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z"
-        clipRule="evenodd"
-      />
-    </svg>
-  );
-}
+import { ArrowRight } from "lucide-react";
 
 export function Hero() {
   return (
@@ -70,7 +54,7 @@ export function Hero() {
             <div className="mt-9 flex flex-col items-center justify-center gap-3.5 sm:flex-row">
               <Button href={siteConfig.primaryCta.href} className="group gap-2">
                 <span>{siteConfig.primaryCta.label}</span>
-                <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
               </Button>
               <Button href="#services" variant="secondary">
                 Explore Services

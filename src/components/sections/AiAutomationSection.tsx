@@ -4,34 +4,12 @@ import { Reveal } from "@/components/ui/Reveal";
 import { AmbientGlow } from "@/components/ui/AmbientGlow";
 import { aiAutomationContent } from "@/content/homeContent";
 
-function RobotIcon({ className = "w-5 h-5" }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M12 2v2m-5 4h10a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2Zm2 4h.01m6 0h.01M9 16h6M2 13h2m16 0h2" />
-    </svg>
-  );
-}
+import { Bot, RefreshCw, ShoppingCart, ArrowRight, ArrowDown } from "lucide-react";
 
-function RefreshIcon({ className = "w-5 h-5" }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
-    </svg>
-  );
-}
-
-function CartIcon({ className = "w-5 h-5" }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
-    </svg>
-  );
-}
-
-const AI_ICONS: Record<string, React.FC<{ className?: string }>> = {
-  robot: RobotIcon,
-  refresh: RefreshIcon,
-  cart: CartIcon,
+const AI_ICONS: Record<string, React.ComponentType<{ className?: string }>> = {
+  robot: Bot,
+  refresh: RefreshCw,
+  cart: ShoppingCart,
 };
 
 export function AiAutomationSection() {
@@ -60,7 +38,7 @@ export function AiAutomationSection() {
         {/* Sub-features row — icon, heading, description, divided by top rules */}
         <div className="mt-16 grid grid-cols-1 gap-8 md:mt-20 md:grid-cols-3 md:gap-10">
           {aiAutomationContent.cards.map((card, index) => {
-            const IconComp = AI_ICONS[card.icon] ?? RobotIcon;
+            const IconComp = AI_ICONS[card.icon] ?? Bot;
 
             return (
               <Reveal key={card.id} delay={index * 300} className="border-t border-white/15 pt-6" variant="up">
@@ -114,7 +92,7 @@ export function AiAutomationSection() {
                       )}
                     </div>
                     {index < aiAutomationContent.leftFlow.steps.length - 1 && (
-                      <span className="pt-1.5 text-base text-electric-blue">↓</span>
+                      <ArrowDown className="my-1.5 h-4 w-4 text-electric-blue" />
                     )}
                   </div>
                 ))}
@@ -132,7 +110,7 @@ export function AiAutomationSection() {
                     href={cs.href}
                     className="group flex items-center gap-2 text-sm font-semibold text-electric-blue"
                   >
-                    <span className="inline-block transition-transform group-hover:translate-x-1 no-underline">→</span>
+                    <ArrowRight className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1" />
                     <span className="group-hover:underline">{cs.title}</span>
                   </Link>
                 ))}

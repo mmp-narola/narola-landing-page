@@ -4,34 +4,12 @@ import { Reveal } from "@/components/ui/Reveal";
 import { AmbientGlow } from "@/components/ui/AmbientGlow";
 import { productEngineeringContent } from "@/content/homeContent";
 
-function MonitorIcon({ className = "w-5 h-5" }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25m18 0A2.25 2.25 0 0 0 18.75 3H5.25A2.25 2.25 0 0 0 3 5.25m18 0H3" />
-    </svg>
-  );
-}
+import { Monitor, Smartphone, Building2, ArrowRight } from "lucide-react";
 
-function PhoneIcon({ className = "w-5 h-5" }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
-    </svg>
-  );
-}
-
-function BuildingIcon({ className = "w-5 h-5" }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.75a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 .75.75V21" />
-    </svg>
-  );
-}
-
-const ENGINEERING_ICONS: Record<string, React.FC<{ className?: string }>> = {
-  monitor: MonitorIcon,
-  phone: PhoneIcon,
-  building: BuildingIcon,
+const ENGINEERING_ICONS: Record<string, React.ComponentType<{ className?: string }>> = {
+  monitor: Monitor,
+  phone: Smartphone,
+  building: Building2,
 };
 
 export function ProductEngineeringSection() {
@@ -60,7 +38,7 @@ export function ProductEngineeringSection() {
         {/* Sub-features row — icon, heading, description, divided by top rules */}
         <div className="mt-16 grid grid-cols-1 gap-8 md:mt-20 md:grid-cols-3 md:gap-10">
           {productEngineeringContent.cards.map((card, index) => {
-            const IconComp = ENGINEERING_ICONS[card.icon] ?? MonitorIcon;
+            const IconComp = ENGINEERING_ICONS[card.icon] ?? Monitor;
 
             return (
               <Reveal key={card.id} delay={index * 300} className="border-t border-white/15 pt-6" variant="up">
@@ -126,7 +104,7 @@ export function ProductEngineeringSection() {
                     href={cs.href}
                     className="group flex items-center gap-2 text-sm font-semibold text-electric-blue"
                   >
-                    <span className="inline-block transition-transform group-hover:translate-x-1 no-underline">→</span>
+                    <ArrowRight className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1" />
                     <span className="group-hover:underline">{cs.title}</span>
                   </Link>
                 ))}

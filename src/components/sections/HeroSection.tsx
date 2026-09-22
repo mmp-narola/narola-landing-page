@@ -5,14 +5,7 @@ import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { AmbientGlow } from "@/components/ui/AmbientGlow";
 import { heroContent, type QuickPrompt } from "@/content/homeContent";
-
-function ChatIcon({ className = "w-4 h-4" }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 0 1-2.555-.337A5.972 5.972 0 0 1 5.41 20.97a.75.75 0 0 1-.974-.94 6.01 6.01 0 0 0 .59-2.022A7.854 7.854 0 0 1 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25Z" />
-    </svg>
-  );
-}
+import { MessageSquare, ArrowRight, X } from "lucide-react";
 
 export function HeroSection() {
   const [inputValue, setInputValue] = useState("");
@@ -77,7 +70,7 @@ export function HeroSection() {
           <Reveal delay={400}>
             <div className="mx-auto mt-14 max-w-3xl rounded-[28px] border border-white/10 bg-[#1d1d1f] p-6 text-left shadow-[0_20px_60px_-15px_rgba(0,0,0,0.5)] md:p-9">
               <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-bright-blue">
-                <ChatIcon className="h-4 w-4" />
+                <MessageSquare className="h-4 w-4" />
                 <span>{heroContent.askEyebrow}</span>
               </div>
 
@@ -96,7 +89,14 @@ export function HeroSection() {
                   disabled={isThinking}
                   className="inline-flex shrink-0 items-center justify-center gap-1.5 rounded-2xl bg-light-gray px-6 py-4 text-sm font-semibold text-black shadow-sm transition-all hover:bg-white active:scale-95 disabled:opacity-70"
                 >
-                  {isThinking ? <span>Matching...</span> : <span>→ Ask</span>}
+                  {isThinking ? (
+                    <span>Matching...</span>
+                  ) : (
+                    <>
+                      <ArrowRight className="h-4 w-4" />
+                      <span>Ask</span>
+                    </>
+                  )}
                 </button>
               </form>
 
@@ -130,9 +130,10 @@ export function HeroSection() {
                     <button
                       type="button"
                       onClick={() => setActivePrompt(null)}
-                      className="text-xs text-muted-gray hover:text-white"
+                      className="inline-flex items-center gap-1 text-xs text-muted-gray hover:text-white"
                     >
-                      Close ✕
+                      <span>Close</span>
+                      <X className="h-3.5 w-3.5" />
                     </button>
                   </div>
                   <h4 className="mt-2 text-base font-bold text-light-gray">
@@ -152,7 +153,8 @@ export function HeroSection() {
                       href="#footer"
                       className="ml-auto inline-flex items-center gap-1 font-bold text-bright-blue hover:underline"
                     >
-                      Consult our architects →
+                      <span>Consult our architects</span>
+                      <ArrowRight className="h-3.5 w-3.5" />
                     </a>
                   </div>
                 </div>

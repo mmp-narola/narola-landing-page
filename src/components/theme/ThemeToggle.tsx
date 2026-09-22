@@ -2,23 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useTheme } from "./ThemeProvider";
-
-function SunIcon({ className = "w-4 h-4" }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-      <circle cx="12" cy="12" r="4" />
-      <path strokeLinecap="round" d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
-    </svg>
-  );
-}
-
-function MoonIcon({ className = "w-4 h-4" }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
-    </svg>
-  );
-}
+import { Sun, Moon } from "lucide-react";
 
 export function ThemeToggle({ className = "" }: { className?: string }) {
   const { theme, setTheme } = useTheme();
@@ -32,10 +16,10 @@ export function ThemeToggle({ className = "" }: { className?: string }) {
     return (
       <div className={`inline-flex items-center gap-1 rounded-full border border-white/10 bg-[#1d1d1f] p-1 text-muted-gray ${className}`}>
         <span className="flex h-7 w-7 items-center justify-center rounded-full text-muted-gray">
-          <MoonIcon className="h-3.5 w-3.5" />
+          <Moon className="h-3.5 w-3.5" />
         </span>
         <span className="flex h-7 w-7 items-center justify-center rounded-full text-muted-gray/50">
-          <SunIcon className="h-3.5 w-3.5" />
+          <Sun className="h-3.5 w-3.5" />
         </span>
       </div>
     );
@@ -66,7 +50,7 @@ export function ThemeToggle({ className = "" }: { className?: string }) {
             : "text-[#86868b] hover:text-white hover:bg-white/10"
         }`}
       >
-        <SunIcon className="h-3.5 w-3.5" />
+        <Sun className="h-3.5 w-3.5" />
       </button>
 
       {/* Dark Option */}
@@ -82,7 +66,7 @@ export function ThemeToggle({ className = "" }: { className?: string }) {
             : "text-[#6e6e73] hover:text-black hover:bg-black/10"
         }`}
       >
-        <MoonIcon className="h-3.5 w-3.5" />
+        <Moon className="h-3.5 w-3.5" />
       </button>
     </div>
   );
