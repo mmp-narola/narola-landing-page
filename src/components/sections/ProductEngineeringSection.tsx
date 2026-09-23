@@ -14,6 +14,7 @@ export function ProductEngineeringSection() {
       <Container className="relative">
         {/* Section Header */}
         <SectionHeader
+          indexBadge="03 / 03"
           title={productEngineeringContent.title}
           subtitle={productEngineeringContent.subtitle}
         />

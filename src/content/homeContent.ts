@@ -179,6 +179,13 @@ export const heroContent = {
   moreClientsBadge: "+ 1,495 more",
 };
 
+export const coreDisciplinesContent = {
+  eyebrow: "CORE PRACTICE AREAS",
+  title: "Three core specializations. Engineered for scale.",
+  subtitle:
+    "Backed by 20+ years of technical excellence and 1,500+ global deployments, Narola Infotech delivers enterprise-grade solutions across eCommerce architectures, production AI automation, and full-cycle product engineering.",
+};
+
 export const ecommerceContent = {
   sectionId: "ecommerce",
   title: "eCommerce",

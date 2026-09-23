@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Header } from "@/components/layout/Header";
 import { HeroSection } from "@/components/sections/HeroSection";
+import { CoreDisciplinesIntro } from "@/components/sections/CoreDisciplinesIntro";
 import { EcommerceSection } from "@/components/sections/EcommerceSection";
 import { AiAutomationSection } from "@/components/sections/AiAutomationSection";
 import { ProductEngineeringSection } from "@/components/sections/ProductEngineeringSection";
@@ -84,6 +85,9 @@ export default function Home() {
       <main className="flex-1 flex flex-col bg-white space-y-2 md:space-y-4">
         {/* Hero Section with interactive AI Advisor & Stats & Trusted Clients */}
         <HeroSection />
+
+        {/* Core Disciplines Overview Context */}
+        <CoreDisciplinesIntro />
 
         {/* eCommerce Bento Grid Section */}
         <EcommerceSection />

@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { Reveal } from "@/components/ui/Reveal";
+import { CaseStudyLinks, type CaseStudyLinkItem } from "@/components/ui/CaseStudyLink";
 
 export interface ProcessStep {
   title: string;
@@ -7,15 +7,10 @@ export interface ProcessStep {
   badge?: string;
 }
 
-export interface CaseStudyLink {
-  title: string;
-  href: string;
-}
-
 export interface ProcessSectionProps {
   header: string;
   steps: ProcessStep[];
-  caseStudies?: CaseStudyLink[];
+  caseStudies?: CaseStudyLinkItem[];
   columns?: 3 | 4;
   className?: string;
 }
@@ -72,25 +67,7 @@ export function ProcessSection({
 
       {/* Bottom Case Studies Links */}
       {caseStudies && caseStudies.length > 0 && (
-        <Reveal delay={450}>
-          <div className="mt-14 flex flex-wrap items-center justify-center gap-8 pt-4 sm:gap-12">
-            {caseStudies.map((cs) => (
-              <Link
-                key={cs.title}
-                href={cs.href}
-                className="group inline-flex items-center gap-1.5 text-sm font-semibold text-bright-blue transition-colors hover:underline sm:text-base"
-              >
-                <span>{cs.title}</span>
-                <span
-                  aria-hidden="true"
-                  className="inline-block transition-transform duration-200 group-hover:translate-x-0.5"
-                >
-                  →
-                </span>
-              </Link>
-            ))}
-          </div>
-        </Reveal>
+        <CaseStudyLinks links={caseStudies} delay={450} />
       )}
     </div>
   );

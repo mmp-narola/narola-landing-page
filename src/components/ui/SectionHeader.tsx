@@ -4,6 +4,7 @@ export interface SectionHeaderProps {
   title: string;
   subtitle?: string;
   eyebrow?: string;
+  indexBadge?: string;
   className?: string;
   align?: "center" | "left";
 }
@@ -12,6 +13,7 @@ export function SectionHeader({
   title,
   subtitle,
   eyebrow,
+  indexBadge,
   className = "mb-16 md:mb-20",
   align = "center",
 }: SectionHeaderProps) {
@@ -21,6 +23,11 @@ export function SectionHeader({
   return (
     <Reveal>
       <div className={`${alignmentClasses} ${className}`}>
+        {indexBadge && (
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-black/[0.08] bg-white px-4 py-1 text-xs font-bold tracking-widest text-bright-blue shadow-2xs">
+            <span>{indexBadge}</span>
+          </div>
+        )}
         {eyebrow && (
           <span className="mb-3 block text-xs font-bold uppercase tracking-[0.14em] text-bright-blue">
             {eyebrow}

@@ -8,12 +8,13 @@ export function AiAutomationSection() {
   return (
     <section
       id={aiAutomationContent.sectionId}
-      className="relative w-full overflow-hidden py-24 bg-light-gray text-light-gray md:py-32"
+      className="relative w-full overflow-hidden bg-light-gray py-16 text-light-gray md:py-24"
     >
       {/* <AmbientGlow position="top" height={420} color="rgba(0,132,255,0.14)" /> */}
       <Container className="relative">
         {/* Section Header */}
         <SectionHeader
+          indexBadge="02 / 03"
           title={aiAutomationContent.title}
           subtitle={aiAutomationContent.subtitle}
         />

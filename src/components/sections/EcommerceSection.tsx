@@ -1,10 +1,9 @@
-import Link from "next/link";
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { FeatureRow } from "@/components/ui/FeatureRow";
+import { CaseStudyLinks } from "@/components/ui/CaseStudyLink";
 import { ecommerceContent } from "@/content/homeContent";
-import { Reveal } from "@/components/ui/Reveal";
 
 export function EcommerceSection() {
   const [aiCommerceCard, commerceSolutionsCard] = ecommerceContent.cards;
@@ -17,6 +16,7 @@ export function EcommerceSection() {
       <Container className="relative">
         {/* Section Header */}
         <SectionHeader
+          indexBadge="01 / 03"
           title={ecommerceContent.title}
           subtitle={ecommerceContent.subtitle}
         />
@@ -47,7 +47,7 @@ export function EcommerceSection() {
               {ecommerceContent.industryVerticals.verticals.map((v) => (
                 <div
                   key={v.name}
-                  className="group flex flex-col items-center rounded-2xl border border-black/[0.06] bg-white p-2.5 text-center shadow-2xs transition-all duration-300 hover:border-black/15 hover:shadow-md hover:scale-[1.02] sm:p-3"
+                  className="group flex flex-col items-center rounded-2xl border border-black/[0.06] bg-white p-2.5 text-center transition-colors duration-300 hover:border-black/10 hover:bg-slate-50 sm:p-3"
                 >
                   <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-slate/10">
                     {v.image && (
@@ -56,7 +56,7 @@ export function EcommerceSection() {
                         alt={v.name}
                         fill
                         sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 220px"
-                        className="object-cover transition-transform duration-300 group-hover:scale-106"
+                        className="object-cover"
                       />
                     )}
                   </div>
@@ -73,13 +73,16 @@ export function EcommerceSection() {
             title={ecommerceContent.rightSidebar.platformsTitle}
             delay={400}
           >
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
+            <div className="grid grid-cols-1 divide-y divide-black/[0.06] sm:grid-cols-3 sm:gap-6 sm:divide-y-0">
               {ecommerceContent.rightSidebar.platforms.map((platform) => (
-                <div key={platform.name} className="flex flex-col">
+                <div
+                  key={platform.name}
+                  className="flex flex-col py-4 first:pt-0 sm:py-0"
+                >
                   <span className="text-base font-semibold text-light-gray sm:text-lg">
                     {platform.name}
                   </span>
-                  <span className="mt-0.5 text-xs text-ink-secondary sm:text-sm">
+                  <span className="mt-0.5 text-xs text-subtle-gray sm:text-sm">
                     {platform.badge}
                   </span>
                 </div>
@@ -89,25 +92,10 @@ export function EcommerceSection() {
         </div>
 
         {/* Bottom Case Studies Links */}
-        <Reveal delay={500}>
-          <div className="mt-14 flex flex-wrap items-center justify-center gap-8 pt-4 sm:gap-12">
-            {ecommerceContent.rightSidebar.caseStudies.map((cs) => (
-              <Link
-                key={cs.title}
-                href={cs.href}
-                className="group inline-flex items-center gap-1.5 text-sm font-semibold text-bright-blue transition-colors hover:underline sm:text-base"
-              >
-                <span>{cs.title}</span>
-                <span
-                  aria-hidden="true"
-                  className="inline-block transition-transform duration-200 group-hover:translate-x-0.5"
-                >
-                  →
-                </span>
-              </Link>
-            ))}
-          </div>
-        </Reveal>
+        <CaseStudyLinks
+          links={ecommerceContent.rightSidebar.caseStudies}
+          delay={500}
+        />
       </Container>
     </section>
   );
