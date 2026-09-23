@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
+import { SectionHeader } from "@/components/ui/SectionHeader";
 import { AmbientGlow } from "@/components/ui/AmbientGlow";
 import { ourWorkContent, type GroupedClientCategory } from "@/content/homeContent";
 import { MapPin } from "lucide-react";
@@ -19,16 +20,11 @@ export function OurWorkSection() {
       {/* <AmbientGlow position="top" height={420} color="rgba(0,132,255,0.14)" /> */}
       <Container className="relative">
         {/* Section Header */}
-        <Reveal>
-          <div className="mx-auto max-w-3xl text-center">
-            <h2 className="text-display font-semibold tracking-tight text-light-gray md:text-6xl text-balance">
-              {ourWorkContent.title}
-            </h2>
-            <p className="mt-5 text-xl text-muted-gray md:text-2xl">
-              {ourWorkContent.subtitle}
-            </p>
-          </div>
-        </Reveal>
+        <SectionHeader
+          title={ourWorkContent.title}
+          subtitle={ourWorkContent.subtitle}
+          className="mb-12 md:mb-12"
+        />
 
         {/* Filter Tabs */}
         <Reveal delay={100}>

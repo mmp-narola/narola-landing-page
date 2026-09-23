@@ -1,16 +1,12 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
+import { SectionHeader } from "@/components/ui/SectionHeader";
+import { FeatureRow } from "@/components/ui/FeatureRow";
 import { AmbientGlow } from "@/components/ui/AmbientGlow";
 import { productEngineeringContent } from "@/content/homeContent";
 
-import { Monitor, Smartphone, Building2, ArrowRight } from "lucide-react";
-
-const ENGINEERING_ICONS: Record<string, React.ComponentType<{ className?: string }>> = {
-  monitor: Monitor,
-  phone: Smartphone,
-  building: Building2,
-};
+import { ArrowRight } from "lucide-react";
 
 export function ProductEngineeringSection() {
   return (
@@ -20,50 +16,23 @@ export function ProductEngineeringSection() {
     >
       {/* <AmbientGlow position="top" height={420} color="rgba(0,132,255,0.14)" /> */}
       <Container className="relative">
-        {/* Centered feature block — eyebrow + headline + supporting copy */}
-        <Reveal>
-          <div className="mx-auto max-w-3xl text-center">
-            <span className="text-xs font-bold uppercase tracking-[0.14em] text-bright-blue">
-              {productEngineeringContent.rightProcess.header}
-            </span>
-            <h2 className="mt-4 text-display font-semibold tracking-tight text-light-gray md:text-6xl text-balance">
-              {productEngineeringContent.title}
-            </h2>
-            <p className="mx-auto mt-5 max-w-2xl text-xl text-muted-gray md:text-2xl">
-              {productEngineeringContent.subtitle}
-            </p>
-          </div>
-        </Reveal>
+        {/* Section Header */}
+        <SectionHeader
+          title={productEngineeringContent.title}
+          subtitle={productEngineeringContent.subtitle}
+        />
 
-        {/* Sub-features row — icon, heading, description, divided by top rules */}
-        <div className="mt-16 grid grid-cols-1 gap-8 md:mt-20 md:grid-cols-3 md:gap-10">
-          {productEngineeringContent.cards.map((card, index) => {
-            const IconComp = ENGINEERING_ICONS[card.icon] ?? Monitor;
-
-            return (
-              <Reveal key={card.id} delay={index * 300} className="border-t border-white/15 pt-6" variant="up">
-                <div className="flex items-center gap-2.5 text-bright-blue">
-                  <IconComp className="h-5 w-5" />
-                  <h3 className="text-lg font-semibold text-light-gray">
-                    {card.title}
-                  </h3>
-                </div>
-                <p className="mt-2.5 text-sm text-subtle-gray leading-relaxed">
-                  {card.description}
-                </p>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {card.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="rounded-full bg-white/[0.06] px-3 py-1 text-xs font-medium text-soft-blue"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </Reveal>
-            );
-          })}
+        {/* Feature Rows */}
+        <div className="mx-auto max-w-5xl divide-y divide-black/[0.08] border-y border-black/[0.08]">
+          {productEngineeringContent.cards.map((card, index) => (
+            <FeatureRow
+              key={card.id}
+              title={card.title}
+              description={card.description}
+              tags={card.tags}
+              delay={(index + 1) * 100}
+            />
+          ))}
         </div>
 
         {/* Engineering process + case studies — charcoal panel for depth against the section */}
