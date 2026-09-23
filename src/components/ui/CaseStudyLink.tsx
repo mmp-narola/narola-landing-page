@@ -20,7 +20,7 @@ export function CaseStudyLink({
   return (
     <Link
       href={href}
-      className={`group inline-flex items-center gap-1.5 text-sm hover:font-semibold text-bright-blue transition-colors sm:text-base ${className}`}
+      className={`group inline-flex items-center gap-1.5 text-sm font-medium text-bright-blue transition-all duration-150 sm:text-base ${className}`}
     >
       <span className="group-hover:underline underline-offset-4 decoration-1">
         {title}

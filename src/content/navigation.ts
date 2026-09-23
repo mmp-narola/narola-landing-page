@@ -3,9 +3,15 @@ export interface MegaMenuLink {
   href: string;
 }
 
-export interface MegaMenuColumn {
+export interface MegaMenuGroup {
   heading: string;
   links: MegaMenuLink[];
+}
+
+export interface MegaMenuColumn {
+  heading?: string;
+  links?: MegaMenuLink[];
+  groups?: MegaMenuGroup[];
 }
 
 export interface FeaturedCaseStudyConfig {
@@ -131,19 +137,23 @@ export const ecommerceMegaMenu: MegaMenuConfig = {
       ],
     },
     {
-      heading: "Platforms",
-      links: [
-        { label: "Shopify", href: "/#ecommerce" },
-        { label: "WooCommerce", href: "/#ecommerce" },
-        { label: "Headless Stack", href: "/#ecommerce" },
-      ],
-    },
-    {
-      heading: "Case Studies",
-      links: [
-        { label: "eCommerce Case Studies", href: "/case-studies" },
-        { label: "Marketplace Case Studies", href: "/case-studies" },
-        { label: "Shopify Case Studies", href: "/case-studies" },
+      groups: [
+        {
+          heading: "Platforms",
+          links: [
+            { label: "Shopify", href: "/#ecommerce" },
+            { label: "WooCommerce", href: "/#ecommerce" },
+            { label: "Headless Stack", href: "/#ecommerce" },
+          ],
+        },
+        {
+          heading: "Case Studies",
+          links: [
+            { label: "eCommerce Case Studies", href: "/case-studies" },
+            { label: "Marketplace Case Studies", href: "/case-studies" },
+            { label: "Shopify Case Studies", href: "/case-studies" },
+          ],
+        },
       ],
     },
   ],

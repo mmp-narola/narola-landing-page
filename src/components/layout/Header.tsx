@@ -273,23 +273,47 @@ export function Header() {
 
                     {isExpanded && (
                       <div className="space-y-4 border-t border-black/[0.06] bg-white px-4 py-4">
-                        {item.megaMenu.columns.map((col) => (
-                          <div key={col.heading} className="space-y-2">
-                            <h5 className="text-xs font-bold uppercase tracking-wider text-bright-blue">
-                              {col.heading}
-                            </h5>
-                            <div className="grid grid-cols-1 gap-1.5 pl-2 border-l border-black/[0.06]">
-                              {col.links.map((link) => (
-                                <Link
-                                  key={link.label}
-                                  href={link.href}
-                                  className="text-xs text-subtle-gray hover:text-bright-blue hover:font-semibold py-1 transition-all"
-                                  onClick={() => setIsMenuOpen(false)}
-                                >
-                                  {link.label}
-                                </Link>
-                              ))}
-                            </div>
+                        {item.megaMenu.columns.map((col, colIdx) => (
+                          <div key={col.heading || `col-${colIdx}`} className="space-y-3">
+                            {col.groups ? (
+                              col.groups.map((group) => (
+                                <div key={group.heading} className="space-y-2">
+                                  <h5 className="text-xs font-bold uppercase tracking-wider text-bright-blue">
+                                    {group.heading}
+                                  </h5>
+                                  <div className="grid grid-cols-1 gap-1.5 pl-2 border-l border-black/[0.06]">
+                                    {group.links.map((link) => (
+                                      <Link
+                                        key={link.label}
+                                        href={link.href}
+                                        className="text-xs text-subtle-gray hover:text-bright-blue py-1 transition-colors"
+                                        onClick={() => setIsMenuOpen(false)}
+                                      >
+                                        {link.label}
+                                      </Link>
+                                    ))}
+                                  </div>
+                                </div>
+                              ))
+                            ) : (
+                              <div className="space-y-2">
+                                <h5 className="text-xs font-bold uppercase tracking-wider text-bright-blue">
+                                  {col.heading}
+                                </h5>
+                                <div className="grid grid-cols-1 gap-1.5 pl-2 border-l border-black/[0.06]">
+                                  {col.links?.map((link) => (
+                                    <Link
+                                      key={link.label}
+                                      href={link.href}
+                                      className="text-xs text-subtle-gray hover:text-bright-blue py-1 transition-colors"
+                                      onClick={() => setIsMenuOpen(false)}
+                                    >
+                                      {link.label}
+                                    </Link>
+                                  ))}
+                                </div>
+                              </div>
+                            )}
                           </div>
                         ))}
                       </div>
@@ -332,7 +356,7 @@ export function Header() {
                           <Link
                             key={subItem.label}
                             href={subItem.href}
-                            className="block py-1.5 text-xs font-medium text-subtle-gray hover:text-bright-blue hover:font-semibold transition-all"
+                            className="block py-1.5 text-xs font-medium text-subtle-gray hover:text-bright-blue transition-colors"
                             onClick={() => setIsMenuOpen(false)}
                           >
                             {subItem.label}

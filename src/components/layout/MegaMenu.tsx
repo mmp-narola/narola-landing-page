@@ -59,24 +59,52 @@ export function MegaMenuPanel({ menu, onNavigate }: MegaMenuPanelProps) {
         <div className="flex flex-col justify-between">
           {/* Columns Grid */}
           <div className={`grid gap-6 sm:gap-7 ${getGridColsClass()}`}>
-            {menu.columns.map((column) => (
-              <div key={column.heading} className="flex flex-col">
-                <h4 className="text-sm font-bold text-light-gray sm:text-[15px]">
-                  {column.heading}
-                </h4>
-                <ul className="mt-3.5 space-y-2.5">
-                  {column.links.map((link) => (
-                    <li key={link.label}>
-                      <Link
-                        href={link.href}
-                        onClick={onNavigate}
-                        className="inline-block text-xs text-subtle-gray transition-all duration-150 hover:text-bright-blue hover:font-semibold sm:text-sm font-normal"
-                      >
-                        {link.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
+            {menu.columns.map((column, colIdx) => (
+              <div
+                key={column.heading || `col-${colIdx}`}
+                className="flex flex-col space-y-5"
+              >
+                {column.groups ? (
+                  column.groups.map((group) => (
+                    <div key={group.heading} className="flex flex-col">
+                      <h4 className="text-sm font-bold text-light-gray sm:text-[15px]">
+                        {group.heading}
+                      </h4>
+                      <ul className="mt-3.5 space-y-1">
+                        {group.links.map((link) => (
+                          <li key={link.label}>
+                            <Link
+                              href={link.href}
+                              onClick={onNavigate}
+                              className="inline-block text-xs text-subtle-gray transition-colors duration-150 hover:text-bright-blue sm:text-xs font-normal"
+                            >
+                              {link.label}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))
+                ) : (
+                  <div className="flex flex-col">
+                    <h4 className="text-sm font-bold text-light-gray sm:text-[15px]">
+                      {column.heading}
+                    </h4>
+                    <ul className="mt-3.5 space-y-1">
+                      {column.links?.map((link) => (
+                        <li key={link.label}>
+                          <Link
+                            href={link.href}
+                            onClick={onNavigate}
+                            className="inline-block text-xs text-subtle-gray transition-colors duration-150 hover:text-bright-blue sm:text-xs font-normal"
+                          >
+                            {link.label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </div>
             ))}
           </div>
@@ -100,11 +128,11 @@ export function MegaMenuPanel({ menu, onNavigate }: MegaMenuPanelProps) {
                   <Image
                     src="/images/logo/clutch-co-logo.webp"
                     alt="Clutch"
-                    width={76}
-                    height={22}
-                    className="h-[18px] w-auto object-contain object-left"
+                    width={120}
+                    height={26}
+                    className="h-[26px] w-auto object-contain object-left"
                   />
-                  <div className="mt-1 flex items-center gap-1.5 leading-none">
+                  <div className="mt-0.5 flex items-center gap-1.5 leading-none">
                     <span className="text-xs font-bold text-light-gray">4.9</span>
                     <div className="flex items-center gap-0.5">
                       {[1, 2, 3, 4, 5].map((i) => (
