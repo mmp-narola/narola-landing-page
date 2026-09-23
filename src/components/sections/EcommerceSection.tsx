@@ -4,7 +4,7 @@ import { Container } from "@/components/ui/Container";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { FeatureRow } from "@/components/ui/FeatureRow";
 import { ecommerceContent } from "@/content/homeContent";
-import { Reveal } from "../ui/Reveal";
+import { Reveal } from "@/components/ui/Reveal";
 
 export function EcommerceSection() {
   const [aiCommerceCard, commerceSolutionsCard] = ecommerceContent.cards;
@@ -12,7 +12,7 @@ export function EcommerceSection() {
   return (
     <section
       id={ecommerceContent.sectionId}
-      className="relative w-full overflow-hidden bg-light-gray py-24 text-light-gray md:py-32"
+      className="relative w-full overflow-hidden bg-light-gray py-16 text-light-gray md:py-24"
     >
       <Container className="relative">
         {/* Section Header */}
