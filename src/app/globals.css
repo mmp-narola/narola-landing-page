@@ -141,6 +141,46 @@ section.bg-light-gray {
   color: #48484a !important;
 }
 
+.text-bright-blue {
+  color: #0071e3 !important;
+}
+
+.hover\:text-bright-blue:hover {
+  color: #0071e3 !important;
+}
+
+.group:hover .group-hover\:text-bright-blue {
+  color: #0071e3 !important;
+}
+
+.text-interactive-blue {
+  color: #0072d9 !important;
+}
+
+.hover\:text-interactive-blue:hover {
+  color: #0072d9 !important;
+}
+
+.group:hover .group-hover\:text-interactive-blue {
+  color: #0072d9 !important;
+}
+
+.hover\:text-white:hover {
+  color: #ffffff !important;
+}
+
+.group:hover .group-hover\:text-white {
+  color: #ffffff !important;
+}
+
+.hover\:font-semibold:hover {
+  font-weight: 600 !important;
+}
+
+.group:hover .group-hover\:font-semibold {
+  font-weight: 600 !important;
+}
+
 .text-\[\#d1d1d6\] {
   color: #3a3a3c !important;
 }
