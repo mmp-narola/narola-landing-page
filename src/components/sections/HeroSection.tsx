@@ -162,15 +162,15 @@ export function HeroSection() {
             </div>
           </Reveal>
 
-          {/* 4 Stats Counters */}
+          {/* Key Stats Counters */}
           <Reveal delay={300}>
-            <div className="mx-auto mt-20 grid max-w-4xl grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-4">
+            <div className="mx-auto mt-16 flex max-w-xl items-center justify-center divide-x divide-black/10">
               {heroContent.stats.map((stat) => (
-                <div key={stat.label} className="flex flex-col items-center border-l border-white/10 first:border-l-0 sm:first:border-l">
-                  <span className="block text-4xl font-semibold tracking-tight text-light-gray sm:text-5xl">
+                <div key={stat.label} className="flex flex-1 flex-col items-center px-6 sm:px-12">
+                  <span className="block text-4xl font-semibold tracking-tight text-light-gray sm:text-5xl lg:text-6xl">
                     {stat.value}
                   </span>
-                  <span className="mt-1.5 block text-xs font-medium uppercase tracking-wide text-muted-gray sm:text-sm">
+                  <span className="mt-2 block text-xs font-medium uppercase tracking-wider text-muted-gray sm:text-sm">
                     {stat.label}
                   </span>
                 </div>

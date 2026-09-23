@@ -160,9 +160,7 @@ export const heroContent = {
     },
   ] as QuickPrompt[],
   stats: [
-    { value: "250+", label: "Professionals" },
     { value: "1,500+", label: "Clients served" },
-    { value: "3,000+", label: "Projects delivered" },
     { value: "20 yrs", label: "In business" },
   ] as StatItem[],
   trustedBannerTitle: "TRUSTED BY 1,500+ CLIENTS INCLUDING",
