@@ -189,7 +189,7 @@ export function CaseStudyListClient({
               <line x1="21" y1="21" x2="16.65" y2="16.65" />
             </svg>
           </div>
-          <h3 className="mt-4 text-lg font-bold text-ink">
+          <h3 className="mt-4 text-lg font-semibold text-ink">
             No case studies found
           </h3>
           <p className="mt-1 text-sm text-slate">

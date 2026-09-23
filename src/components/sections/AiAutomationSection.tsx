@@ -44,7 +44,7 @@ export function AiAutomationSection() {
               <Reveal key={card.id} delay={index * 300} className="border-t border-white/15 pt-6" variant="up">
                 <div className="flex items-center gap-2.5 text-bright-blue">
                   <IconComp className="h-5 w-5" />
-                  <h3 className="text-2xl text-light-gray">
+                  <h3 className="text-2xl font-semibold tracking-tight text-light-gray">
                     {card.title}
                   </h3>
                 </div>

@@ -14,7 +14,7 @@ export function CustomSoftwareTrustedBy() {
           {trustedClients.map((client) => (
             <span
               key={client.name}
-              className="text-lg font-bold tracking-wider text-slate transition-colors hover:text-ink"
+              className="text-lg font-semibold tracking-wider text-slate transition-colors hover:text-ink"
             >
               {client.logoText}
             </span>

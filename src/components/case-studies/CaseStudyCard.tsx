@@ -43,7 +43,7 @@ export function CaseStudyCard({ caseStudy }: CaseStudyCardProps) {
       {/* Content Area */}
       <div className="flex flex-1 flex-col justify-between p-6 md:p-7">
         <div>
-          <h3 className="text-xl font-bold tracking-tight text-ink transition-colors duration-200 group-hover:text-interactive-blue">
+          <h3 className="text-xl font-semibold tracking-tight text-ink transition-colors duration-200 group-hover:text-interactive-blue">
             <Link href={`/case-studies/${caseStudy.slug}`} className="focus:outline-none">
               {caseStudy.title}
             </Link>
@@ -67,7 +67,7 @@ export function CaseStudyCard({ caseStudy }: CaseStudyCardProps) {
                   key={idx}
                   className="rounded-2xl bg-surface-muted p-3 text-left transition-colors group-hover:bg-interactive-blue/5"
                 >
-                  <p className="text-lg font-extrabold text-interactive-blue md:text-xl">
+                  <p className="text-lg font-semibold tracking-tight text-interactive-blue md:text-xl">
                     {metric.value}
                   </p>
                   <p className="mt-0.5 line-clamp-2 text-xs font-medium text-slate">

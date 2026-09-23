@@ -16,7 +16,7 @@ export function Industries() {
               </span>
             </div>
 
-            <h2 className="mt-5 text-h2 font-bold tracking-tight text-ink md:text-h2-lg">
+            <h2 className="mt-5 text-h2 font-semibold tracking-tight text-ink md:text-h2-lg">
               Industries We Specialize In
             </h2>
 
@@ -39,7 +39,7 @@ export function Industries() {
                   height={28}
                   className="h-7 w-7 object-contain opacity-70 transition-opacity duration-300 group-hover:opacity-100"
                 />
-                <h3 className="text-base font-bold text-ink transition-colors group-hover:text-interactive-blue">
+                <h3 className="text-base font-semibold text-ink transition-colors group-hover:text-interactive-blue">
                   {industry.label}
                 </h3>
               </div>

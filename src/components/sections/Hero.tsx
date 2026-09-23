@@ -32,7 +32,7 @@ export function Hero() {
 
           {/* Main Headline — large display scale, Apple-style */}
           <Reveal delay={80}>
-            <h1 className="mt-8 text-h1 font-bold tracking-tight text-balance text-ink md:text-h1-lg">
+            <h1 className="mt-8 text-h1 font-semibold tracking-tight text-balance text-ink md:text-h1-lg">
               Trusted{" "}
               <span className="bg-gradient-to-r from-interactive-blue to-brand-blue bg-clip-text text-transparent">
                 Custom Software

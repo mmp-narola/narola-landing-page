@@ -130,7 +130,7 @@ export function Footer() {
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-12 lg:gap-8">
           {/* Column 1: CTA & Ratings (3 cols) */}
           <div className="flex flex-col lg:col-span-3">
-            <h3 className="text-base font-bold text-ink md:text-lg">
+            <h3 className="text-base font-semibold tracking-tight text-ink md:text-lg">
               {footerContent.cta.heading}
             </h3>
 
@@ -148,7 +148,7 @@ export function Footer() {
                     {footerContent.ratings[0].label}
                   </span>
                   <div className="flex items-center gap-1.5">
-                    <span className="text-sm font-bold text-ink">
+                    <span className="text-sm font-semibold text-ink">
                       {footerContent.ratings[0].score}
                     </span>
                     <div className="flex items-center gap-0.5">
@@ -168,7 +168,7 @@ export function Footer() {
                     {footerContent.ratings[1].label}
                   </span>
                   <div className="flex items-center gap-1.5">
-                    <span className="text-sm font-bold text-ink">
+                    <span className="text-sm font-semibold text-ink">
                       {footerContent.ratings[1].score}
                     </span>
                     <div className="flex items-center gap-0.5">
@@ -184,7 +184,7 @@ export function Footer() {
 
           {/* Column 2: Services (2 cols) */}
           <div className="lg:col-span-2">
-            <h4 className="text-base font-bold text-ink">Services</h4>
+            <h4 className="text-base font-semibold tracking-tight text-ink">Services</h4>
             <ul className="mt-4 space-y-2">
               {footerContent.services.map((item) => (
                 <li key={item.label}>
@@ -201,7 +201,7 @@ export function Footer() {
 
           {/* Column 3: Technologies (2 cols) */}
           <div className="lg:col-span-2">
-            <h4 className="text-base font-bold text-ink">Technologies</h4>
+            <h4 className="text-base font-semibold tracking-tight text-ink">Technologies</h4>
             <ul className="mt-4 space-y-2">
               {footerContent.technologies.map((item) => (
                 <li key={item.label}>
@@ -218,7 +218,7 @@ export function Footer() {
 
           {/* Column 4: Resources (2 cols) */}
           <div className="lg:col-span-2">
-            <h4 className="text-base font-bold text-ink">Resources</h4>
+            <h4 className="text-base font-semibold tracking-tight text-ink">Resources</h4>
             <ul className="mt-4 space-y-2">
               {footerContent.resources.map((item) => (
                 <li key={item.label}>
@@ -245,7 +245,7 @@ export function Footer() {
           {/* Column 5: Global Presence & Social Links (3 cols) */}
           <div className="flex flex-col justify-between lg:col-span-3">
             <div>
-              <h4 className="text-base font-bold text-ink">
+              <h4 className="text-base font-semibold tracking-tight text-ink">
                 {footerContent.globalPresence.title}
               </h4>
 
@@ -266,7 +266,7 @@ export function Footer() {
               </div>
 
               {/* Development Centers */}
-              <h5 className="mt-6 text-base font-bold text-ink">
+              <h5 className="mt-6 text-base font-semibold tracking-tight text-ink">
                 {footerContent.globalPresence.devCentersTitle}
               </h5>
               <div className="mt-3.5 space-y-3.5">

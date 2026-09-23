@@ -90,7 +90,7 @@ export function Header() {
                 >
                   <Link
                     href={resolvedHref}
-                    className={`group inline-flex items-center gap-1.5 text-sm font-medium transition-colors ${active ? "text-light-gray font-semibold" : "text-muted-gray hover:text-bright-blue"
+                    className={`group inline-flex items-center gap-1.5 text-sm font-medium transition-colors ${active ? "text-light-gray" : "text-muted-gray hover:text-bright-blue"
                       }`}
                   >
                     <span>{item.label}</span>
@@ -149,7 +149,7 @@ export function Header() {
                             </svg>
                             <div className="flex flex-col">
                               <span
-                                className={`text-sm leading-tight font-medium ${isSubActive ? "font-semibold text-bright-blue" : "text-light-gray group-hover:text-bright-blue"
+                                className={`text-sm leading-tight font-medium ${isSubActive ? "text-bright-blue" : "text-light-gray group-hover:text-bright-blue"
                                   }`}
                               >
                                 {subItem.label}
@@ -173,7 +173,7 @@ export function Header() {
               <Link
                 key={item.href}
                 href={resolvedHref}
-                className={`text-sm font-medium transition-colors ${active ? "text-light-gray font-semibold" : "text-muted-gray hover:text-bright-blue"
+                className={`text-sm font-medium transition-colors ${active ? "text-light-gray" : "text-muted-gray hover:text-bright-blue"
                   }`}
               >
                 {item.label}
@@ -186,7 +186,7 @@ export function Header() {
         <div className="hidden md:block">
           <Button
             href={siteConfig.primaryCta.href}
-            className="rounded-full bg-light-gray px-6 py-2.5 text-xs font-semibold tracking-wide text-black transition-all hover:bg-white shadow-xs active:scale-95"
+            className="rounded-full bg-light-gray px-6 py-2.5 text-xs font-medium tracking-wide text-black transition-all hover:bg-white shadow-xs active:scale-95"
           >
             {siteConfig.primaryCta.label}
           </Button>
@@ -245,7 +245,7 @@ export function Header() {
                   <div key={item.label} className="flex flex-col">
                     <button
                       type="button"
-                      className={`flex w-full items-center justify-between rounded-xl px-3 py-3 text-sm font-medium transition-colors hover:bg-white/5 ${active ? "bg-[#0084ff]/15 text-bright-blue font-semibold" : "text-light-gray"
+                      className={`flex w-full items-center justify-between rounded-xl px-3 py-3 text-sm font-medium transition-colors hover:bg-white/5 ${active ? "bg-[#0084ff]/15 text-bright-blue" : "text-light-gray"
                         }`}
                       onClick={() => setIsServicesMobileOpen(!isServicesMobileOpen)}
                     >
@@ -270,8 +270,8 @@ export function Header() {
                           <Link
                             key={subItem.label}
                             href={subItem.href}
-                            className={`flex items-center gap-2 rounded-lg px-2.5 py-2 text-xs transition-colors hover:bg-white/5 ${pathname === subItem.href
-                              ? "font-semibold text-bright-blue bg-[#0084ff]/15"
+                            className={`flex items-center gap-2 rounded-lg px-2.5 py-2 text-xs font-medium transition-colors hover:bg-white/5 ${pathname === subItem.href
+                              ? "text-bright-blue bg-[#0084ff]/15"
                               : "text-muted-gray hover:text-bright-blue"
                               }`}
                             onClick={() => setIsMenuOpen(false)}
@@ -290,7 +290,7 @@ export function Header() {
                 <Link
                   key={item.href}
                   href={resolvedHref}
-                  className={`rounded-xl px-3 py-3 text-sm font-medium transition-colors hover:bg-white/5 ${active ? "bg-[#0084ff]/15 text-bright-blue font-semibold" : "text-light-gray"
+                  className={`rounded-xl px-3 py-3 text-sm font-medium transition-colors hover:bg-white/5 ${active ? "bg-[#0084ff]/15 text-bright-blue" : "text-light-gray"
                     }`}
                   onClick={() => setIsMenuOpen(false)}
                 >
@@ -301,7 +301,7 @@ export function Header() {
             <div className="mt-4">
               <Button
                 href={siteConfig.primaryCta.href}
-                className="w-full rounded-full bg-[#0055ff] py-3 text-xs font-bold text-white hover:bg-[#0044cc]"
+                className="w-full rounded-full bg-[#0055ff] py-3 text-xs font-medium text-white hover:bg-[#0044cc]"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {siteConfig.primaryCta.label}

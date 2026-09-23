@@ -15,7 +15,7 @@ export function Technologies() {
               </span>
             </div>
 
-            <h2 className="mt-5 text-h2 font-bold tracking-tight text-ink md:text-h2-lg">
+            <h2 className="mt-5 text-h2 font-semibold tracking-tight text-ink md:text-h2-lg">
               Technologies & Platforms We Work With
             </h2>
 
@@ -31,7 +31,7 @@ export function Technologies() {
           {technologyCategories.map((category, idx) => (
             <Reveal key={category.id} delay={idx * 80}>
               <div className="grid grid-cols-1 gap-4 py-8 md:grid-cols-12 md:items-baseline md:gap-8 md:py-10">
-                <h3 className="text-xl font-bold tracking-tight text-ink md:col-span-3 md:text-2xl">
+                <h3 className="text-xl font-semibold tracking-tight text-ink md:col-span-3 md:text-2xl">
                   {category.title}
                 </h3>
                 <div className="flex flex-wrap gap-x-6 gap-y-3 md:col-span-9">

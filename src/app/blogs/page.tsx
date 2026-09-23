@@ -85,7 +85,7 @@ export default async function BlogsPage() {
                 Knowledge Base & Insights
               </div>
 
-              <h1 className="mt-4 text-3xl font-bold tracking-tight text-ink md:text-5xl md:leading-tight">
+              <h1 className="mt-4 text-3xl font-semibold tracking-tight text-ink md:text-5xl md:leading-tight">
                 Read About the Latest Topics & Trends in Technology
               </h1>
 

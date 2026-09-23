@@ -27,7 +27,7 @@ export function CeoMessage() {
           </Reveal>
 
           <Reveal delay={80}>
-            <h2 className="mt-6 text-lg font-bold tracking-tight text-slate-300 md:text-xl">
+            <h2 className="mt-6 text-lg font-semibold tracking-tight text-slate-300 md:text-xl">
               {ceoMessageData.heading.prefix}
               <span className="text-white">{ceoMessageData.heading.highlight}</span>
             </h2>

@@ -111,7 +111,7 @@ export function CaseStudyDetailView({
               {caseStudy.industry} • {caseStudy.country}
             </div>
 
-            <h1 className="mt-4 text-3xl font-bold tracking-tight text-ink md:text-5xl md:leading-tight">
+            <h1 className="mt-4 text-3xl font-semibold tracking-tight text-ink md:text-5xl md:leading-tight">
               {caseStudy.title}
             </h1>
 
@@ -194,7 +194,7 @@ export function CaseStudyDetailView({
                       key={idx}
                       className="rounded-2xl border border-interactive-blue/15 bg-interactive-blue/5 p-5 text-center transition-colors"
                     >
-                      <p className="text-2xl font-extrabold text-interactive-blue md:text-3xl">
+                      <p className="text-2xl font-semibold tracking-tight text-interactive-blue md:text-3xl">
                         {metric.value}
                       </p>
                       <p className="mt-1 text-xs font-medium text-slate">
@@ -218,7 +218,7 @@ export function CaseStudyDetailView({
               <div className="inline-flex items-center gap-2 rounded-full border border-slate/20 bg-white px-3.5 py-1 text-xs font-semibold text-slate">
                 Project Overview
               </div>
-              <h2 className="text-2xl font-bold tracking-tight text-ink md:text-3xl">
+              <h2 className="text-2xl font-semibold tracking-tight text-ink md:text-3xl">
                 Project Summary
               </h2>
               <p className="text-base leading-relaxed text-slate md:text-lg">
@@ -272,7 +272,7 @@ export function CaseStudyDetailView({
               <div className="inline-flex items-center gap-2 rounded-full border border-interactive-blue/20 bg-interactive-blue/5 px-3.5 py-1 text-xs font-semibold text-interactive-blue">
                 In-Depth Technical Breakdown
               </div>
-              <h2 className="mt-3 text-2xl font-bold tracking-tight text-ink md:text-4xl">
+              <h2 className="mt-3 text-2xl font-semibold tracking-tight text-ink md:text-4xl">
                 How Narola Engineered the Solution
               </h2>
             </div>
@@ -283,7 +283,7 @@ export function CaseStudyDetailView({
                 <button
                   key={tab.key}
                   onClick={() => setActiveTab(tab.key)}
-                  className={`rounded-xl px-4 py-2.5 text-xs font-bold transition-all md:text-sm ${activeTab === tab.key
+                  className={`rounded-xl px-4 py-2.5 text-xs font-medium transition-all md:text-sm ${activeTab === tab.key
                       ? "bg-white text-interactive-blue shadow-sm"
                       : "text-slate hover:text-ink"
                     }`}
@@ -298,7 +298,7 @@ export function CaseStudyDetailView({
               {/* Business Needs */}
               {activeTab === "business-needs" && (
                 <div className="space-y-4">
-                  <h3 className="text-xl font-bold text-ink">Business Needs</h3>
+                  <h3 className="text-xl font-semibold text-ink">Business Needs</h3>
                   <ul className="space-y-3 pt-2">
                     {caseStudy.businessNeeds.map((item, idx) => (
                       <li key={idx} className="flex items-start gap-3 text-slate text-sm md:text-base leading-relaxed">
@@ -317,7 +317,7 @@ export function CaseStudyDetailView({
               {/* Challenges */}
               {activeTab === "challenges" && (
                 <div className="space-y-4">
-                  <h3 className="text-xl font-bold text-ink">Key Challenges</h3>
+                  <h3 className="text-xl font-semibold text-ink">Key Challenges</h3>
                   <ul className="space-y-3 pt-2">
                     {caseStudy.challenges.map((item, idx) => (
                       <li key={idx} className="flex items-start gap-3 text-slate text-sm md:text-base leading-relaxed">
@@ -338,7 +338,7 @@ export function CaseStudyDetailView({
               {/* Proposed Solution */}
               {activeTab === "proposed-solution" && (
                 <div className="space-y-4">
-                  <h3 className="text-xl font-bold text-ink">Proposed & Executed Solution</h3>
+                  <h3 className="text-xl font-semibold text-ink">Proposed & Executed Solution</h3>
                   <ul className="space-y-3 pt-2">
                     {caseStudy.proposedSolution.map((item, idx) => (
                       <li key={idx} className="flex items-start gap-3 text-slate text-sm md:text-base leading-relaxed">
@@ -357,7 +357,7 @@ export function CaseStudyDetailView({
               {/* Objectives Achieved */}
               {activeTab === "objectives-achieved" && (
                 <div className="space-y-4">
-                  <h3 className="text-xl font-bold text-ink">Objectives Achieved & ROI</h3>
+                  <h3 className="text-xl font-semibold text-ink">Objectives Achieved & ROI</h3>
                   <ul className="space-y-3 pt-2">
                     {caseStudy.objectivesAchieved.map((item, idx) => (
                       <li key={idx} className="flex items-start gap-3 text-slate text-sm md:text-base leading-relaxed">
@@ -376,7 +376,7 @@ export function CaseStudyDetailView({
               {/* Technologies Used */}
               {activeTab === "technologies" && (
                 <div className="space-y-6">
-                  <h3 className="text-xl font-bold text-ink">Technologies & Frameworks</h3>
+                  <h3 className="text-xl font-semibold text-ink">Technologies & Frameworks</h3>
                   <p className="text-sm text-slate">
                     Our dedicated engineering team leveraged the following core stack for performance, security, and scalability:
                   </p>
@@ -406,7 +406,7 @@ export function CaseStudyDetailView({
       <section id="consultation" className="py-12 bg-gradient-to-br from-brand-blue via-brand-blue to-slate-900 text-white">
         <Container>
           <div className="mx-auto max-w-3xl text-center space-y-6">
-            <h2 className="text-2xl font-bold md:text-4xl">
+            <h2 className="text-2xl font-semibold tracking-tight md:text-4xl">
               Make your vision into Reality with Narola&apos;s Expert Team
             </h2>
             <p className="text-base text-white/90 md:text-lg leading-relaxed">
@@ -429,7 +429,7 @@ export function CaseStudyDetailView({
               <div className="inline-flex items-center gap-2 rounded-full border border-interactive-blue/20 bg-interactive-blue/5 px-3.5 py-1 text-xs font-semibold text-interactive-blue">
                 More Success Stories
               </div>
-              <h2 className="mt-3 text-2xl font-bold tracking-tight text-ink md:text-4xl">
+              <h2 className="mt-3 text-2xl font-semibold tracking-tight text-ink md:text-4xl">
                 Related Case Studies
               </h2>
             </div>

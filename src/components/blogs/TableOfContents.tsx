@@ -42,7 +42,7 @@ export function TableOfContents({ items }: TableOfContentsProps) {
         <button
           type="button"
           onClick={() => setIsOpenMobile((prev) => !prev)}
-          className="flex w-full items-center justify-between rounded-2xl border border-slate/15 bg-surface-muted p-4 text-sm font-bold text-ink"
+          className="flex w-full items-center justify-between rounded-2xl border border-slate/15 bg-surface-muted p-4 text-sm font-semibold text-ink"
           aria-expanded={isOpenMobile}
         >
           <span className="flex items-center gap-2">
@@ -91,7 +91,7 @@ export function TableOfContents({ items }: TableOfContentsProps) {
       {/* Desktop Sticky Card */}
       <div className="hidden lg:block">
         <div className="rounded-2xl border border-slate/10 bg-white p-6 shadow-sm">
-          <div className="flex items-center gap-2 border-b border-slate/10 pb-3 text-sm font-bold text-ink">
+          <div className="flex items-center gap-2 border-b border-slate/10 pb-3 text-sm font-semibold text-ink">
             <svg className="h-4 w-4 text-interactive-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <line x1="8" y1="6" x2="21" y2="6" />
               <line x1="8" y1="12" x2="21" y2="12" />

@@ -26,7 +26,7 @@ export function CoreServices() {
               </span>
             </div>
 
-            <h2 className="mt-5 text-h2 font-bold tracking-tight text-balance text-ink md:text-h2-lg">
+            <h2 className="mt-5 text-h2 font-semibold tracking-tight text-balance text-ink md:text-h2-lg">
               {transformationIntro.heading}
             </h2>
 
@@ -56,7 +56,7 @@ export function CoreServices() {
 
                   {/* Title & Description */}
                   <div className="md:col-span-5">
-                    <h3 className="text-2xl font-bold tracking-tight text-ink transition-colors group-hover:text-interactive-blue md:text-[26px]">
+                    <h3 className="text-2xl font-semibold tracking-tight text-ink transition-colors group-hover:text-interactive-blue md:text-[26px]">
                       {category.title}
                     </h3>
                     <p className="mt-2.5 text-sm leading-relaxed text-slate md:text-base">

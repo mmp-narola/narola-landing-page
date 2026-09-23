@@ -94,7 +94,7 @@ export function BlogLayout1({ post, relatedPosts }: BlogLayoutProps) {
               </span>
             </div>
 
-            <h1 className="mt-4 text-2xl font-bold tracking-tight text-ink sm:text-3xl md:text-4xl lg:text-5xl md:leading-tight">
+            <h1 className="mt-4 text-2xl font-semibold tracking-tight text-ink sm:text-3xl md:text-4xl lg:text-5xl md:leading-tight">
               {post.title}
             </h1>
 
@@ -109,7 +109,7 @@ export function BlogLayout1({ post, relatedPosts }: BlogLayoutProps) {
                   className="h-10 w-10 rounded-full border border-slate/20 bg-surface-muted p-1.5 object-contain"
                 />
                 <div>
-                  <p className="text-sm font-bold text-ink">{post.author?.name || "Narola Think Tank"}</p>
+                  <p className="text-sm font-semibold text-ink">{post.author?.name || "Narola Think Tank"}</p>
                   <p className="text-xs text-slate">{post.author?.role || "Technology Team"}</p>
                 </div>
               </div>
@@ -190,7 +190,7 @@ export function BlogLayout1({ post, relatedPosts }: BlogLayoutProps) {
                         id={section.id}
                         className="scroll-mt-28"
                       >
-                        <h2 className="text-xl font-bold tracking-tight text-ink md:text-2xl">
+                        <h2 className="text-xl font-semibold tracking-tight text-ink md:text-2xl">
                           {section.heading}
                         </h2>
 
@@ -246,7 +246,7 @@ export function BlogLayout1({ post, relatedPosts }: BlogLayoutProps) {
                         {section.callout && (
                           <div className="mt-6 rounded-2xl border-l-4 border-interactive-blue bg-interactive-blue/5 p-5 text-sm leading-relaxed text-ink md:text-base">
                             {section.callout.title && (
-                              <h4 className="mb-1 font-bold text-interactive-blue">
+                              <h4 className="mb-1 font-semibold text-interactive-blue">
                                 {section.callout.title}
                               </h4>
                             )}
@@ -269,7 +269,7 @@ export function BlogLayout1({ post, relatedPosts }: BlogLayoutProps) {
               {/* FAQs Section (if present) */}
               {post.faqs && post.faqs.length > 0 && (
                 <div className="mt-12 space-y-4 border-t border-slate/10 pt-8">
-                  <h3 className="text-xl font-bold text-ink md:text-2xl">
+                  <h3 className="text-xl font-semibold text-ink md:text-2xl">
                     Frequently Asked Questions
                   </h3>
                   <div className="space-y-3">
@@ -278,7 +278,7 @@ export function BlogLayout1({ post, relatedPosts }: BlogLayoutProps) {
                         key={fIdx}
                         className="rounded-2xl border border-slate/10 bg-surface-muted p-5"
                       >
-                        <h4 className="text-base font-bold text-ink">
+                        <h4 className="text-base font-semibold text-ink">
                           <RichText text={faq.question} />
                         </h4>
                         <p className="mt-2 text-sm leading-relaxed text-slate">
@@ -293,7 +293,7 @@ export function BlogLayout1({ post, relatedPosts }: BlogLayoutProps) {
               {/* Conclusion (if present) */}
               {post.conclusion && post.conclusion.length > 0 && (
                 <div className="mt-10 rounded-3xl border border-slate/10 bg-gradient-to-r from-surface-muted to-white p-6 md:p-8">
-                  <h3 className="text-lg font-bold text-ink md:text-xl">
+                  <h3 className="text-lg font-semibold text-ink md:text-xl">
                     Summary & Next Steps
                   </h3>
                   <div className="mt-3 space-y-3 text-sm leading-relaxed text-slate md:text-base">
@@ -332,7 +332,7 @@ export function BlogLayout1({ post, relatedPosts }: BlogLayoutProps) {
                   <div className="inline-flex items-center gap-1.5 rounded-full bg-interactive-blue/30 px-3 py-1 text-xs font-semibold text-brand-blue">
                     Engineering Experts
                   </div>
-                  <h3 className="mt-3 text-lg font-bold text-white">
+                  <h3 className="mt-3 text-lg font-semibold text-white">
                     Need custom software or ecommerce development?
                   </h3>
                   <p className="mt-2 text-xs text-slate-300 leading-relaxed">
@@ -356,7 +356,7 @@ export function BlogLayout1({ post, relatedPosts }: BlogLayoutProps) {
           <Container>
             <div className="mb-8 flex items-center justify-between">
               <div>
-                <h2 className="text-xl font-bold text-ink md:text-2xl">
+                <h2 className="text-xl font-semibold text-ink md:text-2xl">
                   More Articles You Might Like
                 </h2>
                 <p className="mt-1 text-xs text-slate md:text-sm">

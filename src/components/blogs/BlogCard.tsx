@@ -107,7 +107,7 @@ export function BlogCard({ post, featured = false }: BlogCardProps) {
 
           {/* Title */}
           <h3
-            className={`mt-3 font-bold text-ink transition-colors duration-200 group-hover:text-interactive-blue ${featured
+            className={`mt-3 font-semibold text-ink transition-colors duration-200 group-hover:text-interactive-blue ${featured
               ? "text-xl md:text-2xl lg:text-3xl leading-snug"
               : "text-lg md:text-xl line-clamp-2 leading-snug"
               }`}

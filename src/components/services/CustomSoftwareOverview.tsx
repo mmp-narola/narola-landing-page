@@ -29,7 +29,7 @@ export function CustomSoftwareOverview() {
           <span className="inline-block rounded-full bg-interactive-blue/10 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-interactive-blue">
             {overview.badge}
           </span>
-          <h2 className="mt-3 text-2xl font-extrabold tracking-tight text-ink sm:text-3xl md:text-4xl">
+          <h2 className="mt-3 text-2xl font-semibold tracking-tight text-ink sm:text-3xl md:text-4xl">
             {overview.title}
           </h2>
           <div className="mt-6 space-y-3 text-sm leading-relaxed text-slate sm:text-base">
@@ -54,7 +54,7 @@ export function CustomSoftwareOverview() {
                     <Icon className="h-6 w-6" />
                   </div>
 
-                  <h3 className="mt-5 text-xl font-bold text-ink transition-colors group-hover:text-interactive-blue">
+                  <h3 className="mt-5 text-xl font-semibold text-ink transition-colors group-hover:text-interactive-blue">
                     {cap.title}
                   </h3>
 

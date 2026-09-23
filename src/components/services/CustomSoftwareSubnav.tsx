@@ -61,7 +61,7 @@ export function CustomSoftwareSubnav() {
           </div>
           <a
             href="#consultation-cta"
-            className="shrink-0 rounded-lg bg-interactive-blue/10 px-3.5 py-1.5 text-xs font-bold text-interactive-blue transition-colors hover:bg-interactive-blue hover:text-white"
+            className="shrink-0 rounded-lg bg-interactive-blue/10 px-3.5 py-1.5 text-xs font-medium text-interactive-blue transition-colors hover:bg-interactive-blue hover:text-white"
           >
             Get Free Quote →
           </a>

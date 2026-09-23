@@ -84,7 +84,7 @@ export default async function CaseStudiesPage() {
                 Proven Results & Client Impact
               </div>
 
-              <h1 className="mt-4 text-3xl font-bold tracking-tight text-ink md:text-5xl md:leading-tight">
+              <h1 className="mt-4 text-3xl font-semibold tracking-tight text-ink md:text-5xl md:leading-tight">
                 Our Case Studies Reflect the Diverse Work Our Teams Deliver
               </h1>
 

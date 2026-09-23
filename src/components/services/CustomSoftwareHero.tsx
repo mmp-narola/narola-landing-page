@@ -40,7 +40,7 @@ export function CustomSoftwareHero() {
             {hero.badge}
           </div>
 
-          <h1 className="mt-4 text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl lg:leading-[1.15]">
+          <h1 className="mt-4 text-3xl font-semibold tracking-tight text-white sm:text-4xl lg:text-5xl lg:leading-[1.15]">
             {hero.title}
           </h1>
 
@@ -65,7 +65,7 @@ export function CustomSoftwareHero() {
           <div className="mt-12 grid grid-cols-2 gap-4 border-t border-white/10 pt-8 sm:grid-cols-4">
             {hero.metrics.map((metric) => (
               <div key={metric.label} className="flex flex-col">
-                <span className="text-2xl font-extrabold text-white sm:text-3xl">
+                <span className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
                   {metric.value}
                 </span>
                 <span className="text-xs font-semibold text-sky-900">{metric.label}</span>

@@ -33,7 +33,7 @@ export function OtherServices() {
               </span>
             </div>
 
-            <h2 className="mt-5 text-h2 font-bold tracking-tight text-ink md:text-h2-lg">
+            <h2 className="mt-5 text-h2 font-semibold tracking-tight text-ink md:text-h2-lg">
               Our Other Services
             </h2>
 
@@ -56,7 +56,7 @@ export function OtherServices() {
                     <IconComponent className="h-5 w-5" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-ink transition-colors group-hover:text-interactive-blue">
+                    <h3 className="text-lg font-semibold text-ink transition-colors group-hover:text-interactive-blue">
                       {service.label}
                     </h3>
                     <span className="text-xs font-medium text-slate/70">

@@ -12,7 +12,7 @@ export function CustomSoftwareWhyUs() {
           <span className="inline-block rounded-full bg-interactive-blue/10 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-interactive-blue">
             {whyUs.badge}
           </span>
-          <h2 className="mt-3 text-2xl font-extrabold tracking-tight text-ink sm:text-3xl md:text-4xl">
+          <h2 className="mt-3 text-2xl font-semibold tracking-tight text-ink sm:text-3xl md:text-4xl">
             {whyUs.title}
           </h2>
           <p className="mt-4 text-sm leading-relaxed text-slate sm:text-base">
@@ -37,7 +37,7 @@ export function CustomSoftwareWhyUs() {
                   </span>
                 </div>
 
-                <h3 className="mt-5 text-lg font-bold text-ink">
+                <h3 className="mt-5 text-lg font-semibold text-ink">
                   {reason.title}
                 </h3>
 

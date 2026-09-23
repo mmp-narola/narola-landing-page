@@ -28,7 +28,7 @@ export function BlogNewsletter() {
               <span className="h-2 w-2 rounded-full bg-brand-blue animate-pulse" />
               Stay Ahead of Tech Trends
             </div>
-            <h2 className="mt-3 text-2xl font-bold tracking-tight text-white md:text-3xl">
+            <h2 className="mt-3 text-2xl font-semibold tracking-tight text-white md:text-3xl">
               Get Notified!
             </h2>
             <p className="mt-2 text-sm text-slate-300 md:text-base leading-relaxed">
@@ -59,7 +59,7 @@ export function BlogNewsletter() {
                 </div>
                 <button
                   type="submit"
-                  className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-brand-blue to-interactive-blue px-6 py-3 text-sm font-semibold text-white shadow-md shadow-brand-blue/25 transition-all duration-200 hover:brightness-110 active:scale-[0.98]"
+                  className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-brand-blue to-interactive-blue px-6 py-3 text-sm font-medium text-white shadow-md shadow-brand-blue/25 transition-all duration-200 hover:brightness-110 active:scale-[0.98]"
                 >
                   Subscribe for Updates
                 </button>

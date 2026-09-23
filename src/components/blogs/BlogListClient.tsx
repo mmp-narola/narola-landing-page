@@ -85,7 +85,7 @@ export function BlogListClient({ posts }: BlogListClientProps) {
         <div className="mb-10">
           <div className="mb-4 flex items-center gap-2">
             <span className="inline-block h-2 w-2 rounded-full bg-interactive-blue" />
-            <h2 className="text-xs font-bold uppercase tracking-wider text-slate">
+            <h2 className="text-xs font-semibold uppercase tracking-wider text-slate">
               Editor&apos;s Pick & Spotlight
             </h2>
           </div>
@@ -98,7 +98,7 @@ export function BlogListClient({ posts }: BlogListClientProps) {
         <div className="space-y-10">
           {isDefaultView && featuredPost && (
             <div className="flex items-center justify-between border-b border-slate/10 pb-4">
-              <h2 className="text-lg font-bold text-ink md:text-xl">
+              <h2 className="text-lg font-semibold text-ink md:text-xl">
                 All Latest Articles
               </h2>
               <span className="text-xs font-medium text-slate">
@@ -119,7 +119,7 @@ export function BlogListClient({ posts }: BlogListClientProps) {
               <button
                 type="button"
                 onClick={handleShowMore}
-                className="group inline-flex items-center gap-2.5 rounded-full border border-interactive-blue/30 bg-white px-8 py-3.5 text-sm font-semibold text-interactive-blue shadow-sm transition-all duration-200 hover:border-interactive-blue hover:bg-interactive-blue hover:text-white hover:shadow-md"
+                className="group inline-flex items-center gap-2.5 rounded-full border border-interactive-blue/30 bg-white px-8 py-3.5 text-sm font-medium text-interactive-blue shadow-sm transition-all duration-200 hover:border-interactive-blue hover:bg-interactive-blue hover:text-white hover:shadow-md"
               >
                 <span>Show More Articles</span>
                 <svg
@@ -147,14 +147,14 @@ export function BlogListClient({ posts }: BlogListClientProps) {
               <line x1="21" y1="21" x2="16.65" y2="16.65" />
             </svg>
           </div>
-          <h3 className="text-lg font-bold text-ink">No articles found</h3>
+          <h3 className="text-lg font-semibold text-ink">No articles found</h3>
           <p className="mt-2 text-sm text-slate">
             We couldn&apos;t find any blog posts matching &ldquo;{searchQuery}&rdquo; in this category.
           </p>
           <button
             type="button"
             onClick={handleResetFilters}
-            className="mt-6 inline-flex items-center justify-center rounded-xl bg-interactive-blue px-5 py-2.5 text-xs font-semibold text-white shadow-xs transition-colors hover:bg-interactive-blue/90"
+            className="mt-6 inline-flex items-center justify-center rounded-xl bg-interactive-blue px-5 py-2.5 text-xs font-medium text-white shadow-xs transition-colors hover:bg-interactive-blue/90"
           >
             Reset Search & Filters
           </button>

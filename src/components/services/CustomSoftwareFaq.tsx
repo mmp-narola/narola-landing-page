@@ -20,7 +20,7 @@ export function CustomSoftwareFaq() {
           <span className="inline-block rounded-full bg-interactive-blue/10 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-interactive-blue">
             Got Questions?
           </span>
-          <h2 className="mt-3 text-2xl font-extrabold tracking-tight text-ink sm:text-3xl md:text-4xl">
+          <h2 className="mt-3 text-2xl font-semibold tracking-tight text-ink sm:text-3xl md:text-4xl">
             Frequently Asked Questions
           </h2>
           <p className="mt-4 text-sm leading-relaxed text-slate sm:text-base">
@@ -39,7 +39,7 @@ export function CustomSoftwareFaq() {
               >
                 <button
                   type="button"
-                  className="flex w-full items-center justify-between p-5 text-left text-sm font-bold text-ink transition-colors hover:text-interactive-blue sm:text-base"
+                  className="flex w-full items-center justify-between p-5 text-left text-sm font-semibold text-ink transition-colors hover:text-interactive-blue sm:text-base"
                   onClick={() => toggleFaq(idx)}
                   aria-expanded={isOpen}
                 >

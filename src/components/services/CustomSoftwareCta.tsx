@@ -28,7 +28,7 @@ export function CustomSoftwareCta() {
               Get In Touch
             </span>
 
-            <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+            <h2 className="mt-4 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
               Schedule a Consultation & Receive a Free Project Proposal
             </h2>
 
@@ -73,13 +73,13 @@ export function CustomSoftwareCta() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <h3 className="mt-4 text-xl font-bold text-white">Thank You for Reaching Out!</h3>
+                  <h3 className="mt-4 text-xl font-semibold text-white">Thank You for Reaching Out!</h3>
                   <p className="mt-2 text-sm text-slate-300">
                     Our technical consultant will review your project details and contact you within 24 business hours.
                   </p>
                   <button
                     type="button"
-                    className="mt-6 rounded-xl bg-interactive-blue px-6 py-2.5 text-xs font-semibold text-white hover:bg-interactive-blue/90"
+                    className="mt-6 rounded-xl bg-interactive-blue px-6 py-2.5 text-xs font-medium text-white hover:bg-interactive-blue/90"
                     onClick={() => setIsSubmitted(false)}
                   >
                     Submit Another Inquiry
@@ -87,7 +87,7 @@ export function CustomSoftwareCta() {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
-                  <h3 className="text-xl font-bold text-white">Request Free Consultation</h3>
+                  <h3 className="text-xl font-semibold text-white">Request Free Consultation</h3>
 
                   <div>
                     <label className="block text-xs font-medium text-slate-300">Full Name *</label>
@@ -139,7 +139,7 @@ export function CustomSoftwareCta() {
 
                   <button
                     type="submit"
-                    className="w-full rounded-xl bg-interactive-blue py-3.5 text-center text-sm font-bold text-white shadow-lg shadow-interactive-blue/30 transition-all hover:bg-interactive-blue/90"
+                    className="w-full rounded-xl bg-interactive-blue py-3.5 text-center text-sm font-medium text-white shadow-lg shadow-interactive-blue/30 transition-all hover:bg-interactive-blue/90"
                   >
                     Submit Project Inquiry →
                   </button>

@@ -132,7 +132,7 @@ export function SectionTable({
               {table.headers.map((header, idx) => (
                 <th
                   key={idx}
-                  className="px-5 py-3.5 font-bold tracking-tight text-ink first:pl-6 last:pr-6"
+                  className="px-5 py-3.5 font-semibold tracking-tight text-ink first:pl-6 last:pr-6"
                 >
                   <RichText text={header} />
                 </th>

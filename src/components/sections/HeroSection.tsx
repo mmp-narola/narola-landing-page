@@ -87,7 +87,7 @@ export function HeroSection() {
                 <button
                   type="submit"
                   disabled={isThinking}
-                  className="inline-flex shrink-0 items-center justify-center gap-1.5 rounded-2xl bg-light-gray px-6 py-4 text-sm font-semibold text-black shadow-sm transition-all hover:bg-white active:scale-95 disabled:opacity-70"
+                  className="inline-flex shrink-0 items-center justify-center gap-1.5 rounded-2xl bg-light-gray px-6 py-4 text-sm font-medium text-black shadow-sm transition-all hover:bg-white active:scale-95 disabled:opacity-70"
                 >
                   {isThinking ? (
                     <span>Matching...</span>
@@ -110,7 +110,7 @@ export function HeroSection() {
                       type="button"
                       onClick={() => handleSelectPrompt(prompt)}
                       className={`rounded-full px-4 py-2 text-xs font-medium transition-all duration-200 ${isSelected
-                        ? "bg-[#0084ff] text-white font-semibold shadow-sm"
+                        ? "bg-[#0084ff] text-white shadow-sm"
                         : "bg-white/[0.06] text-light-gray hover:bg-[#0084ff]/15 hover:text-bright-blue"
                         }`}
                     >
@@ -136,7 +136,7 @@ export function HeroSection() {
                       <X className="h-3.5 w-3.5" />
                     </button>
                   </div>
-                  <h4 className="mt-2 text-base font-bold text-light-gray">
+                  <h4 className="mt-2 text-base font-semibold text-light-gray">
                     {activePrompt.response.title}
                   </h4>
                   <p className="mt-1 text-xs md:text-sm text-muted-gray leading-relaxed">
@@ -151,7 +151,7 @@ export function HeroSection() {
                     ))}
                     <a
                       href="#footer"
-                      className="ml-auto inline-flex items-center gap-1 font-bold text-bright-blue hover:underline"
+                      className="ml-auto inline-flex items-center gap-1 font-semibold text-bright-blue hover:underline"
                     >
                       <span>Consult our architects</span>
                       <ArrowRight className="h-3.5 w-3.5" />

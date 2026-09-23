@@ -18,7 +18,7 @@ export function CustomSoftwareServicesTabs() {
           <span className="inline-block rounded-full bg-interactive-blue/10 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-interactive-blue">
             {servicesMatrix.badge}
           </span>
-          <h2 className="mt-3 text-2xl font-extrabold tracking-tight text-ink sm:text-3xl md:text-4xl">
+          <h2 className="mt-3 text-2xl font-semibold tracking-tight text-ink sm:text-3xl md:text-4xl">
             {servicesMatrix.title}
           </h2>
         </div>
@@ -31,7 +31,7 @@ export function CustomSoftwareServicesTabs() {
               <button
                 key={tab.id}
                 type="button"
-                className={`rounded-2xl px-5 py-3 text-xs font-bold transition-all sm:text-sm ${
+                className={`rounded-2xl px-5 py-3 text-xs font-medium transition-all sm:text-sm ${
                   isActive
                     ? "bg-interactive-blue text-white shadow-lg shadow-interactive-blue/25"
                     : "bg-white text-slate border border-slate/10 hover:border-interactive-blue/30 hover:text-ink"
@@ -47,7 +47,7 @@ export function CustomSoftwareServicesTabs() {
         {/* Active Tab Content Card */}
         <div className="mt-8 rounded-3xl border border-slate/10 bg-white p-6 shadow-sm sm:p-10">
           <div className="border-b border-slate/10 pb-5">
-            <h3 className="text-xl font-bold text-ink sm:text-2xl">
+            <h3 className="text-xl font-semibold text-ink sm:text-2xl">
               {currentTab.headline}
             </h3>
             <p className="mt-1 text-xs text-slate sm:text-sm">
@@ -65,7 +65,7 @@ export function CustomSoftwareServicesTabs() {
                   <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-interactive-blue/10 text-interactive-blue font-bold text-xs">
                     ✓
                   </div>
-                  <h4 className="mt-3 text-sm font-bold text-ink transition-colors group-hover:text-interactive-blue">
+                  <h4 className="mt-3 text-sm font-semibold text-ink transition-colors group-hover:text-interactive-blue">
                     {item.title}
                   </h4>
                   <p className="mt-1.5 text-xs leading-relaxed text-slate">
@@ -76,7 +76,7 @@ export function CustomSoftwareServicesTabs() {
                 <div className="mt-4 pt-3 border-t border-slate/5">
                   <a
                     href="#consultation-cta"
-                    className="inline-flex items-center gap-1 text-[11px] font-bold text-interactive-blue hover:underline"
+                    className="inline-flex items-center gap-1 text-[11px] font-semibold text-interactive-blue hover:underline"
                   >
                     <span>Inquire Now</span>
                     <span>→</span>

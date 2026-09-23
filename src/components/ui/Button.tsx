@@ -32,7 +32,7 @@ export function Button({
   return (
     <a
       href={href}
-      className={`inline-flex items-center justify-center rounded-xl px-6 py-3.5 text-button font-semibold transition-all duration-200 ${VARIANT_STYLES[variant]} ${className}`}
+      className={`inline-flex items-center justify-center rounded-xl px-6 py-3.5 text-button font-medium transition-all duration-200 ${VARIANT_STYLES[variant]} ${className}`}
       {...props}
     >
       {children}
