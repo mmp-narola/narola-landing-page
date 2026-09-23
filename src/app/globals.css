@@ -1,9 +1,7 @@
 @import "tailwindcss";
 
 @theme inline {
-  /* Brand colors — see VISUAL_DIRECTION.md §2. White (#FFFFFF) is intentionally not
-     aliased here: it maps directly to Tailwind's built-in `white`, which is already
-     unambiguous, so a brand alias would add no meaning. */
+  /* Brand colors */
   --color-brand-blue: #0084ff;
   --color-interactive-blue: #0072d9;
   --color-ink: #192734;
@@ -11,60 +9,42 @@
   --color-accent-orange: #e9852a;
   --color-surface-muted: #f6f7fa;
 
-  /* Palette Theme Colors:
-     #f5f5f7: light-gray (primary light text / surface highlight)
-     #7c7c84: subtle-gray (subtle descriptions / tertiary text)
-     #2997ff: electric-blue (Apple electric blue / interactive accent)
-     #8ec2ff: soft-blue (soft sky blue / badge text)
-     #5ab0ff: bright-blue (bright cyan-azure / icon and eyebrow tint)
-     #a1a1a6: muted-gray (secondary muted text / label gray) */
-  --color-light-gray: #f5f5f7;
-  --color-subtle-gray: #7c7c84;
-  --color-electric-blue: #2997ff;
-  --color-soft-blue: #8ec2ff;
-  --color-bright-blue: #5ab0ff;
-  --color-muted-gray: #a1a1a6;
+  /* Palette Theme Colors (Light Theme Default) */
+  --color-light-gray: #1d1d1f;
+  --color-subtle-gray: #38383a;
+  --color-electric-blue: #0071e3;
+  --color-soft-blue: #0071e3;
+  --color-bright-blue: #0071e3;
+  --color-muted-gray: #3a3a3c;
 
   /* Aliases for backwards compatibility and semantic hierarchy */
-  --color-ink-secondary: #6e6e73;
+  --color-ink-secondary: #48484a;
   --color-ink-muted: #86868b;
-  --color-surface-dark: #000000;
-  --color-surface-dark-raised: #0c0c0e;
-  --color-on-dark-primary: #f5f5f7;
-  --color-on-dark-secondary: #a1a1a6;
-  --color-on-dark-muted: #6e6e73;
+  --color-surface-dark: #ffffff;
+  --color-surface-dark-raised: #f5f5f7;
+  --color-on-dark-primary: #1d1d1f;
+  --color-on-dark-secondary: #3a3a3c;
+  --color-on-dark-muted: #48484a;
 
-  --color-surface-charcoal: #1d1d1f;
-  --color-surface-charcoal-alt: #151515;
-  --color-surface-charcoal-raised: #232326;
-  --color-accent-tint: #5ab0ff;
+  --color-surface-charcoal: #ffffff;
+  --color-surface-charcoal-alt: #f5f5f7;
+  --color-surface-charcoal-raised: #f5f5f7;
+  --color-accent-tint: #0071e3;
 
-  /* Large cinematic display sizes for hero/section headlines, layered on
-     top of the existing h1/h2 tokens rather than replacing them. */
+  /* Large cinematic display sizes for hero/section headlines */
   --text-display: 2.75rem; /* 44px, mobile */
   --text-display--line-height: 1.05;
   --text-display-lg: 5.5rem; /* 88px, lg:+ */
   --text-display-lg--line-height: 1.02;
 
-  /* Typography — see VISUAL_DIRECTION.md §3. Font weights intentionally use Tailwind's
-     existing font-* utilities (font-normal/semibold/bold) directly; only size +
-     line-height are aliased here, since Tailwind has no built-in name for this
-     project's specific scale. H1/H2 have a separate "-lg" token for the md:+ desktop
-     size per VISUAL_DIRECTION.md; H3/H4/body/small/button sizes are constant across
-     breakpoints and so need only one token each.
-
-     Font stack: leads with the self-hosted Inter (brand font, loaded via
-     next/font/google in layout.tsx) so the site renders consistently everywhere;
-     each OS's native system font (San Francisco on Apple platforms, Segoe UI on
-     Windows, Roboto on Android/ChromeOS) is kept only as a fallback in case Inter
-     ever fails to load. */
+  /* Typography */
   --font-sans:
     var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     ui-sans-serif, system-ui, sans-serif;
 
   --text-h1: 2.25rem; /* 36px, mobile */
   --text-h1--line-height: 1.1;
-  --text-h1-lg: 4.5rem; /* 72px, md:+ — large display scale per Apple-inspired direction */
+  --text-h1-lg: 4.5rem; /* 72px, md:+ */
   --text-h1-lg--line-height: 1.05;
 
   --text-h2: 1.75rem; /* 28px, mobile */
@@ -72,7 +52,7 @@
   --text-h2-lg: 3rem; /* 48px, md:+ */
   --text-h2-lg--line-height: 1.1;
 
-  --text-display: 3rem; /* 48px, mobile — large standalone display text (e.g. CEO quote) */
+  --text-display: 3rem; /* 48px, mobile */
   --text-display--line-height: 1.1;
   --text-display-lg: 5rem; /* 80px, md:+ */
   --text-display-lg--line-height: 1.05;
@@ -94,28 +74,15 @@
 }
 
 :root {
-  color-scheme: dark;
-}
-
-html.light {
   color-scheme: light;
-  --color-light-gray: #1d1d1f;
-  --color-subtle-gray: #38383a;
-  --color-muted-gray: #3a3a3c;
-  --color-soft-blue: #0071e3;
 }
 
 /* Base-layer element defaults */
 @layer base {
   body {
-    background-color: #000;
-    color: var(--color-light-gray);
-    font-family: var(--font-sans);
-  }
-
-  html.light body {
-    background-color: #fff;
+    background-color: #ffffff;
     color: var(--color-ink);
+    font-family: var(--font-sans);
   }
 
   a {
@@ -134,202 +101,168 @@ html.light {
 }
 
 /* ==========================================================================
-   LIGHT MODE OVERRIDES
-   Activates when html has class "light" from the theme switcher toggle
+   LIGHT THEME CORE & COMPONENT STYLES
    ========================================================================== */
-html.light .min-h-screen.bg-black {
+.min-h-screen.bg-black {
   background-color: #ffffff !important;
   color: #1d1d1f !important;
 }
 
-/* Section alternating backgrounds in Light Mode */
-html.light section.bg-black {
+/* Section alternating backgrounds */
+section.bg-black {
   background-color: #ffffff !important;
   color: #1d1d1f !important;
 }
 
-html.light section.bg-light-gray {
+section.bg-light-gray {
   background-color: #f5f5f7 !important;
   color: #1d1d1f !important;
   border-color: rgba(0, 0, 0, 0.06) !important;
 }
 
-/* Text Colors in Light Mode */
-html.light .text-light-gray {
+/* Text Colors */
+.text-light-gray {
   color: #1d1d1f !important;
 }
 
-html.light .text-dark-gray {
+.text-dark-gray {
   color: #1d1d1f !important;
 }
 
-html.light .text-muted-gray {
+.text-muted-gray {
   color: #3a3a3c !important;
 }
 
-html.light .text-subtle-gray {
+.text-subtle-gray {
   color: #38383a !important;
 }
 
-html.light .text-\[\#86868b\] {
+.text-\[\#86868b\] {
   color: #48484a !important;
 }
 
-html.light .text-\[\#6e6e73\] {
+.text-\[\#6e6e73\] {
   color: #48484a !important;
 }
 
-html.light .text-\[\#d1d1d6\] {
+.text-\[\#d1d1d6\] {
   color: #3a3a3c !important;
 }
 
-/* Cards & Panels in Light Mode */
-html.light .bg-\[\#1d1d1f\] {
+/* Cards & Panels */
+.bg-\[\#1d1d1f\] {
   background-color: #ffffff !important;
   border-color: rgba(0, 0, 0, 0.08) !important;
   box-shadow: 0 4px 24px -4px rgba(0, 0, 0, 0.06) !important;
 }
 
-html.light .bg-\[\#1c1c21\] {
+.bg-\[\#1c1c21\] {
   background-color: #ffffff !important;
   border-color: rgba(0, 0, 0, 0.08) !important;
   box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05) !important;
 }
 
-html.light .bg-\[\#151515\] {
+.bg-\[\#151515\] {
   background-color: #f5f5f7 !important;
   border-color: rgba(0, 0, 0, 0.08) !important;
 }
 
-html.light .bg-\[\#141418\] {
+.bg-\[\#141418\] {
   background-color: #f5f5f7 !important;
   border-color: rgba(0, 0, 0, 0.08) !important;
 }
 
-/* Borders in Light Mode */
-html.light .border-white\/10,
-html.light .border-white\/15,
-html.light .border-white\/\[0\.08\] {
+/* Borders */
+.border-white\/10,
+.border-white\/15,
+.border-white\/\[0\.08\] {
   border-color: rgba(0, 0, 0, 0.08) !important;
 }
 
-/* Tag Chips & Badges in Light Mode */
-html.light .bg-white\/10,
-html.light .bg-white\/\[0\.06\],
-html.light .bg-white\/\[0\.10\],
-html.light .bg-white\/\[0\.08\] {
+/* Tag Chips & Badges */
+.bg-white\/10,
+.bg-white\/\[0\.06\],
+.bg-white\/\[0\.10\],
+.bg-white\/\[0\.08\] {
   background-color: rgba(0, 113, 227, 0.08) !important;
   color: #0071e3 !important;
 }
 
-html.light .text-soft-blue {
+.text-soft-blue {
   color: #0071e3 !important;
 }
 
-html.light .bg-\[\#0084ff\]\/15,
-html.light .bg-\[\#0084ff\]\/20 {
+.bg-\[\#0084ff\]\/15,
+.bg-\[\#0084ff\]\/20 {
   background-color: rgba(0, 113, 227, 0.12);
 }
 
-/* Group hover effects in Light Mode */
-html.light .group:hover {
+/* Group hover effects */
+.group:hover {
   border-color: rgba(0, 132, 255, 0.45) !important;
 }
 
-html.light .group:hover .group-hover\:bg-\[\#0084ff\]\/50 {
+.group:hover .group-hover\:bg-\[\#0084ff\]\/50 {
   background-color: rgba(0, 132, 255, 0.5) !important;
   color: #ffffff !important;
 }
 
-/* Form Controls & Buttons in Light Mode */
-html.light input.bg-\[\#151515\] {
+/* Form Controls & Buttons */
+input.bg-\[\#151515\] {
   background-color: #ffffff !important;
   border-color: rgba(0, 0, 0, 0.12) !important;
   color: #1d1d1f !important;
 }
 
-html.light input.bg-\[\#151515\]::placeholder {
+input.bg-\[\#151515\]::placeholder {
   color: #86868b !important;
 }
 
-html.light button.bg-light-gray.text-black {
+button.bg-light-gray.text-black {
   background-color: #1d1d1f !important;
   color: #ffffff !important;
 }
-html.light button.bg-light-gray.text-black:hover {
+button.bg-light-gray.text-black:hover {
   background-color: #000000 !important;
 }
 
-html.light a.bg-light-gray.text-black {
+a.bg-light-gray.text-black {
   background-color: #1d1d1f !important;
   color: #ffffff !important;
 }
-html.light a.bg-light-gray.text-black:hover {
+a.bg-light-gray.text-black:hover {
   background-color: #000000 !important;
 }
 
-/* Header in Light Mode */
-html.light header {
+/* Header */
+header {
   background-color: rgba(255, 255, 255, 0.85) !important;
   border-bottom-color: rgba(0, 0, 0, 0.08) !important;
 }
 
-html.light header .bg-\[\#1d1d1f\]\/95 {
+header .bg-\[\#1d1d1f\]\/95 {
   background-color: rgba(255, 255, 255, 0.98) !important;
   border-color: rgba(0, 0, 0, 0.08) !important;
   box-shadow: 0 12px 40px -4px rgba(0, 0, 0, 0.12) !important;
 }
 
-html.light header #mobile-menu {
+header #mobile-menu {
   background-color: rgba(255, 255, 255, 0.98) !important;
   border-top-color: rgba(0, 0, 0, 0.08) !important;
 }
 
-/* Filter buttons in OurWork (Light Mode) */
-html.light .border.border-white\/10.bg-\[\#1d1d1f\].text-light-gray {
+/* Filter buttons in OurWork */
+.border.border-white\/10.bg-\[\#1d1d1f\].text-light-gray {
   background-color: #f5f5f7 !important;
   color: #1d1d1f !important;
   border-color: rgba(0, 0, 0, 0.08) !important;
 }
-html.light .border.border-white\/10.bg-\[\#1d1d1f\].text-light-gray:hover {
+.border.border-white\/10.bg-\[\#1d1d1f\].text-light-gray:hover {
   background-color: #e5e5ea !important;
 }
 
-/* Footer in Dark Mode vs Light Mode */
-html:not(.light) footer#footer {
-  background-color: #0c0c0e !important;
-  border-top-color: rgba(255, 255, 255, 0.08) !important;
-}
-html:not(.light) footer#footer h3,
-html:not(.light) footer#footer h4,
-html:not(.light) footer#footer h5 {
-  color: #f5f5f7 !important;
-}
-html:not(.light) footer#footer .text-ink {
-  color: #f5f5f7 !important;
-}
-html:not(.light) footer#footer .text-slate {
-  color: #a1a1a6 !important;
-}
-html:not(.light) footer#footer .bg-white {
-  background-color: #161618 !important;
-  border-color: rgba(255, 255, 255, 0.1) !important;
-}
-html:not(.light) footer#footer .border-slate\/10 {
-  border-color: rgba(255, 255, 255, 0.08) !important;
-}
-html:not(.light) footer#footer a.text-slate:hover {
-  color: #5ab0ff !important;
-}
-html:not(.light) footer#footer a.bg-slate\/30 {
-  background-color: rgba(255, 255, 255, 0.1) !important;
-}
-html:not(.light) footer#footer a.bg-slate\/30:hover {
-  background-color: #0084ff !important;
-}
-
 /* Ambient glow in light mode */
-html.light .pointer-events-none.absolute {
+.pointer-events-none.absolute {
   opacity: 0.65;
 }
 
@@ -348,6 +281,7 @@ html.light .pointer-events-none.absolute {
 @layer utilities {
   .reveal {
     opacity: 0;
+    transform: translateY(28px);
     transition:
       opacity 0.95s cubic-bezier(0.16, 1, 0.3, 1),
       transform 0.95s cubic-bezier(0.16, 1, 0.3, 1);
