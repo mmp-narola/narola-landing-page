@@ -29,7 +29,7 @@ export function AiAutomationSection() {
             <h2 className="mt-4 text-display font-semibold tracking-tight text-light-gray md:text-6xl text-balance">
               {aiAutomationContent.title}
             </h2>
-            <p className="mx-auto mt-5 max-w-2xl text-base text-muted-gray md:text-xl leading-relaxed">
+            <p className="mx-auto mt-5 max-w-2xl text-xl text-muted-gray md:text-2xl">
               {aiAutomationContent.subtitle}
             </p>
           </div>

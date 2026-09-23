@@ -61,7 +61,7 @@ export function HeroSection() {
 
           {/* Subtitle */}
           <Reveal delay={200}>
-            <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-gray sm:text-xl font-normal leading-relaxed">
+            <p className="mx-auto mt-6 max-w-2xl text-xl text-muted-gray sm:text-2xl font-normal">
               {heroContent.subtitle}
             </p>
           </Reveal>

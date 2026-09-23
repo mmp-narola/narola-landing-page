@@ -156,7 +156,11 @@ html.light section.bg-light-gray {
 
 /* Text Colors in Light Mode */
 html.light .text-light-gray {
-  color: #1a1a1b !important;
+  color: #1d1d1f !important;
+}
+
+html.light .text-dark-gray {
+  color: #1d1d1f !important;
 }
 
 html.light .text-muted-gray {

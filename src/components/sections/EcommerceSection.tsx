@@ -60,7 +60,7 @@ export function EcommerceSection() {
             <h2 className="text-display font-semibold tracking-tight text-light-gray md:text-6xl text-balance">
               {ecommerceContent.title}
             </h2>
-            <p className="mt-5 text-base text-muted-gray md:text-xl leading-relaxed">
+            <p className="mt-5 text-xl text-muted-gray md:text-2xl">
               {ecommerceContent.subtitle}
             </p>
           </div>
