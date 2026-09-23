@@ -62,7 +62,7 @@ export function OurWorkSection() {
               className={groupIdx === 0 ? "" : "border-t border-white/10 pt-6"}
             >
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-[#86868b]">
+                <span className="text-xs font-bold uppercase tracking-wider text-ink-secondary">
                   {group.groupName}
                 </span>
                 <div className="mt-4 flex flex-wrap gap-3.5">
@@ -79,7 +79,7 @@ export function OurWorkSection() {
                           {client.name}
                         </span>
                         <span className="mt-0.5 flex items-center gap-1 text-xs text-subtle-gray">
-                          <MapPin className="h-3 w-3 text-[#6e6e73]" />
+                          <MapPin className="h-3 w-3 text-ink-secondary" />
                           <span>{client.country}</span>
                         </span>
                       </div>
@@ -118,8 +118,8 @@ export function OurWorkSection() {
                           <span className="rounded-md bg-[#0084ff]/15 px-2.5 py-1 text-xs font-medium text-bright-blue">
                             {study.industry}
                           </span>
-                          <span className="flex items-center gap-1 text-xs text-[#86868b]">
-                            <MapPin className="h-3 w-3 text-[#6e6e73]" />
+                          <span className="flex items-center gap-1 text-xs text-ink-secondary">
+                            <MapPin className="h-3 w-3 text-ink-secondary" />
                             <span>{study.country}</span>
                           </span>
                         </div>

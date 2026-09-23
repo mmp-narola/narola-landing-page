@@ -95,7 +95,7 @@ export function Header() {
                   >
                     <span>{item.label}</span>
                     <svg
-                      className={`h-3.5 w-3.5 text-[#86868b] transition-transform duration-200 ${isServicesHovered ? "rotate-180 text-bright-blue" : ""
+                      className={`h-3.5 w-3.5 text-ink-secondary transition-transform duration-200 ${isServicesHovered ? "rotate-180 text-bright-blue" : ""
                         }`}
                       viewBox="0 0 20 20"
                       fill="currentColor"
@@ -129,14 +129,14 @@ export function Header() {
                             href={subItem.href}
                             className={`group flex items-start gap-2.5 rounded-xl px-3 py-2.5 transition-colors ${isSubActive
                               ? "bg-[#0084ff]/15 text-bright-blue"
-                              : "text-[#d1d1d6] hover:bg-white/5 hover:text-bright-blue"
+                              : "text-subtle-gray hover:bg-white/5 hover:text-bright-blue"
                               }`}
                             onClick={() => setIsServicesHovered(false)}
                           >
                             <svg
                               className={`mt-1 h-3.5 w-3.5 shrink-0 transition-transform group-hover:translate-x-0.5 ${isSubActive
                                 ? "text-bright-blue"
-                                : "text-[#86868b] group-hover:text-bright-blue"
+                                : "text-ink-secondary group-hover:text-bright-blue"
                                 }`}
                               viewBox="0 0 20 20"
                               fill="currentColor"
@@ -251,7 +251,7 @@ export function Header() {
                     >
                       <span>{item.label}</span>
                       <svg
-                        className={`h-4 w-4 text-[#86868b] transition-transform duration-200 ${isServicesMobileOpen ? "rotate-180 text-bright-blue" : ""
+                        className={`h-4 w-4 text-ink-secondary transition-transform duration-200 ${isServicesMobileOpen ? "rotate-180 text-bright-blue" : ""
                           }`}
                         viewBox="0 0 20 20"
                         fill="currentColor"

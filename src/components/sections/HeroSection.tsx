@@ -81,7 +81,7 @@ export function HeroSection() {
                     value={inputValue}
                     onChange={(e) => setInputValue(e.target.value)}
                     placeholder={heroContent.inputPlaceholder}
-                    className="w-full rounded-2xl border border-white/10 bg-[#151515] px-5 py-4 text-sm md:text-base text-light-gray placeholder:text-[#6e6e73] transition-all focus:border-[#0084ff] focus:outline-none focus:ring-4 focus:ring-[#0084ff]/15"
+                    className="w-full rounded-2xl border border-white/10 bg-[#151515] px-5 py-4 text-sm md:text-base text-light-gray placeholder:text-ink-secondary transition-all focus:border-[#0084ff] focus:outline-none focus:ring-4 focus:ring-[#0084ff]/15"
                   />
                 </div>
                 <button
@@ -185,7 +185,7 @@ export function HeroSection() {
         <Container className="relative">
           <div className="mx-auto max-w-5xl text-center">
             <Reveal delay={150}>
-              <span className="block text-xs lg:text-base font-semibold uppercase tracking-[0.14em] text-[#86868b] sm:text-sm">
+              <span className="block text-xs lg:text-base font-semibold uppercase tracking-[0.14em] text-ink-secondary sm:text-sm">
                 {heroContent.trustedBannerTitle}
               </span>
               <div className="mt-6 flex flex-wrap items-center justify-center gap-3.5 sm:gap-5">

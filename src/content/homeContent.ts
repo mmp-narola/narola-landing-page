@@ -210,12 +210,36 @@ export const ecommerceContent = {
   industryVerticals: {
     title: "Industries we serve",
     verticals: [
-      { name: "Jewelry", icon: "diamond" },
-      { name: "Fashion", icon: "shirt" },
-      { name: "Grocery", icon: "cup" },
-      { name: "Health", icon: "monitor" },
-      { name: "D2C", icon: "box" },
-      { name: "B2B", icon: "building" },
+      {
+        name: "Jewelry",
+        icon: "diamond",
+        image: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800&auto=format&fit=crop&q=85",
+      },
+      {
+        name: "Fashion",
+        icon: "shirt",
+        image: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&auto=format&fit=crop&q=85",
+      },
+      {
+        name: "Grocery",
+        icon: "cup",
+        image: "https://images.unsplash.com/photo-1542838132-92c53300491e?w=800&auto=format&fit=crop&q=85",
+      },
+      {
+        name: "Health",
+        icon: "monitor",
+        image: "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=800&auto=format&fit=crop&q=85",
+      },
+      {
+        name: "D2C",
+        icon: "box",
+        image: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=800&auto=format&fit=crop&q=85",
+      },
+      {
+        name: "B2B",
+        icon: "building",
+        image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&auto=format&fit=crop&q=85",
+      },
     ],
   },
   rightSidebar: {
