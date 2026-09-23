@@ -1,196 +1,142 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
-import { AmbientGlow } from "@/components/ui/AmbientGlow";
 import { ecommerceContent } from "@/content/homeContent";
 
-import {
-  Bot,
-  LayoutGrid,
-  Store,
-  ArrowRight,
-  Gem,
-  Shirt,
-  ShoppingBag,
-  Activity,
-  Package,
-  Building2,
-} from "lucide-react";
-
-const VERTICAL_ICONS: Record<string, React.ComponentType<{ className?: string }>> = {
-  diamond: Gem,
-  shirt: Shirt,
-  cup: ShoppingBag,
-  monitor: Activity,
-  box: Package,
-  building: Building2,
-};
-
-interface FeatureCardProps {
-  icon: React.ReactNode;
-  title: string;
-  children: React.ReactNode;
-}
-
-function FeatureCard({ icon, title, children }: FeatureCardProps) {
-  return (
-    <div className="rounded-3xl border border-white/10 bg-[#1c1c21] p-7 backdrop-blur-sm transition-all duration-500 hover:scale-102">
-      <div className="flex items-center gap-2.5 text-bright-blue">
-        {icon}
-        <h3 className="text-lg font-semibold text-light-gray">
-          {title}
-        </h3>
-      </div>
-      {children}
-    </div>
-  );
-}
-
 export function EcommerceSection() {
+  const [aiCommerceCard, commerceSolutionsCard] = ecommerceContent.cards;
+
   return (
     <section
       id={ecommerceContent.sectionId}
-      className="relative w-full overflow-hidden bg-light-gray py-24 text-light-gray md:py-32"
+      className="relative w-full overflow-hidden bg-white py-20 text-ink md:py-28"
     >
-      {/* <AmbientGlow position="top" height={420} color="rgba(0,132,255,0.16)" /> */}
       <Container className="relative">
         {/* Section Header */}
         <Reveal>
-          <div className="mx-auto max-w-3xl text-center">
-            <h2 className="text-display font-semibold tracking-tight text-light-gray md:text-6xl text-balance">
+          <div className="mx-auto max-w-3xl text-center mb-16 md:mb-20">
+            <h2 className="text-display font-semibold tracking-tight text-ink md:text-6xl text-balance">
               {ecommerceContent.title}
             </h2>
-            <p className="mt-5 text-xl text-muted-gray md:text-2xl">
+            <p className="mx-auto mt-5 max-w-2xl text-xl text-muted-gray md:text-2xl">
               {ecommerceContent.subtitle}
             </p>
           </div>
         </Reveal>
 
-        {/* Bento Grid */}
-        <div className="mt-16 grid grid-cols-1 gap-6 lg:grid-cols-12 md:mt-20">
-          {/* Left Column (3 cards) */}
-          <div className="flex flex-col gap-5 lg:col-span-6">
-            {/* Card 1: AI Commerce - arrives from Top */}
-            <Reveal variant="top" delay={200}>
-              <FeatureCard
-                icon={<Bot className="h-5 w-5" />}
-                title={ecommerceContent.cards[0].title}
-              >
-                <p className="mt-2.5 text-sm text-subtle-gray leading-relaxed">
-                  {ecommerceContent.cards[0].description}
-                </p>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {ecommerceContent.cards[0].tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-soft-blue"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </FeatureCard>
-            </Reveal>
-
-            {/* Card 2: Commerce Solutions - arrives from Left */}
-            <Reveal variant="left" delay={300}>
-              <FeatureCard
-                icon={<LayoutGrid className="h-5 w-5" />}
-                title={ecommerceContent.cards[1].title}
-              >
-                <p className="mt-2.5 text-sm text-subtle-gray leading-relaxed">
-                  {ecommerceContent.cards[1].description}
-                </p>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {ecommerceContent.cards[1].tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-soft-blue"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </FeatureCard>
-            </Reveal>
-
-            {/* Card 3: Industry Verticals - arrives from Bottom */}
-            <Reveal variant="bottom" delay={400}>
-              <FeatureCard
-                icon={<Store className="h-5 w-5" />}
-                title={ecommerceContent.industryVerticals.title}
-              >
-                <div className="mt-5 grid grid-cols-2 sm:grid-cols-3 gap-2.5">
-                  {ecommerceContent.industryVerticals.verticals.map((v) => {
-                    const Icon = VERTICAL_ICONS[v.icon] || Package;
-                    return (
-                      <div
-                        key={v.name}
-                        className="group relative flex flex-col items-center justify-center gap-2 rounded-2xl border border-white/10 bg-[#141418] p-3 text-center transition-all duration-300 hover:border-bright-blue/40 hover:bg-[#191922] hover:-translate-y-0.5 hover:shadow-lg hover:shadow-bright-blue/5"
-                      >
-                        <div className="text-bright-blue/50 group-hover:text-bright-blue transition-all duration-300 group-hover:scale-110">
-                          <Icon className="h-6 w-6" />
-                        </div>
-                        <span className="text-sm font-semibold tracking-wide text-light-gray group-hover:text-white transition-colors duration-300 group-hover:scale-110">
-                          {v.name}
-                        </span>
-                      </div>
-                    );
-                  })}
-                </div>
-              </FeatureCard>
-            </Reveal>
-          </div>
-
-          {/* Right Column - Card 4: Platforms & Case Studies - arrives from Right */}
-          <Reveal
-            variant="right"
-            delay={500}
-            className="flex lg:col-span-6"
-          >
-            <div className="flex w-full flex-col justify-between rounded-3xl border border-white/10 bg-[#1c1c21] p-8 backdrop-blur-sm md:p-9 transition-all duration-500 hover:scale-102">
-              <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-muted-gray">
-                  {ecommerceContent.rightSidebar.platformsTitle}
-                </span>
-
-                <div className="mt-5 flex flex-col gap-3">
-                  {ecommerceContent.rightSidebar.platforms.map((platform) => (
-                    <div
-                      key={platform.name}
-                      className="flex items-center justify-between rounded-xl border border-white/10 bg-[#141418] p-4"
-                    >
-                      <span className="text-sm font-semibold text-light-gray">
-                        {platform.name}
-                      </span>
-                      <span className="rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-soft-blue">
-                        {platform.badge}
-                      </span>
-                    </div>
-                  ))}
-                </div>
+        <div className="mx-auto max-w-5xl divide-y divide-slate/15">
+          {/* Row 1: AI commerce */}
+          <Reveal delay={100}>
+            <div className="grid grid-cols-1 gap-4 py-8 md:grid-cols-12 md:gap-8 md:py-10">
+              <div className="md:col-span-4 lg:col-span-4">
+                <h3 className="text-xl font-bold tracking-tight text-ink sm:text-2xl">
+                  {aiCommerceCard.title}
+                </h3>
               </div>
-
-              <div className="mt-8 border-t border-white/10 pt-6">
-                <span className="text-xs font-bold uppercase tracking-wider text-muted-gray">
-                  {ecommerceContent.rightSidebar.caseStudiesTitle}
-                </span>
-                <div className="mt-4 flex flex-col gap-2.5">
-                  {ecommerceContent.rightSidebar.caseStudies.map((cs) => (
-                    <Link
-                      key={cs.title}
-                      href={cs.href}
-                      className="group flex items-center gap-2 text-sm font-semibold text-electric-blue"
+              <div className="md:col-span-8 lg:col-span-8">
+                <p className="text-sm leading-relaxed text-slate sm:text-base">
+                  {aiCommerceCard.description}
+                </p>
+                <div className="mt-4 flex flex-wrap gap-2.5">
+                  {aiCommerceCard.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-full border border-slate/20 bg-white px-3.5 py-1 text-xs font-medium text-slate-700 shadow-2xs"
                     >
-                      <ArrowRight className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1" />
-                      <span className="group-hover:underline">{cs.title}</span>
-                    </Link>
+                      {tag}
+                    </span>
                   ))}
                 </div>
               </div>
             </div>
           </Reveal>
+
+          {/* Row 2: Commerce solutions */}
+          <Reveal delay={200}>
+            <div className="grid grid-cols-1 gap-4 py-8 md:grid-cols-12 md:gap-8 md:py-10">
+              <div className="md:col-span-4 lg:col-span-4">
+                <h3 className="text-xl font-bold tracking-tight text-ink sm:text-2xl">
+                  {commerceSolutionsCard.title}
+                </h3>
+              </div>
+              <div className="md:col-span-8 lg:col-span-8">
+                <p className="text-sm leading-relaxed text-slate sm:text-base">
+                  {commerceSolutionsCard.description}
+                </p>
+                <div className="mt-4 flex flex-wrap gap-2.5">
+                  {commerceSolutionsCard.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-full border border-slate/20 bg-white px-3.5 py-1 text-xs font-medium text-slate-700 shadow-2xs"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </Reveal>
+
+          {/* Row 3: Industries we serve */}
+          <Reveal delay={300}>
+            <div className="grid grid-cols-1 gap-4 py-8 md:grid-cols-12 md:gap-8 md:py-10">
+              <div className="md:col-span-4 lg:col-span-4">
+                <h3 className="text-xl font-bold tracking-tight text-ink sm:text-2xl">
+                  {ecommerceContent.industryVerticals.title}
+                </h3>
+              </div>
+              <div className="flex flex-wrap items-center gap-2.5 md:col-span-8 lg:col-span-8">
+                {ecommerceContent.industryVerticals.verticals.map((v) => (
+                  <span
+                    key={v.name}
+                    className="rounded-full border border-white/10 px-4 py-2 text-xs font-medium transition-all duration-200 bg-white/[0.06] text-light-gray"
+                  >
+                    {v.name}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+
+          {/* Row 4: Platforms we build on */}
+          <Reveal delay={400}>
+            <div className="grid grid-cols-1 gap-4 py-8 md:grid-cols-12 md:gap-8 md:py-10">
+              <div className="md:col-span-4 lg:col-span-4">
+                <h3 className="text-xl font-bold tracking-tight text-ink sm:text-2xl">
+                  {ecommerceContent.rightSidebar.platformsTitle}
+                </h3>
+              </div>
+              <div className="grid grid-cols-1 gap-6 sm:grid-cols-3 md:col-span-8 lg:col-span-8">
+                {ecommerceContent.rightSidebar.platforms.map((platform) => (
+                  <div key={platform.name} className="flex flex-col">
+                    <span className="text-base font-bold text-ink">
+                      {platform.name}
+                    </span>
+                    <span className="mt-0.5 text-xs text-slate">
+                      {platform.badge}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Reveal>
         </div>
+
+        {/* Bottom Case Studies Links */}
+        <Reveal delay={500}>
+          <div className="mt-12 flex flex-wrap items-center justify-center gap-8 pt-4 sm:gap-12">
+            {ecommerceContent.rightSidebar.caseStudies.map((cs) => (
+              <Link
+                key={cs.title}
+                href={cs.href}
+                className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#0071e3] transition-colors hover:underline hover:text-[#005bb5] sm:text-base"
+              >
+                <span>{cs.title}</span>
+                <span aria-hidden="true">→</span>
+              </Link>
+            ))}
+          </div>
+        </Reveal>
       </Container>
     </section>
   );

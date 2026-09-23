@@ -43,10 +43,10 @@ export function HeroSection() {
   };
 
   return (
-    <section className="relative overflow-hidden bg-light-gray pt-20 pb-20 sm:pt-28 sm:pb-28 lg:pt-36 lg:pb-32 text-light-gray">
+    <section className="relative overflow-hidden bg-light-gray pt-20 sm:pt-28 lg:pt-36 text-light-gray">
       {/* <AmbientGlow position="top" height={560} color="rgba(0,85,255,0.18)" className="-top-40" /> */}
 
-      <Container className="relative">
+      <Container className="relative pb-8">
         <div className="mx-auto max-w-5xl text-center">
           {/* Main Headline — large cinematic display type */}
           <Reveal>
@@ -177,27 +177,46 @@ export function HeroSection() {
               ))}
             </div>
           </Reveal>
-
-          {/* Trusted Clients Ribbon */}
-          <Reveal delay={350}>
-            <div className="mx-auto mt-14 max-w-4xl">
-              <span className="block text-[11px] font-semibold uppercase tracking-wider text-[#86868b]">
-                {heroContent.trustedBannerTitle}
-              </span>
-              <div className="mt-4 flex flex-wrap items-center justify-center gap-3">
-                {heroContent.trustedClients.map((client) => (
-                  <span
-                    key={client}
-                    className="rounded-full border border-white/10 bg-[#151515] px-5 py-2.5 text-xs text-light-gray"
-                  >
-                    {client}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </Reveal>
         </div>
       </Container>
+
+      {/* Distinct Trusted Clients Subsection */}
+      <div className="border-t border-black/[0.06] bg-surface-muted/50 py-10 md:py-14">
+        <Container className="relative">
+          <div className="mx-auto max-w-5xl text-center">
+            <Reveal delay={150}>
+              <span className="block text-xs lg:text-base font-semibold uppercase tracking-[0.14em] text-[#86868b] sm:text-sm">
+                {heroContent.trustedBannerTitle}
+              </span>
+              <div className="mt-6 flex flex-wrap items-center justify-center gap-3.5 sm:gap-5">
+                {heroContent.trustedClients.map((client) => (
+                  <div
+                    key={client.name}
+                    className="flex h-14 sm:h-15 items-center justify-center rounded-2xl border border-slate/10 bg-white px-5.5 sm:px-7 shadow-xs transition-all duration-300 hover:border-slate/25 hover:shadow-md hover:-translate-y-0.5"
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={client.logo}
+                      alt={`${client.name} logo`}
+                      className={`w-auto max-w-[110px] sm:max-w-[130px] object-contain ${client.name === "L&T"
+                        ? "max-h-8.5 sm:max-h-9.5"
+                        : client.name === "Biocon"
+                          ? "max-h-8 sm:max-h-9"
+                          : "max-h-7 sm:max-h-8"
+                        }`}
+                    />
+                  </div>
+                ))}
+                {heroContent.moreClientsBadge && (
+                  <div className="flex h-14 sm:h-15 items-center justify-center rounded-2xl border border-dashed border-slate/25 bg-slate/5 px-5.5 sm:px-7 text-xs sm:text-sm font-semibold text-slate transition-all duration-300 hover:border-slate/40">
+                    {heroContent.moreClientsBadge}
+                  </div>
+                )}
+              </div>
+            </Reveal>
+          </div>
+        </Container>
+      </div>
     </section>
   );
 }

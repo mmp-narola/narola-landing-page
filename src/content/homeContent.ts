@@ -3,6 +3,11 @@ export interface StatItem {
   label: string;
 }
 
+export interface TrustedClientItem {
+  name: string;
+  logo: string;
+}
+
 export interface QuickPrompt {
   id: string;
   label: string;
@@ -165,13 +170,13 @@ export const heroContent = {
   ] as StatItem[],
   trustedBannerTitle: "TRUSTED BY 1,500+ CLIENTS INCLUDING",
   trustedClients: [
-    "CGI",
-    "L&T",
-    "Infosys",
-    "Biocon",
-    "TVS Next",
-    "+ 1,495 more",
-  ],
+    { name: "CGI", logo: "/images/trusted-clients/CGI.webp" },
+    { name: "L&T", logo: "/images/trusted-clients/LT.webp" },
+    { name: "TVS Next", logo: "/images/trusted-clients/Tvs-next.webp" },
+    { name: "Biocon", logo: "/images/trusted-clients/Biocon-Logo-Main.webp" },
+    { name: "Infosys", logo: "/images/trusted-clients/Infosys.webp" },
+  ] as TrustedClientItem[],
+  moreClientsBadge: "+ 1,495 more",
 };
 
 export const ecommerceContent = {
@@ -185,7 +190,12 @@ export const ecommerceContent = {
       title: "AI commerce",
       description:
         "Shopping assistants, recommendation engines, conversational commerce, and AI search that convert browsers into buyers.",
-      tags: ["AI shopping assistant", "Conversational commerce", "AI chatbots"],
+      tags: [
+        "AI shopping assistant",
+        "Conversational commerce",
+        "AI chatbots",
+        "AI search",
+      ],
       icon: "robot",
     },
     {
@@ -198,7 +208,7 @@ export const ecommerceContent = {
     },
   ],
   industryVerticals: {
-    title: "Industry verticals",
+    title: "Industries we serve",
     verticals: [
       { name: "Jewelry", icon: "diamond" },
       { name: "Fashion", icon: "shirt" },
@@ -209,7 +219,7 @@ export const ecommerceContent = {
     ],
   },
   rightSidebar: {
-    platformsTitle: "PLATFORMS WE BUILD ON",
+    platformsTitle: "Platforms we build on",
     platforms: [
       { name: "Shopify", badge: "Expert partner" },
       { name: "WooCommerce", badge: "Certified", hasWpLogo: true },
