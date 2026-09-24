@@ -160,7 +160,7 @@ export function Header() {
 
           {/* CTA Contact Button */}
           <Link
-            href="#footer"
+            href="#contact"
             className="inline-flex items-center justify-center rounded-lg border-2 border-bright-blue bg-white px-5 py-2 text-xs font-bold uppercase tracking-wider text-bright-blue transition-all duration-200 hover:bg-bright-blue hover:text-white shadow-2xs active:scale-95"
             onClick={() => setActiveMenu(null)}
           >
@@ -373,7 +373,7 @@ export function Header() {
 
             <div className="mt-4 pt-2">
               <Link
-                href="#footer"
+                href="#contact"
                 className="flex w-full items-center justify-center rounded-2xl bg-bright-blue py-3.5 text-xs font-bold uppercase tracking-wider text-white shadow-md hover:bg-interactive-blue"
                 onClick={() => setIsMenuOpen(false)}
               >

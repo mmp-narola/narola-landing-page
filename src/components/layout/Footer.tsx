@@ -160,10 +160,10 @@ export function Footer() {
   return (
     <>
       {/* Pre-Footer CTA Section */}
-      <section className="bg-gradient-to-b from-[#1a1a1a] to-black py-10 md:py-12 text-white">
+      <section id="contact" className="bg-gradient-to-b from-[#1a1a1a] to-black py-10 md:py-12 text-white">
         <Container>
           <div className="max-w-3xl">
-            <h2 className="mb-6 text-2xl font-semibold tracking-tight text-white md:text-4xl md:leading-tight">
+            <h2 className="mb-4 text-2xl font-semibold tracking-tight text-white md:text-4xl md:leading-tight">
               Have a project worth building well?
             </h2>
             <p className="mb-10 max-w-2xl text-sm text-white/70 md:text-base">
@@ -184,7 +184,7 @@ export function Footer() {
         </Container>
       </section>
 
-      <footer id="footer" className="w-full border-t border-slate/10 bg-surface-muted py-14 md:py-16">
+      <footer id="footer" className="w-full border-t border-slate/10 bg-surface-muted py-8 md:py-4">
         <Container>
           <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-12 lg:gap-8">
 
@@ -205,24 +205,7 @@ export function Footer() {
               </ul>
             </div>
 
-            {/* Column 2: Technologies (3 cols) */}
-            <div className="lg:col-span-3">
-              <h4 className="text-base font-semibold tracking-tight text-ink">Technologies</h4>
-              <ul className="mt-4 space-y-2">
-                {footerContent.technologies.map((item) => (
-                  <li key={item.label}>
-                    <a
-                      href={item.href}
-                      className="block text-sm text-slate transition-colors hover:text-interactive-blue"
-                    >
-                      {item.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Column 3: Resources (3 cols) */}
+            {/* Column 2: Resources (3 cols) */}
             <div className="lg:col-span-3">
               <h4 className="text-base font-semibold tracking-tight text-ink">Resources</h4>
               <ul className="mt-4 space-y-2">
@@ -248,74 +231,70 @@ export function Footer() {
               </ul>
             </div>
 
-            {/* Column 4: Global Presence & Social Links (3 cols) */}
-            <div className="flex flex-col justify-between lg:col-span-3">
-              <div>
-                <h4 className="text-base font-semibold tracking-tight text-ink">
-                  {footerContent.globalPresence.title}
-                </h4>
-
-                {/* US Offices */}
-                <div className="mt-4 space-y-3.5">
-                  {footerContent.globalPresence.offices.map((office) => (
-                    <div key={office.city} className="space-y-1">
-                      <div className="flex items-center gap-1.5 text-sm font-medium text-ink">
-                        <UsFlag className="h-3 w-4 shrink-0 shadow-2xs" />
-                        <span>{office.city}</span>
-                      </div>
-                      <div className="flex items-start gap-1.5 text-xs text-slate">
-                        <PinIcon className="h-3.5 w-3.5 shrink-0 text-slate/50" />
-                        <span className="leading-snug">{office.address}</span>
-                      </div>
+            {/* Column 3: Global Presence (US Offices) (3 cols) */}
+            <div className="lg:col-span-3">
+              <h4 className="text-base font-semibold tracking-tight text-ink">
+                {footerContent.globalPresence.title}
+              </h4>
+              <div className="mt-4 flex flex-col gap-5">
+                {footerContent.globalPresence.offices.map((office) => (
+                  <a href={office.mapUrl} target="_blank" rel="noopener noreferrer" key={office.city} className="group flex flex-col gap-1.5 transition-opacity hover:opacity-75">
+                    <div className="flex items-center gap-2 text-sm font-semibold text-ink">
+                      <UsFlag className="h-3 w-4 shrink-0 shadow-2xs" />
+                      <span className="group-hover:text-interactive-blue transition-colors">{office.city}</span>
                     </div>
-                  ))}
-                </div>
-
-                {/* Development Centers */}
-                <h5 className="mt-6 text-base font-semibold tracking-tight text-ink">
-                  {footerContent.globalPresence.devCentersTitle}
-                </h5>
-                <div className="mt-3.5 space-y-3.5">
-                  {footerContent.globalPresence.devCenters.map((center) => (
-                    <div key={center.city} className="space-y-1">
-                      <div className="flex items-center gap-1.5 text-sm font-medium text-ink">
-                        <IndiaFlag className="h-3 w-4 shrink-0 shadow-2xs" />
-                        <span>{center.city}</span>
-                      </div>
-                      <div className="flex items-start gap-1.5 text-xs text-slate">
-                        <PinIcon className="h-3.5 w-3.5 shrink-0 text-slate/50" />
-                        <span className="leading-snug">{center.address}</span>
-                      </div>
+                    <div className="flex items-start gap-1.5 text-xs text-slate">
+                      <PinIcon className="h-3.5 w-3.5 shrink-0 text-slate/50" />
+                      <span className="leading-snug">{office.address}</span>
                     </div>
-                  ))}
-                </div>
+                  </a>
+                ))}
               </div>
+            </div>
 
-              {/* Social Links */}
-              <div className="mt-6 flex items-center gap-2.5">
-                {footerContent.socialLinks.map((social) => (
-                  <a
-                    key={social.platform}
-                    href={social.href}
-                    aria-label={social.label}
-                    className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-slate/30 text-white transition-colors hover:bg-interactive-blue"
-                  >
-                    {social.platform === "LinkedIn" ? (
-                      <LinkedInIcon className="h-3.5 w-3.5" />
-                    ) : (
-                      <InstagramIcon className="h-3.5 w-3.5" />
-                    )}
+            {/* Column 4: Development Centers (India Offices) (3 cols) */}
+            <div className="lg:col-span-3">
+              <h4 className="text-base font-semibold tracking-tight text-ink">
+                {footerContent.globalPresence.devCentersTitle}
+              </h4>
+              <div className="mt-4 flex flex-col gap-5">
+                {footerContent.globalPresence.devCenters.map((center) => (
+                  <a href={center.mapUrl} target="_blank" rel="noopener noreferrer" key={center.city} className="group flex flex-col gap-1.5 transition-opacity hover:opacity-75">
+                    <div className="flex items-center gap-2 text-sm font-semibold text-ink">
+                      <IndiaFlag className="h-3 w-4 shrink-0 shadow-2xs" />
+                      <span className="group-hover:text-interactive-blue transition-colors">{center.city}</span>
+                    </div>
+                    <div className="flex items-start gap-1.5 text-xs text-slate">
+                      <PinIcon className="h-3.5 w-3.5 shrink-0 text-slate/50" />
+                      <span className="leading-snug">{center.address}</span>
+                    </div>
                   </a>
                 ))}
               </div>
             </div>
           </div>
 
-          {/* Bottom bar: Copyright */}
-          <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-slate/10 pt-8 sm:flex-row">
+          {/* Bottom bar: Copyright & Socials */}
+          <div className="mt-6 flex flex-col items-center justify-between gap-4 border-t border-slate/10 pt-6 sm:flex-row">
             <p className="text-xs text-slate">
               © {new Date().getFullYear()} Narola Infotech. All rights reserved.
             </p>
+            <div className="flex items-center gap-4">
+              {footerContent.socialLinks.map((social) => (
+                <a
+                  key={social.platform}
+                  href={social.href}
+                  aria-label={social.label}
+                  className="text-slate transition-colors hover:text-interactive-blue"
+                >
+                  {social.platform === "LinkedIn" ? (
+                    <LinkedInIcon className="h-4 w-4" />
+                  ) : (
+                    <InstagramIcon className="h-4 w-4" />
+                  )}
+                </a>
+              ))}
+            </div>
           </div>
         </Container>
       </footer>

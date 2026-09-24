@@ -12,6 +12,7 @@ export interface OfficeLocation {
   country: "US" | "IN";
   city: string;
   address: string;
+  mapUrl: string;
 }
 
 export interface RatingItem {
@@ -84,12 +85,14 @@ export const footerContent = {
       {
         country: "US" as const,
         city: "North Carolina",
-        address: "187 E Chatham St Suite 300, Cary, NC 27511",
+        address: "167 E Chatham St Suite 300, Cary, NC 27511",
+        mapUrl: "https://maps.app.goo.gl/nDWuha8kBQoEzTeJA",
       },
       {
         country: "US" as const,
         city: "Virginia",
         address: "43519 Wheadon Ter, Chantilly VA 20152",
+        mapUrl: "https://maps.app.goo.gl/Bbd1jesGZuzqMbff7",
       },
     ],
     devCentersTitle: "Development Centers",
@@ -98,11 +101,14 @@ export const footerContent = {
         country: "IN" as const,
         city: "Surat",
         address: "5th Floor, Unity Corner, TP 10 Main Road, Pal, Surat 395009",
+        mapUrl: "https://maps.app.goo.gl/P366KE28dTVJmEp1A",
       },
       {
         country: "IN" as const,
         city: "Nashik",
-        address: "2nd Floor, Pawar Business Square, Pathardi Phata, Nashik 422010",
+        address:
+          "2nd Floor, Pawar Business Square, Pathardi Phata, Nashik 422010",
+        mapUrl: "https://maps.app.goo.gl/rXMd7kgyJiQo1Q7p9",
       },
     ],
   },
