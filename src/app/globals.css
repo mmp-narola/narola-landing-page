@@ -307,6 +307,25 @@ header #mobile-menu {
   }
 }
 
+/* Section wrapper */
+@layer components {
+  .section-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background-color: var(--color-surface-muted); /* true light gray */
+    color: var(--color-ink);
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+  @media (min-width: 768px) {
+    .section-wrapper {
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+    }
+  }
+}
+
 /* Scroll-reveal primitive */
 @layer utilities {
   .reveal {

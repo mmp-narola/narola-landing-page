@@ -123,195 +123,202 @@ function InstagramIcon({ className = "w-4 h-4" }: { className?: string }) {
   );
 }
 
+function RatingCard({
+  platform,
+  label,
+  score,
+  stars,
+}: {
+  platform: "Clutch" | "Google";
+  label: string;
+  score: string;
+  stars: number;
+}) {
+  return (
+    <div className="flex w-full min-w-[210px] items-center gap-3 rounded-2xl bg-gradient-to-br from-white/20 to-white/10 p-3 shadow-lg backdrop-blur-sm sm:w-auto">
+      {platform === "Clutch" ? (
+        <ClutchIcon className="h-8 w-8 shrink-0" />
+      ) : (
+        <GoogleIcon className="h-8 w-8 shrink-0" />
+      )}
+      <div className="flex flex-col">
+        <span className="text-[11px] font-medium text-white/60">{label}</span>
+        <div className="flex items-center gap-1.5">
+          <span className="text-sm font-semibold text-white">{score}</span>
+          <div className="flex items-center gap-0.5">
+            {Array.from({ length: stars }).map((_, i) => (
+              <StarIcon key={i} className="h-3 w-3" />
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export function Footer() {
   return (
-    <footer id="footer" className="w-full border-t border-slate/10 bg-surface-muted py-14 md:py-16">
-      <Container>
-        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-12 lg:gap-8">
-          {/* Column 1: CTA & Ratings (3 cols) */}
-          <div className="flex flex-col lg:col-span-3">
-            <h3 className="text-base font-semibold tracking-tight text-ink md:text-lg">
-              {footerContent.cta.heading}
-            </h3>
-
-            <div className="mt-4">
-              <Button href={footerContent.cta.buttonHref}>{footerContent.cta.buttonText}</Button>
+    <>
+      {/* Pre-Footer CTA Section */}
+      <section className="bg-gradient-to-b from-[#1a1a1a] to-black py-10 md:py-12 text-white">
+        <Container>
+          <div className="max-w-3xl">
+            <h2 className="mb-6 text-2xl font-semibold tracking-tight text-white md:text-4xl md:leading-tight">
+              Have a project worth building well?
+            </h2>
+            <p className="mb-10 max-w-2xl text-sm text-white/70 md:text-base">
+              Tell us where it stands today. We&apos;ll follow up with a plan, a timeline, and the team who&apos;d run it.
+            </p>
+            <div className="mb-8">
+              <Button href={footerContent.cta.buttonHref}>
+                Schedule a Call
+              </Button>
             </div>
 
-            {/* Ratings Cards */}
-            <div className="mt-6 flex flex-col gap-3">
-              {/* Clutch Rating */}
-              <div className="flex w-full max-w-[210px] items-center gap-3 rounded-2xl border border-slate/10 bg-white p-3 shadow-md shadow-slate/5 transition-shadow hover:shadow-lg">
-                <ClutchIcon className="h-8 w-8 shrink-0" />
-                <div className="flex flex-col">
-                  <span className="text-[11px] font-medium text-slate">
-                    {footerContent.ratings[0].label}
-                  </span>
-                  <div className="flex items-center gap-1.5">
-                    <span className="text-sm font-semibold text-ink">
-                      {footerContent.ratings[0].score}
-                    </span>
-                    <div className="flex items-center gap-0.5">
-                      {Array.from({ length: footerContent.ratings[0].stars }).map((_, i) => (
-                        <StarIcon key={i} className="h-3 w-3" />
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Google Rating */}
-              <div className="flex w-full max-w-[210px] items-center gap-3 rounded-2xl border border-slate/10 bg-white p-3 shadow-md shadow-slate/5 transition-shadow hover:shadow-lg">
-                <GoogleIcon className="h-8 w-8 shrink-0" />
-                <div className="flex flex-col">
-                  <span className="text-[11px] font-medium text-slate">
-                    {footerContent.ratings[1].label}
-                  </span>
-                  <div className="flex items-center gap-1.5">
-                    <span className="text-sm font-semibold text-ink">
-                      {footerContent.ratings[1].score}
-                    </span>
-                    <div className="flex items-center gap-0.5">
-                      {Array.from({ length: footerContent.ratings[1].stars }).map((_, i) => (
-                        <StarIcon key={i} className="h-3 w-3" />
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
+            <div className="flex flex-wrap items-center gap-4 md:gap-6">
+              {footerContent.ratings.map((rating, idx) => (
+                <RatingCard key={idx} {...rating} />
+              ))}
             </div>
           </div>
+        </Container>
+      </section>
 
-          {/* Column 2: Services (2 cols) */}
-          <div className="lg:col-span-2">
-            <h4 className="text-base font-semibold tracking-tight text-ink">Services</h4>
-            <ul className="mt-4 space-y-2">
-              {footerContent.services.map((item) => (
-                <li key={item.label}>
-                  <a
-                    href={item.href}
-                    className="block text-sm text-slate transition-colors hover:text-interactive-blue"
-                  >
-                    {item.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+      <footer id="footer" className="w-full border-t border-slate/10 bg-surface-muted py-14 md:py-16">
+        <Container>
+          <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-12 lg:gap-8">
 
-          {/* Column 3: Technologies (2 cols) */}
-          <div className="lg:col-span-2">
-            <h4 className="text-base font-semibold tracking-tight text-ink">Technologies</h4>
-            <ul className="mt-4 space-y-2">
-              {footerContent.technologies.map((item) => (
-                <li key={item.label}>
-                  <a
-                    href={item.href}
-                    className="block text-sm text-slate transition-colors hover:text-interactive-blue"
-                  >
-                    {item.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Column 4: Resources (2 cols) */}
-          <div className="lg:col-span-2">
-            <h4 className="text-base font-semibold tracking-tight text-ink">Resources</h4>
-            <ul className="mt-4 space-y-2">
-              {footerContent.resources.map((item) => (
-                <li key={item.label}>
-                  {item.href.startsWith("/") ? (
-                    <Link
-                      href={item.href}
-                      className="block text-sm text-slate transition-colors hover:text-interactive-blue"
-                    >
-                      {item.label}
-                    </Link>
-                  ) : (
+            {/* Column 1: Services (3 cols) */}
+            <div className="lg:col-span-3">
+              <h4 className="text-base font-semibold tracking-tight text-ink">Services</h4>
+              <ul className="mt-4 space-y-2">
+                {footerContent.services.map((item) => (
+                  <li key={item.label}>
                     <a
                       href={item.href}
                       className="block text-sm text-slate transition-colors hover:text-interactive-blue"
                     >
                       {item.label}
                     </a>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Column 5: Global Presence & Social Links (3 cols) */}
-          <div className="flex flex-col justify-between lg:col-span-3">
-            <div>
-              <h4 className="text-base font-semibold tracking-tight text-ink">
-                {footerContent.globalPresence.title}
-              </h4>
-
-              {/* US Offices */}
-              <div className="mt-4 space-y-3.5">
-                {footerContent.globalPresence.offices.map((office) => (
-                  <div key={office.city} className="space-y-1">
-                    <div className="flex items-center gap-1.5 text-sm font-medium text-ink">
-                      <UsFlag className="h-3 w-4 shrink-0 shadow-2xs" />
-                      <span>{office.city}</span>
-                    </div>
-                    <div className="flex items-start gap-1.5 text-xs text-slate">
-                      <PinIcon className="h-3.5 w-3.5 shrink-0 text-slate/50" />
-                      <span className="leading-snug">{office.address}</span>
-                    </div>
-                  </div>
+                  </li>
                 ))}
+              </ul>
+            </div>
+
+            {/* Column 2: Technologies (3 cols) */}
+            <div className="lg:col-span-3">
+              <h4 className="text-base font-semibold tracking-tight text-ink">Technologies</h4>
+              <ul className="mt-4 space-y-2">
+                {footerContent.technologies.map((item) => (
+                  <li key={item.label}>
+                    <a
+                      href={item.href}
+                      className="block text-sm text-slate transition-colors hover:text-interactive-blue"
+                    >
+                      {item.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Column 3: Resources (3 cols) */}
+            <div className="lg:col-span-3">
+              <h4 className="text-base font-semibold tracking-tight text-ink">Resources</h4>
+              <ul className="mt-4 space-y-2">
+                {footerContent.resources.map((item) => (
+                  <li key={item.label}>
+                    {item.href.startsWith("/") ? (
+                      <Link
+                        href={item.href}
+                        className="block text-sm text-slate transition-colors hover:text-interactive-blue"
+                      >
+                        {item.label}
+                      </Link>
+                    ) : (
+                      <a
+                        href={item.href}
+                        className="block text-sm text-slate transition-colors hover:text-interactive-blue"
+                      >
+                        {item.label}
+                      </a>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Column 4: Global Presence & Social Links (3 cols) */}
+            <div className="flex flex-col justify-between lg:col-span-3">
+              <div>
+                <h4 className="text-base font-semibold tracking-tight text-ink">
+                  {footerContent.globalPresence.title}
+                </h4>
+
+                {/* US Offices */}
+                <div className="mt-4 space-y-3.5">
+                  {footerContent.globalPresence.offices.map((office) => (
+                    <div key={office.city} className="space-y-1">
+                      <div className="flex items-center gap-1.5 text-sm font-medium text-ink">
+                        <UsFlag className="h-3 w-4 shrink-0 shadow-2xs" />
+                        <span>{office.city}</span>
+                      </div>
+                      <div className="flex items-start gap-1.5 text-xs text-slate">
+                        <PinIcon className="h-3.5 w-3.5 shrink-0 text-slate/50" />
+                        <span className="leading-snug">{office.address}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Development Centers */}
+                <h5 className="mt-6 text-base font-semibold tracking-tight text-ink">
+                  {footerContent.globalPresence.devCentersTitle}
+                </h5>
+                <div className="mt-3.5 space-y-3.5">
+                  {footerContent.globalPresence.devCenters.map((center) => (
+                    <div key={center.city} className="space-y-1">
+                      <div className="flex items-center gap-1.5 text-sm font-medium text-ink">
+                        <IndiaFlag className="h-3 w-4 shrink-0 shadow-2xs" />
+                        <span>{center.city}</span>
+                      </div>
+                      <div className="flex items-start gap-1.5 text-xs text-slate">
+                        <PinIcon className="h-3.5 w-3.5 shrink-0 text-slate/50" />
+                        <span className="leading-snug">{center.address}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
 
-              {/* Development Centers */}
-              <h5 className="mt-6 text-base font-semibold tracking-tight text-ink">
-                {footerContent.globalPresence.devCentersTitle}
-              </h5>
-              <div className="mt-3.5 space-y-3.5">
-                {footerContent.globalPresence.devCenters.map((center) => (
-                  <div key={center.city} className="space-y-1">
-                    <div className="flex items-center gap-1.5 text-sm font-medium text-ink">
-                      <IndiaFlag className="h-3 w-4 shrink-0 shadow-2xs" />
-                      <span>{center.city}</span>
-                    </div>
-                    <div className="flex items-start gap-1.5 text-xs text-slate">
-                      <PinIcon className="h-3.5 w-3.5 shrink-0 text-slate/50" />
-                      <span className="leading-snug">{center.address}</span>
-                    </div>
-                  </div>
+              {/* Social Links */}
+              <div className="mt-6 flex items-center gap-2.5">
+                {footerContent.socialLinks.map((social) => (
+                  <a
+                    key={social.platform}
+                    href={social.href}
+                    aria-label={social.label}
+                    className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-slate/30 text-white transition-colors hover:bg-interactive-blue"
+                  >
+                    {social.platform === "LinkedIn" ? (
+                      <LinkedInIcon className="h-3.5 w-3.5" />
+                    ) : (
+                      <InstagramIcon className="h-3.5 w-3.5" />
+                    )}
+                  </a>
                 ))}
               </div>
             </div>
-
-            {/* Social Links */}
-            <div className="mt-6 flex items-center gap-2.5">
-              {footerContent.socialLinks.map((social) => (
-                <a
-                  key={social.platform}
-                  href={social.href}
-                  aria-label={social.label}
-                  className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-slate/30 text-white transition-colors hover:bg-interactive-blue"
-                >
-                  {social.platform === "LinkedIn" ? (
-                    <LinkedInIcon className="h-3.5 w-3.5" />
-                  ) : (
-                    <InstagramIcon className="h-3.5 w-3.5" />
-                  )}
-                </a>
-              ))}
-            </div>
           </div>
-        </div>
 
-        {/* Bottom bar: Copyright */}
-        <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-slate/10 pt-8 sm:flex-row">
-          <p className="text-xs text-slate">
-            © {new Date().getFullYear()} Narola Infotech. All rights reserved.
-          </p>
-        </div>
-      </Container>
-    </footer>
+          {/* Bottom bar: Copyright */}
+          <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-slate/10 pt-8 sm:flex-row">
+            <p className="text-xs text-slate">
+              © {new Date().getFullYear()} Narola Infotech. All rights reserved.
+            </p>
+          </div>
+        </Container>
+      </footer>
+    </>
   );
 }

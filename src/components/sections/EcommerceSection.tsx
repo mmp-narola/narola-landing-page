@@ -11,7 +11,7 @@ export function EcommerceSection() {
   return (
     <section
       id={ecommerceContent.sectionId}
-      className="relative w-full overflow-hidden bg-light-gray py-16 text-light-gray md:py-24"
+      className="section-wrapper"
     >
       <Container className="relative">
         {/* Section Header */}

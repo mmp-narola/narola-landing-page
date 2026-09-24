@@ -23,7 +23,7 @@ export function OurWorkSection({ caseStudies = [] }: OurWorkSectionProps) {
   const displayedCaseStudies = caseStudies.slice(0, 3);
 
   return (
-    <section id={ourWorkContent.sectionId} className="relative w-full overflow-hidden bg-light-gray py-16 text-light-gray md:py-24">
+    <section id={ourWorkContent.sectionId} className="section-wrapper">
       {/* <AmbientGlow position="top" height={420} color="rgba(0,132,255,0.14)" /> */}
       <Container className="relative">
         {/* Section Header */}
@@ -126,7 +126,7 @@ export function OurWorkSection({ caseStudies = [] }: OurWorkSectionProps) {
 
         {/* Bottom Footer Banner */}
         <Reveal delay={100}>
-          <div className="mt-16 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-8 text-sm text-muted-gray sm:flex-row">
+          <div className="flex flex-col items-center justify-between gap-3 pt-8 text-sm text-muted-gray sm:flex-row">
             <span>{ourWorkContent.footerBanner.leftText}</span>
             <Link
               href={ourWorkContent.footerBanner.href}

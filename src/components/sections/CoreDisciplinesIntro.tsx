@@ -4,7 +4,7 @@ import { coreDisciplinesContent } from "@/content/homeContent";
 
 export function CoreDisciplinesIntro() {
   return (
-    <section className="relative overflow-hidden bg-white pt-16 pb-6 text-light-gray md:pt-20 md:pb-8">
+    <section className="relative overflow-hidden bg-white py-8 text-light-gray md:py-10">
       <Container className="relative">
         <div className="mx-auto max-w-4xl text-center">
           <Reveal>
