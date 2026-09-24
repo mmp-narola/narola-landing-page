@@ -479,7 +479,7 @@ export function CaseStudyTemplate({ caseStudy, relatedCaseStudies }: CaseStudyTe
       {/* Body: two-column layout */}
       <section className="py-12 md:py-16">
         <Container>
-          <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-10">
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-start lg:gap-10">
             {/* Main content column */}
             <div className="lg:col-span-8 space-y-14">
               {sections.map((section) => (
@@ -501,8 +501,8 @@ export function CaseStudyTemplate({ caseStudy, relatedCaseStudies }: CaseStudyTe
             </div>
 
             {/* Sticky sidebar nav (desktop only) */}
-            <div className="hidden lg:col-span-4 lg:block">
-              <div className="sticky top-24 space-y-6">
+            <div className="hidden lg:col-span-4 lg:block sticky top-24">
+              <div className="space-y-6">
                 {sections.length > 0 && (
                   <nav
                     aria-label="On this page"
