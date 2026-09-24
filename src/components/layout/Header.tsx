@@ -14,12 +14,14 @@ export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const pathname = usePathname();
+  const [prevPathname, setPrevPathname] = useState(pathname);
   const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  useEffect(() => {
+  if (prevPathname !== pathname) {
+    setPrevPathname(pathname);
     setActiveMenu(null);
     setIsMenuOpen(false);
-  }, [pathname]);
+  }
 
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 10);
@@ -49,20 +51,9 @@ export function Header() {
     return href;
   };
 
-  const isItemActive = (href: string) => {
-    if (href === "/case-studies") return pathname.startsWith("/case-studies");
-    if (href === "/blogs") return pathname.startsWith("/blogs");
-    if (href === "/" || href.startsWith("#")) return pathname === "/";
-    return pathname === href;
-  };
-
   const activeMegaMenuConfig = navItems.find(
     (item) => item.id === activeMenu && item.megaMenu
   )?.megaMenu;
-
-  const activeCompanyItem = navItems.find(
-    (item) => item.id === activeMenu && item.children
-  );
 
   return (
     <header

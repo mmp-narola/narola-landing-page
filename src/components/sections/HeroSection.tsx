@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
-import { AmbientGlow } from "@/components/ui/AmbientGlow";
 import { heroContent, type QuickPrompt } from "@/content/homeContent";
 import { MessageSquare, ArrowRight, X } from "lucide-react";
 

@@ -5,7 +5,6 @@ import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { AmbientGlow } from "@/components/ui/AmbientGlow";
 import { ourWorkContent, type GroupedClientCategory } from "@/content/homeContent";
 import { MapPin } from "lucide-react";
 
