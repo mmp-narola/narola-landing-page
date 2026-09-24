@@ -110,10 +110,10 @@ export function Header() {
 
                   {/* Tooltip Caret Pointer */}
                   {isCurrentHovered && hasDropdown && (
-                    <div className="absolute -bottom-1 left-1/2 z-[60] -translate-x-1/2 pointer-events-none">
+                    <div className="absolute bottom-[2px] left-1/2 z-[60] -translate-x-1/2 pointer-events-none opacity-100!">
                       <div className="relative">
-                        <div className="h-0 w-0 border-x-[9px] border-b-[9px] border-x-transparent border-b-black/[0.12]" />
-                        <div className="absolute top-[1.5px] left-0 h-0 w-0 border-x-[9px] border-b-[9px] border-x-transparent border-b-white" />
+                        <div className="h-0 w-0 border-x-[12px] border-b-[12px] border-x-transparent border-b-black/[0.12]" />
+                        <div className="absolute top-[1.5px] left-0 h-0 w-0 border-x-[12px] border-b-[12px] border-x-transparent border-b-white" />
                       </div>
                     </div>
                   )}
@@ -121,7 +121,7 @@ export function Header() {
                   {/* Company Dropdown positioned directly below Company */}
                   {item.id === "company" && isCurrentHovered && item.children && (
                     <div
-                      className="absolute right-0 top-full z-50 pt-1 animate-in fade-in slide-in-from-top-1 duration-150"
+                      className="absolute right-0 top-[calc(100%-3px)] z-50 animate-in fade-in slide-in-from-top-1 duration-150"
                       onMouseEnter={() => {
                         if (closeTimeoutRef.current) {
                           clearTimeout(closeTimeoutRef.current);
@@ -208,7 +208,7 @@ export function Header() {
       {/* Desktop Mega Menu Dropdown Container (AI, eCommerce, Product Engineering) */}
       {activeMegaMenuConfig && (
         <div
-          className="absolute left-0 right-0 top-full pt-1 z-50 flex justify-center px-4 animate-in fade-in slide-in-from-top-1 duration-150"
+          className="absolute left-0 right-0 top-full z-50 flex justify-center px-4 animate-in fade-in slide-in-from-top-1 duration-150"
           onMouseEnter={() => {
             if (closeTimeoutRef.current) {
               clearTimeout(closeTimeoutRef.current);

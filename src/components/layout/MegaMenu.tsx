@@ -53,7 +53,7 @@ export function MegaMenuPanel({ menu, onNavigate }: MegaMenuPanelProps) {
   };
 
   return (
-    <div className="w-full max-w-[1240px] rounded-[28px] border border-black/[0.08] bg-white p-7 text-light-gray shadow-[0_25px_80px_-15px_rgba(0,0,0,0.22)] lg:p-9">
+    <div className="w-full max-w-[1240px] rounded-[28px] border border-black/[0.08] bg-white mt-0.5 p-7 text-light-gray shadow-[0_25px_80px_-15px_rgba(0,0,0,0.22)] lg:p-9">
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_310px] xl:gap-10">
         {/* Left Links Area + Bottom Action Bar */}
         <div className="flex flex-col justify-between">
