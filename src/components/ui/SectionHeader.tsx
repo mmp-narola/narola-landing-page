@@ -24,16 +24,16 @@ export function SectionHeader({
     <Reveal>
       <div className={`${alignmentClasses} ${className}`}>
         {indexBadge && (
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-black/[0.08] bg-white px-4 py-1 text-xs font-bold tracking-widest text-bright-blue shadow-2xs">
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-black/[0.08] bg-white px-4 py-1 text-xs font-semibold tracking-wide text-bright-blue shadow-2xs">
             <span>{indexBadge}</span>
           </div>
         )}
         {eyebrow && (
-          <span className="mb-3 block text-xs font-bold uppercase tracking-[0.14em] text-bright-blue">
+          <span className="mb-3 block text-xs font-semibold uppercase tracking-wide text-bright-blue">
             {eyebrow}
           </span>
         )}
-        <h2 className="text-display font-semibold tracking-tight text-light-gray md:text-6xl text-balance">
+        <h2 className="text-display font-semibold tracking-tight text-light-gray md:text-display-lg text-balance">
           {title}
         </h2>
         {subtitle && (

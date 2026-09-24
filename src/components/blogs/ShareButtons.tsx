@@ -29,7 +29,7 @@ export function ShareButtons({ title, url }: ShareButtonsProps) {
 
   return (
     <div className="flex flex-wrap items-center gap-2.5">
-      <span className="text-xs font-semibold uppercase tracking-wider text-slate">
+      <span className="text-xs font-semibold uppercase tracking-wide text-slate">
         Share Article:
       </span>
 

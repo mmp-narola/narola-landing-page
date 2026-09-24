@@ -24,7 +24,7 @@ export function CustomSoftwareCta() {
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-center">
           {/* Left Column: Direct Pitch */}
           <div className="lg:col-span-6">
-            <span className="inline-block rounded-full bg-sky-500/10 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-sky-400 border border-sky-400/20">
+            <span className="inline-block rounded-full bg-sky-500/10 px-3.5 py-1 text-xs font-semibold uppercase tracking-wide text-sky-400 border border-sky-400/20">
               Get In Touch
             </span>
 
@@ -38,19 +38,19 @@ export function CustomSoftwareCta() {
 
             <div className="mt-8 space-y-4">
               <div className="flex items-center gap-3 text-sm text-slate-200">
-                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-sky-500/20 text-sky-400 font-bold text-xs">
+                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-sky-500/20 text-sky-400 font-semibold text-xs">
                   ✓
                 </span>
                 <span>Free 30-minute technical architecture discovery session</span>
               </div>
               <div className="flex items-center gap-3 text-sm text-slate-200">
-                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-sky-500/20 text-sky-400 font-bold text-xs">
+                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-sky-500/20 text-sky-400 font-semibold text-xs">
                   ✓
                 </span>
                 <span>Detailed scope breakdown and milestone cost estimation</span>
               </div>
               <div className="flex items-center gap-3 text-sm text-slate-200">
-                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-sky-500/20 text-sky-400 font-bold text-xs">
+                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-sky-500/20 text-sky-400 font-semibold text-xs">
                   ✓
                 </span>
                 <span>Strict Non-Disclosure Agreement (NDA) for IP security</span>

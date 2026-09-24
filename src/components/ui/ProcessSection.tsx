@@ -31,7 +31,7 @@ export function ProcessSection({
     <div className={`mx-auto max-w-5xl ${className}`}>
       {/* Eyebrow / Subheader */}
       <Reveal delay={200}>
-        <span className="block text-base font-semibold uppercase tracking-[0.14em] text-light-gray">
+        <span className="block text-base font-semibold uppercase tracking-wide text-light-gray">
           {header}
         </span>
       </Reveal>
@@ -45,12 +45,12 @@ export function ProcessSection({
               <div className="h-[2.5px] w-full bg-bright-blue mb-4 rounded-full" />
 
               {/* Blue Step Number */}
-              <span className="text-sm font-bold text-bright-blue">
+              <span className="text-sm font-semibold text-bright-blue">
                 {String(index + 1).padStart(2, "0")}
               </span>
 
               {/* Step Title */}
-              <h4 className="mt-2 text-base font-bold text-light-gray sm:text-lg">
+              <h4 className="mt-2 text-base font-semibold text-light-gray sm:text-lg">
                 {step.title}
               </h4>
 

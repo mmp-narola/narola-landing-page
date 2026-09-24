@@ -99,8 +99,8 @@ export function Header() {
                 >
                   <Link
                     href={resolvedHref}
-                    className={`relative inline-flex items-center text-sm font-semibold transition-colors duration-200 ${isCurrentHovered
-                      ? "text-bright-blue font-bold"
+                    className={`relative inline-flex items-center text-sm font-medium transition-colors duration-200 ${isCurrentHovered
+                      ? "text-bright-blue"
                       : "text-[#48484a] hover:text-bright-blue"
                       }`}
                     onClick={() => setActiveMenu(null)}
@@ -161,10 +161,10 @@ export function Header() {
           {/* CTA Contact Button */}
           <Link
             href="#contact"
-            className="inline-flex items-center justify-center rounded-lg border-2 border-bright-blue bg-white px-5 py-2 text-xs font-bold uppercase tracking-wider text-bright-blue transition-all duration-200 hover:bg-bright-blue hover:text-white shadow-2xs active:scale-95"
+            className="inline-flex items-center justify-center rounded-lg border-2 border-bright-blue bg-white px-5 py-2 text-sm font-medium text-bright-blue transition-all duration-200 hover:bg-bright-blue hover:text-white shadow-2xs active:scale-95"
             onClick={() => setActiveMenu(null)}
           >
-            CONTACT
+            Contact
           </Link>
         </div>
 
@@ -242,7 +242,7 @@ export function Header() {
                   >
                     <button
                       type="button"
-                      className="flex w-full items-center justify-between px-4 py-3.5 text-sm font-bold text-light-gray transition-colors"
+                      className="flex w-full items-center justify-between px-4 py-3.5 text-sm font-semibold text-light-gray transition-colors"
                       onClick={() =>
                         setMobileExpandedSection(isExpanded ? null : item.id)
                       }
@@ -269,7 +269,7 @@ export function Header() {
                             {col.groups ? (
                               col.groups.map((group) => (
                                 <div key={group.heading} className="space-y-2">
-                                  <h5 className="text-xs font-bold uppercase tracking-wider text-bright-blue">
+                                  <h5 className="text-xs font-semibold uppercase tracking-wide text-bright-blue">
                                     {group.heading}
                                   </h5>
                                   <div className="grid grid-cols-1 gap-1.5 pl-2 border-l border-black/[0.06]">
@@ -288,7 +288,7 @@ export function Header() {
                               ))
                             ) : (
                               <div className="space-y-2">
-                                <h5 className="text-xs font-bold uppercase tracking-wider text-bright-blue">
+                                <h5 className="text-xs font-semibold uppercase tracking-wide text-bright-blue">
                                   {col.heading}
                                 </h5>
                                 <div className="grid grid-cols-1 gap-1.5 pl-2 border-l border-black/[0.06]">
@@ -321,7 +321,7 @@ export function Header() {
                   >
                     <button
                       type="button"
-                      className="flex w-full items-center justify-between px-4 py-3.5 text-sm font-bold text-light-gray transition-colors"
+                      className="flex w-full items-center justify-between px-4 py-3.5 text-sm font-semibold text-light-gray transition-colors"
                       onClick={() =>
                         setMobileExpandedSection(isExpanded ? null : item.id)
                       }
@@ -374,10 +374,10 @@ export function Header() {
             <div className="mt-4 pt-2">
               <Link
                 href="#contact"
-                className="flex w-full items-center justify-center rounded-2xl bg-bright-blue py-3.5 text-xs font-bold uppercase tracking-wider text-white shadow-md hover:bg-interactive-blue"
+                className="flex w-full items-center justify-center rounded-2xl bg-bright-blue py-3.5 text-sm font-medium text-white shadow-md hover:bg-interactive-blue"
                 onClick={() => setIsMenuOpen(false)}
               >
-                CONTACT US
+                Contact Us
               </Link>
             </div>
           </Container>

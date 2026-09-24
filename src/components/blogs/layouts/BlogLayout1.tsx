@@ -85,7 +85,7 @@ export function BlogLayout1({ post, relatedPosts }: BlogLayoutProps) {
           {/* Post Title & Meta Header */}
           <div className="mx-auto max-w-4xl">
             <div className="flex flex-wrap items-center gap-2.5">
-              <span className="inline-flex items-center rounded-full bg-interactive-blue/10 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-interactive-blue">
+              <span className="inline-flex items-center rounded-full bg-interactive-blue/10 px-3.5 py-1 text-xs font-semibold uppercase tracking-wide text-interactive-blue">
                 {post.categoryLabel}
               </span>
               <span className="text-xs text-slate">•</span>
@@ -147,7 +147,7 @@ export function BlogLayout1({ post, relatedPosts }: BlogLayoutProps) {
                 className={`relative mb-10 overflow-hidden rounded-3xl bg-gradient-to-br ${post.gradient || "from-blue-600 to-indigo-800"} p-8 md:p-12 text-white shadow-lg`}
               >
                 <div className="relative z-10 max-w-xl">
-                  <span className="text-xs font-bold uppercase tracking-wider text-white/80">
+                  <span className="text-xs font-semibold uppercase tracking-wide text-white/80">
                     Overview & Key Highlights
                   </span>
                   <p className="mt-3 text-lg font-medium leading-relaxed text-white/95 md:text-xl">
@@ -312,7 +312,7 @@ export function BlogLayout1({ post, relatedPosts }: BlogLayoutProps) {
 
                 <Link
                   href="/blogs"
-                  className="inline-flex items-center gap-1.5 text-xs font-bold text-interactive-blue hover:underline"
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-interactive-blue hover:underline"
                 >
                   <span>← Back to all blogs</span>
                 </Link>
@@ -365,7 +365,7 @@ export function BlogLayout1({ post, relatedPosts }: BlogLayoutProps) {
               </div>
               <Link
                 href="/blogs"
-                className="hidden text-xs font-bold text-interactive-blue transition-colors hover:underline sm:block"
+                className="hidden text-xs font-semibold text-interactive-blue transition-colors hover:underline sm:block"
               >
                 View All Blogs →
               </Link>

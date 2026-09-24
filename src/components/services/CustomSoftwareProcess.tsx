@@ -9,7 +9,7 @@ export function CustomSoftwareProcess() {
       <Container>
         {/* Header */}
         <div className="mx-auto max-w-3xl text-center">
-          <span className="inline-block rounded-full bg-interactive-blue/10 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-interactive-blue">
+          <span className="inline-block rounded-full bg-interactive-blue/10 px-3.5 py-1 text-xs font-semibold uppercase tracking-wide text-interactive-blue">
             {process.badge}
           </span>
           <h2 className="mt-3 text-2xl font-semibold tracking-tight text-ink sm:text-3xl md:text-4xl">
@@ -44,7 +44,7 @@ export function CustomSoftwareProcess() {
 
               {/* Key Deliverables Pills */}
               <div className="border-t border-slate/10 pt-4 md:border-l md:border-t-0 md:pl-6 md:pt-0 md:w-72 shrink-0">
-                <span className="text-[11px] font-bold uppercase tracking-wider text-slate/80">
+                <span className="text-[11px] font-semibold uppercase tracking-wide text-slate/80">
                   Key Deliverables:
                 </span>
                 <div className="mt-2 flex flex-col gap-1.5">

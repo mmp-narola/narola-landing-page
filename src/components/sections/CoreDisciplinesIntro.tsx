@@ -8,7 +8,7 @@ export function CoreDisciplinesIntro() {
       <Container className="relative">
         <div className="mx-auto max-w-4xl text-center">
           <Reveal>
-            <span className="mb-3 block text-xs font-bold uppercase tracking-[0.16em] text-bright-blue sm:text-sm">
+            <span className="mb-3 block text-xs font-semibold uppercase tracking-wide text-bright-blue sm:text-sm">
               {coreDisciplinesContent.eyebrow}
             </span>
             <h2 className="text-display font-semibold tracking-tight text-light-gray md:text-5xl lg:text-6xl text-balance">

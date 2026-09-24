@@ -21,7 +21,7 @@ export function CoreServices() {
           <div className="mx-auto max-w-3xl text-center">
             <div className="inline-flex items-center gap-2 rounded-full border border-interactive-blue/20 bg-surface-muted px-3.5 py-1">
               <span className="h-1.5 w-1.5 rounded-full bg-interactive-blue" />
-              <span className="text-xs font-bold uppercase tracking-wider text-interactive-blue">
+              <span className="text-xs font-semibold uppercase tracking-wide text-interactive-blue">
                 Our Core Services
               </span>
             </div>
@@ -46,7 +46,7 @@ export function CoreServices() {
                 <div className="group grid grid-cols-1 gap-6 py-10 md:grid-cols-12 md:items-center md:gap-8 md:py-14">
                   {/* Index + Icon */}
                   <div className="flex items-center gap-4 md:col-span-3">
-                    <span className="text-sm font-bold text-slate/40 tabular-nums">
+                    <span className="text-sm font-semibold text-slate/40 tabular-nums">
                       {String(idx + 1).padStart(2, "0")}
                     </span>
                     <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-interactive-blue/10 text-interactive-blue transition-all duration-300 group-hover:bg-interactive-blue group-hover:text-white">

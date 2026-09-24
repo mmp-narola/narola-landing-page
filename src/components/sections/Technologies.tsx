@@ -10,7 +10,7 @@ export function Technologies() {
           <div className="mx-auto max-w-3xl text-center">
             <div className="inline-flex items-center gap-2 rounded-full border border-interactive-blue/20 bg-surface-muted px-3.5 py-1">
               <span className="h-1.5 w-1.5 rounded-full bg-interactive-blue" />
-              <span className="text-xs font-bold uppercase tracking-wider text-interactive-blue">
+              <span className="text-xs font-semibold uppercase tracking-wide text-interactive-blue">
                 Tech Stack & Expertise
               </span>
             </div>

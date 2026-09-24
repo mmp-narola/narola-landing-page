@@ -76,7 +76,7 @@ export function TableOfContents({ items }: TableOfContentsProps) {
                     href={`#${item.id}`}
                     onClick={() => setIsOpenMobile(false)}
                     className={`block text-xs font-medium transition-colors ${
-                      activeId === item.id ? "font-bold text-interactive-blue" : "text-slate hover:text-ink"
+                      activeId === item.id ? "font-semibold text-interactive-blue" : "text-slate hover:text-ink"
                     }`}
                   >
                     {item.title}
@@ -113,7 +113,7 @@ export function TableOfContents({ items }: TableOfContentsProps) {
                     href={`#${item.id}`}
                     className={`block rounded-lg px-2.5 py-1.5 transition-all duration-150 ${
                       isActive
-                        ? "bg-interactive-blue/10 font-bold text-interactive-blue"
+                        ? "bg-interactive-blue/10 font-semibold text-interactive-blue"
                         : "text-slate hover:bg-surface-muted hover:text-ink"
                     }`}
                   >

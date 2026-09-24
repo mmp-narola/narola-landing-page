@@ -85,7 +85,7 @@ export function BlogListClient({ posts }: BlogListClientProps) {
         <div className="mb-10">
           <div className="mb-4 flex items-center gap-2">
             <span className="inline-block h-2 w-2 rounded-full bg-interactive-blue" />
-            <h2 className="text-xs font-semibold uppercase tracking-wider text-subtle-gray">
+            <h2 className="text-xs font-semibold uppercase tracking-wide text-subtle-gray">
               Editor&apos;s Pick & Spotlight
             </h2>
           </div>

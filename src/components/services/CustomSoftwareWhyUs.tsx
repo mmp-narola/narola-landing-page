@@ -9,7 +9,7 @@ export function CustomSoftwareWhyUs() {
       <Container>
         {/* Header */}
         <div className="mx-auto max-w-3xl text-center">
-          <span className="inline-block rounded-full bg-interactive-blue/10 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-interactive-blue">
+          <span className="inline-block rounded-full bg-interactive-blue/10 px-3.5 py-1 text-xs font-semibold uppercase tracking-wide text-interactive-blue">
             {whyUs.badge}
           </span>
           <h2 className="mt-3 text-2xl font-semibold tracking-tight text-ink sm:text-3xl md:text-4xl">
@@ -29,10 +29,10 @@ export function CustomSoftwareWhyUs() {
             >
               <div>
                 <div className="flex items-center justify-between">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-interactive-blue/10 text-interactive-blue font-bold text-sm">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-interactive-blue/10 text-interactive-blue font-semibold text-sm">
                     0{index + 1}
                   </span>
-                  <span className="text-xs font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-full">
+                  <span className="text-xs font-semibold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-full">
                     Verified
                   </span>
                 </div>

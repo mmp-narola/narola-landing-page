@@ -33,7 +33,7 @@ export function CaseStudyCard({
           </div>
 
           {/* Title */}
-          <h4 className="mt-3.5 text-base font-bold leading-snug text-light-gray group-hover:text-bright-blue transition-colors line-clamp-2">
+          <h4 className="mt-3.5 text-base font-semibold leading-snug text-light-gray group-hover:text-bright-blue transition-colors line-clamp-2">
             <Link href={`/case-studies/${caseStudy.slug}`} className="focus:outline-none">
               {caseStudy.title}
             </Link>
@@ -50,7 +50,7 @@ export function CaseStudyCard({
               <div className="grid grid-cols-3 gap-2">
                 {caseStudy.metrics.slice(0, 3).map((metric, idx) => (
                   <div key={idx} className="flex flex-col">
-                    <span className="text-sm sm:text-base font-bold text-light-gray leading-tight">
+                    <span className="text-sm sm:text-base font-semibold text-light-gray leading-tight">
                       {metric.value}
                     </span>
                     <span className="mt-0.5 line-clamp-1 text-[10px] text-subtle-gray">
@@ -67,10 +67,10 @@ export function CaseStudyCard({
         <div className="mt-3.5">
           <Link
             href={`/case-studies/${caseStudy.slug}`}
-            className="inline-flex items-center gap-1 text-xs font-bold text-bright-blue transition-colors hover:underline"
+            className="inline-flex items-center gap-1 text-xs font-semibold text-bright-blue transition-colors hover:underline"
           >
             <span>Read Case Study</span>
-            <span aria-hidden="true" className="text-sm font-bold">
+            <span aria-hidden="true" className="text-sm font-semibold">
               ↗
             </span>
           </Link>
@@ -101,7 +101,7 @@ export function CaseStudyCard({
 
         {/* Top Badges */}
         <div className="pointer-events-none absolute left-4 top-4 z-10 flex flex-wrap items-center gap-2">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-white/95 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-light-gray shadow-sm backdrop-blur-md">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-white/95 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-light-gray shadow-sm backdrop-blur-md">
             <svg
               className="h-3.5 w-3.5 text-interactive-blue"
               viewBox="0 0 24 24"
@@ -114,7 +114,7 @@ export function CaseStudyCard({
             </svg>
             {caseStudy.country}
           </span>
-          <span className="inline-flex items-center rounded-full bg-interactive-blue/90 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-white shadow-sm backdrop-blur-md">
+          <span className="inline-flex items-center rounded-full bg-interactive-blue/90 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white shadow-sm backdrop-blur-md">
             {caseStudy.industry}
           </span>
         </div>
@@ -160,7 +160,7 @@ export function CaseStudyCard({
             <div className="mt-5 flex items-center justify-between">
               <Link
                 href={`/case-studies/${caseStudy.slug}`}
-                className="inline-flex items-center gap-1.5 text-xs font-bold text-light-gray transition-colors group-hover:text-interactive-blue"
+                className="inline-flex items-center gap-1.5 text-xs font-semibold text-light-gray transition-colors group-hover:text-interactive-blue"
               >
                 Read Case Study
                 <svg
@@ -182,7 +182,7 @@ export function CaseStudyCard({
           <div className="mt-6 flex items-center justify-between border-t border-black/[0.10] pt-5">
             <Link
               href={`/case-studies/${caseStudy.slug}`}
-              className="inline-flex items-center gap-1.5 text-xs font-bold text-light-gray transition-colors group-hover:text-interactive-blue"
+              className="inline-flex items-center gap-1.5 text-xs font-semibold text-light-gray transition-colors group-hover:text-interactive-blue"
             >
               Read Case Study
               <svg

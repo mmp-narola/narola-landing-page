@@ -121,7 +121,7 @@ export function SectionTable({
   return (
     <div className={`my-8 overflow-hidden rounded-2xl border border-slate/15 bg-white shadow-sm ${className}`}>
       {table.caption && (
-        <div className="border-b border-slate/15 bg-surface-muted/60 px-5 py-3 text-xs font-bold uppercase tracking-wider text-ink">
+        <div className="border-b border-slate/15 bg-surface-muted/60 px-5 py-3 text-xs font-semibold uppercase tracking-wide text-ink">
           {table.caption}
         </div>
       )}

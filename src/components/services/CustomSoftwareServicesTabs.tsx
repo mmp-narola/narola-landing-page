@@ -15,7 +15,7 @@ export function CustomSoftwareServicesTabs() {
       <Container>
         {/* Header */}
         <div className="mx-auto max-w-3xl text-center">
-          <span className="inline-block rounded-full bg-interactive-blue/10 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-interactive-blue">
+          <span className="inline-block rounded-full bg-interactive-blue/10 px-3.5 py-1 text-xs font-semibold uppercase tracking-wide text-interactive-blue">
             {servicesMatrix.badge}
           </span>
           <h2 className="mt-3 text-2xl font-semibold tracking-tight text-ink sm:text-3xl md:text-4xl">
@@ -62,7 +62,7 @@ export function CustomSoftwareServicesTabs() {
                 className="group flex flex-col justify-between rounded-2xl border border-slate/10 bg-surface-muted/30 p-5 transition-all duration-200 hover:-translate-y-1 hover:border-interactive-blue/40 hover:bg-white hover:shadow-md"
               >
                 <div>
-                  <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-interactive-blue/10 text-interactive-blue font-bold text-xs">
+                  <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-interactive-blue/10 text-interactive-blue font-semibold text-xs">
                     ✓
                   </div>
                   <h4 className="mt-3 text-sm font-semibold text-ink transition-colors group-hover:text-interactive-blue">

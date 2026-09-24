@@ -148,7 +148,7 @@ export function CaseStudyDetailView({
               {/* Quick Info Matrix */}
               <div className={`${caseStudy.logoUrl ? "lg:col-span-9" : "lg:col-span-12"} grid grid-cols-2 gap-4 sm:grid-cols-4`}>
                 <div className="rounded-2xl bg-surface-muted p-4 text-left">
-                  <p className="text-xs font-bold uppercase tracking-wider text-slate">
+                  <p className="text-xs font-semibold uppercase tracking-wide text-slate">
                     Industry
                   </p>
                   <p className="mt-1 text-sm font-semibold text-ink">
@@ -156,7 +156,7 @@ export function CaseStudyDetailView({
                   </p>
                 </div>
                 <div className="rounded-2xl bg-surface-muted p-4 text-left">
-                  <p className="text-xs font-bold uppercase tracking-wider text-slate">
+                  <p className="text-xs font-semibold uppercase tracking-wide text-slate">
                     Country
                   </p>
                   <p className="mt-1 text-sm font-semibold text-ink">
@@ -164,7 +164,7 @@ export function CaseStudyDetailView({
                   </p>
                 </div>
                 <div className="rounded-2xl bg-surface-muted p-4 text-left">
-                  <p className="text-xs font-bold uppercase tracking-wider text-slate">
+                  <p className="text-xs font-semibold uppercase tracking-wide text-slate">
                     Service
                   </p>
                   <p className="mt-1 text-sm font-semibold text-ink">
@@ -172,7 +172,7 @@ export function CaseStudyDetailView({
                   </p>
                 </div>
                 <div className="rounded-2xl bg-surface-muted p-4 text-left">
-                  <p className="text-xs font-bold uppercase tracking-wider text-slate">
+                  <p className="text-xs font-semibold uppercase tracking-wide text-slate">
                     Region
                   </p>
                   <p className="mt-1 text-sm font-semibold text-ink">
@@ -185,7 +185,7 @@ export function CaseStudyDetailView({
             {/* Impact Metric Cards (if present) */}
             {caseStudy.metrics && caseStudy.metrics.length > 0 && (
               <div className="mt-8 border-t border-slate/10 pt-6">
-                <p className="mb-4 text-xs font-bold uppercase tracking-wider text-slate text-center lg:text-left">
+                <p className="mb-4 text-xs font-semibold uppercase tracking-wide text-slate text-center lg:text-left">
                   Key Results & Impact
                 </p>
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -384,7 +384,7 @@ export function CaseStudyDetailView({
                     {caseStudy.technologies.map((tech, idx) => (
                       <span
                         key={idx}
-                        className="inline-flex items-center gap-1.5 rounded-full border border-slate/15 bg-surface-muted px-4 py-2 text-xs font-bold text-ink shadow-xs"
+                        className="inline-flex items-center gap-1.5 rounded-full border border-slate/15 bg-surface-muted px-4 py-2 text-xs font-semibold text-ink shadow-xs"
                       >
                         <span className="h-1.5 w-1.5 rounded-full bg-interactive-blue" />
                         {tech}
@@ -443,7 +443,7 @@ export function CaseStudyDetailView({
             <div className="mt-12 text-center">
               <Link
                 href="/case-studies"
-                className="inline-flex items-center gap-2 text-sm font-bold text-electric-blue hover:underline"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-electric-blue hover:underline"
               >
                 View All Case Studies
                 <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">

@@ -123,7 +123,7 @@ export function HeroSection() {
               {activePrompt && (
                 <div className="mt-6 rounded-2xl border border-[#0084ff]/20 bg-[#151515] p-5 text-left animate-in fade-in duration-200">
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold uppercase tracking-wider text-bright-blue">
+                    <span className="text-xs font-semibold uppercase tracking-wide text-bright-blue">
                       AI Recommendation
                     </span>
                     <button
@@ -169,7 +169,7 @@ export function HeroSection() {
                   <span className="block text-4xl font-semibold tracking-tight text-light-gray sm:text-5xl lg:text-6xl">
                     {stat.value}
                   </span>
-                  <span className="mt-2 block text-xs font-medium uppercase tracking-wider text-muted-gray sm:text-sm">
+                  <span className="mt-2 block text-xs font-medium uppercase tracking-wide text-muted-gray sm:text-sm">
                     {stat.label}
                   </span>
                 </div>

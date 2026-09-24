@@ -20,7 +20,7 @@ export function CeoMessage() {
           <Reveal>
             <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3.5 py-1 backdrop-blur-sm">
               <span className="h-1.5 w-1.5 rounded-full bg-accent-orange" />
-              <span className="text-xs font-bold uppercase tracking-wider text-slate-300">
+              <span className="text-xs font-semibold uppercase tracking-wide text-slate-300">
                 Leadership Note
               </span>
             </div>

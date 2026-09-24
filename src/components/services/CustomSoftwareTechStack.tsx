@@ -9,7 +9,7 @@ export function CustomSoftwareTechStack() {
       <Container>
         {/* Section Header */}
         <div className="mx-auto max-w-3xl text-center">
-          <span className="inline-block rounded-full bg-interactive-blue/10 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-interactive-blue">
+          <span className="inline-block rounded-full bg-interactive-blue/10 px-3.5 py-1 text-xs font-semibold uppercase tracking-wide text-interactive-blue">
             {techStack.badge}
           </span>
           <h2 className="mt-3 text-2xl font-semibold tracking-tight text-ink sm:text-3xl md:text-4xl">
@@ -31,7 +31,7 @@ export function CustomSoftwareTechStack() {
                 <h3 className="text-base font-semibold text-ink transition-colors group-hover:text-interactive-blue sm:text-lg">
                   {cat.name}
                 </h3>
-                <span className="rounded-full bg-interactive-blue/10 px-2.5 py-0.5 text-xs font-bold text-interactive-blue">
+                <span className="rounded-full bg-interactive-blue/10 px-2.5 py-0.5 text-xs font-semibold text-interactive-blue">
                   {cat.skills.length} Techs
                 </span>
               </div>

@@ -231,7 +231,7 @@ function SectionBody({ section }: { section: CaseStudySection }) {
         <ol className="space-y-6">
           {steps.map((step, idx) => (
             <li key={idx} className="flex gap-4">
-              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-interactive-blue/10 text-sm font-bold text-interactive-blue">
+              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-interactive-blue/10 text-sm font-semibold text-interactive-blue">
                 {String(idx + 1).padStart(2, "0")}
               </span>
               <div>
@@ -283,7 +283,7 @@ function SectionBody({ section }: { section: CaseStudySection }) {
                 <Image src={t.avatarUrl} alt="" fill sizes="44px" className="object-cover" />
               </div>
             ) : (
-              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-interactive-blue/10 text-sm font-bold text-interactive-blue">
+              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-interactive-blue/10 text-sm font-semibold text-interactive-blue">
                 {initialsFromName(t.author)}
               </div>
             )}
@@ -392,7 +392,7 @@ export function CaseStudyTemplate({ caseStudy, relatedCaseStudies }: CaseStudyTe
           )}
 
           <div className="flex items-start gap-4">
-            <div className="hidden sm:flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-black/[0.08] bg-white text-base font-bold text-interactive-blue shadow-sm">
+            <div className="hidden sm:flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-black/[0.08] bg-white text-base font-semibold text-interactive-blue shadow-sm">
               {initialsFromName(caseStudy.clientName)}
             </div>
             <div className="max-w-3xl">
@@ -451,7 +451,7 @@ export function CaseStudyTemplate({ caseStudy, relatedCaseStudies }: CaseStudyTe
         <div className="sticky top-12 z-30 border-b border-black/[0.08] bg-white/95 backdrop-blur-xl md:top-16 lg:hidden shadow-xs">
           <Container className="py-2.5">
             <div className="flex items-center gap-2 overflow-x-auto no-scrollbar [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
-              <span className="shrink-0 text-xs font-bold uppercase tracking-wider text-light-gray mr-1 flex items-center gap-1.5">
+              <span className="shrink-0 text-xs font-semibold uppercase tracking-wide text-light-gray mr-1 flex items-center gap-1.5">
                 <span className="h-1.5 w-1.5 rounded-full bg-interactive-blue animate-pulse" />
                 On this page:
               </span>
@@ -510,7 +510,7 @@ export function CaseStudyTemplate({ caseStudy, relatedCaseStudies }: CaseStudyTe
                   >
                     <div className="mb-3 flex items-center gap-2">
                       <span className="h-2 w-2 rounded-full bg-interactive-blue" />
-                      <p className="text-xs font-bold uppercase tracking-wider text-light-gray">
+                      <p className="text-xs font-semibold uppercase tracking-wide text-light-gray">
                         On this page
                       </p>
                     </div>
@@ -577,7 +577,7 @@ export function CaseStudyTemplate({ caseStudy, relatedCaseStudies }: CaseStudyTe
             <div className="mt-12 text-center">
               <Link
                 href="/case-studies"
-                className="inline-flex items-center gap-2 text-sm font-bold text-interactive-blue hover:underline"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-interactive-blue hover:underline"
               >
                 View All Case Studies
                 <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">

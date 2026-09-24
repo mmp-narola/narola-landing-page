@@ -14,11 +14,10 @@ export function BlogCard({ post, featured = false }: BlogCardProps) {
     >
       {/* Visual Header / Cover */}
       <div
-        className={`relative overflow-hidden bg-gradient-to-br ${post.gradient || "from-interactive-blue to-[#0a2f57]"} ${
-          featured
+        className={`relative overflow-hidden bg-gradient-to-br ${post.gradient || "from-interactive-blue to-[#0a2f57]"} ${featured
             ? "h-64 lg:col-span-5 lg:h-full min-h-[260px]"
             : "h-48 w-full"
-        }`}
+          }`}
       >
         {post.coverImage ? (
           <>
@@ -66,11 +65,11 @@ export function BlogCard({ post, featured = false }: BlogCardProps) {
 
         {/* Category Pill Over Visual */}
         <div className="absolute left-4 top-4 z-10 flex flex-wrap items-center gap-2">
-          <span className="inline-flex items-center rounded-full bg-white/90 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-light-gray backdrop-blur-md shadow-xs">
+          <span className="inline-flex items-center rounded-full bg-white/90 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-light-gray backdrop-blur-md shadow-xs">
             {post.categoryLabel}
           </span>
           {featured && (
-            <span className="inline-flex items-center rounded-full bg-accent-orange px-3 py-1 text-xs font-bold uppercase tracking-wider text-white shadow-xs">
+            <span className="inline-flex items-center rounded-full bg-accent-orange px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white shadow-xs">
               Featured Article
             </span>
           )}
@@ -145,7 +144,7 @@ export function BlogCard({ post, featured = false }: BlogCardProps) {
             </div>
           </div>
 
-          <div className="flex items-center gap-1.5 text-xs font-bold text-interactive-blue transition-transform duration-200 group-hover:translate-x-1">
+          <div className="flex items-center gap-1.5 text-xs font-semibold text-interactive-blue transition-transform duration-200 group-hover:translate-x-1">
             <span>Read Article</span>
             <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <line x1="5" y1="12" x2="19" y2="12" />

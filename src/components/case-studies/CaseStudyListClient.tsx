@@ -127,7 +127,7 @@ function FilterRow({
       className={`flex flex-col gap-3.5 py-3.5 sm:flex-row sm:items-center sm:gap-6 ${highlightBg ? "rounded-2xl bg-surface-muted/60 px-3.5 py-3 sm:px-4" : ""
         }`}
     >
-      <span className="w-full shrink-0 text-xs font-bold uppercase tracking-wider text-ink-secondary sm:w-36">
+      <span className="w-full shrink-0 text-xs font-semibold uppercase tracking-wide text-ink-secondary sm:w-36">
         {label}
       </span>
       <div className="flex flex-wrap items-center gap-2">{children}</div>
@@ -592,11 +592,11 @@ export function CaseStudyListClient({
         <div className="mt-6 flex flex-wrap items-center justify-between gap-4 border-t border-black/[0.08] pt-5 text-xs sm:text-sm">
           <div className="font-medium text-subtle-gray">
             Showing{" "}
-            <strong className="font-bold text-light-gray">
+            <strong className="font-semibold text-light-gray">
               {filteredCaseStudies.length}
             </strong>{" "}
             of{" "}
-            <strong className="font-bold text-light-gray">
+            <strong className="font-semibold text-light-gray">
               {initialCaseStudies.length > 3
                 ? `${initialCaseStudies.length}+`
                 : initialCaseStudies.length}

@@ -65,7 +65,7 @@ export function OurWorkSection({ caseStudies = [] }: OurWorkSectionProps) {
               className={groupIdx === 0 ? "" : "border-t border-white/10 pt-6"}
             >
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-ink-secondary">
+                <span className="text-xs font-semibold uppercase tracking-wide text-ink-secondary">
                   {group.groupName}
                 </span>
                 <div className="mt-4 flex flex-wrap gap-3.5">

@@ -111,7 +111,7 @@ export default async function CustomSoftwareDevelopmentPage() {
             <Container>
               <div className="flex flex-col justify-between gap-4 md:flex-row md:items-end">
                 <div>
-                  <span className="inline-block rounded-full bg-interactive-blue/10 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-interactive-blue">
+                  <span className="inline-block rounded-full bg-interactive-blue/10 px-3.5 py-1 text-xs font-semibold uppercase tracking-wide text-interactive-blue">
                     Proven Client Success
                   </span>
                   <h2 className="mt-3 text-2xl font-semibold tracking-tight text-ink sm:text-3xl md:text-4xl">

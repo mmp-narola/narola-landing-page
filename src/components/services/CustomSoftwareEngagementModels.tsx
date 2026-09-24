@@ -15,7 +15,7 @@ export function CustomSoftwareEngagementModels() {
       <Container>
         {/* Header */}
         <div className="mx-auto max-w-3xl text-center">
-          <span className="inline-block rounded-full bg-interactive-blue/10 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-interactive-blue">
+          <span className="inline-block rounded-full bg-interactive-blue/10 px-3.5 py-1 text-xs font-semibold uppercase tracking-wide text-interactive-blue">
             Engagement Frameworks
           </span>
           <h2 className="mt-3 text-2xl font-semibold tracking-tight text-ink sm:text-3xl md:text-4xl">
@@ -52,7 +52,7 @@ export function CustomSoftwareEngagementModels() {
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
             {/* Left Column: Model Details */}
             <div className="lg:col-span-7">
-              <div className="inline-flex items-center gap-2 rounded-full bg-interactive-blue/10 px-3 py-1 text-xs font-bold text-interactive-blue">
+              <div className="inline-flex items-center gap-2 rounded-full bg-interactive-blue/10 px-3 py-1 text-xs font-semibold text-interactive-blue">
                 {model.subtitle}
               </div>
 
@@ -65,7 +65,7 @@ export function CustomSoftwareEngagementModels() {
               </p>
 
               <div className="mt-6 rounded-2xl bg-surface-muted/60 p-4 border border-slate/10">
-                <span className="text-xs font-bold uppercase tracking-wider text-slate">
+                <span className="text-xs font-semibold uppercase tracking-wide text-slate">
                   Best Suited For:
                 </span>
                 <p className="mt-1 text-sm font-medium text-ink">
@@ -85,13 +85,13 @@ export function CustomSoftwareEngagementModels() {
 
             {/* Right Column: Key Benefits Checklist */}
             <div className="rounded-2xl border border-slate/10 bg-surface-muted/30 p-6 lg:col-span-5">
-              <h4 className="text-sm font-semibold uppercase tracking-wider text-ink">
+              <h4 className="text-sm font-semibold uppercase tracking-wide text-ink">
                 Key Model Advantages
               </h4>
               <ul className="mt-4 space-y-3.5">
                 {model.benefits.map((benefit) => (
                   <li key={benefit} className="flex items-start gap-3">
-                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-500/15 text-emerald-600 font-bold text-xs mt-0.5">
+                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-500/15 text-emerald-600 font-semibold text-xs mt-0.5">
                       ✓
                     </span>
                     <span className="text-xs sm:text-sm text-slate leading-snug">

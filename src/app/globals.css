@@ -31,33 +31,44 @@
   --color-surface-charcoal-raised: #f5f5f7;
   --color-accent-tint: #0071e3;
 
-  /* Typography */
+  /* Typography — Apple-style system font stack (no downloaded font files) */
   --font-sans:
     var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     ui-sans-serif, system-ui, sans-serif;
 
   --text-h1: 2.25rem; /* 36px, mobile */
   --text-h1--line-height: 1.1;
-  --text-h1-lg: 4.5rem; /* 72px, md:+ */
-  --text-h1-lg--line-height: 1.05;
+  --text-h1-tracking: -0.02em;
+  --text-h1-lg: 4rem; /* 64px, md:+ */
+  --text-h1-lg--line-height: 1.07;
+  --text-h1-lg-tracking: -0.03em;
 
   --text-h2: 1.75rem; /* 28px, mobile */
-  --text-h2--line-height: 1.15;
-  --text-h2-lg: 3rem; /* 48px, md:+ */
-  --text-h2-lg--line-height: 1.1;
+  --text-h2--line-height: 1.2;
+  --text-h2-tracking: -0.015em;
+  --text-h2-lg: 2.75rem; /* 44px, md:+ */
+  --text-h2-lg--line-height: 1.12;
+  --text-h2-lg-tracking: -0.025em;
 
-  --text-display: 3rem; /* 48px, mobile */
-  --text-display--line-height: 1.1;
-  --text-display-lg: 5rem; /* 80px, md:+ */
+  --text-display: 2.75rem; /* 44px, mobile */
+  --text-display--line-height: 1.08;
+  --text-display-tracking: -0.02em;
+  --text-display-lg: 4.5rem; /* 72px, md:+ */
   --text-display-lg--line-height: 1.05;
+  --text-display-lg-tracking: -0.035em;
 
-  --text-h3: 1.25rem; /* 20px, all breakpoints */
-  --text-h3--line-height: 1.35;
+  --text-h3: 1.5rem; /* 24px, mobile */
+  --text-h3--line-height: 1.25;
+  --text-h3-tracking: -0.01em;
+  --text-h3-lg: 1.875rem; /* 30px, md:+ */
+  --text-h3-lg--line-height: 1.25;
+  --text-h3-lg-tracking: -0.015em;
 
-  --text-h4: 1rem; /* 16px, all breakpoints */
-  --text-h4--line-height: 1.4;
+  --text-h4: 1.25rem; /* 20px, all breakpoints */
+  --text-h4--line-height: 1.35;
+  --text-h4-tracking: -0.005em;
 
-  --text-body: 1rem; /* 16px, all breakpoints */
+  --text-body: 1.0625rem; /* 17px, all breakpoints */
   --text-body--line-height: 1.6;
 
   --text-small: 0.875rem; /* 14px, all breakpoints */
@@ -91,6 +102,21 @@
   :focus-visible {
     outline: 2px solid var(--color-interactive-blue);
     outline-offset: 2px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: 600;
+    letter-spacing: -0.015em;
+  }
+
+  p {
+    font-weight: 400;
+    line-height: 1.6;
   }
 }
 

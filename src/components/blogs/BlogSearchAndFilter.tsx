@@ -82,19 +82,17 @@ export function BlogSearchAndFilter({
               key={cat.id}
               type="button"
               onClick={() => onCategoryChange(cat.id)}
-              className={`group flex items-center gap-2 rounded-full px-4 py-2 text-xs font-semibold transition-all duration-200 md:text-sm ${
-                isActive
-                  ? "bg-interactive-blue text-white shadow-md shadow-interactive-blue/20"
-                  : "border border-black/[0.08] bg-white text-subtle-gray hover:border-interactive-blue/40 hover:bg-surface-muted hover:text-light-gray"
-              }`}
+              className={`group flex items-center gap-2 rounded-full px-4 py-2 text-xs font-semibold transition-all duration-200 md:text-sm ${isActive
+                ? "bg-interactive-blue text-white shadow-md shadow-interactive-blue/20"
+                : "border border-black/[0.08] bg-white text-subtle-gray hover:border-interactive-blue/40 hover:bg-surface-muted hover:text-light-gray"
+                }`}
             >
               <span>{cat.label}</span>
               <span
-                className={`rounded-full px-2 py-0.5 text-[11px] font-bold ${
-                  isActive
-                    ? "bg-white/20 text-white"
-                    : "bg-surface-muted text-subtle-gray group-hover:bg-black/[0.15] group-hover:text-light-gray"
-                }`}
+                className={`rounded-full px-2 py-0.5 text-[11px] font-semibold ${isActive
+                  ? "bg-white/20 text-white"
+                  : "bg-surface-muted text-subtle-gray group-hover:bg-black/[0.15] group-hover:text-light-gray"
+                  }`}
               >
                 {count}
               </span>

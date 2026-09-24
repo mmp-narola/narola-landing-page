@@ -11,7 +11,7 @@ export function Industries() {
           <div className="mx-auto max-w-3xl text-center">
             <div className="inline-flex items-center gap-2 rounded-full border border-slate/15 bg-white px-3.5 py-1">
               <span className="h-1.5 w-1.5 rounded-full bg-interactive-blue" />
-              <span className="text-xs font-bold uppercase tracking-wider text-slate">
+              <span className="text-xs font-semibold uppercase tracking-wide text-slate">
                 Domain Expertise
               </span>
             </div>
