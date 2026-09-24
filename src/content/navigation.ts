@@ -81,9 +81,9 @@ export const aiAutomationMegaMenu: MegaMenuConfig = {
     {
       heading: "Case Studies",
       links: [
-        { label: "AI Case Studies", href: "/case-studies" },
-        { label: "Automation Case Studies", href: "/case-studies" },
-        { label: "AI Commerce Case Studies", href: "/case-studies" },
+        { label: "AI Case Studies", href: "/case-studies?practice=ai-automation" },
+        { label: "Automation Case Studies", href: "/case-studies?practice=ai-automation&service=workflow" },
+        { label: "AI Commerce Case Studies", href: "/case-studies?practice=ecommerce&service=ai-commerce" },
       ],
     },
   ],
@@ -151,9 +151,9 @@ export const ecommerceMegaMenu: MegaMenuConfig = {
         {
           heading: "Case Studies",
           links: [
-            { label: "eCommerce Case Studies", href: "/case-studies" },
-            { label: "Marketplace Case Studies", href: "/case-studies" },
-            { label: "Shopify Case Studies", href: "/case-studies" },
+            { label: "eCommerce Case Studies", href: "/case-studies?practice=ecommerce" },
+            { label: "Marketplace Case Studies", href: "/case-studies?practice=ecommerce&service=marketplace" },
+            { label: "Shopify Case Studies", href: "/case-studies?practice=ecommerce&service=shopify" },
           ],
         },
       ],
@@ -196,9 +196,9 @@ export const productEngineeringMegaMenu: MegaMenuConfig = {
     {
       heading: "Case Studies",
       links: [
-        { label: "SaaS Product Case Studies", href: "/case-studies" },
-        { label: "Enterprise Software Case Studies", href: "/case-studies" },
-        { label: "Mobile App Case Studies", href: "/case-studies" },
+        { label: "SaaS Product Case Studies", href: "/case-studies?practice=product-engineering&service=saas" },
+        { label: "Enterprise Software Case Studies", href: "/case-studies?practice=product-engineering&service=enterprise" },
+        { label: "Mobile App Case Studies", href: "/case-studies?practice=product-engineering&service=mobile" },
       ],
     },
   ],

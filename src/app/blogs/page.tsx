@@ -72,7 +72,7 @@ export default async function BlogsPage() {
 
       <main className="flex-1">
         {/* Hero & Banner Section */}
-        <section className="relative overflow-hidden bg-gradient-to-b from-surface-muted via-white to-white py-12 md:py-16">
+        <section className="relative overflow-hidden bg-gradient-to-b from-surface-muted via-white to-white py-6 md:py-8">
           {/* Subtle Ambient Decorative Gradients */}
           {/* <div className="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 h-72 w-full max-w-4xl rounded-full bg-brand-blue/5 blur-3xl" /> */}
 

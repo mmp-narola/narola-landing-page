@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Header } from "@/components/layout/Header";
@@ -70,7 +71,7 @@ export default async function CaseStudiesPage() {
 
       <main className="flex-1">
         {/* Banner Section */}
-        <section className="relative overflow-hidden bg-gradient-to-b from-surface-muted via-white to-white py-12 md:py-16">
+        <section className="relative overflow-hidden bg-gradient-to-b from-surface-muted via-white to-white py-6 md:py-8">
           {/* Subtle Ambient Glow */}
           {/* <div className="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 h-72 w-full max-w-4xl rounded-full bg-interactive-blue/5 blur-3xl" /> */}
 
@@ -121,11 +122,11 @@ export default async function CaseStudiesPage() {
               </div>
 
               <h1 className="mt-4 text-3xl font-semibold tracking-tight text-light-gray md:text-5xl md:leading-tight">
-                Our Case Studies Reflect the Diverse Work Our Teams Deliver
+                Case Studies
               </h1>
 
               <p className="mt-4 text-base text-subtle-gray md:text-lg leading-relaxed">
-                We have carefully curated some of our most impactful engineering projects. Explore real-world architectures, measurable business outcomes, and technological innovations across industries.
+                Real projects across eCommerce, AI &amp; Automation, and Product Engineering — filter to find what&apos;s relevant to you.
               </p>
             </div>
           </Container>
@@ -145,7 +146,15 @@ export default async function CaseStudiesPage() {
                 description="We're preparing new client stories — check back soon."
               />
             ) : (
-              <CaseStudyListClient initialCaseStudies={allCaseStudies} />
+              <Suspense
+                fallback={
+                  <div className="py-20 text-center text-sm font-medium text-subtle-gray animate-pulse">
+                    Loading case studies...
+                  </div>
+                }
+              >
+                <CaseStudyListClient initialCaseStudies={allCaseStudies} />
+              </Suspense>
             )}
           </Container>
         </section>

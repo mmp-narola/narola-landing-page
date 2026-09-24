@@ -32,6 +32,14 @@ export interface ICaseStudyDocument extends Document {
   deliveryTime?: string;
   /** Optional: category pill tags shown under the breadcrumb (falls back to [industry, service]). */
   tags?: string[];
+  /** Optional: mapped practice areas, e.g. ["ecommerce", "ai-automation", "product-engineering"] */
+  practiceAreas?: string[];
+  /** Optional: mapped service types, e.g. ["shopify", "b2b", "mobile", "web", "ai-commerce", "workflow"] */
+  serviceTypes?: string[];
+  /** Optional: mapped industries/categories, e.g. ["Healthcare", "SaaS", "Enterprise", "Retail"] */
+  industryCategories?: string[];
+  /** Optional: mapped regions, e.g. ["USA", "Europe", "North America"] */
+  regions?: string[];
   /** Optional: opt-in ordered sections for the richer detail template. Loosely typed here since its
    *  shape is owned by the frontend's CaseStudySection type in src/types/caseStudy.ts. */
   sections?: unknown[];
@@ -116,6 +124,10 @@ const CaseStudySchema = new Schema<ICaseStudyDocument>(
     location: { type: String },
     deliveryTime: { type: String },
     tags: [{ type: String }],
+    practiceAreas: [{ type: String }],
+    serviceTypes: [{ type: String }],
+    industryCategories: [{ type: String }],
+    regions: [{ type: String }],
     sections: [{ type: Schema.Types.Mixed }],
     testimonial: { type: Schema.Types.Mixed },
   },

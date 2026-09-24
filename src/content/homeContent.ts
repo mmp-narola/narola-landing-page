@@ -244,9 +244,9 @@ export const ecommerceContent = {
     ],
     caseStudiesTitle: "CASE STUDIES",
     caseStudies: [
-      { title: "eCommerce case studies", href: "/case-studies" },
-      { title: "Marketplace case studies", href: "/case-studies" },
-      { title: "Shopify case studies", href: "/case-studies" },
+      { title: "eCommerce case studies", href: "/case-studies?practice=ecommerce" },
+      { title: "Marketplace case studies", href: "/case-studies?practice=ecommerce&service=marketplace" },
+      { title: "Shopify case studies", href: "/case-studies?practice=ecommerce&service=shopify" },
     ],
   },
 };
@@ -286,9 +286,9 @@ export const aiAutomationContent = {
     ],
     caseStudiesTitle: "CASE STUDIES",
     caseStudies: [
-      { title: "AI agent case studies", href: "/case-studies" },
-      { title: "Automation case studies", href: "/case-studies" },
-      { title: "AI commerce case studies", href: "/case-studies" },
+      { title: "AI agent case studies", href: "/case-studies?practice=ai-automation&service=agents" },
+      { title: "Automation case studies", href: "/case-studies?practice=ai-automation&service=workflow" },
+      { title: "AI commerce case studies", href: "/case-studies?practice=ecommerce&service=ai-commerce" },
     ],
   },
   cards: [
@@ -376,9 +376,9 @@ export const productEngineeringContent = {
     ],
     caseStudiesTitle: "CASE STUDIES",
     caseStudies: [
-      { title: "SaaS product case studies", href: "/case-studies" },
-      { title: "Enterprise software case studies", href: "/case-studies" },
-      { title: "Mobile app case studies", href: "/case-studies" },
+      { title: "SaaS product case studies", href: "/case-studies?practice=product-engineering&service=saas" },
+      { title: "Enterprise software case studies", href: "/case-studies?practice=product-engineering&service=enterprise" },
+      { title: "Mobile app case studies", href: "/case-studies?practice=product-engineering&service=mobile" },
     ],
   },
 };

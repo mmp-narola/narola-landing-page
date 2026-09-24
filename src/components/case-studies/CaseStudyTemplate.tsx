@@ -140,8 +140,8 @@ function ScreenshotsSection({ content }: { content: CaseStudyScreenshotSet }) {
               type="button"
               onClick={() => setTab(key)}
               className={`rounded-xl px-4 py-2 text-xs font-medium capitalize transition-all md:text-sm ${tab === key
-                  ? "bg-white text-interactive-blue shadow-sm"
-                  : "text-subtle-gray hover:text-light-gray"
+                ? "bg-white text-interactive-blue shadow-sm"
+                : "text-subtle-gray hover:text-light-gray"
                 }`}
             >
               {key}
@@ -352,7 +352,7 @@ export function CaseStudyTemplate({ caseStudy, relatedCaseStudies }: CaseStudyTe
   return (
     <div>
       {/* Hero */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-surface-muted via-white to-white pb-10 pt-10 md:pb-14 md:pt-14">
+      <section className="relative overflow-hidden bg-gradient-to-b from-surface-muted via-white to-white pb-6 pt-6 md:pb-8 md:pt-8">
         {/* <div className="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 h-72 w-full max-w-4xl rounded-full bg-interactive-blue/5 blur-3xl" /> */}
 
         <Container className="relative">
@@ -526,8 +526,8 @@ export function CaseStudyTemplate({ caseStudy, relatedCaseStudies }: CaseStudyTe
                             href={`#${section.id}`}
                             aria-current={activeId === section.id ? "true" : undefined}
                             className={`block rounded-lg px-3 py-2 text-sm transition-colors ${activeId === section.id
-                                ? "bg-interactive-blue/10 font-semibold text-interactive-blue"
-                                : "text-subtle-gray hover:bg-surface-muted hover:text-light-gray"
+                              ? "bg-interactive-blue/10 font-semibold text-interactive-blue"
+                              : "text-subtle-gray hover:bg-surface-muted hover:text-light-gray"
                               }`}
                           >
                             {section.title}

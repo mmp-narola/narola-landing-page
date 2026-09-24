@@ -81,6 +81,14 @@ export interface CaseStudy {
   deliveryTime?: string;
   /** Optional: category pill tags shown under the breadcrumb (falls back to [industry, service]). */
   tags?: string[];
+  /** Optional: mapped practice areas, e.g. ["ecommerce", "ai-automation", "product-engineering"] */
+  practiceAreas?: string[];
+  /** Optional: mapped service types, e.g. ["shopify", "b2b", "mobile", "web", "ai-commerce", "workflow"] */
+  serviceTypes?: string[];
+  /** Optional: mapped industries/categories, e.g. ["Healthcare", "SaaS", "Enterprise", "Retail"] */
+  industryCategories?: string[];
+  /** Optional: mapped regions, e.g. ["USA", "Europe", "North America"] */
+  regions?: string[];
   /** Optional: opt-in ordered sections for the richer detail template (see above). */
   sections?: CaseStudySection[];
   /** Optional: client quote shown in a testimonial card. Only rendered if present. */
