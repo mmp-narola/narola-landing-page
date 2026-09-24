@@ -1,56 +1,88 @@
 import { connectToDatabase } from "@/lib/mongodb";
 import { CaseStudy as CaseStudyModel } from "@/models/CaseStudy";
-import { caseStudies as staticCaseStudies, CaseStudy } from "@/content/caseStudies";
+import { CaseStudy } from "@/types/caseStudy";
 
 /**
- * Fetch all case studies from MongoDB. If DB is unavailable or empty, fallback to static caseStudies.
+ * Slugs that should never be shown, even if a stale document for one still
+ * exists in MongoDB.
+ */
+const HIDDEN_SLUGS = new Set(["shipping-adaptor", "safiri-salama", "e-star"]);
+
+/**
+ * Slugs that should always be pinned to the front of the listing, in this
+ * exact order, ahead of everything else (which otherwise keeps whatever order
+ * it arrived in — newest-first from MongoDB).
+ */
+const FEATURED_ORDER = ["tournament-fantasy", "rayco-group", "zocular"];
+
+/**
+ * Applies the hidden-slug filter and featured-first ordering to any list of
+ * case studies, regardless of source.
+ */
+function applyVisibilityAndOrder(list: CaseStudy[]): CaseStudy[] {
+  const visible = list.filter((cs) => !HIDDEN_SLUGS.has(cs.slug));
+
+  const featured: CaseStudy[] = [];
+  for (const slug of FEATURED_ORDER) {
+    const match = visible.find((cs) => cs.slug === slug);
+    if (match) featured.push(match);
+  }
+
+  const featuredSlugs = new Set(featured.map((cs) => cs.slug));
+  const rest = visible.filter((cs) => !featuredSlugs.has(cs.slug));
+
+  return [...featured, ...rest];
+}
+
+/**
+ * Fetch all case studies directly from MongoDB (the 'case_studies' collection
+ * is the single source of truth). On a connection error, or when the
+ * collection is empty, this returns an empty array so pages can render their
+ * own empty/error state rather than crashing.
  */
 export async function getCaseStudies(): Promise<CaseStudy[]> {
   try {
     await connectToDatabase();
     const dbStudies = await CaseStudyModel.find({}).sort({ createdAt: -1 }).lean();
-
-    if (dbStudies && dbStudies.length > 0) {
-      // Serialize Mongoose documents into plain CaseStudy objects
-      return JSON.parse(JSON.stringify(dbStudies)) as CaseStudy[];
-    }
+    const dbList = JSON.parse(JSON.stringify(dbStudies)) as CaseStudy[];
+    return applyVisibilityAndOrder(dbList);
   } catch (error) {
-    console.warn(
-      "⚠️ Could not fetch case studies from MongoDB, using static content:",
+    console.error(
+      "Could not fetch case studies from MongoDB:",
       error instanceof Error ? error.message : error
     );
+    return [];
   }
-
-  // Fallback to static case study data
-  return staticCaseStudies;
 }
 
 /**
- * Fetch a single case study by slug from MongoDB, with fallback to static content.
+ * Fetch a single case study by slug directly from MongoDB. A slug that is
+ * genuinely absent from the DB, or any connection error, resolves to
+ * `undefined` so the caller can render a 404 / friendly error state.
  */
 export async function getCaseStudyBySlug(
   slug: string
 ): Promise<CaseStudy | undefined> {
+  if (HIDDEN_SLUGS.has(slug)) {
+    return undefined;
+  }
+
   try {
     await connectToDatabase();
     const dbStudy = await CaseStudyModel.findOne({ slug }).lean();
-
-    if (dbStudy) {
-      return JSON.parse(JSON.stringify(dbStudy)) as CaseStudy;
-    }
+    return dbStudy ? (JSON.parse(JSON.stringify(dbStudy)) as CaseStudy) : undefined;
   } catch (error) {
-    console.warn(
-      `⚠️ Could not fetch case study '${slug}' from MongoDB, using static content:`,
+    console.error(
+      `Could not fetch case study '${slug}' from MongoDB:`,
       error instanceof Error ? error.message : error
     );
+    return undefined;
   }
-
-  // Fallback to static case study data
-  return staticCaseStudies.find((cs) => cs.slug === slug);
 }
 
 /**
- * Fetch related case studies from MongoDB with fallback.
+ * Fetch related case studies, sourced entirely from getCaseStudies()/
+ * getCaseStudyBySlug() above (i.e. MongoDB-first).
  */
 export async function getRelatedCaseStudies(
   slug: string,
@@ -64,6 +96,7 @@ export async function getRelatedCaseStudies(
   }
 
   const related = (current.relatedSlugs || [])
+    .filter((s) => !HIDDEN_SLUGS.has(s))
     .map((s) => allStudies.find((cs) => cs.slug === s))
     .filter((cs): cs is CaseStudy => Boolean(cs));
 

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { CaseStudy } from "@/content/caseStudies";
+import { CaseStudy } from "@/types/caseStudy";
 
 export interface CaseStudyCardProps {
   caseStudy: CaseStudy;
@@ -7,7 +7,7 @@ export interface CaseStudyCardProps {
 
 export function CaseStudyCard({ caseStudy }: CaseStudyCardProps) {
   return (
-    <article className="group flex flex-col overflow-hidden rounded-3xl border border-slate/10 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-interactive-blue/5">
+    <article className="group flex flex-col overflow-hidden rounded-2xl border border-black/[0.08] bg-white transition-colors duration-300 hover:border-black/[0.14]">
       {/* Thumbnail with Hover Zoom & Badges */}
       <div className="relative aspect-[16/10] w-full overflow-hidden bg-surface-muted">
         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -15,13 +15,13 @@ export function CaseStudyCard({ caseStudy }: CaseStudyCardProps) {
           src={caseStudy.thumbnailUrl}
           alt={caseStudy.title}
           loading="lazy"
-          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+          className="h-full w-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/10 opacity-70 transition-opacity duration-300 group-hover:opacity-50" />
 
         {/* Top Badges */}
         <div className="absolute left-4 top-4 z-10 flex flex-wrap items-center gap-2">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-white/95 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-ink shadow-sm backdrop-blur-md">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-white/95 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-light-gray shadow-sm backdrop-blur-md">
             <svg
               className="h-3.5 w-3.5 text-interactive-blue"
               viewBox="0 0 24 24"
@@ -43,7 +43,7 @@ export function CaseStudyCard({ caseStudy }: CaseStudyCardProps) {
       {/* Content Area */}
       <div className="flex flex-1 flex-col justify-between p-6 md:p-7">
         <div>
-          <h3 className="text-xl font-semibold tracking-tight text-ink transition-colors duration-200 group-hover:text-interactive-blue">
+          <h3 className="text-xl font-semibold tracking-tight text-light-gray transition-colors duration-200 group-hover:text-interactive-blue">
             <Link href={`/case-studies/${caseStudy.slug}`} className="focus:outline-none">
               {caseStudy.title}
             </Link>
@@ -53,14 +53,14 @@ export function CaseStudyCard({ caseStudy }: CaseStudyCardProps) {
             {caseStudy.service}
           </p>
 
-          <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-slate">
+          <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-subtle-gray">
             {caseStudy.summary}
           </p>
         </div>
 
         {/* Metrics Grid */}
         {caseStudy.metrics && caseStudy.metrics.length > 0 && (
-          <div className="mt-6 border-t border-slate/10 pt-5">
+          <div className="mt-6 border-t border-black/[0.10] pt-5">
             <div className="grid grid-cols-2 gap-3">
               {caseStudy.metrics.slice(0, 2).map((metric, idx) => (
                 <div
@@ -70,7 +70,7 @@ export function CaseStudyCard({ caseStudy }: CaseStudyCardProps) {
                   <p className="text-lg font-semibold tracking-tight text-interactive-blue md:text-xl">
                     {metric.value}
                   </p>
-                  <p className="mt-0.5 line-clamp-2 text-xs font-medium text-slate">
+                  <p className="mt-0.5 line-clamp-2 text-xs font-medium text-subtle-gray">
                     {metric.label}
                   </p>
                 </div>
@@ -78,7 +78,7 @@ export function CaseStudyCard({ caseStudy }: CaseStudyCardProps) {
             </div>
 
             <div className="mt-5 flex items-center justify-between">
-              <span className="inline-flex items-center gap-1.5 text-xs font-bold text-ink transition-colors group-hover:text-interactive-blue">
+              <span className="inline-flex items-center gap-1.5 text-xs font-bold text-light-gray transition-colors group-hover:text-interactive-blue">
                 Read Case Study
                 <svg
                   className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-1"
@@ -90,7 +90,7 @@ export function CaseStudyCard({ caseStudy }: CaseStudyCardProps) {
                   <path d="M5 12h14M12 5l7 7-7 7" />
                 </svg>
               </span>
-              <span className="text-xs font-medium text-slate">
+              <span className="text-xs font-medium text-subtle-gray">
                 {caseStudy.region}
               </span>
             </div>

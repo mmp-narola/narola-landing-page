@@ -26,6 +26,17 @@ export interface ICaseStudyDocument extends Document {
   objectivesAchieved: string[];
   technologies: string[];
   relatedSlugs: string[];
+  /** Optional: free-form location string for the hero meta line (falls back to country). */
+  location?: string;
+  /** Optional: e.g. "8 weeks", "4 months" — only shown if supplied. */
+  deliveryTime?: string;
+  /** Optional: category pill tags shown under the breadcrumb (falls back to [industry, service]). */
+  tags?: string[];
+  /** Optional: opt-in ordered sections for the richer detail template. Loosely typed here since its
+   *  shape is owned by the frontend's CaseStudySection type in src/types/caseStudy.ts. */
+  sections?: unknown[];
+  /** Optional: client quote shown in a testimonial card. Only rendered if present. */
+  testimonial?: unknown;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -102,6 +113,11 @@ const CaseStudySchema = new Schema<ICaseStudyDocument>(
     objectivesAchieved: [{ type: String }],
     technologies: [{ type: String }],
     relatedSlugs: [{ type: String }],
+    location: { type: String },
+    deliveryTime: { type: String },
+    tags: [{ type: String }],
+    sections: [{ type: Schema.Types.Mixed }],
+    testimonial: { type: Schema.Types.Mixed },
   },
   {
     timestamps: true,

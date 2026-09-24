@@ -3,7 +3,6 @@ import { notFound } from "next/navigation";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { BlogDetailRenderer } from "@/components/blogs/layouts";
-import { blogPosts } from "@/content/blogs";
 import { getBlogs, getBlogBySlug, getRelatedBlogs } from "@/lib/blogs";
 
 interface BlogPostPageProps {
@@ -20,11 +19,10 @@ export const revalidate = 60;
 
 export async function generateStaticParams() {
   const dbPosts = await getBlogs();
-  const allPosts = [...dbPosts, ...blogPosts];
 
   // Deduplicate slugs
   const uniqueSlugs = Array.from(
-    new Set(allPosts.map((post) => post.slug).filter(Boolean))
+    new Set(dbPosts.map((post) => post.slug).filter(Boolean))
   );
 
   return uniqueSlugs.map((slug) => ({

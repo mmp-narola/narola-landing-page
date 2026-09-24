@@ -24,9 +24,9 @@ export function BlogSearchAndFilter({
       {/* Search Input Bar */}
       <div className="relative mx-auto max-w-2xl">
         <div className="relative flex items-center">
-          <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4 text-slate">
+          <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4 text-subtle-gray">
             <svg
-              className="h-5 w-5 text-slate/70"
+              className="h-5 w-5 text-subtle-gray/70"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -44,13 +44,13 @@ export function BlogSearchAndFilter({
             value={searchQuery}
             onChange={(e) => onSearchChange(e.target.value)}
             placeholder="Search articles by title, topic, or keyword..."
-            className="w-full rounded-2xl border border-slate/20 bg-white py-3.5 pl-11 pr-12 text-sm text-ink placeholder:text-slate/60 shadow-xs transition-all focus:border-interactive-blue focus:outline-none focus:ring-3 focus:ring-interactive-blue/10 md:text-base"
+            className="w-full rounded-2xl border border-black/[0.10] bg-white py-3.5 pl-11 pr-12 text-sm text-light-gray placeholder:text-subtle-gray/60 transition-all focus:border-interactive-blue focus:outline-none focus:ring-3 focus:ring-interactive-blue/10 md:text-base"
           />
           {searchQuery && (
             <button
               type="button"
               onClick={() => onSearchChange("")}
-              className="absolute inset-y-0 right-0 flex items-center pr-4 text-slate transition-colors hover:text-ink"
+              className="absolute inset-y-0 right-0 flex items-center pr-4 text-subtle-gray transition-colors hover:text-light-gray"
               aria-label="Clear search"
             >
               <svg
@@ -85,7 +85,7 @@ export function BlogSearchAndFilter({
               className={`group flex items-center gap-2 rounded-full px-4 py-2 text-xs font-semibold transition-all duration-200 md:text-sm ${
                 isActive
                   ? "bg-interactive-blue text-white shadow-md shadow-interactive-blue/20"
-                  : "border border-slate/15 bg-white text-slate hover:border-interactive-blue/40 hover:bg-surface-muted hover:text-ink"
+                  : "border border-black/[0.08] bg-white text-subtle-gray hover:border-interactive-blue/40 hover:bg-surface-muted hover:text-light-gray"
               }`}
             >
               <span>{cat.label}</span>
@@ -93,7 +93,7 @@ export function BlogSearchAndFilter({
                 className={`rounded-full px-2 py-0.5 text-[11px] font-bold ${
                   isActive
                     ? "bg-white/20 text-white"
-                    : "bg-surface-muted text-slate group-hover:bg-slate/15 group-hover:text-ink"
+                    : "bg-surface-muted text-subtle-gray group-hover:bg-black/[0.15] group-hover:text-light-gray"
                 }`}
               >
                 {count}

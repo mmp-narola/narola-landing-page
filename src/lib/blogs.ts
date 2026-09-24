@@ -1,55 +1,49 @@
 import { connectToDatabase } from "@/lib/mongodb";
 import { Blog } from "@/models/Blog";
-import { blogPosts, BlogPost } from "@/content/blogs";
+import { BlogPost } from "@/content/blogs";
 
 /**
- * Fetch all blogs from MongoDB. If DB is unavailable or empty, fallback to static blogPosts.
+ * Fetch all blogs directly from MongoDB (the 'blogs' collection is the single
+ * source of truth). On a connection error, or when the collection is empty,
+ * this returns an empty array so pages can render their own empty/error
+ * state rather than crashing.
  */
 export async function getBlogs(): Promise<BlogPost[]> {
   try {
     await connectToDatabase();
-    // Query MongoDB blogs sorted by createdAt descending
     const dbBlogs = await Blog.find({}).sort({ createdAt: -1 }).lean();
-
-    if (dbBlogs && dbBlogs.length > 0) {
-      // Serialize Mongoose documents into plain BlogPost objects
-      return JSON.parse(JSON.stringify(dbBlogs)) as BlogPost[];
-    }
+    return JSON.parse(JSON.stringify(dbBlogs)) as BlogPost[];
   } catch (error) {
-    console.warn(
-      "⚠️ Could not fetch blogs from MongoDB, using static content:",
+    console.error(
+      "Could not fetch blogs from MongoDB:",
       error instanceof Error ? error.message : error
     );
+    return [];
   }
-
-  // Fallback to static blog data
-  return blogPosts;
 }
 
 /**
- * Fetch a single blog by slug from MongoDB, with fallback to static content.
+ * Fetch a single blog by slug directly from MongoDB. A slug that is
+ * genuinely absent from the DB, or any connection error, resolves to
+ * `undefined` so the caller can render a 404 / friendly error state.
  */
 export async function getBlogBySlug(slug: string): Promise<BlogPost | undefined> {
   try {
     await connectToDatabase();
     const dbBlog = await Blog.findOne({ slug }).lean();
-
-    if (dbBlog) {
-      return JSON.parse(JSON.stringify(dbBlog)) as BlogPost;
-    }
+    return dbBlog ? (JSON.parse(JSON.stringify(dbBlog)) as BlogPost) : undefined;
   } catch (error) {
-    console.warn(
-      `⚠️ Could not fetch blog '${slug}' from MongoDB, using static content:`,
+    console.error(
+      `Could not fetch blog '${slug}' from MongoDB:`,
       error instanceof Error ? error.message : error
     );
+    return undefined;
   }
-
-  // Fallback to static blog data
-  return blogPosts.find((p) => p.slug === slug);
 }
 
 /**
- * Fetch related blog posts from MongoDB.
+ * Fetch related blog posts, sourced entirely from getBlogs()/getBlogBySlug()
+ * above (i.e. MongoDB-first).
  */
 export async function getRelatedBlogs(
   slug: string,

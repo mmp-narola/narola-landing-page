@@ -2,13 +2,12 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { CaseStudyDetailView } from "@/components/case-studies/CaseStudyDetailView";
+import { CaseStudyTemplate } from "@/components/case-studies/CaseStudyTemplate";
 import {
   getCaseStudies,
   getCaseStudyBySlug,
   getRelatedCaseStudies,
 } from "@/lib/caseStudies";
-import { caseStudies as staticCaseStudies } from "@/content/caseStudies";
 
 interface CaseStudyPageProps {
   params: Promise<{
@@ -24,10 +23,9 @@ export const revalidate = 60;
 
 export async function generateStaticParams() {
   const dbStudies = await getCaseStudies();
-  const allStudies = [...dbStudies, ...staticCaseStudies];
 
   const uniqueSlugs = Array.from(
-    new Set(allStudies.map((cs) => cs.slug).filter(Boolean))
+    new Set(dbStudies.map((cs) => cs.slug).filter(Boolean))
   );
 
   return uniqueSlugs.map((slug) => ({
@@ -79,7 +77,7 @@ export default async function CaseStudyDetailPage({
     <div className="flex min-h-screen flex-col bg-white">
       <Header />
       <main className="flex-1">
-        <CaseStudyDetailView
+        <CaseStudyTemplate
           caseStudy={caseStudy}
           relatedCaseStudies={related}
         />

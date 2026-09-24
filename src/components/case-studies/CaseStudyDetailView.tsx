@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
-import { CaseStudy } from "@/content/caseStudies";
+import { CaseStudy } from "@/types/caseStudy";
 import { CaseStudyCard } from "./CaseStudyCard";
 
 export interface CaseStudyDetailViewProps {

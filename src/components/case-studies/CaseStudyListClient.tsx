@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { CaseStudy } from "@/content/caseStudies";
+import { CaseStudy } from "@/types/caseStudy";
 import { CaseStudyCard } from "./CaseStudyCard";
 
 export interface CaseStudyListClientProps {
@@ -74,11 +74,11 @@ export function CaseStudyListClient({
   return (
     <div className="space-y-10">
       {/* Search & Filter Controls */}
-      <div className="rounded-3xl border border-slate/15 bg-white p-6 md:p-8 shadow-sm">
+      <div className="rounded-2xl border border-black/[0.08] bg-white p-6 md:p-8">
         <div className="grid grid-cols-1 gap-4 md:grid-cols-12 md:items-center">
           {/* Search Input */}
           <div className="md:col-span-4 relative">
-            <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-slate/60">
+            <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-subtle-gray/60">
               <svg
                 className="h-4 w-4"
                 viewBox="0 0 24 24"
@@ -95,7 +95,7 @@ export function CaseStudyListClient({
               placeholder="Search case studies, tech, or country..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full rounded-xl border border-slate/20 bg-surface-muted/50 py-2.5 pl-10 pr-4 text-sm text-ink placeholder-slate/60 transition-colors focus:border-interactive-blue focus:bg-white focus:outline-none focus:ring-2 focus:ring-interactive-blue/20"
+              className="w-full rounded-xl border border-black/[0.10] bg-white py-2.5 pl-10 pr-4 text-sm text-light-gray placeholder-subtle-gray/60 transition-colors focus:border-interactive-blue focus:bg-white focus:outline-none focus:ring-2 focus:ring-interactive-blue/20"
             />
           </div>
 
@@ -104,7 +104,7 @@ export function CaseStudyListClient({
             <select
               value={selectedIndustry}
               onChange={(e) => setSelectedIndustry(e.target.value)}
-              className="w-full rounded-xl border border-slate/20 bg-surface-muted/50 py-2.5 px-3.5 text-sm text-ink transition-colors focus:border-interactive-blue focus:bg-white focus:outline-none focus:ring-2 focus:ring-interactive-blue/20"
+              className="w-full rounded-xl border border-black/[0.10] bg-white py-2.5 px-3.5 text-sm text-light-gray transition-colors focus:border-interactive-blue focus:bg-white focus:outline-none focus:ring-2 focus:ring-interactive-blue/20"
             >
               <option value="all">All Industries</option>
               {industries.map((ind) => (
@@ -120,7 +120,7 @@ export function CaseStudyListClient({
             <select
               value={selectedService}
               onChange={(e) => setSelectedService(e.target.value)}
-              className="w-full rounded-xl border border-slate/20 bg-surface-muted/50 py-2.5 px-3.5 text-sm text-ink transition-colors focus:border-interactive-blue focus:bg-white focus:outline-none focus:ring-2 focus:ring-interactive-blue/20"
+              className="w-full rounded-xl border border-black/[0.10] bg-white py-2.5 px-3.5 text-sm text-light-gray transition-colors focus:border-interactive-blue focus:bg-white focus:outline-none focus:ring-2 focus:ring-interactive-blue/20"
             >
               <option value="all">All Services</option>
               {services.map((srv) => (
@@ -136,7 +136,7 @@ export function CaseStudyListClient({
             <select
               value={selectedRegion}
               onChange={(e) => setSelectedRegion(e.target.value)}
-              className="w-full rounded-xl border border-slate/20 bg-surface-muted/50 py-2.5 px-3.5 text-sm text-ink transition-colors focus:border-interactive-blue focus:bg-white focus:outline-none focus:ring-2 focus:ring-interactive-blue/20"
+              className="w-full rounded-xl border border-black/[0.10] bg-white py-2.5 px-3.5 text-sm text-light-gray transition-colors focus:border-interactive-blue focus:bg-white focus:outline-none focus:ring-2 focus:ring-interactive-blue/20"
             >
               <option value="all">All Regions</option>
               {regions.map((reg) => (
@@ -150,10 +150,10 @@ export function CaseStudyListClient({
 
         {/* Filter Stats & Reset */}
         {hasActiveFilters && (
-          <div className="mt-4 flex flex-wrap items-center justify-between gap-3 border-t border-slate/10 pt-4 text-xs">
-            <span className="font-medium text-slate">
+          <div className="mt-4 flex flex-wrap items-center justify-between gap-3 border-t border-black/[0.10] pt-4 text-xs">
+            <span className="font-medium text-subtle-gray">
               Showing{" "}
-              <strong className="text-ink font-semibold">
+              <strong className="text-light-gray font-semibold">
                 {filteredCaseStudies.length}
               </strong>{" "}
               of {initialCaseStudies.length} case studies
@@ -176,7 +176,7 @@ export function CaseStudyListClient({
           ))}
         </div>
       ) : (
-        <div className="rounded-3xl border border-dashed border-slate/20 bg-surface-muted/40 p-12 text-center">
+        <div className="rounded-2xl border border-dashed border-black/[0.14] bg-surface-muted/40 p-12 text-center">
           <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-interactive-blue/10 text-interactive-blue">
             <svg
               className="h-8 w-8"
@@ -189,10 +189,10 @@ export function CaseStudyListClient({
               <line x1="21" y1="21" x2="16.65" y2="16.65" />
             </svg>
           </div>
-          <h3 className="mt-4 text-lg font-semibold text-ink">
+          <h3 className="mt-4 text-lg font-semibold text-light-gray">
             No case studies found
           </h3>
-          <p className="mt-1 text-sm text-slate">
+          <p className="mt-1 text-sm text-subtle-gray">
             Try adjusting your search terms or filter selections.
           </p>
           <button

@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "test:db": "node scripts/test-db.mjs",
-    "seed:blogs": "node scripts/seed-blogs.mjs"
+    "seed:blogs": "node scripts/seed-blogs.mjs",
+    "sync:case-studies": "node scripts/sync-case-studies.mjs"
   },
   "dependencies": {
     "lucide-react": "^1.47.0",

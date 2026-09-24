@@ -9,12 +9,12 @@ interface BlogCardProps {
 export function BlogCard({ post, featured = false }: BlogCardProps) {
   return (
     <article
-      className={`group relative flex flex-col overflow-hidden rounded-2xl border border-slate/10 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-interactive-blue/5 ${featured ? "md:col-span-2 lg:col-span-3 lg:grid lg:grid-cols-12 lg:items-center" : ""
+      className={`group relative flex flex-col overflow-hidden rounded-2xl border border-black/[0.08] bg-white transition-colors duration-300 hover:border-black/[0.14] ${featured ? "md:col-span-2 lg:col-span-3 lg:grid lg:grid-cols-12 lg:items-center" : ""
         }`}
     >
       {/* Visual Header / Cover */}
       <div
-        className={`relative overflow-hidden bg-gradient-to-br ${post.gradient || "from-blue-600 to-indigo-800"} ${
+        className={`relative overflow-hidden bg-gradient-to-br ${post.gradient || "from-interactive-blue to-[#0a2f57]"} ${
           featured
             ? "h-64 lg:col-span-5 lg:h-full min-h-[260px]"
             : "h-48 w-full"
@@ -26,7 +26,7 @@ export function BlogCard({ post, featured = false }: BlogCardProps) {
             <img
               src={post.coverImage}
               alt={post.title}
-              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              className="h-full w-full object-cover"
             />
             {/* Dark overlay gradient for readable pills */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-black/30" />
@@ -60,13 +60,13 @@ export function BlogCard({ post, featured = false }: BlogCardProps) {
             </div>
 
             {/* Ambient Glow */}
-            <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-white/20 blur-2xl transition-transform duration-500 group-hover:scale-125" />
+            <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-white/20 blur-2xl" />
           </>
         )}
 
         {/* Category Pill Over Visual */}
         <div className="absolute left-4 top-4 z-10 flex flex-wrap items-center gap-2">
-          <span className="inline-flex items-center rounded-full bg-white/90 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-ink backdrop-blur-md shadow-xs">
+          <span className="inline-flex items-center rounded-full bg-white/90 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-light-gray backdrop-blur-md shadow-xs">
             {post.categoryLabel}
           </span>
           {featured && (
@@ -93,9 +93,9 @@ export function BlogCard({ post, featured = false }: BlogCardProps) {
       >
         <div>
           {/* Metadata: Date & Category */}
-          <div className="flex items-center gap-3 text-xs text-slate">
+          <div className="flex items-center gap-3 text-xs text-subtle-gray">
             <span className="flex items-center gap-1.5">
-              <svg className="h-3.5 w-3.5 text-slate/70" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75">
+              <svg className="h-3.5 w-3.5 text-subtle-gray/70" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75">
                 <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
                 <line x1="16" y1="2" x2="16" y2="6" />
                 <line x1="8" y1="2" x2="8" y2="6" />
@@ -107,7 +107,7 @@ export function BlogCard({ post, featured = false }: BlogCardProps) {
 
           {/* Title */}
           <h3
-            className={`mt-3 font-semibold text-ink transition-colors duration-200 group-hover:text-interactive-blue ${featured
+            className={`mt-3 font-semibold text-light-gray transition-colors duration-200 group-hover:text-interactive-blue ${featured
               ? "text-xl md:text-2xl lg:text-3xl leading-snug"
               : "text-lg md:text-xl line-clamp-2 leading-snug"
               }`}
@@ -120,7 +120,7 @@ export function BlogCard({ post, featured = false }: BlogCardProps) {
 
           {/* Excerpt */}
           <p
-            className={`mt-3 text-slate leading-relaxed ${featured
+            className={`mt-3 text-subtle-gray leading-relaxed ${featured
               ? "text-base line-clamp-3 md:line-clamp-4"
               : "text-sm line-clamp-2"
               }`}
@@ -130,18 +130,18 @@ export function BlogCard({ post, featured = false }: BlogCardProps) {
         </div>
 
         {/* Footer: Author & Read CTA */}
-        <div className="mt-6 flex items-center justify-between border-t border-slate/10 pt-4">
+        <div className="mt-6 flex items-center justify-between border-t border-black/[0.10] pt-4">
           <div className="flex items-center gap-3">
             {/* Author Avatar */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={post.author.avatarUrl || "/images/favicon.png"}
               alt={post.author.name}
-              className="h-8 w-8 rounded-full border border-slate/20 bg-surface-muted p-1 object-contain"
+              className="h-8 w-8 rounded-full border border-black/[0.20] bg-surface-muted p-1 object-contain"
             />
             <div className="flex flex-col">
-              <span className="text-xs font-semibold text-ink">{post.author.name}</span>
-              <span className="text-[11px] text-slate">{post.author.role.split(" ")[0]}</span>
+              <span className="text-xs font-semibold text-light-gray">{post.author.name}</span>
+              <span className="text-[11px] text-subtle-gray">{post.author.role.split(" ")[0]}</span>
             </div>
           </div>
 

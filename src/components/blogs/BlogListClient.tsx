@@ -85,7 +85,7 @@ export function BlogListClient({ posts }: BlogListClientProps) {
         <div className="mb-10">
           <div className="mb-4 flex items-center gap-2">
             <span className="inline-block h-2 w-2 rounded-full bg-interactive-blue" />
-            <h2 className="text-xs font-semibold uppercase tracking-wider text-slate">
+            <h2 className="text-xs font-semibold uppercase tracking-wider text-subtle-gray">
               Editor&apos;s Pick & Spotlight
             </h2>
           </div>
@@ -97,11 +97,11 @@ export function BlogListClient({ posts }: BlogListClientProps) {
       {filteredPosts.length > 0 ? (
         <div className="space-y-10">
           {isDefaultView && featuredPost && (
-            <div className="flex items-center justify-between border-b border-slate/10 pb-4">
-              <h2 className="text-lg font-semibold text-ink md:text-xl">
+            <div className="flex items-center justify-between border-b border-black/[0.10] pb-4">
+              <h2 className="text-lg font-semibold text-light-gray md:text-xl">
                 All Latest Articles
               </h2>
-              <span className="text-xs font-medium text-slate">
+              <span className="text-xs font-medium text-subtle-gray">
                 Showing {Math.min(visibleGridPosts.length + 1, filteredPosts.length)} of {filteredPosts.length} articles
               </span>
             </div>
@@ -140,15 +140,15 @@ export function BlogListClient({ posts }: BlogListClientProps) {
         </div>
       ) : (
         /* Empty State */
-        <div className="mx-auto max-w-md rounded-3xl border border-slate/15 bg-white p-10 text-center shadow-sm">
-          <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-surface-muted text-slate">
+        <div className="mx-auto max-w-md rounded-2xl border border-black/[0.08] bg-white p-10 text-center">
+          <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-surface-muted text-subtle-gray">
             <svg className="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75">
               <circle cx="11" cy="11" r="8" />
               <line x1="21" y1="21" x2="16.65" y2="16.65" />
             </svg>
           </div>
-          <h3 className="text-lg font-semibold text-ink">No articles found</h3>
-          <p className="mt-2 text-sm text-slate">
+          <h3 className="text-lg font-semibold text-light-gray">No articles found</h3>
+          <p className="mt-2 text-sm text-subtle-gray">
             We couldn&apos;t find any blog posts matching &ldquo;{searchQuery}&rdquo; in this category.
           </p>
           <button
