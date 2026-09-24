@@ -17,9 +17,10 @@ export interface MegaMenuColumn {
 export interface FeaturedCaseStudyConfig {
   tagLabel: string;
   title: string;
-  description: string;
+  description?: string;
   metrics: { value: string; label: string }[];
   href: string;
+  image?: string;
 }
 
 export interface MegaMenuConfig {
@@ -88,15 +89,16 @@ export const aiAutomationMegaMenu: MegaMenuConfig = {
   ],
   featured: {
     tagLabel: "FEATURED CASE STUDY",
-    title: "45% Revenue Growth with AI-Powered Commerce",
+    title: "Rayco: Digital Transformation & Workflow Automation",
     description:
-      "How we helped a fashion retailer transform their digital presence with headless commerce.",
+      "Automated engine diagnostic workflows and problem-led service discovery for fleet operators.",
     metrics: [
-      { value: "45%", label: "Revenue" },
-      { value: "3x", label: "Conversion" },
-      { value: "60%", label: "Faster" },
+      { value: "91%", label: "Faster Discovery" },
+      { value: "88%", label: "Clearer Nav" },
+      { value: "86%", label: "Sustainability" },
     ],
-    href: "/case-studies",
+    href: "/case-studies/rayco-group",
+    image: "/images/case-studies/rayco-mockup.jpg",
   },
   showConsultationCta: true,
 };
@@ -159,15 +161,16 @@ export const ecommerceMegaMenu: MegaMenuConfig = {
   ],
   featured: {
     tagLabel: "FEATURED CASE STUDY",
-    title: "98% Transaction Success for Global Marketplace",
+    title: "Zocular: Dual B2B/B2C Scalable Ecommerce Platform",
     description:
-      "A scalable Nordic design eCommerce platform engineered for multi-currency high-speed conversion.",
+      "A high-speed medical ecommerce platform with automated commissions, bulk orders, and real-time tracking.",
     metrics: [
-      { value: "98%", label: "Success" },
-      { value: "30%", label: "Abandonment Drop" },
-      { value: "2.5x", label: "Faster" },
+      { value: "50%", label: "Faster Speed" },
+      { value: "30%", label: "B2B Growth" },
+      { value: "40%", label: "Cart Drop" },
     ],
-    href: "/case-studies",
+    href: "/case-studies/zocular",
+    image: "/images/case-studies/zocular-mockup.jpg",
   },
   showConsultationCta: true,
 };
@@ -201,15 +204,16 @@ export const productEngineeringMegaMenu: MegaMenuConfig = {
   ],
   featured: {
     tagLabel: "FEATURED CASE STUDY",
-    title: "Interactive EdTech Platform for 100K+ Users",
+    title: "Tournament Fantasy: Real-Time Event Management App",
     description:
-      "Gamified learning SaaS with parent dashboard and real-time student analytics.",
+      "Cross-platform mobile application engineered for instant tournament scheduling, live tracking, and error control.",
     metrics: [
-      { value: "100K+", label: "Active Users" },
-      { value: "45%", label: "Engagement" },
-      { value: "99.9%", label: "Uptime" },
+      { value: "85%", label: "Coordination Drop" },
+      { value: "3X", label: "Faster Scheduling" },
+      { value: "99.9%", label: "Crash-Free" },
     ],
-    href: "/case-studies",
+    href: "/case-studies/tournament-fantasy",
+    image: "/images/case-studies/tournament-fantasy-mockup.jpg",
   },
   showConsultationCta: true,
 };

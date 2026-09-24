@@ -9,11 +9,15 @@ import { OurWorkSection } from "@/components/sections/OurWorkSection";
 import { Footer } from "@/components/layout/Footer";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { siteConfig } from "@/content/siteConfig";
+import { getCaseStudies } from "@/lib/caseStudies";
 import {
   getOrganizationSchema,
   getHomeServicesSchema,
   getHomeFaqSchema,
 } from "@/lib/seo/structuredData";
+
+// Revalidate homepage every 60 seconds from MongoDB
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: "Agile Software Development Company USA | Top 1% Developers | Narola Infotech",
@@ -69,7 +73,9 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Home() {
+export default async function Home() {
+  const allCaseStudies = await getCaseStudies();
+  const featuredCaseStudies = allCaseStudies.slice(0, 3);
   const organizationSchema = getOrganizationSchema();
   const servicesSchema = getHomeServicesSchema();
   const faqSchema = getHomeFaqSchema();
@@ -99,7 +105,7 @@ export default function Home() {
         <ProductEngineeringSection />
 
         {/* Our Work / Portfolio Showcase Section */}
-        <OurWorkSection />
+        <OurWorkSection caseStudies={featuredCaseStudies} />
       </main>
 
       {/* Site Footer */}

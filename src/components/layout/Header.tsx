@@ -57,7 +57,7 @@ export function Header() {
 
   return (
     <header
-      className={`sticky top-0 z-50 h-16 transition-all duration-300 md:h-20 ${isScrolled
+      className={`sticky top-0 z-50 h-12 transition-all duration-300 md:h-16 ${isScrolled
         ? "border-b border-black/[0.08] bg-white/95 shadow-sm backdrop-blur-xl"
         : "border-b border-transparent bg-white/90 backdrop-blur-md"
         }`}
@@ -76,7 +76,7 @@ export function Header() {
             alt={siteConfig.logo.alt}
             width={siteConfig.logo.width}
             height={siteConfig.logo.height}
-            className="h-10 w-auto md:h-12"
+            className="h-8 w-auto md:h-10"
           />
         </Link>
 

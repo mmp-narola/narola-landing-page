@@ -4,8 +4,8 @@ const getSiteUrl = (): string => {
     (process.env.VERCEL_PROJECT_PRODUCTION_URL
       ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
       : process.env.VERCEL_URL
-      ? `https://${process.env.VERCEL_URL}`
-      : "https://claude-narolainfotech.vercel.app");
+        ? `https://${process.env.VERCEL_URL}`
+        : "https://claude-narolainfotech.vercel.app");
 
   if (envUrl.startsWith("http://") || envUrl.startsWith("https://")) {
     return envUrl.replace(/\/$/, "");
@@ -28,7 +28,8 @@ export const siteConfig = {
   description:
     "Narola Infotech provides custom software development, product engineering, and staff " +
     "augmentation for businesses across ecommerce, fintech, healthcare, and more.",
-  tagline: "Digitalizing Businesses Globally for Startups, SMEs & Enterprises Since 2005",
+  tagline:
+    "Digitalizing Businesses Globally for Startups, SMEs & Enterprises Since 2005",
   url: getSiteUrl(),
   primaryCta: {
     label: "Consult Narola",
@@ -37,4 +38,3 @@ export const siteConfig = {
     href: "#footer",
   },
 } as const;
-

@@ -181,74 +181,91 @@ export function MegaMenuPanel({ menu, onNavigate }: MegaMenuPanelProps) {
                 </span>
               </div>
 
-              {/* Abstract Browser UI Mockup */}
-              <div className="mt-3 overflow-hidden rounded-xl border border-black/[0.08] bg-white p-2.5 shadow-2xs">
-                {/* Window Chrome Header */}
-                <div className="flex items-center gap-1.5 border-b border-black/[0.05] pb-2">
-                  <span className="h-2 w-2 rounded-full bg-[#ff5f57]" />
-                  <span className="h-2 w-2 rounded-full bg-[#febc2e]" />
-                  <span className="h-2 w-2 rounded-full bg-[#28c840]" />
-                  <div className="ml-2 h-1.5 w-16 rounded-full bg-black/5" />
-                  <div className="ml-auto h-2 w-7 rounded-md bg-bright-blue/20" />
+              {/* Image or Mockup Preview */}
+              {menu.featured.image ? (
+                <div className="relative mt-3 aspect-[16/10] w-full overflow-hidden rounded-xl border border-black/[0.08] bg-surface-muted shadow-2xs">
+                  <Link
+                    href={menu.featured.href}
+                    onClick={onNavigate}
+                    className="block h-full w-full focus:outline-none"
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={menu.featured.image}
+                      alt={menu.featured.title}
+                      loading="lazy"
+                      className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
+                    />
+                  </Link>
                 </div>
+              ) : (
+                <div className="mt-3 overflow-hidden rounded-xl border border-black/[0.08] bg-white p-2.5 shadow-2xs">
+                  {/* Window Chrome Header */}
+                  <div className="flex items-center gap-1.5 border-b border-black/[0.05] pb-2">
+                    <span className="h-2 w-2 rounded-full bg-[#ff5f57]" />
+                    <span className="h-2 w-2 rounded-full bg-[#febc2e]" />
+                    <span className="h-2 w-2 rounded-full bg-[#28c840]" />
+                    <div className="ml-2 h-1.5 w-16 rounded-full bg-black/5" />
+                    <div className="ml-auto h-2 w-7 rounded-md bg-bright-blue/20" />
+                  </div>
 
-                {/* Window Body Mockup */}
-                <div className="mt-2.5 grid grid-cols-3 gap-1.5">
-                  <div className="flex h-10 items-center justify-center rounded-lg bg-blue-50/70 p-1">
-                    <svg
-                      className="h-4 w-4 text-bright-blue"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                    >
-                      <path d="M3 3v18h18" />
-                      <path d="m19 9-5 5-4-4-3 3" />
-                    </svg>
+                  {/* Window Body Mockup */}
+                  <div className="mt-2.5 grid grid-cols-3 gap-1.5">
+                    <div className="flex h-10 items-center justify-center rounded-lg bg-blue-50/70 p-1">
+                      <svg
+                        className="h-4 w-4 text-bright-blue"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                      >
+                        <path d="M3 3v18h18" />
+                        <path d="m19 9-5 5-4-4-3 3" />
+                      </svg>
+                    </div>
+                    <div className="flex h-10 items-center justify-center rounded-lg bg-emerald-50/70 p-1">
+                      <svg
+                        className="h-4 w-4 text-emerald-600"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                      >
+                        <circle cx="9" cy="21" r="1" />
+                        <circle cx="20" cy="21" r="1" />
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+                      </svg>
+                    </div>
+                    <div className="flex h-10 items-center justify-center rounded-lg bg-amber-50/70 p-1">
+                      <svg
+                        className="h-4 w-4 text-amber-600"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                      >
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                        <circle cx="9" cy="7" r="4" />
+                        <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                      </svg>
+                    </div>
                   </div>
-                  <div className="flex h-10 items-center justify-center rounded-lg bg-emerald-50/70 p-1">
-                    <svg
-                      className="h-4 w-4 text-emerald-600"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                    >
-                      <circle cx="9" cy="21" r="1" />
-                      <circle cx="20" cy="21" r="1" />
-                      <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
-                    </svg>
-                  </div>
-                  <div className="flex h-10 items-center justify-center rounded-lg bg-amber-50/70 p-1">
-                    <svg
-                      className="h-4 w-4 text-amber-600"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                    >
-                      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                      <circle cx="9" cy="7" r="4" />
-                      <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-                      <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                    </svg>
-                  </div>
+
+                  {/* Bottom Mockup Bar */}
+                  <div className="mt-2 h-1.5 w-full rounded-full bg-bright-blue/20" />
                 </div>
+              )}
 
-                {/* Bottom Mockup Bar */}
-                <div className="mt-2 h-1.5 w-full rounded-full bg-bright-blue/20" />
-              </div>
-
-              {/* Title & Description */}
-              <h4 className="mt-3.5 text-sm font-bold leading-snug text-light-gray">
-                {menu.featured.title}
+              {/* Title */}
+              <h4 className="mt-3 text-sm font-bold leading-snug text-light-gray hover:text-bright-blue transition-colors line-clamp-2">
+                <Link href={menu.featured.href} onClick={onNavigate}>
+                  {menu.featured.title}
+                </Link>
               </h4>
-              <p className="mt-1 text-xs leading-relaxed text-subtle-gray">
-                {menu.featured.description}
-              </p>
 
               {/* Key Metrics */}
-              <div className="mt-3.5 flex items-center justify-between border-t border-black/[0.06] pt-3">
+              <div className="mt-3 flex items-center justify-between border-t border-black/[0.06] pt-2.5">
                 {menu.featured.metrics.map((metric) => (
                   <div key={metric.label} className="flex flex-col">
                     <span className="text-sm font-bold text-light-gray">
@@ -269,7 +286,7 @@ export function MegaMenuPanel({ menu, onNavigate }: MegaMenuPanelProps) {
               className="mt-4 inline-flex items-center gap-1 text-xs font-bold text-bright-blue transition-colors hover:underline"
             >
               <span>Read Case Study</span>
-              <span aria-hidden="true" className="text-sm">
+              <span aria-hidden="true" className="text-sm font-bold">
                 ↗
               </span>
             </Link>

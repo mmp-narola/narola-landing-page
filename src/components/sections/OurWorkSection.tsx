@@ -5,14 +5,22 @@ import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeader } from "@/components/ui/SectionHeader";
+import { CaseStudyCard } from "@/components/case-studies/CaseStudyCard";
 import { ourWorkContent, type GroupedClientCategory } from "@/content/homeContent";
+import { CaseStudy } from "@/types/caseStudy";
 import { MapPin } from "lucide-react";
 
-export function OurWorkSection() {
+export interface OurWorkSectionProps {
+  caseStudies?: CaseStudy[];
+}
+
+export function OurWorkSection({ caseStudies = [] }: OurWorkSectionProps) {
   const [activeTab, setActiveTab] = useState<"ecommerce" | "ai" | "engineering">("ecommerce");
 
   const currentGroups: GroupedClientCategory[] =
     ourWorkContent.groupedClientsByTab?.[activeTab] ?? ourWorkContent.groupedClients;
+
+  const displayedCaseStudies = caseStudies.slice(0, 3);
 
   return (
     <section id={ourWorkContent.sectionId} className="relative w-full overflow-hidden bg-light-gray py-16 text-light-gray md:py-24">
@@ -86,68 +94,35 @@ export function OurWorkSection() {
           ))}
         </div>
 
-        {/* Featured Case Studies — dark rounded panel with a stat-tile grid,
-           floating on the black page background (Apple "worth it" pattern) */}
-        <div className="mt-16">
-          <Reveal>
-            <div className="rounded-[32px] border border-white/10 bg-[#1d1d1f] p-6 sm:p-8 md:p-12">
-              <div className="flex flex-wrap items-center justify-between gap-4">
-                <h3 className="text-2xl font-semibold tracking-tight text-light-gray md:text-3xl">
-                  Featured case studies
-                </h3>
-                <Link
-                  href={ourWorkContent.footerBanner.href}
-                  className="group flex items-center gap-1.5 text-sm font-semibold text-electric-blue"
-                >
-                  <span className="group-hover:underline">{ourWorkContent.footerBanner.linkText}</span>
-                  {/* <span className="inline-block transition-transform group-hover:translate-x-1 no-underline">→</span> */}
-                </Link>
+        {/* Featured Case Studies */}
+        {displayedCaseStudies.length > 0 && (
+          <div className="mt-14">
+            <Reveal>
+              <div className="rounded-[28px] border border-black/[0.08] bg-white p-5 shadow-sm sm:p-6 md:p-8">
+                <div className="flex flex-wrap items-center justify-between gap-4">
+                  <h3 className="text-2xl font-semibold tracking-tight text-light-gray md:text-3xl">
+                    Featured case studies
+                  </h3>
+                  <Link
+                    href={ourWorkContent.footerBanner.href}
+                    className="group flex items-center gap-1.5 text-sm font-semibold text-interactive-blue"
+                  >
+                    <span className="group-hover:underline">{ourWorkContent.footerBanner.linkText}</span>
+                    <span className="inline-block transition-transform group-hover:translate-x-0.5">→</span>
+                  </Link>
+                </div>
+
+                <div className="mt-6 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+                  {displayedCaseStudies.map((study, i) => (
+                    <Reveal key={study.slug} delay={i * 100} className="h-full">
+                      <CaseStudyCard caseStudy={study} variant="compact" />
+                    </Reveal>
+                  ))}
+                </div>
               </div>
-
-              <div className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-3">
-                {ourWorkContent.featuredCaseStudies.map((study, i) => (
-                  <Reveal key={study.id} delay={i * 100} className="h-full">
-                    <div className="flex h-full flex-col justify-between rounded-2xl border border-white/10 bg-[#151515] p-6 hover:scale-102 duration-300">
-                      <div>
-                        <div className="flex items-center gap-2">
-                          <span className="rounded-md bg-[#0084ff]/15 px-2.5 py-1 text-xs font-medium text-bright-blue">
-                            {study.industry}
-                          </span>
-                          <span className="flex items-center gap-1 text-xs text-ink-secondary">
-                            <MapPin className="h-3 w-3 text-ink-secondary" />
-                            <span>{study.country}</span>
-                          </span>
-                        </div>
-
-                        <h4 className="mt-5 text-xl font-semibold text-light-gray">
-                          {study.title}
-                        </h4>
-                        <p className="mt-3 text-sm text-muted-gray leading-relaxed">
-                          {study.description}
-                        </p>
-                      </div>
-
-                      <div className="mt-8 border-t border-white/10 pt-6">
-                        <div className="grid grid-cols-2 gap-4">
-                          {study.metrics.map((metric) => (
-                            <div key={metric.label}>
-                              <span className="block text-2xl font-semibold tracking-tight text-light-gray">
-                                {metric.value}
-                              </span>
-                              <span className="mt-1 block text-xs text-subtle-gray">
-                                {metric.label}
-                              </span>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  </Reveal>
-                ))}
-              </div>
-            </div>
-          </Reveal>
-        </div>
+            </Reveal>
+          </div>
+        )}
 
         {/* Bottom Footer Banner */}
         <Reveal delay={100}>
@@ -158,7 +133,6 @@ export function OurWorkSection() {
               className="group flex items-center gap-1.5 font-semibold text-electric-blue"
             >
               <span className="group-hover:underline">{ourWorkContent.footerBanner.linkText}</span>
-              {/* <span className="inline-block transition-transform group-hover:translate-x-1 no-underline">→</span> */}
             </Link>
           </div>
         </Reveal>

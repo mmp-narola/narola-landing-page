@@ -33,20 +33,6 @@ export interface GroupedClientCategory {
   clients: ClientInitialBadge[];
 }
 
-export interface FeaturedCaseStudyItem {
-  id: string;
-  industry: string;
-  country: string;
-  title: string;
-  description: string;
-  category: "ecommerce" | "ai" | "engineering";
-  metrics: {
-    value: string;
-    label: string;
-  }[];
-  href: string;
-}
-
 export const heroContent = {
   headlinePrefix: "Your trusted partner in ",
   headlineHighlight: "software & AI",
@@ -509,50 +495,6 @@ export const ourWorkContent = {
       ],
     },
   ] as GroupedClientCategory[],
-  featuredCaseStudies: [
-    {
-      id: "tagsom",
-      industry: "Education",
-      country: "Sweden",
-      title: "TagSom",
-      description:
-        "An interactive EdTech platform helping children learn to read, with gamified exercises and parent dashboards.",
-      category: "engineering",
-      metrics: [
-        { value: "100K+", label: "App downloads" },
-        { value: "45%", label: "Higher engagement" },
-      ],
-      href: "/case-studies",
-    },
-    {
-      id: "biocon",
-      industry: "Healthcare",
-      country: "India",
-      title: "Biocon",
-      description:
-        "Supply chain and forecasting platform for one of India's leading biotech companies, improving operational efficiency.",
-      category: "ai",
-      metrics: [
-        { value: "20%", label: "Cost savings" },
-        { value: "40%", label: "Forecast accuracy" },
-      ],
-      href: "/case-studies",
-    },
-    {
-      id: "epal",
-      industry: "eCommerce",
-      country: "Iceland",
-      title: "Epal",
-      description:
-        "A Nordic online marketplace for Icelandic design products — lifestyle, furniture, and homeware, built for scale.",
-      category: "ecommerce",
-      metrics: [
-        { value: "98%", label: "Transaction success" },
-        { value: "30%", label: "Cart abandonment drop" },
-      ],
-      href: "/case-studies",
-    },
-  ] as FeaturedCaseStudyItem[],
   footerBanner: {
     leftText: "Showing a sample of 1,500+ clients across 50+ countries.",
     linkText: "View all case studies",
