@@ -446,26 +446,32 @@ export function CaseStudyTemplate({ caseStudy, relatedCaseStudies }: CaseStudyTe
         </Container>
       </section>
 
-      {/* Mobile "on this page" collapsible nav */}
+      {/* Mobile / Tablet sticky "on this page" navigation bar */}
       {sections.length > 0 && (
-        <div className="lg:hidden border-y border-black/[0.10] bg-surface-muted/60">
-          <Container>
-            <details className="py-3">
-              <summary className="cursor-pointer text-sm font-semibold text-light-gray">
-                On this page
-              </summary>
-              <nav aria-label="On this page" className="mt-3 flex gap-2 overflow-x-auto pb-2">
-                {sections.map((section) => (
+        <div className="sticky top-12 z-30 border-b border-black/[0.08] bg-white/95 backdrop-blur-xl md:top-16 lg:hidden shadow-xs">
+          <Container className="py-2.5">
+            <div className="flex items-center gap-2 overflow-x-auto no-scrollbar [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+              <span className="shrink-0 text-xs font-bold uppercase tracking-wider text-light-gray mr-1 flex items-center gap-1.5">
+                <span className="h-1.5 w-1.5 rounded-full bg-interactive-blue animate-pulse" />
+                On this page:
+              </span>
+              {sections.map((section) => {
+                const isActive = activeId === section.id;
+                return (
                   <a
                     key={section.id}
                     href={`#${section.id}`}
-                    className="shrink-0 rounded-full border border-black/[0.08] bg-white px-3.5 py-1.5 text-xs font-medium text-subtle-gray hover:text-interactive-blue"
+                    aria-current={isActive ? "true" : undefined}
+                    className={`shrink-0 rounded-full px-3.5 py-1.5 text-xs font-medium transition-all duration-200 ${isActive
+                        ? "border border-interactive-blue bg-interactive-blue text-white shadow-xs font-semibold"
+                        : "border border-black/[0.08] bg-surface-muted text-subtle-gray hover:border-black/[0.15] hover:text-light-gray hover:bg-white"
+                      }`}
                   >
                     {section.title}
                   </a>
-                ))}
-              </nav>
-            </details>
+                );
+              })}
+            </div>
           </Container>
         </div>
       )}
@@ -473,7 +479,7 @@ export function CaseStudyTemplate({ caseStudy, relatedCaseStudies }: CaseStudyTe
       {/* Body: two-column layout */}
       <section className="py-12 md:py-16">
         <Container>
-          <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-start lg:gap-10">
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-10">
             {/* Main content column */}
             <div className="lg:col-span-8 space-y-14">
               {sections.map((section) => (
@@ -482,7 +488,7 @@ export function CaseStudyTemplate({ caseStudy, relatedCaseStudies }: CaseStudyTe
                   id={section.id}
                   ref={setSectionRef(section.id)}
                   data-section-id={section.id}
-                  className="scroll-mt-28"
+                  className="scroll-mt-28 md:scroll-mt-32"
                 >
                   <Reveal>
                     <h2 className="mb-5 text-2xl font-semibold tracking-tight text-light-gray md:text-3xl">
@@ -496,7 +502,40 @@ export function CaseStudyTemplate({ caseStudy, relatedCaseStudies }: CaseStudyTe
 
             {/* Sticky sidebar nav (desktop only) */}
             <div className="hidden lg:col-span-4 lg:block">
-              <div className="sticky top-28 space-y-6">
+              <div className="sticky top-24 space-y-6">
+                {sections.length > 0 && (
+                  <nav
+                    aria-label="On this page"
+                    className="rounded-2xl border border-black/[0.08] bg-white p-5 shadow-xs"
+                  >
+                    <div className="mb-3 flex items-center gap-2">
+                      <span className="h-2 w-2 rounded-full bg-interactive-blue" />
+                      <p className="text-xs font-bold uppercase tracking-wider text-light-gray">
+                        On this page
+                      </p>
+                    </div>
+                    <ul className="space-y-1">
+                      {sections.map((section) => {
+                        const isActive = activeId === section.id;
+                        return (
+                          <li key={section.id}>
+                            <a
+                              href={`#${section.id}`}
+                              aria-current={isActive ? "true" : undefined}
+                              className={`block rounded-xl px-3.5 py-2 text-sm transition-all duration-200 ${isActive
+                                  ? "bg-interactive-blue/10 font-semibold text-interactive-blue border-l-2 border-interactive-blue pl-3"
+                                  : "text-subtle-gray hover:bg-surface-muted hover:text-light-gray"
+                                }`}
+                            >
+                              {section.title}
+                            </a>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </nav>
+                )}
+
                 <div className="rounded-2xl border border-interactive-blue/15 bg-interactive-blue/5 p-5">
                   <p className="text-sm font-semibold text-light-gray">
                     Building something similar?
@@ -510,33 +549,6 @@ export function CaseStudyTemplate({ caseStudy, relatedCaseStudies }: CaseStudyTe
                     </Button>
                   </div>
                 </div>
-
-                {sections.length > 0 && (
-                  <nav
-                    aria-label="On this page"
-                    className="rounded-2xl border border-black/[0.08] bg-white p-5"
-                  >
-                    <p className="mb-3 text-xs font-bold uppercase tracking-wider text-subtle-gray">
-                      On this page
-                    </p>
-                    <ul className="space-y-1">
-                      {sections.map((section) => (
-                        <li key={section.id}>
-                          <a
-                            href={`#${section.id}`}
-                            aria-current={activeId === section.id ? "true" : undefined}
-                            className={`block rounded-lg px-3 py-2 text-sm transition-colors ${activeId === section.id
-                              ? "bg-interactive-blue/10 font-semibold text-interactive-blue"
-                              : "text-subtle-gray hover:bg-surface-muted hover:text-light-gray"
-                              }`}
-                          >
-                            {section.title}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  </nav>
-                )}
               </div>
             </div>
           </div>
