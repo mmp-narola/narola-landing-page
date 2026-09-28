@@ -10,7 +10,11 @@
     "region": "North America",
     "location": "United States",
     "deliveryTime": "6 months",
-    "tags": ["Sports & Entertainment", "Mobile App Development", "Real-Time Event Management"],
+    "tags": [
+      "Sports & Entertainment",
+      "Mobile App Development",
+      "Real-Time Event Management"
+    ],
     "thumbnailUrl": "/images/case-studies/tournament-fantasy-mockup.jpg",
     "bannerUrl": "/images/case-studies/tournament-fantasy-mockup.jpg",
     "galleryImages": [
@@ -222,7 +226,11 @@
     "region": "Europe",
     "location": "Ireland",
     "deliveryTime": "12 weeks",
-    "tags": ["Automotive & Industrial", "Web Application Development", "Digital Transformation"],
+    "tags": [
+      "Automotive & Industrial",
+      "Web Application Development",
+      "Digital Transformation"
+    ],
     "thumbnailUrl": "/images/case-studies/rayco-mockup.jpg",
     "bannerUrl": "/images/case-studies/rayco-mockup.jpg",
     "galleryImages": [
@@ -420,6 +428,10 @@
         ]
       }
     ],
-    "relatedSlugs": ["shipping-adaptor", "real-estate-application", "touchstone-essentials"]
+    "relatedSlugs": [
+      "shipping-adaptor",
+      "real-estate-application",
+      "touchstone-essentials"
+    ]
   }
 ]

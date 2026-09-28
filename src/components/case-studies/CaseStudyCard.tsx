@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { CaseStudy } from "@/types/caseStudy";
+import { CaseStudyMetricsGrid } from "@/components/case-studies/CaseStudyMetricsGrid";
 
 export interface CaseStudyCardProps {
   caseStudy: CaseStudy;
@@ -46,20 +47,14 @@ export function CaseStudyCard({
 
           {/* Key Metrics */}
           {caseStudy.metrics && caseStudy.metrics.length > 0 && (
-            <div className="mt-3.5 border-t border-black/[0.06] pt-3">
-              <div className="grid grid-cols-3 gap-2">
-                {caseStudy.metrics.slice(0, 3).map((metric, idx) => (
-                  <div key={idx} className="flex flex-col">
-                    <span className="text-sm sm:text-base font-semibold text-light-gray leading-tight">
-                      {metric.value}
-                    </span>
-                    <span className="mt-0.5 line-clamp-1 text-[10px] text-subtle-gray">
-                      {metric.label}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
+            <CaseStudyMetricsGrid
+              metrics={caseStudy.metrics}
+              columns={2}
+              size="compact"
+              limit={2}
+              withDividers
+              className="mt-3.5 border-t border-black/[0.06] pt-3"
+            />
           )}
         </div>
 
@@ -141,21 +136,13 @@ export function CaseStudyCard({
         {/* Metrics Grid */}
         {caseStudy.metrics && caseStudy.metrics.length > 0 ? (
           <div className="mt-6 border-t border-black/[0.10] pt-5">
-            <div className="grid grid-cols-2 gap-3">
-              {caseStudy.metrics.slice(0, 2).map((metric, idx) => (
-                <div
-                  key={idx}
-                  className="rounded-2xl bg-surface-muted p-3 text-left transition-colors group-hover:bg-interactive-blue/5"
-                >
-                  <p className="text-lg font-semibold tracking-tight text-interactive-blue md:text-xl">
-                    {metric.value}
-                  </p>
-                  <p className="mt-0.5 line-clamp-2 text-xs font-medium text-subtle-gray">
-                    {metric.label}
-                  </p>
-                </div>
-              ))}
-            </div>
+            <CaseStudyMetricsGrid
+              metrics={caseStudy.metrics}
+              columns={2}
+              size="small"
+              limit={2}
+              withDividers
+            />
 
             <div className="mt-5 flex items-center justify-between">
               <Link

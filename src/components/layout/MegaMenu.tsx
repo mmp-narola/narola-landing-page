@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import type { MegaMenuConfig } from "@/content/navigation";
+import { CaseStudyMetricsGrid } from "@/components/case-studies/CaseStudyMetricsGrid";
 
 function StarIcon({ className = "h-3.5 w-3.5" }: { className?: string }) {
   return (
@@ -265,18 +266,14 @@ export function MegaMenuPanel({ menu, onNavigate }: MegaMenuPanelProps) {
               </h4>
 
               {/* Key Metrics */}
-              <div className="mt-3 flex items-center justify-between border-t border-black/[0.06] pt-2.5">
-                {menu.featured.metrics.map((metric) => (
-                  <div key={metric.label} className="flex flex-col">
-                    <span className="text-sm font-semibold text-light-gray">
-                      {metric.value}
-                    </span>
-                    <span className="text-[10px] text-subtle-gray">
-                      {metric.label}
-                    </span>
-                  </div>
-                ))}
-              </div>
+              <CaseStudyMetricsGrid
+                metrics={menu.featured.metrics}
+                columns={2}
+                size="compact"
+                limit={2}
+                withDividers
+                className="mt-3 border-t border-black/[0.06] pt-2.5"
+              />
             </div>
 
             {/* Read Case Study Link */}

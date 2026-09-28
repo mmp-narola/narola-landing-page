@@ -47,35 +47,35 @@ export interface NavItem {
 export const aiAutomationMegaMenu: MegaMenuConfig = {
   id: "ai-automation",
   label: "AI & Automation",
-  href: "/#ai-automation",
+  href: "/ai-automation",
   columns: [
     {
       heading: "AI Services",
       links: [
-        { label: "AI Consulting", href: "/#ai-automation" },
-        { label: "AI Agents Development", href: "/#ai-automation" },
-        { label: "AI Chatbot Development", href: "/#ai-automation" },
-        { label: "Conversational AI Solutions", href: "/#ai-automation" },
-        { label: "Generative AI Development", href: "/#ai-automation" },
+        { label: "AI Consulting", href: "/ai-consulting" },
+        { label: "AI Agents Development", href: "/ai-agents-development" },
+        { label: "AI Chatbot Development", href: "/ai-chatbot-development" },
+        { label: "Conversational AI Solutions", href: "/conversational-ai-solutions" },
+        { label: "Generative AI Development", href: "/generative-ai-development" },
       ],
     },
     {
       heading: "Automation Services",
       links: [
-        { label: "Workflow Automation", href: "/#ai-automation" },
-        { label: "Business Process Automation", href: "/#ai-automation" },
-        { label: "Intelligent Document Processing", href: "/#ai-automation" },
-        { label: "CRM & Sales Automation", href: "/#ai-automation" },
-        { label: "AI-Powered Operations Automation", href: "/#ai-automation" },
+        { label: "Workflow Automation", href: "/workflow-automation" },
+        { label: "Business Process Automation", href: "/business-process-automation" },
+        { label: "Intelligent Document Processing", href: "/intelligent-document-processing" },
+        { label: "CRM & Sales Automation", href: "/crm-sales-automation" },
+        { label: "AI-Powered Operations Automation", href: "/ai-powered-operations-automation" },
       ],
     },
     {
       heading: "AI Commerce Solutions",
       links: [
-        { label: "AI Shopping Assistant", href: "/#ai-automation" },
-        { label: "AI Product Recommendation Engine", href: "/#ai-automation" },
-        { label: "AI Customer Support Automation", href: "/#ai-automation" },
-        { label: "AI Search & Discovery", href: "/#ai-automation" },
+        { label: "AI Shopping Assistant", href: "/ai-shopping-assistant" },
+        { label: "AI Product Recommendation Engine", href: "/ai-product-recommendation-engine" },
+        { label: "AI Customer Support Automation", href: "/ai-customer-support-automation" },
+        { label: "AI Search & Discovery", href: "/ai-search-discovery" },
       ],
     },
     {
@@ -106,36 +106,36 @@ export const aiAutomationMegaMenu: MegaMenuConfig = {
 export const ecommerceMegaMenu: MegaMenuConfig = {
   id: "ecommerce",
   label: "e Commerce",
-  href: "/#ecommerce",
+  href: "/ecommerce",
   columns: [
     {
       heading: "AI Commerce Services",
       links: [
-        { label: "AI Shopping Assistant", href: "/#ecommerce" },
-        { label: "AI Chatbots", href: "/#ecommerce" },
-        { label: "AI Agents", href: "/#ecommerce" },
-        { label: "Conversational Commerce", href: "/#ecommerce" },
-        { label: "AI Automation", href: "/#ecommerce" },
+        { label: "AI Shopping Assistant", href: "/ai-shopping-assistant" },
+        { label: "AI Chatbots", href: "/ai-chatbots" },
+        { label: "AI Agents", href: "/ai-agents" },
+        { label: "Conversational Commerce", href: "/conversational-commerce" },
+        { label: "AI Automation", href: "/ai-automation" },
       ],
     },
     {
       heading: "Industry",
       links: [
-        { label: "Jewelry Commerce", href: "/#ecommerce" },
-        { label: "Fashion Commerce", href: "/#ecommerce" },
-        { label: "Grocery Commerce", href: "/#ecommerce" },
-        { label: "Health & Wellness Commerce", href: "/#ecommerce" },
-        { label: "D2C Commerce", href: "/#ecommerce" },
+        { label: "Jewelry Commerce", href: "/jewelry-commerce" },
+        { label: "Fashion Commerce", href: "/fashion-commerce" },
+        { label: "Grocery Commerce", href: "/grocery-commerce" },
+        { label: "Health & Wellness Commerce", href: "/health-wellness-commerce" },
+        { label: "D2C Commerce", href: "/d2c-commerce" },
       ],
     },
     {
       heading: "Solutions",
       links: [
-        { label: "Headless Commerce", href: "/#ecommerce" },
-        { label: "Marketplace Development", href: "/#ecommerce" },
-        { label: "B2B eCommerce", href: "/#ecommerce" },
-        { label: "eCommerce Automation", href: "/#ecommerce" },
-        { label: "Custom eCommerce Development", href: "/#ecommerce" },
+        { label: "Headless Commerce", href: "/headless-commerce" },
+        { label: "Marketplace Development", href: "/marketplace-development" },
+        { label: "B2B eCommerce", href: "/b2b-ecommerce" },
+        { label: "eCommerce Automation", href: "/ecommerce-automation" },
+        { label: "Custom eCommerce Development", href: "/custom-ecommerce-development" },
       ],
     },
     {
@@ -143,9 +143,9 @@ export const ecommerceMegaMenu: MegaMenuConfig = {
         {
           heading: "Platforms",
           links: [
-            { label: "Shopify", href: "/#ecommerce" },
-            { label: "WooCommerce", href: "/#ecommerce" },
-            { label: "Headless Stack", href: "/#ecommerce" },
+            { label: "Shopify", href: "/shopify" },
+            { label: "WooCommerce", href: "/woocommerce" },
+            { label: "Headless Stack", href: "/headless-stack" },
           ],
         },
         {
@@ -178,19 +178,19 @@ export const ecommerceMegaMenu: MegaMenuConfig = {
 export const productEngineeringMegaMenu: MegaMenuConfig = {
   id: "product-engineering",
   label: "Product Engineering",
-  href: "/#product-engineering",
+  href: "/product-engineering",
   columns: [
     {
       heading: "Engineering Services",
       links: [
-        { label: "SaaS Product Development", href: "/#product-engineering" },
-        { label: "Web Application Development", href: "/#product-engineering" },
-        { label: "Mobile App Development", href: "/#product-engineering" },
+        { label: "SaaS Product Development", href: "/saas-product-development" },
+        { label: "Web Application Development", href: "/web-application-development" },
+        { label: "Mobile App Development", href: "/mobile-app-development" },
         {
           label: "Enterprise Software Development",
-          href: "/#product-engineering",
+          href: "/product-engineering",
         },
-        { label: "MVP Development", href: "/#product-engineering" },
+        { label: "MVP Development", href: "/mvp-development" },
       ],
     },
     {
@@ -222,34 +222,34 @@ export const navItems: NavItem[] = [
   {
     id: "ai-automation",
     label: "AI & Automation",
-    href: "/#ai-automation",
+    href: "/ai-automation",
     megaMenu: aiAutomationMegaMenu,
   },
   {
     id: "ecommerce",
     label: "e Commerce",
-    href: "/#ecommerce",
+    href: "/ecommerce",
     megaMenu: ecommerceMegaMenu,
   },
   {
     id: "product-engineering",
     label: "Product Engineering",
-    href: "/#product-engineering",
+    href: "/product-engineering",
     megaMenu: productEngineeringMegaMenu,
   },
   {
     id: "company",
     label: "Company",
-    href: "#about",
+    href: "/about",
     children: [
       {
         label: "About us / Our Story",
-        href: "/#work",
+        href: "/work",
         description: "20+ years of engineering excellence & global reach",
       },
       {
         label: "Career",
-        href: "/#footer",
+        href: "/footer",
         description: "Join our team of top 1% engineers & architects",
       },
       {

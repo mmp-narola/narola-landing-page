@@ -1,4 +1,5 @@
 import type { AnchorHTMLAttributes, ReactNode } from "react";
+import Link from "next/link";
 
 interface ButtonProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   href: string;
@@ -19,9 +20,6 @@ const VARIANT_STYLES: Record<NonNullable<ButtonProps["variant"]>, string> = {
     "border border-interactive-blue text-interactive-blue hover:bg-interactive-blue/10",
 };
 
-// Plain `<a>`, not `next/link`: every href in this project is a same-page anchor
-// (there are no other routes to navigate to in this single-page site), so Link's
-// route-prefetching behavior would add nothing.
 export function Button({
   href,
   variant = "primary",
@@ -30,12 +28,12 @@ export function Button({
   ...props
 }: ButtonProps) {
   return (
-    <a
+    <Link
       href={href}
       className={`inline-flex items-center justify-center rounded-xl px-6 py-3.5 text-button font-medium transition-all duration-200 ${VARIANT_STYLES[variant]} ${className}`}
       {...props}
     >
       {children}
-    </a>
+    </Link>
   );
 }

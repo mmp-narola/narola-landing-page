@@ -7,6 +7,7 @@ import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { CaseStudyCard } from "@/components/case-studies/CaseStudyCard";
+import { CaseStudyMetricsGrid } from "@/components/case-studies/CaseStudyMetricsGrid";
 import type {
   CaseStudy,
   CaseStudyMetric,
@@ -192,6 +193,7 @@ function ScreenshotsSection({ content }: { content: CaseStudyScreenshotSet }) {
   );
 }
 
+
 function SectionBody({ section }: { section: CaseStudySection }) {
   switch (section.kind) {
     case "prose": {
@@ -249,21 +251,12 @@ function SectionBody({ section }: { section: CaseStudySection }) {
     }
 
     case "stats": {
-      const stats = section.content as CaseStudyMetric[];
       return (
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
-          {stats.map((metric, idx) => (
-            <div
-              key={idx}
-              className="rounded-2xl border border-interactive-blue/15 bg-interactive-blue/5 p-5 text-center"
-            >
-              <p className="text-2xl font-semibold tracking-tight text-interactive-blue md:text-3xl">
-                {metric.value}
-              </p>
-              <p className="mt-1 text-xs font-medium text-subtle-gray">{metric.label}</p>
-            </div>
-          ))}
-        </div>
+        <CaseStudyMetricsGrid
+          metrics={section.content as CaseStudyMetric[]}
+          columns={3}
+          withDividers={true}
+        />
       );
     }
 
@@ -395,7 +388,7 @@ export function CaseStudyTemplate({ caseStudy, relatedCaseStudies }: CaseStudyTe
             <div className="hidden sm:flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-black/[0.08] bg-white text-base font-semibold text-interactive-blue shadow-sm">
               {initialsFromName(caseStudy.clientName)}
             </div>
-            <div className="max-w-3xl">
+            <div>
               <h1 className="text-3xl font-semibold tracking-tight text-light-gray md:text-5xl md:leading-tight">
                 {caseStudy.title}
               </h1>
@@ -427,22 +420,12 @@ export function CaseStudyTemplate({ caseStudy, relatedCaseStudies }: CaseStudyTe
             </div>
           </div>
 
-          {/* Stat pills */}
-          {caseStudy.metrics && caseStudy.metrics.length > 0 && (
-            <div className="mt-8 grid grid-cols-2 gap-3 sm:flex sm:flex-wrap">
-              {caseStudy.metrics.map((metric, idx) => (
-                <div
-                  key={idx}
-                  className="rounded-2xl border border-interactive-blue/15 bg-interactive-blue/5 px-5 py-3.5 text-left sm:text-center"
-                >
-                  <p className="text-xl font-semibold tracking-tight text-interactive-blue md:text-2xl">
-                    {metric.value}
-                  </p>
-                  <p className="mt-0.5 text-xs font-medium text-subtle-gray">{metric.label}</p>
-                </div>
-              ))}
-            </div>
-          )}
+          {/* Apple-style Stats */}
+          <CaseStudyMetricsGrid
+            metrics={caseStudy.metrics || []}
+            columns={4}
+            className="mt-12 border-t border-black/[0.08] pt-10"
+          />
         </Container>
       </section>
 
@@ -463,8 +446,8 @@ export function CaseStudyTemplate({ caseStudy, relatedCaseStudies }: CaseStudyTe
                     href={`#${section.id}`}
                     aria-current={isActive ? "true" : undefined}
                     className={`shrink-0 rounded-full px-3.5 py-1.5 text-xs font-medium transition-all duration-200 ${isActive
-                        ? "border border-interactive-blue bg-interactive-blue text-white shadow-xs font-semibold"
-                        : "border border-black/[0.08] bg-surface-muted text-subtle-gray hover:border-black/[0.15] hover:text-light-gray hover:bg-white"
+                      ? "border border-interactive-blue bg-interactive-blue text-white shadow-xs font-semibold"
+                      : "border border-black/[0.08] bg-surface-muted text-subtle-gray hover:border-black/[0.15] hover:text-light-gray hover:bg-white"
                       }`}
                   >
                     {section.title}
@@ -523,8 +506,8 @@ export function CaseStudyTemplate({ caseStudy, relatedCaseStudies }: CaseStudyTe
                               href={`#${section.id}`}
                               aria-current={isActive ? "true" : undefined}
                               className={`block rounded-xl px-3.5 py-2 text-sm transition-all duration-200 ${isActive
-                                  ? "bg-interactive-blue/10 font-semibold text-interactive-blue border-l-2 border-interactive-blue pl-3"
-                                  : "text-subtle-gray hover:bg-surface-muted hover:text-light-gray"
+                                ? "bg-interactive-blue/10 font-semibold text-interactive-blue border-l-2 border-interactive-blue pl-3"
+                                : "text-subtle-gray hover:bg-surface-muted hover:text-light-gray"
                                 }`}
                             >
                               {section.title}
