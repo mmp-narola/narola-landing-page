@@ -45,8 +45,8 @@ export default async function AiShoppingAssistantPage() {
     "@graph": [
       {
         "@type": "WebPage",
-        "@id": `${siteConfig.url}/services/ai-shopping-assistant`,
-        url: `${siteConfig.url}/services/ai-shopping-assistant`,
+        "@id": `${siteConfig.url}/ai-shopping-assistant`,
+        url: `${siteConfig.url}/ai-shopping-assistant`,
         name: "AI Shopping Assistant | Conversational Product Discovery",
         description:
           "Help shoppers find the right product faster with AI. Deliver personalized shopping journeys with conversational AI.",

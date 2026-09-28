@@ -409,11 +409,11 @@ export function AiShoppingClients() {
 
             <div className="flex flex-wrap items-center justify-center gap-10 md:gap-16">
               {[
-                { name: "brand1", logoText: "Acme Corp" },
-                { name: "brand2", logoText: "Globex" },
-                { name: "brand3", logoText: "Soylent" },
-                { name: "brand4", logoText: "Initech" },
-                { name: "brand5", logoText: "Umbrella" },
+                { name: "brand1", logoText: "CGI" },
+                { name: "brand2", logoText: "L&T" },
+                { name: "brand3", logoText: "TVS NEXT" },
+                { name: "brand4", logoText: "Biocon" },
+                { name: "brand5", logoText: "Infosys" },
               ].map((client) => (
                 <span
                   key={client.name}
