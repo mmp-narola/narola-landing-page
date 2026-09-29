@@ -331,7 +331,7 @@ export function AiShoppingCaseStudies({ caseStudies = [] }: { caseStudies?: Case
               onClick={() => setActiveCaseStudy(idx)}
               className={`px-6 py-3 rounded-full text-base font-medium transition-all duration-300 ${activeCaseStudy === idx
                 ? 'bg-ink text-white shadow-lg scale-105'
-                : 'bg-surface-muted text-slate hover:bg-black/5 hover:text-ink'
+                : 'bg-white border border-black/20 text-slate hover:bg-black/5 hover:text-ink'
                 }`}
             >
               {cs.clientName || cs.title}
