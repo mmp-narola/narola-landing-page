@@ -22,7 +22,7 @@ export function CustomSoftwareOverview() {
   const { overview } = customSoftwareContent;
 
   return (
-    <section id="overview" className="scroll-mt-24 py-16 md:py-24">
+    <section id="overview" className="scroll-mt-24 bg-white py-16 md:py-24">
       <Container>
         {/* Section Header */}
         <div className="mx-auto max-w-3xl text-center">

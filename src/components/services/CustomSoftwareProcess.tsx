@@ -5,7 +5,7 @@ export function CustomSoftwareProcess() {
   const { process } = customSoftwareContent;
 
   return (
-    <section id="process" className="scroll-mt-24 py-16 md:py-24">
+    <section id="process" className="scroll-mt-24 bg-surface-muted py-16 md:py-24">
       <Container>
         {/* Header */}
         <div className="mx-auto max-w-3xl text-center">

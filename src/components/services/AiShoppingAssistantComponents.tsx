@@ -9,6 +9,8 @@ import { Reveal } from "@/components/ui/Reveal";
 import { ShoppingCart, BadgeCheck, Users, MousePointerClick } from "lucide-react";
 import { CaseStudyMetricsGrid } from "@/components/case-studies/CaseStudyMetricsGrid";
 import { aiShoppingContent } from "@/content/aiShoppingAssistant";
+import { ClientsSection } from "@/components/ui/ClientsSection";
+import { FaqSection } from "@/components/ui/FaqSection";
 
 function SubSectionHeader({ title }: { title: string }) {
   return (
@@ -401,77 +403,11 @@ export function AiShoppingCaseStudies({ caseStudies = [] }: { caseStudies?: Case
 
 
 export function AiShoppingClients() {
-  return (
-    <section className="bg-white py-16 md:py-24 border-y border-black/5 overflow-hidden">
-      <Container>
-        <Reveal>
-          <div className="max-w-7xl mx-auto text-center">
-            <h3 className="text-sm font-bold tracking-widest text-slate uppercase mb-12">
-              Trusted by innovative brands worldwide
-            </h3>
-
-            <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6">
-              {[
-                { name: "CGI", logoText: "CGI" },
-                { name: "L&T", logoText: "L&T" },
-                { name: "TVS NEXT", logoText: "TVS NEXT" },
-                { name: "Biocon", logoText: "Biocon" },
-                { name: "Infosys", logoText: "Infosys" },
-              ].map((client) => (
-                <div
-                  key={client.name}
-                  className="px-8 py-4 md:px-12 md:py-6 bg-white rounded-2xl shadow-sm border border-black/5 hover:border-[#0e5fd9]/30 hover:shadow-md transition-all duration-300 flex items-center justify-center min-w-[140px] md:min-w-[180px]"
-                >
-                  <span className="text-xl md:text-2xl font-black tracking-wider text-slate hover:text-ink transition-colors">
-                    {client.logoText}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </Reveal>
-      </Container>
-    </section>
-  );
+  return <ClientsSection />;
 }
 
 export function AiShoppingFaq() {
-  const [activeFaq, setActiveFaq] = useState<number | null>(0);
-
-  return (
-    <section className="bg-surface-muted py-16 md:py-24">
-      <Container>
-        <div className="mx-auto max-w-4xl">
-          <Reveal className="mb-12">
-            <h2 className="text-3xl font-semibold tracking-tight text-ink md:text-4xl">Frequently asked questions</h2>
-          </Reveal>
-          <div className="flex flex-col">
-            {aiShoppingContent.faqs.map((faq, idx) => {
-              const isOpen = activeFaq === idx;
-              return (
-                <div key={idx} className="border-b border-gray-400 text-left">
-                  <button
-                    onClick={() => setActiveFaq(isOpen ? null : idx)}
-                    className="w-full py-6 flex items-center justify-between group"
-                  >
-                    <h3 className="text-lg font-bold text-ink text-left pr-8">{faq.question}</h3>
-                    <div className="w-8 h-8 rounded-full bg-[#f0f5ff] flex items-center justify-center shrink-0">
-                      <svg className={`w-4 h-4 text-[#2b70fa] transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 9l-7 7-7-7" />
-                      </svg>
-                    </div>
-                  </button>
-                  <div className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-[500px] opacity-100 pb-8' : 'max-h-0 opacity-0'}`}>
-                    <p className="text-base text-slate leading-relaxed whitespace-pre-line">{faq.answer}</p>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </Container>
-    </section>
-  );
+  return <FaqSection faqs={aiShoppingContent.faqs} />;
 }
 
 export function AiShoppingCta() {

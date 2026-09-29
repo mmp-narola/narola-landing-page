@@ -7,16 +7,21 @@ export function CustomSoftwareHero() {
   const { hero } = customSoftwareContent;
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-slate-600 via-slate-850 to-slate-400 py-16 text-white md:py-24">
+    <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 py-16 text-white md:py-24">
       {/* Background Decorative Accents */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute -right-40 -top-40 h-[500px] w-[500px] rounded-full bg-interactive-blue/15 blur-[120px]" />
-        <div className="absolute -bottom-40 -left-40 h-[500px] w-[500px] rounded-full bg-indigo-600/10 blur-[120px]" />
+        {/* Subtle, modern glow effects */}
+        <div className="absolute -right-[10%] -top-[10%] h-[600px] w-[600px] rounded-full bg-blue-500/20 blur-[150px]" />
+        <div className="absolute -left-[10%] bottom-[10%] h-[500px] w-[500px] rounded-full bg-indigo-500/20 blur-[150px]" />
+        
+        {/* Elegant grid overlay */}
         <div
-          className="absolute inset-0 opacity-[0.03]"
+          className="absolute inset-0 opacity-10"
           style={{
-            backgroundImage: `radial-gradient(circle at 1px 1px, white 1px, transparent 0)`,
-            backgroundSize: "32px 32px",
+            backgroundImage: `linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)`,
+            backgroundSize: "40px 40px",
+            maskImage: "radial-gradient(ellipse 80% 80% at 50% 50%, #000 40%, transparent 100%)",
+            WebkitMaskImage: "radial-gradient(ellipse 80% 80% at 50% 50%, #000 40%, transparent 100%)"
           }}
         />
       </div>
@@ -68,8 +73,8 @@ export function CustomSoftwareHero() {
                 <span className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
                   {metric.value}
                 </span>
-                <span className="text-xs font-semibold text-sky-900">{metric.label}</span>
-                <span className="mt-0.5 text-[11px] text-white">{metric.sublabel}</span>
+                <span className="text-xs font-semibold text-sky-300">{metric.label}</span>
+                <span className="mt-0.5 text-[11px] text-slate-300">{metric.sublabel}</span>
               </div>
             ))}
           </div>

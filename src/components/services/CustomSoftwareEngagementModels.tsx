@@ -11,7 +11,7 @@ export function CustomSoftwareEngagementModels() {
   const model = engagementModels[selectedModel];
 
   return (
-    <section id="engagement-models" className="scroll-mt-24 bg-surface-muted py-16 md:py-24">
+    <section id="engagement-models" className="scroll-mt-24 bg-white py-16 md:py-24">
       <Container>
         {/* Header */}
         <div className="mx-auto max-w-3xl text-center">

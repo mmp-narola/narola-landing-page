@@ -5,7 +5,7 @@ export function CustomSoftwareWhyUs() {
   const { whyUs } = customSoftwareContent;
 
   return (
-    <section id="why-us" className="scroll-mt-24 py-16 md:py-24">
+    <section id="why-us" className="scroll-mt-24 bg-white py-16 md:py-24">
       <Container>
         {/* Header */}
         <div className="mx-auto max-w-3xl text-center">
