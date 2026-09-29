@@ -175,44 +175,46 @@ export function AiShoppingCapabilities() {
 
 export function AiShoppingMetrics() {
   const icons = [
-    <ShoppingCart className="w-7 h-7 text-ink" />,
-    <BadgeCheck className="w-7 h-7 text-ink" />,
-    <Users className="w-7 h-7 text-ink" />,
-    <MousePointerClick className="w-7 h-7 text-ink" />,
+    <ShoppingCart className="w-8 h-8 text-[#0e5fd9]" />,
+    <BadgeCheck className="w-8 h-8 text-[#0e5fd9]" />,
+    <Users className="w-8 h-8 text-[#0e5fd9]" />,
+    <MousePointerClick className="w-8 h-8 text-[#0e5fd9]" />,
   ];
 
   return (
-    <section className="bg-white pt-16 md:pt-24 pb-8">
-      <Container>
+    <section className="bg-white py-16 md:py-24 relative overflow-hidden">
+      {/* Decorative gradient blob */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-gradient-to-r from-blue-200/40 to-purple-200/40 blur-[120px] rounded-full pointer-events-none"></div>
+
+      <Container className="relative z-10">
         <Reveal>
           <div className="max-w-7xl mx-auto">
             {/* Global Section Header */}
             <div className="mb-16 md:mb-20 text-center">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-ink mb-4">
-                Business Impact Metrics & Social Proof
+              <span className="inline-block py-1.5 px-4 rounded-full bg-blue-100 text-[#0e5fd9] text-sm font-bold tracking-wider uppercase mb-6">
+                Proven Results
+              </span>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-ink mb-6">
+                Business Impact Metrics
               </h2>
-              <p className="text-lg text-slate max-w-2xl mx-auto">
-                Proven results and real-world success stories from our leading clients.
+              <p className="text-lg md:text-xl text-slate max-w-2xl mx-auto">
+                Real-world success stories and measurable improvements from our leading clients.
               </p>
             </div>
 
-            {/* Header for Results */}
-            <SubSectionHeader title="Proven results at scale" />
-
-            {/* Metrics Row */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-4">
+            {/* Metrics Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {aiShoppingContent.metrics.map((metric, index) => (
-                <div key={index} className="flex items-center gap-5 group">
-                  {/* Icon Box */}
-                  <div className="w-[72px] h-[72px] flex-shrink-0 rounded-2xl bg-[#fafafa] flex items-center justify-center transition-colors shadow-sm">
+                <div key={index} className="group bg-white/80 backdrop-blur-xl p-8 rounded-3xl border border-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(14,95,217,0.1)] transition-all duration-300 hover:-translate-y-1 flex flex-col items-center text-center">
+                  <div className="w-16 h-16 rounded-2xl bg-blue-50/80 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                     {icons[index]}
                   </div>
-                  {/* Text via CaseStudyMetricsGrid */}
-                  <CaseStudyMetricsGrid
-                    metrics={[metric]}
-                    size="small"
-                    className="flex-1 !grid-cols-1 items-start text-left [&>div]:items-start [&>div]:text-left"
-                  />
+                  <div className="text-4xl md:text-5xl font-bold text-ink mb-2 tracking-tight group-hover:text-[#0e5fd9] transition-colors">
+                    {metric.value}
+                  </div>
+                  <div className="text-base font-medium text-slate">
+                    {metric.label}
+                  </div>
                 </div>
               ))}
             </div>
@@ -308,86 +310,86 @@ export function AiShoppingCaseStudies({ caseStudies = [] }: { caseStudies?: Case
   const [activeCaseStudy, setActiveCaseStudy] = useState(0);
 
   return (
-    <section className="bg-white py-8 md:py-12">
+    <section className="bg-surface-muted py-16 md:py-24 relative">
       <Container>
         <Reveal>
-          <div className="max-w-7xl mx-auto">
-            {/* Header for Case Studies */}
-            <SubSectionHeader title="Featured case studies" />
+          <div className="max-w-7xl mx-auto mb-12 md:mb-16 text-center">
+            <span className="inline-block py-1.5 px-4 rounded-full bg-black/5 text-ink text-sm font-bold tracking-wider uppercase mb-6">
+              Featured Work
+            </span>
+            <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-ink">
+              Success Stories
+            </h2>
           </div>
         </Reveal>
 
         {/* Logos as Tabs */}
-        <div className="flex justify-between items-center border-b border-black/10 mb-8 mx-auto overflow-x-auto hide-scrollbar max-w-3xl">
+        <div className="flex justify-center items-center gap-2 md:gap-4 flex-wrap mb-12 mx-auto max-w-4xl">
           {caseStudies.map((cs, idx) => (
             <button
               key={cs.slug}
               onClick={() => setActiveCaseStudy(idx)}
-              className={`pb-4 px-6 relative text-lg lg:text-xl font-bold transition-colors whitespace-nowrap ${activeCaseStudy === idx ? 'text-ink' : 'text-slate hover:text-ink'
+              className={`px-6 py-3 rounded-full text-base font-medium transition-all duration-300 ${activeCaseStudy === idx
+                ? 'bg-ink text-white shadow-lg scale-105'
+                : 'bg-surface-muted text-slate hover:bg-black/5 hover:text-ink'
                 }`}
             >
               {cs.clientName || cs.title}
-              {/* Active Underline */}
-              {activeCaseStudy === idx && (
-                <div className="absolute bottom-0 left-0 w-full h-0.5 bg-[#2b70fa]"></div>
-              )}
             </button>
           ))}
         </div>
 
         {/* Case Study Card */}
-        <div className="mx-auto">
+        <div className="mx-auto max-w-6xl">
           <Reveal key={activeCaseStudy}>
             {caseStudies[activeCaseStudy] ? (
-              <div className="bg-[#f5f5f5] rounded-3xl overflow-hidden flex flex-col md:flex-row shadow-xl">
-                {/* Left side text */}
-                <div className="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-between">
+              <div className="group relative bg-[#0a0a0a] rounded-[2.5rem] overflow-hidden flex flex-col md:flex-row shadow-2xl">
+                {/* Left side image - taking advantage of visual space */}
+                <div className="w-full md:w-1/2 relative min-h-[300px] md:min-h-[500px] overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent z-10 md:hidden"></div>
+                  <img
+                    src={caseStudies[activeCaseStudy].thumbnailUrl || caseStudies[activeCaseStudy].bannerUrl}
+                    alt={caseStudies[activeCaseStudy].title}
+                    className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                  />
+                </div>
+
+                {/* Right side text */}
+                <div className="w-full md:w-1/2 p-8 md:p-14 lg:p-16 flex flex-col justify-center bg-gradient-to-br from-[#111] to-black z-20">
                   <div>
-                    <h3 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-black tracking-tight mb-6 leading-tight">
+                    <h3 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-white tracking-tight mb-6 leading-tight">
                       {caseStudies[activeCaseStudy].title}
                     </h3>
-                    <p className="text-slate text-lg leading-relaxed mb-8">
+                    <p className="text-white/70 text-lg leading-relaxed mb-10">
                       {caseStudies[activeCaseStudy].summary || caseStudies[activeCaseStudy].tagline}
                     </p>
 
                     {/* Metrics Section */}
                     {caseStudies[activeCaseStudy].metrics && caseStudies[activeCaseStudy].metrics.length > 0 && (
-                      <div className="border-t border-black/10 pt-6 mt-6">
-                        <CaseStudyMetricsGrid
-                          metrics={caseStudies[activeCaseStudy].metrics}
-                          limit={caseStudies[activeCaseStudy].metrics.length > 2 ? 3 : 2}
-                          columns={caseStudies[activeCaseStudy].metrics.length > 2 ? 3 : 2}
-                          withDividers={true}
-                          size="small"
-                        />
+                      <div className="grid grid-cols-2 gap-6 pt-8 border-t border-white/10">
+                        {caseStudies[activeCaseStudy].metrics.slice(0, 2).map((metric, i) => (
+                          <div key={i}>
+                            <div className="text-3xl font-bold text-white mb-1">{metric.value}</div>
+                            <div className="text-sm font-medium text-white/50 uppercase tracking-wider">{metric.label}</div>
+                          </div>
+                        ))}
                       </div>
                     )}
                   </div>
 
-                  <div className="mt-10 md:mt-12">
-                    <Link href={`/case-studies/${caseStudies[activeCaseStudy].slug}`} className="inline-flex items-center text-interactive-blue font-medium hover:text-interactive-blue/80 transition-colors">
-                      <span>Read Case Study</span>
-                      <span aria-hidden="true" className="text-sm font-semibold">
-                        ↗
+                  <div className="mt-12">
+                    <Link href={`/case-studies/${caseStudies[activeCaseStudy].slug}`} className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-white text-black font-semibold hover:bg-white/90 transition-colors">
+                      <span>Read Full Story</span>
+                      <span aria-hidden="true" className="ml-2 text-lg">
+                        →
                       </span>
                     </Link>
                   </div>
                 </div>
-
-                {/* Right side image */}
-                <div className="w-full md:w-1/2 p-8 md:p-12 flex items-center justify-center relative">
-                  <div className="relative w-full aspect-video md:aspect-auto md:h-full min-h-[250px] rounded-xl overflow-hidden shadow-2xl border border-white/10">
-                    <img
-                      src={caseStudies[activeCaseStudy].thumbnailUrl || caseStudies[activeCaseStudy].bannerUrl}
-                      alt={caseStudies[activeCaseStudy].title}
-                      className="w-full h-full object-cover object-center"
-                    />
-                  </div>
-                </div>
               </div>
             ) : (
-              <div className="p-12 text-center text-slate bg-surface-muted rounded-2xl border border-black/10">
-                <p>More case studies coming soon.</p>
+              <div className="p-16 text-center text-slate bg-surface-muted rounded-[2.5rem] border border-black/5">
+                <p className="text-xl">More case studies coming soon.</p>
               </div>
             )}
           </Reveal>
@@ -400,27 +402,30 @@ export function AiShoppingCaseStudies({ caseStudies = [] }: { caseStudies?: Case
 
 export function AiShoppingClients() {
   return (
-    <section className="bg-white pt-8 pb-16 md:pt-12 md:pb-24">
+    <section className="bg-white py-16 md:py-24 border-y border-black/5 overflow-hidden">
       <Container>
         <Reveal>
-          <div className="max-w-7xl mx-auto">
-            {/* Header for Clients */}
-            <SubSectionHeader title="Trusted by innovative brands worldwide" />
+          <div className="max-w-7xl mx-auto text-center">
+            <h3 className="text-sm font-bold tracking-widest text-slate uppercase mb-12">
+              Trusted by innovative brands worldwide
+            </h3>
 
-            <div className="flex flex-wrap items-center justify-center gap-10 md:gap-16">
+            <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6">
               {[
-                { name: "brand1", logoText: "CGI" },
-                { name: "brand2", logoText: "L&T" },
-                { name: "brand3", logoText: "TVS NEXT" },
-                { name: "brand4", logoText: "Biocon" },
-                { name: "brand5", logoText: "Infosys" },
+                { name: "CGI", logoText: "CGI" },
+                { name: "L&T", logoText: "L&T" },
+                { name: "TVS NEXT", logoText: "TVS NEXT" },
+                { name: "Biocon", logoText: "Biocon" },
+                { name: "Infosys", logoText: "Infosys" },
               ].map((client) => (
-                <span
+                <div
                   key={client.name}
-                  className="text-xl md:text-2xl font-bold tracking-wide text-slate/70 hover:text-ink transition-colors"
+                  className="px-8 py-4 md:px-12 md:py-6 bg-white rounded-2xl shadow-sm border border-black/5 hover:border-[#0e5fd9]/30 hover:shadow-md transition-all duration-300 flex items-center justify-center min-w-[140px] md:min-w-[180px]"
                 >
-                  {client.logoText}
-                </span>
+                  <span className="text-xl md:text-2xl font-black tracking-wider text-slate hover:text-ink transition-colors">
+                    {client.logoText}
+                  </span>
+                </div>
               ))}
             </div>
           </div>
