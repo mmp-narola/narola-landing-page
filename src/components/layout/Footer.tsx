@@ -186,27 +186,61 @@ export function Footer() {
 
       <footer id="footer" className="w-full border-t border-slate/10 bg-surface-muted py-8 md:py-4">
         <Container>
-          <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-12 lg:gap-8">
+          <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_1fr_15%] lg:gap-8">
 
-            {/* Column 1: Services (3 cols) */}
-            <div className="lg:col-span-3">
-              <h4 className="text-base font-semibold tracking-tight text-ink">Services</h4>
+            {/* Column 1: AI & Automation */}
+            <div>
+              <h4 className="text-base font-semibold tracking-tight text-ink">AI & Automation</h4>
               <ul className="mt-4 space-y-2">
-                {footerContent.services.map((item) => (
+                {footerContent.aiAutomation.map((item) => (
                   <li key={item.label}>
-                    <a
+                    <Link
                       href={item.href}
                       className="block text-sm text-slate transition-colors hover:text-interactive-blue"
                     >
                       {item.label}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
             </div>
 
-            {/* Column 2: Resources (3 cols) */}
-            <div className="lg:col-span-3">
+            {/* Column 2: eCommerce */}
+            <div>
+              <h4 className="text-base font-semibold tracking-tight text-ink">eCommerce</h4>
+              <ul className="mt-4 space-y-2">
+                {footerContent.ecommerce.map((item) => (
+                  <li key={item.label}>
+                    <Link
+                      href={item.href}
+                      className="block text-sm text-slate transition-colors hover:text-interactive-blue"
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Column 3: Product Engineering */}
+            <div>
+              <h4 className="text-base font-semibold tracking-tight text-ink">Product Engineering</h4>
+              <ul className="mt-4 space-y-2">
+                {footerContent.productEngineering.map((item) => (
+                  <li key={item.label}>
+                    <Link
+                      href={item.href}
+                      className="block text-sm text-slate transition-colors hover:text-interactive-blue"
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Column 4: Resources */}
+            <div>
               <h4 className="text-base font-semibold tracking-tight text-ink">Resources</h4>
               <ul className="mt-4 space-y-2">
                 {footerContent.resources.map((item) => (
@@ -231,54 +265,14 @@ export function Footer() {
               </ul>
             </div>
 
-            {/* Column 3: Global Presence (US Offices) (3 cols) */}
-            <div className="lg:col-span-3">
-              <h4 className="text-base font-semibold tracking-tight text-ink">
-                {footerContent.globalPresence.title}
-              </h4>
-              <div className="mt-4 flex flex-col gap-5">
-                {footerContent.globalPresence.offices.map((office) => (
-                  <a href={office.mapUrl} target="_blank" rel="noopener noreferrer" key={office.city} className="group flex flex-col gap-1.5 transition-opacity hover:opacity-75">
-                    <div className="flex items-center gap-2 text-sm font-semibold text-ink">
-                      <UsFlag className="h-3 w-4 shrink-0 shadow-2xs" />
-                      <span className="group-hover:text-interactive-blue transition-colors">{office.city}</span>
-                    </div>
-                    <div className="flex items-start gap-1.5 text-xs text-slate">
-                      <PinIcon className="h-3.5 w-3.5 shrink-0 text-slate/50" />
-                      <span className="leading-snug">{office.address}</span>
-                    </div>
-                  </a>
-                ))}
-              </div>
-            </div>
-
-            {/* Column 4: Development Centers (India Offices) (3 cols) */}
-            <div className="lg:col-span-3">
-              <h4 className="text-base font-semibold tracking-tight text-ink">
-                {footerContent.globalPresence.devCentersTitle}
-              </h4>
-              <div className="mt-4 flex flex-col gap-5">
-                {footerContent.globalPresence.devCenters.map((center) => (
-                  <a href={center.mapUrl} target="_blank" rel="noopener noreferrer" key={center.city} className="group flex flex-col gap-1.5 transition-opacity hover:opacity-75">
-                    <div className="flex items-center gap-2 text-sm font-semibold text-ink">
-                      <IndiaFlag className="h-3 w-4 shrink-0 shadow-2xs" />
-                      <span className="group-hover:text-interactive-blue transition-colors">{center.city}</span>
-                    </div>
-                    <div className="flex items-start gap-1.5 text-xs text-slate">
-                      <PinIcon className="h-3.5 w-3.5 shrink-0 text-slate/50" />
-                      <span className="leading-snug">{center.address}</span>
-                    </div>
-                  </a>
-                ))}
-              </div>
-            </div>
           </div>
 
-          {/* Bottom bar: Copyright & Socials */}
-          <div className="mt-6 flex flex-col items-center justify-between gap-4 border-t border-slate/10 pt-6 sm:flex-row">
-            <p className="text-xs text-slate">
+          {/* Bottom bar: Copyright, Dev Centers & Socials */}
+          <div className="mt-10 flex flex-col items-center justify-between gap-6 border-t border-slate/10 pt-6 lg:flex-row lg:gap-4">
+            <p className="text-xs text-slate text-center lg:text-left">
               © {new Date().getFullYear()} Narola Infotech. All rights reserved.
             </p>
+
             <div className="flex items-center gap-4">
               {footerContent.socialLinks.map((social) => (
                 <a
@@ -292,6 +286,20 @@ export function Footer() {
                   ) : (
                     <InstagramIcon className="h-4 w-4" />
                   )}
+                </a>
+              ))}
+            </div>
+
+            <div className="flex flex-wrap items-center justify-center lg:justify-end gap-4 text-xs text-slate">
+              <span className="font-semibold text-ink">{footerContent.globalPresence.devCentersTitle}:</span>
+              {footerContent.globalPresence.devCenters.map((center) => (
+                <a href={center.mapUrl} target="_blank" rel="noopener noreferrer" key={center.city} className="group flex items-center gap-1.5 transition-opacity hover:opacity-75">
+                  {center.country === "US" ? (
+                    <UsFlag className="h-3 w-4 shrink-0 shadow-2xs" />
+                  ) : (
+                    <IndiaFlag className="h-3 w-4 shrink-0 shadow-2xs" />
+                  )}
+                  <span className="group-hover:text-interactive-blue transition-colors">{center.city}</span>
                 </a>
               ))}
             </div>

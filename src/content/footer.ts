@@ -48,47 +48,26 @@ export const footerContent = {
       stars: 5,
     },
   ],
-  services: [
-    {
-      label: "Custom Software Development",
-      href: "/services/custom-software-development-company",
-    },
-    {
-      label: "Software Product Engineering",
-      href: "/services/software-product-engineering",
-    },
-    {
-      label: "Software Modernization",
-      href: "/services/software-modernization",
-    },
-    {
-      label: "Software Maintenance and Support",
-      href: "/services/software-maintenance-and-support",
-    },
-    {
-      label: "Ecommerce Software Development",
-      href: "/services/ecommerce-software-development",
-    },
-    { label: "Staff Augmentation", href: "/services/staff-augmentation" },
-    {
-      label: "Cloud Transformation Services",
-      href: "/services/cloud-transformation-services",
-    },
+  aiAutomation: [
+    { label: "AI Consulting", href: "/ai-consulting" },
+    { label: "AI Agents Development", href: "/ai-agents-development" },
+    { label: "AI Chatbot Development", href: "/ai-chatbot-development" },
+    { label: "Conversational AI Solutions", href: "/conversational-ai-solutions" },
+    { label: "Generative AI Development", href: "/generative-ai-development" },
   ],
-  technologies: [
-    { label: "ReactJS", href: "/technologies/reactjs" },
-    { label: "AngularJS", href: "/technologies/angularjs" },
-    { label: "NodeJS", href: "/technologies/nodejs" },
-    { label: "PHP", href: "/technologies/php" },
-    { label: "Dot NET", href: "/technologies/dot-net" },
-    { label: "JAVA", href: "/technologies/java" },
-    { label: "WordPress", href: "/technologies/wordpress" },
-    { label: "CodeIgniter", href: "/technologies/codeigniter" },
-    { label: "Laravel", href: "/technologies/laravel" },
-    { label: "Android", href: "/technologies/android" },
-    { label: "iOS", href: "/technologies/ios" },
-    { label: "React Native", href: "/services/react-native" },
-    { label: "Flutter", href: "/technologies/flutter" },
+  ecommerce: [
+    { label: "AI Shopping Assistant", href: "/ai-shopping-assistant" },
+    { label: "AI Chatbots", href: "/ai-chatbots" },
+    { label: "AI Agents", href: "/ai-agents" },
+    { label: "Conversational Commerce", href: "/conversational-commerce" },
+    { label: "AI Automation", href: "/ai-automation" },
+  ],
+  productEngineering: [
+    { label: "SaaS Product Development", href: "/saas-product-development" },
+    { label: "Web Application Development", href: "/web-application-development" },
+    { label: "Mobile App Development", href: "/mobile-app-development" },
+    { label: "Enterprise Software Development", href: "/product-engineering" },
+    { label: "MVP Development", href: "/mvp-development" },
   ],
   resources: [
     { label: "Our Story", href: "/company/our-story" },
@@ -99,21 +78,8 @@ export const footerContent = {
   ],
   globalPresence: {
     title: "Global Presence",
-    offices: [
-      {
-        country: "US" as const,
-        city: "North Carolina",
-        address: "167 E Chatham St Suite 300, Cary, NC 27511",
-        mapUrl: "https://maps.app.goo.gl/nDWuha8kBQoEzTeJA",
-      },
-      {
-        country: "US" as const,
-        city: "Virginia",
-        address: "43519 Wheadon Ter, Chantilly VA 20152",
-        mapUrl: "https://maps.app.goo.gl/Bbd1jesGZuzqMbff7",
-      },
-    ],
-    devCentersTitle: "Development Centers",
+    offices: [],
+    devCentersTitle: "Development Hubs",
     devCenters: [
       {
         country: "IN" as const,
@@ -122,11 +88,10 @@ export const footerContent = {
         mapUrl: "https://maps.app.goo.gl/P366KE28dTVJmEp1A",
       },
       {
-        country: "IN" as const,
-        city: "Nashik",
-        address:
-          "2nd Floor, Pawar Business Square, Pathardi Phata, Nashik 422010",
-        mapUrl: "https://maps.app.goo.gl/rXMd7kgyJiQo1Q7p9",
+        country: "US" as const,
+        city: "Virginia",
+        address: "43519 Wheadon Ter, Chantilly VA 20152",
+        mapUrl: "https://maps.app.goo.gl/Bbd1jesGZuzqMbff7",
       },
     ],
   },
