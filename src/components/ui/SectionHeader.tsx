@@ -46,9 +46,9 @@ export function SectionHeader({
       const rect = titleRef.current.getBoundingClientRect();
       const clampTop = 120;
       const clampBottom = window.innerHeight - 120;
-      
+
       const y = rect.top + rect.height / 2;
-      
+
       if (y >= clampTop && y <= clampBottom) {
         setHasReached(true);
       } else {
@@ -85,18 +85,17 @@ export function SectionHeader({
         <Reveal variant="scale" delay={0}>
           <div className="relative mb-4 inline-flex items-center justify-center" data-pointer-target="true">
             <div
-              className={`inline-flex items-center gap-2 rounded-full border border-bright-blue/30 px-4 py-1.5 text-xs font-bold tracking-wide text-bright-blue shadow-sm ring-1 ring-inset transition-all duration-1000 ${
-                hasReached
+              className={`inline-flex items-center gap-2 rounded-full border border-bright-blue/30 px-4 py-1.5 text-xs font-bold tracking-wide text-bright-blue shadow-sm ring-1 ring-inset transition-all duration-1000 ${hasReached
                   ? "bg-[#0084ff]/20 ring-[#0084ff]/50 shadow-[0_0_20px_-3px_rgba(0,132,255,0.5)] animate-custom-shake"
                   : "bg-[#0084ff]/5 ring-[#0084ff]/10"
-              }`}
+                }`}
             >
               <span>{indexBadge}</span>
             </div>
           </div>
         </Reveal>
       )}
-      
+
       {eyebrow && (
         <Reveal delay={100}>
           <span className="mb-3 block text-xs font-semibold uppercase tracking-wide text-bright-blue">
@@ -107,15 +106,14 @@ export function SectionHeader({
 
       <Reveal delay={150}>
         <div className="relative inline-block">
-          <h2 
+          <h2
             ref={titleRef}
-            className={`text-display font-semibold tracking-tight md:text-display-lg text-balance transition-all duration-1000 ${
-              !indexBadge 
-                ? "text-light-gray" 
-                : hasReached 
-                  ? "text-light-gray" 
+            className={`text-display font-semibold tracking-tight md:text-display-lg text-balance transition-all duration-700 ${!indexBadge
+                ? "text-light-gray"
+                : hasReached
+                  ? "text-light-gray"
                   : "text-white drop-shadow-sm"
-            }`}
+              }`}
           >
             {title}
           </h2>

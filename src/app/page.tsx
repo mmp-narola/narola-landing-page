@@ -16,8 +16,6 @@ import {
   getHomeFaqSchema,
 } from "@/lib/seo/structuredData";
 
-import { SectionProgressPointer } from "@/components/ui/SectionProgressPointer";
-
 // Revalidate homepage every 60 seconds from MongoDB
 export const revalidate = 60;
 
@@ -90,8 +88,8 @@ export default async function Home() {
       <JsonLd data={faqSchema} />
 
       <Header />
-      <SectionProgressPointer />
-      
+      {/* <SectionProgressPointer /> */}
+
       <main className="flex-1 flex flex-col bg-white space-y-2 md:space-y-4">
         {/* Hero Section with interactive AI Advisor & Stats & Trusted Clients */}
         <HeroSection />
