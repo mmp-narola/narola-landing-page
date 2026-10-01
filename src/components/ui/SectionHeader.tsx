@@ -65,7 +65,7 @@ export function SectionHeader({
     align === "center" ? "mx-auto max-w-3xl text-center" : "max-w-3xl text-left";
 
   return (
-    <div ref={containerRef} className={`${alignmentClasses} ${className} relative`}>
+    <div ref={containerRef} className={`${alignmentClasses} ${className} relative z-40`}>
       <style>{`
         @keyframes custom-shake {
           0%, 100% { transform: translateX(0); }
