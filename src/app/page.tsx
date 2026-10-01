@@ -6,6 +6,7 @@ import { EcommerceSection } from "@/components/sections/EcommerceSection";
 import { AiAutomationSection } from "@/components/sections/AiAutomationSection";
 import { ProductEngineeringSection } from "@/components/sections/ProductEngineeringSection";
 import { OurWorkSection } from "@/components/sections/OurWorkSection";
+import { SectionProgressIndicator } from "@/components/sections/SectionProgressIndicator";
 import { Footer } from "@/components/layout/Footer";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { siteConfig } from "@/content/siteConfig";
@@ -88,7 +89,7 @@ export default async function Home() {
       <JsonLd data={faqSchema} />
 
       <Header />
-      {/* <SectionProgressPointer /> */}
+      <SectionProgressIndicator />
 
       <main className="flex-1 flex flex-col bg-white space-y-2 md:space-y-4">
         {/* Hero Section with interactive AI Advisor & Stats & Trusted Clients */}

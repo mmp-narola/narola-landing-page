@@ -2,21 +2,24 @@ import { Container } from "@/components/ui/Container";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { FeatureRow } from "@/components/ui/FeatureRow";
 import { ProcessSection } from "@/components/ui/ProcessSection";
+// import { AmbientGlow } from "@/components/ui/AmbientGlow";
 import { aiAutomationContent } from "@/content/homeContent";
 
 export function AiAutomationSection() {
   return (
     <section
       id={aiAutomationContent.sectionId}
+      data-section-accent="violet"
       className="section-wrapper"
     >
-      {/* <AmbientGlow position="top" height={420} color="rgba(0,132,255,0.14)" /> */}
+      {/* <AmbientGlow position="top" height={420} color="rgba(139,92,246,0.12)" /> */}
       <Container className="relative">
         {/* Section Header */}
         <SectionHeader
           indexBadge="02 / 03"
           title={aiAutomationContent.title}
           subtitle={aiAutomationContent.subtitle}
+          accent="violet"
         />
 
         {/* Feature Rows */}

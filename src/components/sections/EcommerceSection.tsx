@@ -3,6 +3,7 @@ import { Container } from "@/components/ui/Container";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { FeatureRow } from "@/components/ui/FeatureRow";
 import { CaseStudyLinks } from "@/components/ui/CaseStudyLink";
+// import { AmbientGlow } from "@/components/ui/AmbientGlow";
 import { ecommerceContent } from "@/content/homeContent";
 
 export function EcommerceSection() {
@@ -11,14 +12,17 @@ export function EcommerceSection() {
   return (
     <section
       id={ecommerceContent.sectionId}
+      data-section-accent="blue"
       className="section-wrapper"
     >
+      {/* <AmbientGlow position="top" height={420} color="rgba(0,132,255,0.12)" /> */}
       <Container className="relative">
         {/* Section Header */}
         <SectionHeader
           indexBadge="01 / 03"
           title={ecommerceContent.title}
           subtitle={ecommerceContent.subtitle}
+          accent="blue"
         />
 
         <div className="mx-auto max-w-5xl divide-y divide-black/[0.08] border-y border-black/[0.08]">

@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import { Reveal } from "@/components/ui/Reveal";
 
+export type SectionAccent = "blue" | "violet" | "orange";
+
 export interface SectionHeaderProps {
   title: string;
   subtitle?: string;
@@ -10,7 +12,57 @@ export interface SectionHeaderProps {
   indexBadge?: string;
   className?: string;
   align?: "center" | "left";
+  /** Gives each homepage discipline (eCommerce / AI & Automation / Product
+   *  Engineering) its own accent color on the badge + eyebrow, so a section
+   *  reads as visually distinct the moment it enters the viewport. Classes
+   *  are static per-accent (not interpolated) so Tailwind can see them. */
+  accent?: SectionAccent;
 }
+
+const ACCENT_STYLES: Record<
+  SectionAccent,
+  {
+    badgeBorder: string;
+    badgeBgInactive: string;
+    badgeRingInactive: string;
+    badgeBgActive: string;
+    badgeRingActive: string;
+    badgeShadowActive: string;
+    text: string;
+    dot: string;
+  }
+> = {
+  blue: {
+    badgeBorder: "border-bright-blue/30",
+    badgeBgInactive: "bg-[#0084ff]/5",
+    badgeRingInactive: "ring-[#0084ff]/10",
+    badgeBgActive: "bg-[#0084ff]/20",
+    badgeRingActive: "ring-[#0084ff]/50",
+    badgeShadowActive: "shadow-[0_0_20px_-3px_rgba(0,132,255,0.5)]",
+    text: "text-bright-blue",
+    dot: "bg-bright-blue",
+  },
+  violet: {
+    badgeBorder: "border-accent-violet/30",
+    badgeBgInactive: "bg-accent-violet/5",
+    badgeRingInactive: "ring-accent-violet/10",
+    badgeBgActive: "bg-accent-violet/20",
+    badgeRingActive: "ring-accent-violet/50",
+    badgeShadowActive: "shadow-[0_0_20px_-3px_rgba(139,92,246,0.5)]",
+    text: "text-accent-violet",
+    dot: "bg-accent-violet",
+  },
+  orange: {
+    badgeBorder: "border-accent-orange/30",
+    badgeBgInactive: "bg-accent-orange/5",
+    badgeRingInactive: "ring-accent-orange/10",
+    badgeBgActive: "bg-accent-orange/20",
+    badgeRingActive: "ring-accent-orange/50",
+    badgeShadowActive: "shadow-[0_0_20px_-3px_rgba(233,133,42,0.5)]",
+    text: "text-accent-orange",
+    dot: "bg-accent-orange",
+  },
+};
 
 export function SectionHeader({
   title,
@@ -19,7 +71,9 @@ export function SectionHeader({
   indexBadge,
   className = "mb-16 md:mb-20",
   align = "center",
+  accent = "blue",
 }: SectionHeaderProps) {
+  const accentStyle = ACCENT_STYLES[accent];
   const [isVisible, setIsVisible] = useState(false);
   const [hasReached, setHasReached] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -85,11 +139,12 @@ export function SectionHeader({
         <Reveal variant="scale" delay={0}>
           <div className="relative mb-4 inline-flex items-center justify-center" data-pointer-target="true">
             <div
-              className={`inline-flex items-center gap-2 rounded-full border border-bright-blue/30 px-4 py-1.5 text-xs font-bold tracking-wide text-bright-blue shadow-sm ring-1 ring-inset transition-all duration-1000 ${hasReached
-                  ? "bg-[#0084ff]/20 ring-[#0084ff]/50 shadow-[0_0_20px_-3px_rgba(0,132,255,0.5)] animate-custom-shake"
-                  : "bg-[#0084ff]/5 ring-[#0084ff]/10"
+              className={`inline-flex items-center gap-2 rounded-full border px-4 py-1.5 text-xs font-bold tracking-wide shadow-sm ring-1 ring-inset transition-all duration-1000 ${accentStyle.badgeBorder} ${accentStyle.text} ${hasReached
+                  ? `${accentStyle.badgeBgActive} ${accentStyle.badgeRingActive} ${accentStyle.badgeShadowActive} animate-custom-shake`
+                  : `${accentStyle.badgeBgInactive} ${accentStyle.badgeRingInactive}`
                 }`}
             >
+              <span className={`h-1.5 w-1.5 rounded-full ${accentStyle.dot}`} aria-hidden="true" />
               <span>{indexBadge}</span>
             </div>
           </div>
@@ -98,7 +153,7 @@ export function SectionHeader({
 
       {eyebrow && (
         <Reveal delay={100}>
-          <span className="mb-3 block text-xs font-semibold uppercase tracking-wide text-bright-blue">
+          <span className={`mb-3 block text-xs font-semibold uppercase tracking-wide ${accentStyle.text}`}>
             {eyebrow}
           </span>
         </Reveal>
