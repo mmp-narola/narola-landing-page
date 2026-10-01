@@ -21,27 +21,33 @@ export function SectionHeader({
     align === "center" ? "mx-auto max-w-3xl text-center" : "max-w-3xl text-left";
 
   return (
-    <Reveal>
-      <div className={`${alignmentClasses} ${className}`}>
-        {indexBadge && (
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-black/[0.08] bg-white px-4 py-1 text-xs font-semibold tracking-wide text-bright-blue shadow-2xs">
+    <div className={`${alignmentClasses} ${className}`}>
+      {indexBadge && (
+        <Reveal variant="scale" delay={0}>
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-bright-blue/30 bg-[#0084ff]/5 px-4 py-1.5 text-xs font-bold tracking-wide text-bright-blue shadow-sm ring-1 ring-inset ring-[#0084ff]/10">
             <span>{indexBadge}</span>
           </div>
-        )}
-        {eyebrow && (
+        </Reveal>
+      )}
+      {eyebrow && (
+        <Reveal delay={100}>
           <span className="mb-3 block text-xs font-semibold uppercase tracking-wide text-bright-blue">
             {eyebrow}
           </span>
-        )}
+        </Reveal>
+      )}
+      <Reveal delay={150}>
         <h2 className="text-display font-semibold tracking-tight text-light-gray md:text-display-lg text-balance">
           {title}
         </h2>
-        {subtitle && (
+      </Reveal>
+      {subtitle && (
+        <Reveal delay={250}>
           <p className="mx-auto mt-5 max-w-2xl text-lg text-muted-gray md:text-xl text-balance">
             {subtitle}
           </p>
-        )}
-      </div>
-    </Reveal>
+        </Reveal>
+      )}
+    </div>
   );
 }
