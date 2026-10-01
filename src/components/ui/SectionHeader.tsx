@@ -83,7 +83,7 @@ export function SectionHeader({
 
       {indexBadge && (
         <Reveal variant="scale" delay={0}>
-          <div className="relative mb-4 inline-flex items-center justify-center">
+          <div className="relative mb-4 inline-flex items-center justify-center" data-pointer-target="true">
             <div
               className={`inline-flex items-center gap-2 rounded-full border border-bright-blue/30 px-4 py-1.5 text-xs font-bold tracking-wide text-bright-blue shadow-sm ring-1 ring-inset transition-all duration-1000 ${
                 hasReached
@@ -109,7 +109,6 @@ export function SectionHeader({
         <div className="relative inline-block">
           <h2 
             ref={titleRef}
-            data-pointer-target={indexBadge ? "true" : undefined}
             className={`text-display font-semibold tracking-tight md:text-display-lg text-balance transition-all duration-1000 ${
               !indexBadge 
                 ? "text-light-gray" 

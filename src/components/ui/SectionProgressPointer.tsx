@@ -33,44 +33,50 @@ export function SectionProgressPointer() {
       const clampTop = 120;
       const clampBottom = window.innerHeight - 120;
 
-      let activeTarget: Element | null = null;
-      let minDistance = Infinity;
+      const detachThreshold = window.innerHeight - 40;
 
-      for (const target of targets) {
+      let activeTarget: Element | null = null;
+
+      // Find the furthest target that has entered the viewport
+      for (let i = targets.length - 1; i >= 0; i--) {
+        const target = targets[i];
         const rect = target.getBoundingClientRect();
-        const distance = Math.abs(rect.top - viewportCenter);
-        if (distance < minDistance) {
-          minDistance = distance;
+        if (rect.top < detachThreshold) {
           activeTarget = target;
+          break;
         }
       }
 
-      if (!activeTarget) return;
-
-      const rect = activeTarget.getBoundingClientRect();
-      
       // Determine if the pointer should be visible based on first and last target
-      const firstRect = targets[0].getBoundingClientRect();
+      // Always visible from top of page until we scroll past the last section
       const lastRect = targets[targets.length - 1].getBoundingClientRect();
-      const isVisible = firstRect.top < window.innerHeight && lastRect.bottom > 0;
+      const isVisible = lastRect.bottom > 0;
 
-      // Calculate Y position with clamping
-      let y = rect.top + rect.height / 2;
-      let hasReached = true;
+      // Calculate base position
+      let y = -100;
+      let x = 0;
+      let hasReached = false;
 
-      if (y > clampBottom) {
-        y = clampBottom;
-        hasReached = false;
-      } else if (y < clampTop) {
-        y = clampTop;
-        hasReached = false;
+      if (!activeTarget) {
+        // No target has entered the viewport yet, park at the logo!
+        const logo = document.querySelector('[data-logo-target="true"]');
+        if (logo) {
+          const logoRect = logo.getBoundingClientRect();
+          x = logoRect.left + logoRect.width / 2 - 16;
+          y = logoRect.top + logoRect.height / 2 - 16;
+        }
+      } else {
+        const rect = activeTarget.getBoundingClientRect();
+        y = rect.top + rect.height / 2 - 16; // -16px to vertically align the center of the 32px pointer
+        x = rect.right + 24; // 24px to the right of the badge
+        hasReached = true;
       }
 
       const rotation = window.scrollY * 0.2; // Adjust multiplier for rotation speed
 
       setTargetState({
         y,
-        x: rect.left - 48, // 48px to the left of the title
+        x,
         isVisible,
         hasReached,
         rotation,
@@ -88,10 +94,11 @@ export function SectionProgressPointer() {
 
   return (
     <div
-      className="fixed top-0 left-0 z-50 pointer-events-none will-change-transform"
+      className="fixed top-0 left-0 z-[45] pointer-events-none will-change-transform"
       style={{
         transform: `translate(${targetState.x}px, ${targetState.y}px)`,
-        transition: "transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.4s ease",
+        // Use a bouncy spring curve so it "falls and lands" playfully, but also tracks scroll smoothly
+        transition: "transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease",
         opacity: targetState.isVisible ? 1 : 0,
       }}
     >

@@ -69,6 +69,7 @@ export function Header() {
           href="/"
           className="shrink-0 transition-opacity hover:opacity-90"
           onClick={() => setActiveMenu(null)}
+          data-logo-target="true"
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
