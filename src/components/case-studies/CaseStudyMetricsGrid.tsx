@@ -2,40 +2,90 @@ import type { CaseStudyMetric } from "@/types/caseStudy";
 
 export interface CaseStudyMetricsGridProps {
   metrics: CaseStudyMetric[];
+  /** "row": single centered row, capped by `limit` (used for the hero stats strip).
+   *  "grid": wrapping multi-row grid, uncapped (used for in-body "stats" sections). */
+  layout?: "row" | "grid";
   columns?: 2 | 3 | 4;
   withDividers?: boolean;
   className?: string;
   size?: "compact" | "small" | "large";
+  /** Only applies when layout="row". Defaults to 5 so the row never wraps. */
   limit?: number;
 }
 
 export function CaseStudyMetricsGrid({
   metrics,
+  layout = "row",
   columns = 3,
   withDividers = false,
   className = "",
   size = "large",
-  limit,
+  limit = 5,
 }: CaseStudyMetricsGridProps) {
   if (!metrics || metrics.length === 0) return null;
 
-  const displayMetrics = limit ? metrics.slice(0, limit) : metrics;
+  const displayMetrics = layout === "row" ? metrics.slice(0, limit) : metrics;
 
-  // Tailwind grid column mapping based on the prop
+  const valueSize =
+    size === "large"
+      ? "text-3xl sm:text-4xl md:text-5xl tracking-tighter"
+      : size === "small"
+        ? "text-2xl md:text-3xl tracking-tight"
+        : "text-base sm:text-lg tracking-tight"; // compact
+
+  const labelSize =
+    size === "large"
+      ? "text-xs sm:text-sm md:text-base max-w-[140px] sm:max-w-[180px] mt-2 sm:mt-3"
+      : size === "small"
+        ? "text-xs max-w-[140px] mt-1.5"
+        : "text-[10px] sm:text-xs max-w-[120px] mt-0.5 line-clamp-2"; // compact
+
+  if (layout === "row") {
+    // Single centered row — used for the hero stats strip, where a short,
+    // never-wrapping line matters more than a strict grid.
+    let gapClass = "gap-x-6 gap-y-6";
+    if (size === "large") gapClass = "gap-x-8 sm:gap-x-10 md:gap-x-14 gap-y-6";
+    if (size === "compact") gapClass = "gap-x-4 gap-y-2";
+
+    const dividerPl =
+      size === "compact" ? "pl-4" : size === "small" ? "pl-5" : "pl-8 sm:pl-10 md:pl-14";
+
+    return (
+      <div className={`flex flex-row flex-wrap items-start justify-center ${gapClass} ${className}`}>
+        {displayMetrics.map((metric, idx) => (
+          <div
+            key={idx}
+            className={`flex flex-col items-center justify-center text-center ${
+              withDividers && idx > 0 ? `border-l border-black/[0.08] ${dividerPl}` : ""
+            }`}
+          >
+            <p className={`bg-gradient-to-br from-[#1d1d1f] to-[#48484a] bg-clip-text font-bold text-ink ${valueSize}`}>
+              {metric.value}
+            </p>
+            <p className={`text-base font-medium text-slate leading-tight ${labelSize}`}>
+              {metric.label}
+            </p>
+          </div>
+        ))}
+      </div>
+    );
+  }
+
+  // Grid layout — used for in-body "stats" sections, which may legitimately
+  // have more results than fit in one row and should wrap into clean rows
+  // rather than being cut off.
   const gridColsClass =
     columns === 4 ? "grid-cols-2 sm:grid-cols-4" :
       columns === 3 ? "grid-cols-2 md:grid-cols-3" :
         "grid-cols-2";
 
-  // Gap sizing
-  let gapClass = "gap-x-6 gap-y-8";
-  if (size === "large") gapClass = "gap-x-8 gap-y-10";
-  if (size === "compact") gapClass = "gap-2";
+  let gridGapClass = "gap-x-6 gap-y-8";
+  if (size === "large") gridGapClass = "gap-x-8 gap-y-10";
+  if (size === "compact") gridGapClass = "gap-2";
 
   return (
-    <div className={`grid ${gridColsClass} ${gapClass} ${className}`}>
+    <div className={`grid ${gridColsClass} ${gridGapClass} ${className}`}>
       {displayMetrics.map((metric, idx) => {
-        // Divider CSS logic for responsive grids
         let dividerClass = "";
         if (withDividers) {
           const plClass = size === "compact" ? "pl-2" : size === "small" ? "pl-3" : "pl-5";
@@ -48,18 +98,6 @@ export function CaseStudyMetricsGrid({
             dividerClass += `[&:nth-child(2n+1)]:border-l-0 [&:nth-child(2n+1)]:!pl-0`;
           }
         }
-
-        const valueSize = size === "large"
-          ? "text-4xl md:text-5xl tracking-tighter"
-          : size === "small"
-            ? "text-2xl md:text-3xl tracking-tight"
-            : "text-base sm:text-lg tracking-tight"; // compact
-
-        const labelSize = size === "large"
-          ? "text-sm md:text-base max-w-[180px] mt-3"
-          : size === "small"
-            ? "text-xs max-w-[140px] mt-1.5"
-            : "text-[10px] sm:text-xs max-w-[120px] mt-0.5 line-clamp-2"; // compact
 
         return (
           <div

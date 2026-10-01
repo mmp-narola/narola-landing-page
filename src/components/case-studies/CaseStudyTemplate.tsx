@@ -254,8 +254,9 @@ function SectionBody({ section }: { section: CaseStudySection }) {
       return (
         <CaseStudyMetricsGrid
           metrics={section.content as CaseStudyMetric[]}
-          columns={3}
-          withDividers={true}
+          layout="grid"
+          columns={4}
+        // withDividers={true}
         />
       );
     }
@@ -419,6 +420,20 @@ export function CaseStudyTemplate({ caseStudy, relatedCaseStudies }: CaseStudyTe
               </div>
             </div>
           </div>
+
+          {/* Banner image */}
+          {caseStudy.bannerUrl && (
+            <div className="relative mt-10 aspect-[16/9] w-full overflow-hidden rounded-3xl border border-black/[0.08] bg-surface-muted shadow-sm md:mt-12 md:aspect-[21/9]">
+              <Image
+                src={caseStudy.bannerUrl}
+                alt={caseStudy.title}
+                fill
+                priority
+                sizes="(min-width: 1024px) 1200px, 100vw"
+                className="object-cover"
+              />
+            </div>
+          )}
 
           {/* Apple-style Stats */}
           <CaseStudyMetricsGrid
