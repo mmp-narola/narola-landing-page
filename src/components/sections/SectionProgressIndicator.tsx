@@ -95,10 +95,11 @@ export function SectionProgressIndicator() {
             className="pointer-events-auto group flex items-center gap-3"
           >
             <span
-              className={`whitespace-nowrap text-xs font-semibold tracking-wide transition-all duration-300 ${isActive
-                ? `translate-x-0 opacity-100 ${section.activeText}`
-                : "pointer-events-none translate-x-1 opacity-0"
-                }`}
+              className={`whitespace-nowrap text-xs font-semibold tracking-wide transition-all duration-300 ${section.activeText} ${
+                isActive
+                  ? "translate-x-0 opacity-100"
+                  : "pointer-events-none translate-x-1 opacity-0 group-hover:translate-x-0 group-hover:opacity-100"
+              }`}
             >
               {section.label}
             </span>
