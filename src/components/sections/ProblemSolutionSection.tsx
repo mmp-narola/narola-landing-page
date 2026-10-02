@@ -7,7 +7,9 @@ import React from "react";
 export interface ProblemSolutionSectionProps {
   title: string;
   subtitle: string;
-  paragraphs: string[];
+  paragraphs?: string[];
+  problemText?: string[];
+  solutionText?: string[];
   visual?: React.ReactNode;
   theme?: "white" | "muted";
 }
@@ -16,6 +18,8 @@ export function ProblemSolutionSection({
   title,
   subtitle,
   paragraphs,
+  problemText,
+  solutionText,
   visual,
   theme = "muted",
 }: ProblemSolutionSectionProps) {
@@ -49,14 +53,35 @@ export function ProblemSolutionSection({
           {/* Right Column */}
           <Reveal delay={0.2} className="flex flex-col">
             <div className="space-y-6 text-lg leading-relaxed text-slate">
-              {paragraphs.map((paragraph, idx) => (
-                <p
-                  key={idx}
-                  className={idx === 0 ? "text-xl font-medium text-ink md:text-2xl" : ""}
-                >
-                  {paragraph}
-                </p>
-              ))}
+              {problemText && solutionText ? (
+                <>
+                  <div>
+                    <h4 className="text-xl font-semibold text-ink md:text-2xl mb-3">The Problem</h4>
+                    <div className="space-y-4">
+                      {problemText.map((p, idx) => (
+                        <p key={idx}>{p}</p>
+                      ))}
+                    </div>
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-semibold text-ink md:text-2xl mb-3">The Solution</h4>
+                    <div className="space-y-4">
+                      {solutionText.map((p, idx) => (
+                        <p key={idx}>{p}</p>
+                      ))}
+                    </div>
+                  </div>
+                </>
+              ) : paragraphs ? (
+                paragraphs.map((paragraph, idx) => (
+                  <p
+                    key={idx}
+                    className={idx === 0 ? "text-xl font-medium text-ink md:text-2xl" : ""}
+                  >
+                    {paragraph}
+                  </p>
+                ))
+              ) : null}
             </div>
           </Reveal>
         </div>

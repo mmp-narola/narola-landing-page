@@ -23,54 +23,17 @@ function SubSectionHeader({ title }: { title: string }) {
   );
 }
 
+import { ServiceHeroSection } from "@/components/sections/ServiceHeroSection";
+
 export function AiShoppingHero() {
   return (
-    <section className="relative overflow-hidden bg-white pt-24 pb-16 md:pt-32 md:pb-24">
-      <Container>
-        <div className="flex flex-col items-center text-center max-w-7xl mx-auto">
-          <Reveal className="flex flex-col items-center w-full">
-            {/* Tag */}
-            <div className="mb-6 flex items-center gap-2 text-sm font-medium text-slate">
-              <span className="w-2.5 h-2.5 rounded-full bg-[#ff4a4a]"></span>
-              AI shopping assistant
-            </div>
-
-            <h1 className="text-4xl font-bold tracking-tight text-ink sm:text-5xl md:text-6xl lg:text-7xl lg:leading-[1.1] text-balance">
-              {aiShoppingContent.hero.headline}
-            </h1>
-            <p className="mt-6 text-lg leading-relaxed text-slate md:text-xl max-w-2xl mx-auto text-balance">
-              {aiShoppingContent.hero.subheadline}
-            </p>
-            <div className="mt-8 flex items-center justify-center">
-              <Button href="#contact" variant="primary" className="rounded-full px-8 py-4 text-lg">
-                {aiShoppingContent.hero.cta}
-              </Button>
-            </div>
-
-            {/* Reviews / Logos Placeholder */}
-            {/* <div className="mt-12 flex items-center gap-6 text-slate text-sm font-medium justify-center flex-wrap">
-              <div className="flex items-center gap-2 opacity-80 hover:opacity-100 transition-opacity">
-                <span className="font-bold text-lg tracking-tight text-ink">Gartner</span>
-              </div>
-              <div className="flex items-center gap-2 opacity-80 hover:opacity-100 transition-opacity">
-                <span className="font-bold text-lg tracking-tight text-[#ff4a4a]">G2</span>
-              </div>
-              <div className="flex items-center gap-2 opacity-80 hover:opacity-100 transition-opacity">
-                <span className="font-bold text-lg tracking-tight text-interactive-blue">Capterra</span>
-              </div>
-              <div className="flex items-center gap-1 text-yellow-400">
-                {[1, 2, 3, 4, 5].map((star) => (
-                  <svg key={star} className="w-5 h-5 fill-current" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                ))}
-                <span className="text-slate ml-2 text-sm font-medium">4.8/5</span>
-              </div>
-            </div> */}
-          </Reveal>
-        </div>
-      </Container>
-    </section>
+    <ServiceHeroSection
+      eyebrow="AI shopping assistant"
+      title={aiShoppingContent.hero.headline}
+      subtitle={aiShoppingContent.hero.subheadline}
+      ctaText={aiShoppingContent.hero.cta}
+      ctaHref="#contact"
+    />
   );
 }
 
