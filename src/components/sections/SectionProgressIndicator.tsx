@@ -65,7 +65,17 @@ export function SectionProgressIndicator() {
 
   const handleClick = (id: string) => (e: React.MouseEvent) => {
     e.preventDefault();
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    const element = document.getElementById(id);
+    if (element) {
+      const headerOffset = 64;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.scrollY - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+    }
   };
 
   return (
@@ -86,8 +96,8 @@ export function SectionProgressIndicator() {
           >
             <span
               className={`whitespace-nowrap text-xs font-semibold tracking-wide transition-all duration-300 ${isActive
-                  ? `translate-x-0 opacity-100 ${section.activeText}`
-                  : "pointer-events-none translate-x-1 opacity-0"
+                ? `translate-x-0 opacity-100 ${section.activeText}`
+                : "pointer-events-none translate-x-1 opacity-0"
                 }`}
             >
               {section.label}

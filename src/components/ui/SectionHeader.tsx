@@ -140,8 +140,8 @@ export function SectionHeader({
           <div className="relative mb-4 inline-flex items-center justify-center" data-pointer-target="true">
             <div
               className={`inline-flex items-center gap-2 rounded-full border px-4 py-1.5 text-xs font-bold tracking-wide shadow-sm ring-1 ring-inset transition-all duration-1000 ${accentStyle.badgeBorder} ${accentStyle.text} ${hasReached
-                  ? `${accentStyle.badgeBgActive} ${accentStyle.badgeRingActive} ${accentStyle.badgeShadowActive} animate-custom-shake`
-                  : `${accentStyle.badgeBgInactive} ${accentStyle.badgeRingInactive}`
+                ? `${accentStyle.badgeBgActive} ${accentStyle.badgeRingActive} ${accentStyle.badgeShadowActive} animate-custom-shake`
+                : `${accentStyle.badgeBgInactive} ${accentStyle.badgeRingInactive}`
                 }`}
             >
               <span className={`h-1.5 w-1.5 rounded-full ${accentStyle.dot}`} aria-hidden="true" />
@@ -164,10 +164,10 @@ export function SectionHeader({
           <h2
             ref={titleRef}
             className={`text-display font-semibold tracking-tight md:text-display-lg text-balance transition-all duration-700 ${!indexBadge
+              ? "text-light-gray"
+              : hasReached
                 ? "text-light-gray"
-                : hasReached
-                  ? "text-light-gray"
-                  : "text-white drop-shadow-sm"
+                : "text-white drop-shadow-sm"
               }`}
           >
             {title}
