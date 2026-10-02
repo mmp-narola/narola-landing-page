@@ -138,7 +138,8 @@ export function CaseStudyCard({
           <div className="mt-6 border-t border-black/[0.10] pt-5">
             <CaseStudyMetricsGrid
               metrics={caseStudy.metrics}
-              columns={2}
+              // columns={2}
+              layout="row"
               size="small"
               limit={2}
               withDividers

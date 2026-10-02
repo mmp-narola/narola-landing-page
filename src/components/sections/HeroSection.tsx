@@ -4,15 +4,20 @@ import { useState, useEffect, useRef } from "react";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { heroContent, type QuickPrompt } from "@/content/homeContent";
+import type { SearchResultItem } from "@/actions/searchAction";
 import { MessageSquare, ArrowRight, X } from "lucide-react";
 
 export function HeroSection() {
   const [inputValue, setInputValue] = useState("");
   const [activePrompt, setActivePrompt] = useState<QuickPrompt | null>(null);
+  const [searchResults, setSearchResults] = useState<SearchResultItem[] | null>(null);
+  const [searchFilter, setSearchFilter] = useState<"All" | "Blog" | "Case Study">("All");
   const [isThinking, setIsThinking] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  console.log('searchResults', searchResults)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -44,6 +49,7 @@ export function HeroSection() {
   const handleSelectPrompt = (prompt: QuickPrompt) => {
     setIsFocused(true);
     setInputValue(prompt.query);
+    setSearchResults(null);
     setIsThinking(true);
     setTimeout(() => {
       setActivePrompt(prompt);
@@ -51,25 +57,57 @@ export function HeroSection() {
     }, 280);
   };
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!inputValue.trim()) return;
 
-    const matched =
-      heroContent.quickPrompts.find(
-        (p) =>
-          inputValue.toLowerCase().includes(p.id) ||
-          inputValue.toLowerCase().includes(p.label.toLowerCase())
-      ) || heroContent.quickPrompts[0];
-
     setIsThinking(true);
-    setTimeout(() => {
+    setSearchResults(null);
+    setActivePrompt(null);
+    setSearchFilter("All");
+
+    // Try matching quick prompts first
+    const matchedQuickPrompt = heroContent.quickPrompts.find(
+      (p) =>
+        inputValue.toLowerCase().includes(p.id) ||
+        inputValue.toLowerCase().includes(p.label.toLowerCase())
+    );
+
+    if (matchedQuickPrompt) {
+      setTimeout(() => {
+        setActivePrompt({
+          ...matchedQuickPrompt,
+          query: inputValue,
+        });
+        setIsThinking(false);
+      }, 300);
+      return;
+    }
+
+    // If no quick prompt matches, perform global search via Server Action
+    try {
+      const { globalSearchAction } = await import("@/actions/searchAction");
+      const results = await globalSearchAction(inputValue);
+
+      if (results && results.length > 0) {
+        setSearchResults(results);
+        setActivePrompt(null);
+      } else {
+        // Fallback if search fails
+        setActivePrompt({
+          ...heroContent.quickPrompts[0],
+          query: inputValue,
+        });
+      }
+    } catch (error) {
+      console.error("Failed to perform global search", error);
       setActivePrompt({
-        ...matched,
+        ...heroContent.quickPrompts[0],
         query: inputValue,
       });
+    } finally {
       setIsThinking(false);
-    }, 300);
+    }
   };
 
   return (
@@ -190,7 +228,7 @@ export function HeroSection() {
                       <h4 className="mt-2 text-base font-semibold text-light-gray">
                         {activePrompt.response.title}
                       </h4>
-                      <p className="mt-1 text-xs md:text-sm text-muted-gray leading-relaxed">
+                      <p className="mt-1 text-xs md:text-sm text-muted-gray leading-relaxed whitespace-pre-line">
                         {activePrompt.response.summary}
                       </p>
                       <div className="mt-3 flex flex-wrap items-center gap-2 border-t border-[#0084ff]/15 pt-3 text-xs">
@@ -207,6 +245,98 @@ export function HeroSection() {
                           <span>Consult our architects</span>
                           <ArrowRight className="h-3.5 w-3.5" />
                         </a>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Search Results Display */}
+                  {searchResults && (
+                    <div className="mt-8 animate-in fade-in duration-200">
+                      <hr className="border-[#0084ff]/30 mb-6" />
+
+                      <div className="flex items-center justify-between mb-4">
+                        <span className="text-xs font-semibold uppercase tracking-wide text-bright-blue">
+                          Search Results
+                        </span>
+                        <button
+                          type="button"
+                          onClick={() => setSearchResults(null)}
+                          className="inline-flex items-center gap-1 text-xs text-muted-gray hover:text-white"
+                        >
+                          <span>Close</span>
+                          <X className="h-3.5 w-3.5" />
+                        </button>
+                      </div>
+
+                      {/* Filter Badges */}
+                      {searchResults.length > 0 && searchResults.some(r => r.type === "Blog") && searchResults.some(r => r.type === "Case Study") && (
+                        <div className="flex items-center gap-2 mb-6">
+                          <button
+                            onClick={() => setSearchFilter("All")}
+                            className={`shrink-0 rounded border px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider transition-all ${searchFilter === "All"
+                              ? "border-white/30 bg-white/10 text-white"
+                              : "border-white/10 bg-white/[0.05] text-muted-gray hover:bg-white/[0.1]"
+                              }`}
+                          >
+                            All
+                          </button>
+                          <button
+                            onClick={() => setSearchFilter("Case Study")}
+                            className={`shrink-0 rounded border px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider transition-all ${searchFilter === "Case Study"
+                              ? "border-emerald-500/30 bg-emerald-500/10 text-emerald-400"
+                              : "border-white/10 bg-white/[0.05] text-muted-gray hover:bg-emerald-500/10 hover:border-emerald-500/30 hover:text-emerald-400"
+                              }`}
+                          >
+                            Case Studies
+                          </button>
+                          <button
+                            onClick={() => setSearchFilter("Blog")}
+                            className={`shrink-0 rounded border px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider transition-all ${searchFilter === "Blog"
+                              ? "border-blue-500/30 bg-blue-500/10 text-blue-400"
+                              : "border-white/10 bg-white/[0.05] text-muted-gray hover:bg-blue-500/10 hover:border-blue-500/30 hover:text-blue-400"
+                              }`}
+                          >
+                            Blogs
+                          </button>
+                        </div>
+                      )}
+
+                      {/* Results List */}
+                      <div className="flex flex-col gap-4">
+                        {searchResults.filter(item => searchFilter === "All" || item.type === searchFilter).length > 0 ? (
+                          searchResults.filter(item => searchFilter === "All" || item.type === searchFilter).map((item) => (
+                            <div key={item.id} className="rounded-2xl border border-[#0084ff]/20 bg-[#151515] p-5 text-left transition-all hover:border-[#0084ff]/40 hover:bg-[#0084ff]/10 shadow-sm">
+                              <a href={item.url} className="group block outline-none">
+                                <div className="flex items-start justify-between gap-4">
+                                  <h4 className="text-base font-semibold text-light-gray group-hover:text-bright-blue transition-colors">
+                                    {item.title}
+                                  </h4>
+                                  {(item.type === "Blog" || item.type === "Case Study") && (
+                                    <span
+                                      className={`shrink-0 rounded border px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider ${item.type === "Blog"
+                                        ? "border-blue-500/30 bg-blue-500/10 text-blue-400"
+                                        : "border-emerald-500/30 bg-emerald-500/10 text-emerald-400"
+                                        }`}
+                                    >
+                                      {item.type}
+                                    </span>
+                                  )}
+                                </div>
+                                <p className="mt-2 text-xs md:text-sm text-muted-gray leading-relaxed whitespace-pre-line line-clamp-2">
+                                  {item.summary}
+                                </p>
+                                <div className="mt-3 flex justify-end items-center gap-1 text-xs font-semibold text-[#0084ff]/70 transition-colors group-hover:text-bright-blue">
+                                  <span>View {item.type === "Case Study" ? "Case Study" : item.type === "Blog" ? "Article" : "Details"}</span>
+                                  <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+                                </div>
+                              </a>
+                            </div>
+                          ))
+                        ) : (
+                          <div className="rounded-2xl border border-white/10 bg-[#151515] p-6 text-center text-sm text-muted-gray">
+                            No direct matches found. Please try another term or contact us for guidance!
+                          </div>
+                        )}
                       </div>
                     </div>
                   )}

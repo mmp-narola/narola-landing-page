@@ -37,28 +37,28 @@ export function CaseStudyMetricsGrid({
     size === "large"
       ? "text-3xl sm:text-4xl md:text-5xl tracking-tighter"
       : size === "small"
-        ? "text-2xl md:text-3xl tracking-tight"
+        ? "text-xl sm:text-2xl md:text-3xl tracking-tight"
         : "text-base sm:text-lg tracking-tight"; // compact
 
   const labelSize =
     size === "large"
       ? "text-xs sm:text-sm md:text-base max-w-[140px] sm:max-w-[180px] mt-2 sm:mt-3"
       : size === "small"
-        ? "text-xs max-w-[140px] mt-1.5"
+        ? "text-[10px] sm:text-xs max-w-[140px] mt-1.5"
         : "text-[10px] sm:text-xs max-w-[120px] mt-0.5 line-clamp-2"; // compact
 
   if (layout === "row") {
     // Single centered row — used for the hero stats strip, where a short,
     // never-wrapping line matters more than a strict grid.
-    let gapClass = "gap-x-6 gap-y-6";
-    if (size === "large") gapClass = "gap-x-8 sm:gap-x-10 md:gap-x-14 gap-y-6";
-    if (size === "compact") gapClass = "gap-x-4 gap-y-2";
+    let gapClass = "gap-x-4 sm:gap-x-6 gap-y-4 sm:gap-y-6";
+    if (size === "large") gapClass = "gap-x-6 sm:gap-x-10 md:gap-x-14 gap-y-6";
+    if (size === "compact") gapClass = "gap-x-3 sm:gap-x-4 gap-y-2";
 
     const dividerPl =
-      size === "compact" ? "pl-4" : size === "small" ? "pl-5" : "pl-8 sm:pl-10 md:pl-14";
+      size === "compact" ? "pl-3 sm:pl-4" : size === "small" ? "pl-4 sm:pl-5" : "pl-6 sm:pl-10 md:pl-14";
 
     return (
-      <div className={`flex flex-row flex-wrap items-start justify-center ${gapClass} ${className}`}>
+      <div className={`flex flex-row flex-nowrap items-start justify-between sm:justify-center ${gapClass} w-full overflow-hidden ${className}`}>
         {displayMetrics.map((metric, idx) => (
           <div
             key={idx}
