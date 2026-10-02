@@ -163,11 +163,11 @@ export function SectionHeader({
         <div className="relative inline-block">
           <h2
             ref={titleRef}
-            className={`text-display font-semibold tracking-tight md:text-display-lg text-balance transition-all duration-700 ${!indexBadge
+            className={`text-display font-semibold tracking-tight md:text-display-lg text-balance transition-all duration-[1500ms] ease-in-out ${!indexBadge
               ? "text-light-gray"
               : hasReached
                 ? "text-light-gray"
-                : "text-white drop-shadow-sm"
+                : `${accentStyle.text} drop-shadow-sm`
               }`}
           >
             {title}

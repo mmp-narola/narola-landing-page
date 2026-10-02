@@ -74,104 +74,28 @@ export function AiShoppingHero() {
   );
 }
 
+import { ProblemSolutionSection } from "@/components/sections/ProblemSolutionSection";
+
 export function AiShoppingProblemSolution() {
   return (
-    <section className="bg-surface-muted py-16 md:py-24">
-      <Container>
-        <div>
-          <Reveal>
-            <h2 className="text-xs font-bold tracking-widest text-slate uppercase mb-4">
-              {aiShoppingContent.problemSolution.title}
-            </h2>
-            <h3 className="text-3xl font-semibold tracking-tight text-ink md:text-4xl lg:text-5xl lg:leading-tight max-w-4xl">
-              {aiShoppingContent.problemSolution.subtitle}
-            </h3>
-          </Reveal>
-        </div>
-        <div className="mt-12 md:mt-16 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-          {/* Left Column */}
-          <Reveal className="flex flex-col w-full">
-            {/* Image Placeholder */}
-            <div className="w-full aspect-[4/3] bg-surface-muted rounded-2xl flex items-center justify-center border border-black/[0.08]">
-              <span className="text-slate font-medium">Image Placeholder</span>
-            </div>
-          </Reveal>
-
-          {/* Right Column */}
-          <Reveal delay={0.2} className="flex flex-col">
-            <div className="space-y-6 text-lg leading-relaxed text-slate">
-              {aiShoppingContent.problemSolution.paragraphs.map((paragraph, idx) => (
-                <p key={idx} className={idx === 0 ? "text-xl font-medium text-ink md:text-2xl" : ""}>
-                  {paragraph}
-                </p>
-              ))}
-            </div>
-          </Reveal>
-        </div>
-      </Container>
-    </section>
+    <ProblemSolutionSection
+      title={aiShoppingContent.problemSolution.title}
+      subtitle={aiShoppingContent.problemSolution.subtitle}
+      paragraphs={aiShoppingContent.problemSolution.paragraphs}
+    />
   );
 }
 
+import { CapabilitiesSection } from "@/components/sections/CapabilitiesSection";
+
 export function AiShoppingCapabilities() {
-  const [activeTab, setActiveTab] = useState(0);
-
   return (
-    <section id="features" className="bg-white py-16 md:py-24">
-      <Container>
-        <div className="mb-12">
-          <Reveal>
-            <h2 className="text-xs font-bold tracking-widest text-slate uppercase mb-6">
-              Capabilities
-            </h2>
-            <div className="flex flex-wrap gap-2.5 w-full">
-              {aiShoppingContent.capabilities.map((cap, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setActiveTab(idx)}
-                  className={`px-5 py-2.5 rounded-full text-sm font-medium transition-colors border ${activeTab === idx
-                    ? "bg-ink text-white border-ink"
-                    : "bg-white text-slate border-black/10 hover:border-black/20 hover:bg-black/5"
-                    }`}
-                >
-                  {cap.title}
-                </button>
-              ))}
-            </div>
-          </Reveal>
-        </div>
-
-        <Reveal delay={0.1}>
-          <div className="flex flex-col lg:flex-row bg-white border border-black/[0.08] rounded-2xl overflow-hidden shadow-sm">
-            {/* Image Placeholder */}
-            <div className="w-full lg:w-1/2 min-h-[300px] lg:min-h-[500px] flex flex-col items-center justify-center border-b lg:border-b-0 lg:border-r border-black/[0.08] relative overflow-hidden bg-surface-muted">
-              {/* Dark placeholder background mimicking screenshot */}
-              <div className="absolute inset-4 rounded-xl bg-gradient-to-br from-[#2a1b41] via-[#1a1a1a] to-[#3b211a] opacity-90 border border-black/10 shadow-inner"></div>
-              <div className="relative z-10 p-8 flex flex-col items-center text-center">
-                <span className="text-white/80 font-medium text-sm md:text-base border border-white/20 rounded-xl px-6 py-3 bg-white/5 backdrop-blur-md shadow-xl">
-                  {aiShoppingContent.capabilities[activeTab].title} Visual
-                </span>
-              </div>
-            </div>
-
-            {/* Text Content */}
-            <div className="w-full lg:w-1/2 p-8 md:p-12 xl:p-16 flex flex-col justify-center">
-              <h3 className="text-2xl font-semibold text-ink md:text-3xl mb-6">
-                {aiShoppingContent.capabilities[activeTab].title}
-              </h3>
-              <p className="text-lg leading-relaxed text-slate">
-                {aiShoppingContent.capabilities[activeTab].description}
-              </p>
-              <div className="mt-10">
-                <Button href="#contact" variant="primary" className="rounded-full px-6 py-3 font-semibold">
-                  Book a Demo <span className="ml-2">↗</span>
-                </Button>
-              </div>
-            </div>
-          </div>
-        </Reveal>
-      </Container>
-    </section>
+    <CapabilitiesSection
+      title="Capabilities"
+      items={aiShoppingContent.capabilities}
+      ctaText="Book a Demo"
+      ctaHref="#contact"
+    />
   );
 }
 
