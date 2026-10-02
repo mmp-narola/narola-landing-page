@@ -3,7 +3,13 @@
 import { Reveal } from "@/components/ui/Reveal";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
+import { CaseStudyMetricsGrid } from "@/components/case-studies/CaseStudyMetricsGrid";
 import React from "react";
+
+export interface ServiceHeroMetric {
+  value: string;
+  label: string;
+}
 
 export interface ServiceHeroSectionProps {
   eyebrow: string;
@@ -17,6 +23,7 @@ export interface ServiceHeroSectionProps {
   titleColor?: string;
   subtitleColor?: string;
   eyebrowColor?: string;
+  metrics?: ServiceHeroMetric[];
 }
 
 export function ServiceHeroSection({
@@ -31,6 +38,7 @@ export function ServiceHeroSection({
   titleColor,
   subtitleColor,
   eyebrowColor,
+  metrics,
 }: ServiceHeroSectionProps) {
   const resolvedBgColor = bgColor || (theme === "dark" ? "bg-ink" : "bg-white");
   const resolvedTitleColor = titleColor || (theme === "dark" ? "text-white" : "text-ink");
@@ -59,6 +67,18 @@ export function ServiceHeroSection({
                 {ctaText}
               </Button>
             </div>
+
+            {metrics && metrics.length > 0 && (
+              <div className="mt-16 pt-12 border-t border-black/10 w-full max-w-4xl mx-auto">
+                <CaseStudyMetricsGrid
+                  metrics={metrics}
+                  theme={theme}
+                  layout="row"
+                  withDividers={true}
+                  size="large"
+                />
+              </div>
+            )}
           </Reveal>
         </div>
       </Container>

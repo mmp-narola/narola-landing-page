@@ -11,6 +11,7 @@ export interface CaseStudyMetricsGridProps {
   size?: "compact" | "small" | "large";
   /** Only applies when layout="row". Defaults to 5 so the row never wraps. */
   limit?: number;
+  theme?: "light" | "dark";
 }
 
 export function CaseStudyMetricsGrid({
@@ -21,8 +22,14 @@ export function CaseStudyMetricsGrid({
   className = "",
   size = "large",
   limit = 5,
+  theme = "light",
 }: CaseStudyMetricsGridProps) {
   if (!metrics || metrics.length === 0) return null;
+
+  const isDark = theme === "dark";
+  const titleColorClass = isDark ? "text-white" : "text-transparent bg-clip-text bg-gradient-to-br from-[#1d1d1f] to-[#48484a]";
+  const subtitleColorClass = isDark ? "text-white/80" : "text-slate";
+  const borderColorClass = isDark ? "border-white/20" : "border-black/[0.08]";
 
   const displayMetrics = layout === "row" ? metrics.slice(0, limit) : metrics;
 
@@ -56,13 +63,13 @@ export function CaseStudyMetricsGrid({
           <div
             key={idx}
             className={`flex flex-col items-center justify-center text-center ${
-              withDividers && idx > 0 ? `border-l border-black/[0.08] ${dividerPl}` : ""
+              withDividers && idx > 0 ? `border-l ${borderColorClass} ${dividerPl}` : ""
             }`}
           >
-            <p className={`bg-gradient-to-br from-[#1d1d1f] to-[#48484a] bg-clip-text font-bold text-ink ${valueSize}`}>
+            <p className={`font-bold ${titleColorClass} ${valueSize}`}>
               {metric.value}
             </p>
-            <p className={`text-base font-medium text-slate leading-tight ${labelSize}`}>
+            <p className={`text-base font-medium leading-tight ${subtitleColorClass} ${labelSize}`}>
               {metric.label}
             </p>
           </div>
@@ -89,7 +96,7 @@ export function CaseStudyMetricsGrid({
         let dividerClass = "";
         if (withDividers) {
           const plClass = size === "compact" ? "pl-2" : size === "small" ? "pl-3" : "pl-5";
-          dividerClass = `border-l border-black/[0.08] ${plClass} `;
+          dividerClass = `border-l ${borderColorClass} ${plClass} `;
           if (columns === 3) {
             dividerClass += `max-md:[&:nth-child(2n+1)]:border-l-0 max-md:[&:nth-child(2n+1)]:!pl-0 md:[&:nth-child(3n+1)]:border-l-0 md:[&:nth-child(3n+1)]:!pl-0`;
           } else if (columns === 4) {
@@ -104,10 +111,10 @@ export function CaseStudyMetricsGrid({
             key={idx}
             className={`flex flex-col items-center justify-center text-center ${dividerClass}`}
           >
-            <p className={`bg-gradient-to-br from-[#1d1d1f] to-[#48484a] bg-clip-text font-bold text-ink ${valueSize}`}>
+            <p className={`font-bold ${titleColorClass} ${valueSize}`}>
               {metric.value}
             </p>
-            <p className={`text-base font-medium text-slate leading-tight ${labelSize}`}>
+            <p className={`text-base font-medium leading-tight ${subtitleColorClass} ${labelSize}`}>
               {metric.label}
             </p>
           </div>

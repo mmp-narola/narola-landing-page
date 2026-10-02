@@ -114,82 +114,20 @@ export function AiShoppingMetrics() {
   );
 }
 
+import { UseCasesSection } from "@/components/sections/UseCasesSection";
+
 export function AiShoppingUseCases() {
-  const [activeAccordion, setActiveAccordion] = useState(0);
-
   return (
-    <section className="bg-surface-muted py-16 md:py-24">
-      <Container>
-        <Reveal>
-          <div className="pb-8">
-            <h2 className="text-xs font-bold tracking-widest text-slate uppercase mb-4">{aiShoppingContent.industryUses.title}</h2>
-            <h3 className="text-3xl font-semibold tracking-tight text-ink md:text-4xl lg:text-5xl lg:leading-tight max-w-4xl">
-              {aiShoppingContent.industryUses.subtitle}
-            </h3>
-          </div>
-        </Reveal>
-
-        <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
-          {/* Left Column: Accordion */}
-          <div className="w-full lg:w-1/2 flex flex-col border-t border-black/10">
-            {aiShoppingContent.useCases.map((useCase, idx) => {
-              const isOpen = activeAccordion === idx;
-              return (
-                <div key={idx} className="border-b border-black/10">
-                  <button
-                    onClick={() => {
-                      if (!isOpen) setActiveAccordion(idx);
-                    }}
-                    className="w-full py-6 flex items-center justify-between text-left group"
-                  >
-                    <div className="flex items-center gap-4">
-                      {isOpen && (
-                        <div className="w-8 h-8 rounded-lg bg-[#0e5fd9] flex items-center justify-center shrink-0 shadow-sm">
-                          <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                          </svg>
-                        </div>
-                      )}
-                      <h4 className={`text-xl font-medium transition-colors ${isOpen ? 'text-[#0e5fd9]' : 'text-ink group-hover:text-[#0e5fd9]'}`}>
-                        {useCase.industry}
-                      </h4>
-                    </div>
-                    <span className={`text-slate transition-transform duration-300 ${isOpen ? 'rotate-180 text-[#0e5fd9]' : ''}`}>
-                      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                      </svg>
-                    </span>
-                  </button>
-                  <div className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-[500px] opacity-100 mb-8' : 'max-h-0 opacity-0'}`}>
-                    <p className="text-base text-slate leading-relaxed pl-12 pr-4">
-                      {useCase.description}
-                    </p>
-                    <div className="mt-6 pl-12">
-                      <Button href="#contact" variant="primary" className="rounded-full px-6 py-2.5 text-sm font-semibold bg-black text-white hover:bg-black/90">
-                        Learn More <span className="ml-1">↗</span>
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-
-          {/* Right Column: Dynamic Image */}
-          <div className="w-full lg:w-1/2 sticky top-32">
-            <Reveal key={activeAccordion} className="w-full aspect-[4/5] bg-surface-muted rounded-3xl overflow-hidden relative shadow-2xl border border-black/10">
-              {activeAccordion !== -1 && aiShoppingContent.useCases[activeAccordion].image && (
-                <img
-                  src={aiShoppingContent.useCases[activeAccordion].image}
-                  alt={`Use case for ${aiShoppingContent.useCases[activeAccordion].industry}`}
-                  className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-                />
-              )}
-            </Reveal>
-          </div>
-        </div>
-      </Container>
-    </section>
+    <UseCasesSection
+      eyebrow={aiShoppingContent.industryUses.title}
+      title={aiShoppingContent.industryUses.subtitle}
+      items={aiShoppingContent.useCases.map(uc => ({
+        title: uc.industry,
+        content: uc.description,
+        image: uc.image,
+      }))}
+      variant="image"
+    />
   );
 }
 
