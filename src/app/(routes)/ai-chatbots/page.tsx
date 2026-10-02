@@ -45,6 +45,7 @@ export default function AiChatbotsPage() {
     ],
   };
 
+  console.log("Test log")
   return (
     <>
       <script
