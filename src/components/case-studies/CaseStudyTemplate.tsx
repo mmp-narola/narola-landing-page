@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { CaseStudyCard } from "@/components/case-studies/CaseStudyCard";
 import { CaseStudyMetricsGrid } from "@/components/case-studies/CaseStudyMetricsGrid";
+import { ImageCarousel } from "@/components/ui/ImageCarousel";
 import type {
   CaseStudy,
   CaseStudyMetric,
@@ -421,19 +422,11 @@ export function CaseStudyTemplate({ caseStudy, relatedCaseStudies }: CaseStudyTe
             </div>
           </div>
 
-          {/* Banner image */}
-          {caseStudy.bannerUrl && (
-            <div className="relative mt-10 aspect-[16/9] w-full overflow-hidden rounded-3xl border border-black/[0.08] bg-surface-muted shadow-sm md:mt-12 md:aspect-[21/9]">
-              <Image
-                src={caseStudy.bannerUrl}
-                alt={caseStudy.title}
-                fill
-                priority
-                sizes="(min-width: 1024px) 1200px, 100vw"
-                className="object-cover"
-              />
-            </div>
-          )}
+          {/* Banner image or Carousel */}
+          <ImageCarousel
+            images={[...(caseStudy.galleryImages || [])].filter(Boolean)}
+            alt={caseStudy.title}
+          />
 
           {/* Apple-style Stats */}
           <CaseStudyMetricsGrid
