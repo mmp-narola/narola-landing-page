@@ -92,14 +92,14 @@ export function SectionProgressIndicator() {
             href={`#${section.id}`}
             onClick={handleClick(section.id)}
             aria-current={isActive ? "true" : undefined}
-            className="pointer-events-auto group flex items-center gap-3"
+            className={`group flex items-center gap-3 ${activeId ? "pointer-events-auto" : "pointer-events-none"
+              }`}
           >
             <span
-              className={`whitespace-nowrap text-xs font-semibold tracking-wide transition-all duration-300 ${section.activeText} ${
-                isActive
-                  ? "translate-x-0 opacity-100"
-                  : "pointer-events-none translate-x-1 opacity-0 group-hover:translate-x-0 group-hover:opacity-100"
-              }`}
+              className={`whitespace-nowrap text-xs font-semibold tracking-wide transition-all duration-300 ${section.activeText} ${isActive
+                ? "translate-x-0 opacity-100"
+                : "pointer-events-none translate-x-1 opacity-0 group-hover:translate-x-0 group-hover:opacity-100"
+                }`}
             >
               {section.label}
             </span>
