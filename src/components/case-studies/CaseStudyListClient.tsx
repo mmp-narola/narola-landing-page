@@ -267,8 +267,17 @@ export function CaseStudyListClient({
 
       // 1. Practice Area Filter
       if (practiceLower !== "all") {
-        if (cs.practiceAreas && cs.practiceAreas.includes(practiceLower)) {
-          // Matched via schema
+        const categoryMap: Record<string, string> = {
+          "ecommerce": "ecommerce",
+          "ai-automation": "ai automation",
+          "product-engineering": "product engineering"
+        };
+        const mappedCat = categoryMap[practiceLower];
+        const hasCategoryMatch = cs.category && cs.category.toLowerCase() === mappedCat;
+        const hasPracticeMatch = cs.practiceAreas && cs.practiceAreas.includes(practiceLower);
+
+        if (hasCategoryMatch || hasPracticeMatch) {
+          // Matched via schema or category
         } else {
           // Fallback heuristic check
           const ind = (cs.industry || "").toLowerCase();

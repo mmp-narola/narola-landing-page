@@ -93,4 +93,8 @@ export interface CaseStudy {
   sections?: CaseStudySection[];
   /** Optional: client quote shown in a testimonial card. Only rendered if present. */
   testimonial?: CaseStudyTestimonial;
+  /** Optional: category for mega menu feature placement ("eCommerce", "AI Automation", "Product Engineering") */
+  category?: string;
+  /** Optional: flag to designate as the featured case study for its category in the mega menu */
+  isFeatured?: boolean;
 }

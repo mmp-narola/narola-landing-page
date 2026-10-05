@@ -110,183 +110,206 @@ export function MegaMenuPanel({ menu, onNavigate }: MegaMenuPanelProps) {
             ))}
           </div>
 
-          {/* Bottom Action Bar */}
-          {menu.showConsultationCta && (
-            <div className="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-black/[0.06] pt-6">
-              {/* Consultation CTA Button */}
-              <Link
-                href="#footer"
-                onClick={onNavigate}
-                className="inline-flex h-[54px] items-center justify-center rounded-2xl border-2 border-bright-blue bg-white px-7 text-xs sm:text-sm font-semibold uppercase tracking-wide text-bright-blue transition-all duration-200 hover:bg-bright-blue hover:text-white shadow-2xs active:scale-95"
-              >
-                GET FREE CONSULTATION
-              </Link>
+          {/* View All Case Studies Link (Position 1) */}
 
-              {/* Trust Badges */}
-              <div className="flex flex-wrap items-center gap-4">
-                {/* Clutch Badge */}
-                <div className="flex h-[56px] min-w-[150px] flex-col justify-center rounded-2xl border border-black/[0.09] bg-white px-4 py-2 shadow-2xs">
-                  <Image
-                    src="/images/logo/clutch-co-logo.webp"
-                    alt="Clutch"
-                    width={120}
-                    height={26}
-                    className="h-[26px] w-auto object-contain object-left"
-                  />
-                  <div className="mt-0.5 flex items-center gap-1.5 leading-none">
-                    <span className="text-xs font-semibold text-light-gray">4.9</span>
-                    <div className="flex items-center gap-0.5">
-                      {[1, 2, 3, 4, 5].map((i) => (
-                        <StarIcon key={i} className="h-3.5 w-3.5" />
-                      ))}
-                    </div>
-                  </div>
-                </div>
 
-                {/* Google Badge */}
-                <div className="flex h-[56px] min-w-[150px] items-center gap-3 rounded-2xl border border-black/[0.09] bg-white px-4 py-2 shadow-2xs">
-                  <Image
-                    src="/images/logo/google-logo.webp"
-                    alt="Google"
-                    width={28}
-                    height={28}
-                    className="h-7 w-7 shrink-0 object-contain"
-                  />
-                  <div className="flex flex-col justify-center leading-none">
-                    <span className="text-xs font-medium text-subtle-gray">Google</span>
-                    <div className="mt-1 flex items-center gap-1.5 leading-none">
-                      <span className="text-xs font-semibold text-light-gray">4.3</span>
+          <div className="mt-2">
+            {menu.featured?.viewAllHref && menu.featured?.viewAllLabel && (
+              <div className="flex justify-end">
+                <Link
+                  href={menu.featured.viewAllHref}
+                  onClick={onNavigate}
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-bright-blue transition-colors hover:text-blue-800 hover:underline"
+                >
+                  <span>{menu.featured.viewAllLabel}</span>
+                  <span aria-hidden="true" className="text-[10px]">
+                    →
+                  </span>
+                </Link>
+              </div>
+            )}
+
+            {/* Bottom Action Bar */}
+            {menu.showConsultationCta && (
+              <div className="mt-4 flex flex-wrap items-center justify-between gap-4 border-t border-black/[0.06] pt-6">
+
+                {/* Consultation CTA Button */}
+                <Link
+                  href="#footer"
+                  onClick={onNavigate}
+                  className="inline-flex h-[54px] items-center justify-center rounded-2xl border-2 border-bright-blue bg-white px-7 text-xs sm:text-sm font-semibold uppercase tracking-wide text-bright-blue transition-all duration-200 hover:bg-bright-blue hover:text-white shadow-2xs active:scale-95"
+                >
+                  GET FREE CONSULTATION
+                </Link>
+
+                {/* Trust Badges */}
+                <div className="flex flex-wrap items-center gap-4">
+                  {/* Clutch Badge */}
+                  <div className="flex h-[56px] min-w-[150px] flex-col justify-center rounded-2xl border border-black/[0.09] bg-white px-4 py-2 shadow-2xs">
+                    <Image
+                      src="/images/logo/clutch-co-logo.webp"
+                      alt="Clutch"
+                      width={120}
+                      height={26}
+                      className="h-[26px] w-auto object-contain object-left"
+                    />
+                    <div className="mt-0.5 flex items-center gap-1.5 leading-none">
+                      <span className="text-xs font-semibold text-light-gray">4.9</span>
                       <div className="flex items-center gap-0.5">
-                        {[1, 2, 3, 4].map((i) => (
+                        {[1, 2, 3, 4, 5].map((i) => (
                           <StarIcon key={i} className="h-3.5 w-3.5" />
                         ))}
-                        <HalfStarIcon className="h-3.5 w-3.5" />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Google Badge */}
+                  <div className="flex h-[56px] min-w-[150px] items-center gap-3 rounded-2xl border border-black/[0.09] bg-white px-4 py-2 shadow-2xs">
+                    <Image
+                      src="/images/logo/google-logo.webp"
+                      alt="Google"
+                      width={28}
+                      height={28}
+                      className="h-7 w-7 shrink-0 object-contain"
+                    />
+                    <div className="flex flex-col justify-center leading-none">
+                      <span className="text-xs font-medium text-subtle-gray">Google</span>
+                      <div className="mt-1 flex items-center gap-1.5 leading-none">
+                        <span className="text-xs font-semibold text-light-gray">4.3</span>
+                        <div className="flex items-center gap-0.5">
+                          {[1, 2, 3, 4].map((i) => (
+                            <StarIcon key={i} className="h-3.5 w-3.5" />
+                          ))}
+                          <HalfStarIcon className="h-3.5 w-3.5" />
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          )}
+            )}
+          </div>
         </div>
 
         {/* Right Featured Case Study Panel */}
         {menu.featured && (
-          <div className="flex flex-col justify-between rounded-2xl border border-black/[0.08] bg-[#fbfbfd] p-5">
-            <div>
-              {/* Eyebrow */}
-              <div className="flex items-center gap-1.5">
-                <span className="h-1.5 w-1.5 rounded-full bg-bright-blue" />
-                <span className="text-[11px] font-semibold uppercase tracking-wide text-bright-blue">
-                  {menu.featured.tagLabel}
-                </span>
+          <div className="flex flex-col">
+            <div className="flex flex-col justify-between rounded-2xl border border-black/[0.08] bg-[#fbfbfd] p-5 h-full">
+              <div>
+                {/* Eyebrow */}
+                <div className="flex items-center gap-1.5">
+                  <span className="h-1.5 w-1.5 rounded-full bg-bright-blue" />
+                  <span className="text-[11px] font-semibold uppercase tracking-wide text-bright-blue">
+                    {menu.featured.tagLabel}
+                  </span>
+                </div>
+
+                {/* Image or Mockup Preview */}
+                {menu.featured.image ? (
+                  <div className="relative mt-3 aspect-[16/10] w-full overflow-hidden rounded-xl border border-black/[0.08] bg-surface-muted shadow-2xs">
+                    <Link
+                      href={menu.featured.href}
+                      onClick={onNavigate}
+                      className="block h-full w-full focus:outline-none"
+                    >
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={menu.featured.image}
+                        alt={menu.featured.title}
+                        loading="lazy"
+                        className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
+                      />
+                    </Link>
+                  </div>
+                ) : (
+                  <div className="mt-3 overflow-hidden rounded-xl border border-black/[0.08] bg-white p-2.5 shadow-2xs">
+                    {/* Window Chrome Header */}
+                    <div className="flex items-center gap-1.5 border-b border-black/[0.05] pb-2">
+                      <span className="h-2 w-2 rounded-full bg-[#ff5f57]" />
+                      <span className="h-2 w-2 rounded-full bg-[#febc2e]" />
+                      <span className="h-2 w-2 rounded-full bg-[#28c840]" />
+                      <div className="ml-2 h-1.5 w-16 rounded-full bg-black/5" />
+                      <div className="ml-auto h-2 w-7 rounded-md bg-bright-blue/20" />
+                    </div>
+
+                    {/* Window Body Mockup */}
+                    <div className="mt-2.5 grid grid-cols-3 gap-1.5">
+                      <div className="flex h-10 items-center justify-center rounded-lg bg-blue-50/70 p-1">
+                        <svg
+                          className="h-4 w-4 text-bright-blue"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                        >
+                          <path d="M3 3v18h18" />
+                          <path d="m19 9-5 5-4-4-3 3" />
+                        </svg>
+                      </div>
+                      <div className="flex h-10 items-center justify-center rounded-lg bg-emerald-50/70 p-1">
+                        <svg
+                          className="h-4 w-4 text-emerald-600"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                        >
+                          <circle cx="9" cy="21" r="1" />
+                          <circle cx="20" cy="21" r="1" />
+                          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+                        </svg>
+                      </div>
+                      <div className="flex h-10 items-center justify-center rounded-lg bg-amber-50/70 p-1">
+                        <svg
+                          className="h-4 w-4 text-amber-600"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                        >
+                          <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                          <circle cx="9" cy="7" r="4" />
+                          <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                          <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                        </svg>
+                      </div>
+                    </div>
+
+                    {/* Bottom Mockup Bar */}
+                    <div className="mt-2 h-1.5 w-full rounded-full bg-bright-blue/20" />
+                  </div>
+                )}
+
+                {/* Title */}
+                <h4 className="mt-3 text-sm font-semibold leading-snug text-light-gray hover:text-bright-blue transition-colors line-clamp-2">
+                  <Link href={menu.featured.href} onClick={onNavigate}>
+                    {menu.featured.title}
+                  </Link>
+                </h4>
+
+                {/* Key Metrics */}
+                <CaseStudyMetricsGrid
+                  metrics={menu.featured.metrics}
+                  columns={2}
+                  size="compact"
+                  limit={2}
+                  withDividers
+                  className="mt-3 border-t border-black/[0.06] pt-2.5"
+                />
               </div>
 
-              {/* Image or Mockup Preview */}
-              {menu.featured.image ? (
-                <div className="relative mt-3 aspect-[16/10] w-full overflow-hidden rounded-xl border border-black/[0.08] bg-surface-muted shadow-2xs">
-                  <Link
-                    href={menu.featured.href}
-                    onClick={onNavigate}
-                    className="block h-full w-full focus:outline-none"
-                  >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={menu.featured.image}
-                      alt={menu.featured.title}
-                      loading="lazy"
-                      className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
-                    />
-                  </Link>
-                </div>
-              ) : (
-                <div className="mt-3 overflow-hidden rounded-xl border border-black/[0.08] bg-white p-2.5 shadow-2xs">
-                  {/* Window Chrome Header */}
-                  <div className="flex items-center gap-1.5 border-b border-black/[0.05] pb-2">
-                    <span className="h-2 w-2 rounded-full bg-[#ff5f57]" />
-                    <span className="h-2 w-2 rounded-full bg-[#febc2e]" />
-                    <span className="h-2 w-2 rounded-full bg-[#28c840]" />
-                    <div className="ml-2 h-1.5 w-16 rounded-full bg-black/5" />
-                    <div className="ml-auto h-2 w-7 rounded-md bg-bright-blue/20" />
-                  </div>
-
-                  {/* Window Body Mockup */}
-                  <div className="mt-2.5 grid grid-cols-3 gap-1.5">
-                    <div className="flex h-10 items-center justify-center rounded-lg bg-blue-50/70 p-1">
-                      <svg
-                        className="h-4 w-4 text-bright-blue"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                      >
-                        <path d="M3 3v18h18" />
-                        <path d="m19 9-5 5-4-4-3 3" />
-                      </svg>
-                    </div>
-                    <div className="flex h-10 items-center justify-center rounded-lg bg-emerald-50/70 p-1">
-                      <svg
-                        className="h-4 w-4 text-emerald-600"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                      >
-                        <circle cx="9" cy="21" r="1" />
-                        <circle cx="20" cy="21" r="1" />
-                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
-                      </svg>
-                    </div>
-                    <div className="flex h-10 items-center justify-center rounded-lg bg-amber-50/70 p-1">
-                      <svg
-                        className="h-4 w-4 text-amber-600"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                      >
-                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                        <circle cx="9" cy="7" r="4" />
-                        <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-                        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                      </svg>
-                    </div>
-                  </div>
-
-                  {/* Bottom Mockup Bar */}
-                  <div className="mt-2 h-1.5 w-full rounded-full bg-bright-blue/20" />
-                </div>
-              )}
-
-              {/* Title */}
-              <h4 className="mt-3 text-sm font-semibold leading-snug text-light-gray hover:text-bright-blue transition-colors line-clamp-2">
-                <Link href={menu.featured.href} onClick={onNavigate}>
-                  {menu.featured.title}
-                </Link>
-              </h4>
-
-              {/* Key Metrics */}
-              <CaseStudyMetricsGrid
-                metrics={menu.featured.metrics}
-                columns={2}
-                size="compact"
-                limit={2}
-                withDividers
-                className="mt-3 border-t border-black/[0.06] pt-2.5"
-              />
+              {/* Read Case Study Link */}
+              <Link
+                href={menu.featured.href}
+                onClick={onNavigate}
+                className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-bright-blue transition-colors hover:underline"
+              >
+                <span>Read Case Study</span>
+                <span aria-hidden="true" className="text-sm font-semibold">
+                  ↗
+                </span>
+              </Link>
             </div>
-
-            {/* Read Case Study Link */}
-            <Link
-              href={menu.featured.href}
-              onClick={onNavigate}
-              className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-bright-blue transition-colors hover:underline"
-            >
-              <span>Read Case Study</span>
-              <span aria-hidden="true" className="text-sm font-semibold">
-                ↗
-              </span>
-            </Link>
           </div>
         )}
       </div>

@@ -47,6 +47,8 @@ export interface ICaseStudyDocument extends Document {
   testimonial?: unknown;
   createdAt: Date;
   updatedAt: Date;
+  category?: string;
+  isFeatured?: boolean;
 }
 
 const CaseStudyMetricSchema = new Schema<ICaseStudyMetric>(
@@ -130,6 +132,8 @@ const CaseStudySchema = new Schema<ICaseStudyDocument>(
     regions: [{ type: String }],
     sections: [{ type: Schema.Types.Mixed }],
     testimonial: { type: Schema.Types.Mixed },
+    category: { type: String },
+    isFeatured: { type: Boolean, default: false },
   },
   {
     timestamps: true,

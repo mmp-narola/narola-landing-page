@@ -109,3 +109,37 @@ export async function getRelatedCaseStudies(
 
   return related.slice(0, limit);
 }
+
+/**
+ * Fetch the featured case studies for each of the three mega menu categories.
+ */
+export async function getMegaMenuFeaturedCaseStudies(): Promise<Record<string, CaseStudy | null>> {
+  const categories = {
+    ecommerce: "eCommerce",
+    "ai-automation": "AI Automation",
+    "product-engineering": "Product Engineering",
+  };
+  
+  const result: Record<string, CaseStudy | null> = {
+    ecommerce: null,
+    "ai-automation": null,
+    "product-engineering": null,
+  };
+
+  try {
+    await connectToDatabase();
+    for (const [key, catName] of Object.entries(categories)) {
+      const study = await CaseStudyModel.findOne({ category: catName, isFeatured: true })
+        .select("title tagline summary metrics slug thumbnailUrl bannerUrl")
+        .sort({ createdAt: -1 })
+        .lean();
+      if (study) {
+        result[key] = JSON.parse(JSON.stringify(study)) as CaseStudy;
+      }
+    }
+  } catch (error) {
+    console.error("Could not fetch mega menu featured case studies:", error);
+  }
+
+  return result;
+}
