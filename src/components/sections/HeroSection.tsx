@@ -115,13 +115,15 @@ export function HeroSection() {
             </div>
 
             {/* Interactive "ASK US ANYTHING" Card */}
-            <div ref={cardRef} className={`relative transition-all duration-500 ${isFocused ? 'z-40' : 'z-10'}`}>
+            <div ref={cardRef} className={`relative transition-all duration-500 ${isFocused ? 'z-40' : 'z-10'}`} >
               <Reveal delay={400}>
                 <div
                   className={`mx-auto mt-14 max-w-3xl rounded-[28px] border bg-[#1d1d1f] p-6 text-left transition-all duration-500 md:p-9 relative ${isFocused
                     ? 'scale-[1.02] shadow-[0_0_80px_-15px_rgba(0,132,255,0.4)] border-[#0084ff]/50'
                     : 'shadow-[0_20px_60px_-15px_rgba(0,0,0,0.5)] border-white/10'
                     }`}
+                  onClick={() => setIsFocused(true)}
+                  onFocus={() => setIsFocused(true)}
                 >
                   <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-bright-blue">
                     <MessageSquare className="h-4 w-4" />
