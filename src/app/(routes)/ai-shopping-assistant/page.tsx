@@ -81,7 +81,7 @@ export default async function AiShoppingAssistantPage() {
         <AiShoppingUseCases />
         <AiShoppingMetrics />
         <AiShoppingCaseStudies caseStudies={ecommerceCaseStudies} />
-        <ClientsSection className="bg-white" moreClientsBadge="" />
+        <ClientsSection className="bg-white" moreClientsBadge="" title="Trusted by innovative brands worldwide" />
         <AiShoppingFaq />
         <AiShoppingCta />
       </main>

@@ -1,15 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { ShoppingCart, BadgeCheck, Users, MousePointerClick } from "lucide-react";
-import { CaseStudyMetricsGrid } from "@/components/case-studies/CaseStudyMetricsGrid";
 import { aiShoppingContent } from "@/content/aiShoppingAssistant";
-import { ClientsSection } from "@/components/ui/ClientsSection";
 import { FaqSection } from "@/components/ui/FaqSection";
 
 function SubSectionHeader({ title }: { title: string }) {
