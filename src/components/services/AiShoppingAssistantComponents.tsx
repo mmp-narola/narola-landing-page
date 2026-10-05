@@ -226,11 +226,6 @@ export function AiShoppingCaseStudies({ caseStudies = [] }: { caseStudies?: Case
   );
 }
 
-
-export function AiShoppingClients() {
-  return <ClientsSection />;
-}
-
 export function AiShoppingFaq() {
   return <FaqSection faqs={aiShoppingContent.faqs} />;
 }

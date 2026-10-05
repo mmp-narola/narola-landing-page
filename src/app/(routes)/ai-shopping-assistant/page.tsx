@@ -9,12 +9,12 @@ import {
   AiShoppingMetrics,
   AiShoppingUseCases,
   AiShoppingCaseStudies,
-  AiShoppingClients,
   AiShoppingFaq,
   AiShoppingCta
 } from "@/components/services/AiShoppingAssistantComponents";
 import { aiShoppingContent } from "@/content/aiShoppingAssistant";
 import { getCaseStudies } from "@/lib/caseStudies";
+import { ClientsSection } from "@/components/ui/ClientsSection";
 
 export const revalidate = 60;
 
@@ -81,7 +81,7 @@ export default async function AiShoppingAssistantPage() {
         <AiShoppingUseCases />
         <AiShoppingMetrics />
         <AiShoppingCaseStudies caseStudies={ecommerceCaseStudies} />
-        <AiShoppingClients />
+        <ClientsSection className="bg-white" moreClientsBadge="" />
         <AiShoppingFaq />
         <AiShoppingCta />
       </main>

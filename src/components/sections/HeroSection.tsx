@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
+import { ClientsSection } from "@/components/ui/ClientsSection";
 import { heroContent, type QuickPrompt } from "@/content/homeContent";
 import type { SearchResultItem } from "@/actions/searchAction";
 import { MessageSquare, ArrowRight, X } from "lucide-react";
@@ -320,41 +321,8 @@ export function HeroSection() {
         </Container>
 
         {/* Distinct Trusted Clients Subsection */}
-        <div className={`transition-all duration-700 ease-in-out border-t border-black/[0.06] bg-surface-muted/50 py-10 md:py-14 ${isFocused ? 'scale-95 blur-md opacity-30' : 'scale-100 blur-0 opacity-100'}`}>
-          <Container className="relative">
-            <div className="mx-auto max-w-5xl text-center">
-              <Reveal delay={150}>
-                <span className="block text-xs lg:text-base font-semibold uppercase tracking-[0.14em] text-ink-secondary sm:text-sm">
-                  {heroContent.trustedBannerTitle}
-                </span>
-                <div className="mt-6 flex flex-wrap items-center justify-center gap-3.5 sm:gap-5">
-                  {heroContent.trustedClients.map((client) => (
-                    <div
-                      key={client.name}
-                      className="flex h-14 sm:h-15 items-center justify-center rounded-2xl border border-slate/10 bg-white px-5.5 sm:px-7 shadow-xs transition-all duration-300 hover:border-slate/25 hover:shadow-md hover:-translate-y-0.5"
-                    >
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src={client.logo}
-                        alt={`${client.name} logo`}
-                        className={`w-auto max-w-[110px] sm:max-w-[130px] object-contain ${client.name === "L&T"
-                          ? "max-h-8.5 sm:max-h-9.5"
-                          : client.name === "Biocon"
-                            ? "max-h-8 sm:max-h-9"
-                            : "max-h-7 sm:max-h-8"
-                          }`}
-                      />
-                    </div>
-                  ))}
-                  {heroContent.moreClientsBadge && (
-                    <div className="flex h-14 sm:h-15 items-center justify-center rounded-2xl border border-dashed border-slate/25 bg-slate/5 px-5.5 sm:px-7 text-xs sm:text-sm font-semibold text-slate transition-all duration-300 hover:border-slate/40">
-                      {heroContent.moreClientsBadge}
-                    </div>
-                  )}
-                </div>
-              </Reveal>
-            </div>
-          </Container>
+        <div className={`transition-all duration-700 ease-in-out ${isFocused ? 'scale-95 blur-md opacity-30' : 'scale-100 blur-0 opacity-100'}`}>
+          <ClientsSection />
         </div>
       </section>
     </>
