@@ -135,7 +135,7 @@ export default function AiChatbotsPage() {
         />
 
         {/* CTA Section matching Image 2 */}
-        <section className="bg-[#f2f7ff] py-12 md:py-16">
+        <section className="bg-surface-muted py-12 md:py-16">
           <Container>
             <div className="max-w-3xl mx-auto flex flex-col items-center text-center">
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-[#d2e3fc] text-xs font-semibold text-bright-blue uppercase tracking-wider mb-6 shadow-sm">
