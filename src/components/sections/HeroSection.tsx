@@ -196,7 +196,7 @@ export function HeroSection() {
                           <button
                             type="button"
                             onClick={() => setSearchResults(null)}
-                            className="inline-flex items-center gap-1 text-xs text-muted-gray hover:text-white"
+                            className="inline-flex items-center gap-1 text-xs text-muted-gray hover:text-bright-blue"
                           >
                             <span>Close</span>
                             <X className="h-3.5 w-3.5" />
