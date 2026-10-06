@@ -72,6 +72,10 @@ export function HeaderClient({ featuredCases = {} }: HeaderClientProps) {
             metrics: study.metrics?.slice(0, 3) || [],
             href: `/case-studies/${study.slug}`,
             image: study.thumbnailUrl || study.bannerUrl,
+            ...(item.id === 'ecommerce' ? {
+              viewAllHref: "/case-studies?practice=ecommerce",
+              viewAllLabel: "All eCommerce Case Studies"
+            } : {})
           }
         }
       };
@@ -126,16 +130,27 @@ export function HeaderClient({ featuredCases = {} }: HeaderClientProps) {
                   className="relative py-6"
                   onMouseEnter={() => handleMouseEnter(item.id)}
                 >
-                  <Link
-                    href={resolvedHref}
-                    className={`relative inline-flex items-center text-sm font-medium transition-colors duration-200 ${isCurrentHovered
-                      ? "text-bright-blue"
-                      : "text-[#48484a] hover:text-bright-blue"
-                      }`}
-                    onClick={() => setActiveMenu(null)}
-                  >
-                    <span>{item.label}</span>
-                  </Link>
+                  {item.href === "#" ? (
+                    <span
+                      className={`relative inline-flex items-center text-sm font-medium transition-colors duration-200 cursor-pointer ${isCurrentHovered
+                        ? "text-bright-blue"
+                        : "text-[#48484a] hover:text-bright-blue"
+                        }`}
+                    >
+                      <span>{item.label}</span>
+                    </span>
+                  ) : (
+                    <Link
+                      href={resolvedHref}
+                      className={`relative inline-flex items-center text-sm font-medium transition-colors duration-200 ${isCurrentHovered
+                        ? "text-bright-blue"
+                        : "text-[#48484a] hover:text-bright-blue"
+                        }`}
+                      onClick={() => setActiveMenu(null)}
+                    >
+                      <span>{item.label}</span>
+                    </Link>
+                  )}
 
                   {/* Tooltip Caret Pointer */}
                   {isCurrentHovered && hasDropdown && (

@@ -119,21 +119,6 @@ export const aiAutomationMegaMenu: MegaMenuConfig = {
       ],
     },
   ],
-  featured: {
-    tagLabel: "FEATURED CASE STUDY",
-    title: "Rayco: Digital Transformation & Workflow Automation",
-    description:
-      "Automated engine diagnostic workflows and problem-led service discovery for fleet operators.",
-    metrics: [
-      { value: "91%", label: "Faster Discovery" },
-      { value: "88%", label: "Clearer Nav" },
-      { value: "86%", label: "Sustainability" },
-    ],
-    href: "/case-studies/rayco-group",
-    image: "/images/case-studies/rayco-mockup.jpg",
-    // viewAllHref: "/case-studies?practice=ai-automation",
-    // viewAllLabel: "All AI & Automation Case Studies",
-  },
   showConsultationCta: true,
 };
 
@@ -212,21 +197,6 @@ export const ecommerceMegaMenu: MegaMenuConfig = {
       ],
     },
   ],
-  featured: {
-    tagLabel: "FEATURED CASE STUDY",
-    title: "Zocular: Dual B2B/B2C Scalable Ecommerce Platform",
-    description:
-      "A high-speed medical ecommerce platform with automated commissions, bulk orders, and real-time tracking.",
-    metrics: [
-      { value: "50%", label: "Faster Speed" },
-      { value: "30%", label: "B2B Growth" },
-      { value: "40%", label: "Cart Drop" },
-    ],
-    href: "/case-studies/zocular",
-    image: "/images/case-studies/zocular-mockup.jpg",
-    viewAllHref: "/case-studies?practice=ecommerce",
-    viewAllLabel: "All eCommerce Case Studies",
-  },
   showConsultationCta: true,
 };
 
@@ -272,21 +242,6 @@ export const productEngineeringMegaMenu: MegaMenuConfig = {
       ],
     },
   ],
-  featured: {
-    tagLabel: "FEATURED CASE STUDY",
-    title: "Tournament Fantasy: Real-Time Event Management App",
-    description:
-      "Cross-platform mobile application engineered for instant tournament scheduling, live tracking, and error control.",
-    metrics: [
-      { value: "85%", label: "Coordination Drop" },
-      { value: "3X", label: "Faster Scheduling" },
-      { value: "99.9%", label: "Crash-Free" },
-    ],
-    href: "/case-studies/tournament-fantasy",
-    image: "/images/case-studies/tournament-fantasy-mockup.jpg",
-    // viewAllHref: "/case-studies?practice=product-engineering",
-    // viewAllLabel: "All Product Engineering Case Studies",
-  },
   showConsultationCta: true,
 };
 
@@ -294,25 +249,25 @@ export const navItems: NavItem[] = [
   {
     id: "ai-automation",
     label: "AI & Automation",
-    href: "/ai-automation",
+    href: "#",
     megaMenu: aiAutomationMegaMenu,
   },
   {
     id: "ecommerce",
     label: "e Commerce",
-    href: "/ecommerce",
+    href: "#",
     megaMenu: ecommerceMegaMenu,
   },
   {
     id: "product-engineering",
     label: "Product Engineering",
-    href: "/product-engineering",
+    href: "#",
     megaMenu: productEngineeringMegaMenu,
   },
   {
     id: "company",
     label: "Company",
-    href: "/about",
+    href: "#",
     children: [
       {
         label: "About us / Our Story",
