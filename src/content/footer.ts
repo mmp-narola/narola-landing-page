@@ -50,17 +50,17 @@ export const footerContent = {
   ],
   aiAutomation: [
     { label: "AI Consulting", href: "/ai-consulting" },
-    { label: "AI Agents Development", href: "/ai-agents-development" },
-    { label: "AI Chatbot Development", href: "/ai-chatbot-development" },
+    { label: "AI Agents Development", href: "/ai-agents" },
+    { label: "AI Chatbot Development", href: "/ai-chatbots" },
     { label: "Conversational AI Solutions", href: "/conversational-ai-solutions" },
     { label: "Generative AI Development", href: "/generative-ai-development" },
   ],
   ecommerce: [
     { label: "AI Shopping Assistant", href: "/ai-shopping-assistant" },
-    { label: "AI Chatbots", href: "/ai-chatbots" },
-    { label: "AI Agents", href: "/ai-agents" },
-    { label: "Conversational Commerce", href: "/conversational-commerce" },
-    { label: "AI Automation", href: "/ai-automation" },
+    { label: "AI Search & Recommendations", href: "/ai-search-recommendations" },
+    { label: "AI Customer Support", href: "/ai-customer-support" },
+    { label: "eCommerce Automation", href: "/ecommerce-automation" },
+    { label: "AI Analytics", href: "/ai-analytics" },
   ],
   productEngineering: [
     { label: "SaaS Product Development", href: "/saas-product-development" },

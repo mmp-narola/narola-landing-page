@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 interface TrackedSection {
   id: string;
@@ -17,54 +17,70 @@ const SECTIONS: TrackedSection[] = [
 
 /**
  * Lightweight, desktop-only "which section am I in" indicator for the three
- * homepage disciplines. Pure IntersectionObserver (no scroll listener, no
- * animation library) — tracks whichever tracked section currently has the
- * most overlap with a horizontal band near the vertical center of the
- * viewport, and highlights the matching dot + label. Hidden entirely while
- * none of the three sections are in view (e.g. on the hero or footer), and
- * hidden on small screens where a fixed side rail would crowd the layout.
+ * homepage disciplines. Smoothly tracks the active discipline section
+ * relative to the viewport vertical center, highlighting the matching dot + label.
+ * Hidden entirely while none of the three sections are in view (e.g. on the hero or footer),
+ * and hidden on small screens where a fixed side rail would crowd the layout.
  */
 export function SectionProgressIndicator() {
   const [activeId, setActiveId] = useState<string | null>(null);
-  const ratiosRef = useRef<Map<string, number>>(new Map());
 
   useEffect(() => {
-    const nodes = SECTIONS.map((s) => document.getElementById(s.id)).filter(
-      (el): el is HTMLElement => Boolean(el)
-    );
-    if (nodes.length === 0) return;
+    const updateActiveSection = () => {
+      const nodes = SECTIONS.map((s) => ({
+        id: s.id,
+        el: document.getElementById(s.id),
+      })).filter((item): item is { id: string; el: HTMLElement } => Boolean(item.el));
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          ratiosRef.current.set(entry.target.id, entry.isIntersecting ? entry.intersectionRatio : 0);
-        }
+      if (nodes.length === 0) return;
 
-        let bestId: string | null = null;
-        let bestRatio = 0;
-        ratiosRef.current.forEach((ratio, id) => {
-          if (ratio > bestRatio) {
-            bestRatio = ratio;
-            bestId = id;
-          }
-        });
+      const triggerPoint = window.innerHeight * 0.5;
+      const firstTop = nodes[0].el.getBoundingClientRect().top;
+      const lastBottom = nodes[nodes.length - 1].el.getBoundingClientRect().bottom;
 
-        setActiveId(bestRatio > 0.08 ? bestId : null);
-      },
-      {
-        // Narrow band around the vertical middle of the viewport — the
-        // section whose content fills that band the most is "current".
-        rootMargin: "-40% 0px -40% 0px",
-        threshold: Array.from({ length: 21 }, (_, i) => i / 20),
+      // Hidden if user is above the first discipline (Hero) or below the last (Our Work / Footer)
+      if (firstTop > triggerPoint || lastBottom < triggerPoint) {
+        setActiveId(null);
+        return;
       }
-    );
 
-    nodes.forEach((node) => observer.observe(node));
-    return () => observer.disconnect();
+      // Current section is the last section whose top is at or above the trigger line
+      let currentId: string = nodes[0].id;
+      for (let i = 0; i < nodes.length; i++) {
+        const rect = nodes[i].el.getBoundingClientRect();
+        if (rect.top <= triggerPoint) {
+          currentId = nodes[i].id;
+        }
+      }
+
+      setActiveId(currentId);
+    };
+
+    updateActiveSection();
+
+    let ticking = false;
+    const onScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          updateActiveSection();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
   }, []);
 
   const handleClick = (id: string) => (e: React.MouseEvent) => {
     e.preventDefault();
+    setActiveId(id);
     const element = document.getElementById(id);
     if (element) {
       const headerOffset = 64;
