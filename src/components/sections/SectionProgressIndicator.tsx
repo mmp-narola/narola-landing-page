@@ -15,6 +15,8 @@ const SECTIONS: TrackedSection[] = [
   { id: "product-engineering", label: "Product Engineering", dot: "bg-accent-orange", activeText: "text-accent-orange" },
 ];
 
+
+
 /**
  * Lightweight, desktop-only "which section am I in" indicator for the three
  * homepage disciplines. Smoothly tracks the active discipline section
